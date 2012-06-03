@@ -14,6 +14,6 @@ void main( ){
 	float DiffuseTerm = clamp(dot(normal, vertex_to_light_vector), 0.0, 1.0);
 
 	// Calculating The Final Color
-	gl_FragColor = DiffuseColor * DiffuseTerm;
+	gl_FragColor = gl_Color;// * DiffuseTerm;
 	//gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }

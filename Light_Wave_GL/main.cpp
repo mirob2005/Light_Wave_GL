@@ -74,8 +74,20 @@ void init( void ){
 }
 void DrawScene(float angle)
 {
-	////Display lists for objects
+	//Display lists for objects
 	static GLuint wallList=0;
+
+	// Draw Spheres
+	glPushMatrix();
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glTranslatef(-2.5,-2.5,-2.5);	
+		glutSolidSphere(1.5f,25,25);
+	glPopMatrix();
+	glPushMatrix();
+		glColor3f(1.0f, 1.0f, 1.0f);
+		glTranslatef(2.0,-3,0);	
+		glutSolidSphere(1.0f,25,25);
+	glPopMatrix();
 
 	//Build Walls if necessary
 	if(!wallList)
@@ -84,33 +96,52 @@ void DrawScene(float angle)
 		glNewList(wallList, GL_COMPILE);
 		{
 			glPushMatrix();
-
-				glScalef(1.0f, 0.05f, 1.0f);
+				
+				
 				//Left Wall
 				glPushMatrix();
 					glColor3f(0.65f, 0.5f, 0.29f);
-					glutSolidCube(3.0f);
+					glTranslatef(-4.0,0,0);
+					glScalef(0.0125f,1.0f,1.0f);
+					glRotatef(90,0,0,1);		
+					glutSolidCube(8.0f);
 				glPopMatrix();
-				////Right Wall
-				//glPushMatrix();
-				//	glColor3f(0.0f, 0.0f, 1.0f);
-				//	glutSolidCube(3.0f);
-				//glPopMatrix();
-				////Top Wall
-				//glPushMatrix();
-				//	glColor3f(0.0f, 0.0f, 1.0f);
-				//	glutSolidCube(3.0f);
-				//glPopMatrix();
-				////Bottom Wall
-				//glPushMatrix();
-				//	glColor3f(0.0f, 0.0f, 1.0f);
-				//	glutSolidCube(3.0f);
-				//glPopMatrix();
-				////Far Wall
-				//glPushMatrix();
-				//	glColor3f(0.0f, 0.0f, 1.0f);
-				//	glutSolidCube(3.0f);
-				//glPopMatrix();
+				//Right Wall
+				glPushMatrix();
+					glColor3f(0.29f, 0.65f, 0.5f);
+					glTranslatef(4.0,0,0);
+					glScalef(0.0125f,1.0f,1.0f);
+					glRotatef(90,0,0,1);		
+					glutSolidCube(8.0f);
+				glPopMatrix();
+				//Top Wall
+				glPushMatrix();
+					glColor3f(1.0f, 1.0f, 1.0f);
+					glTranslatef(0,4.0,0);
+					glScalef(1.0f,0.0125f,1.0f);
+					glutSolidCube(8.0f);
+				glPopMatrix();
+				//Bottom Wall
+				glPushMatrix();
+					glColor3f(0.5f, 0.29f, 0.65f);
+					glTranslatef(0,-4.0,0);
+					glScalef(1.0f,0.0125f,1.0f);
+					glutSolidCube(8.0f);
+				glPopMatrix();
+				//Far Wall
+				glPushMatrix();
+					glColor3f(1.0f, 1.0f, 1.0f);
+					glTranslatef(0,0,-4.0);
+					glScalef(1.0f,1.0f,0.0125f);
+					glutSolidCube(8.0f);
+				glPopMatrix();
+				//Near Wall
+				glPushMatrix();
+					glColor3f(1.0f, 1.0f, 1.0f);
+					glTranslatef(0,0,4.0);
+					glScalef(1.0f,1.0f,0.0125f);
+					glutSolidCube(8.0f);
+				glPopMatrix();
 
 			glPopMatrix();
 		}
@@ -129,14 +160,16 @@ void DrawScene(float angle)
  *  represents the position of the light.
  */
 void display(void){
-   GLfloat position[] = { 0.0, 4.0, 1.0, 1.0 };
+   GLfloat position[] = { 0.0, 4.0, 0.0, 1.0 };
 
    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    glPushMatrix ();
-   //gluLookAt (0.0, 0.0, -15.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-   	gluLookAt(-2.5f, 3.5f,-2.5f,
-				0.0f, 0.0f, 0.0f,
-				0.0f, 1.0f, 0.0f);
+   gluLookAt (0.0, 0.0, 4.0, 
+			  0.0, 0.0, 0.0, 
+			  0.0, 1.0, 0.0);
+   	//gluLookAt(-2.5f, 3.5f,-2.5f,
+				//0.0f, 0.0f, 0.0f,
+				//0.0f, 1.0f, 0.0f);
 
 	angle += (clock() - gTime)/10;
 	gTime = clock();
@@ -145,13 +178,14 @@ void display(void){
    glRotated( gSpin, 0.0, 1.0, 0.0 );
    glLightfv (GL_LIGHT0, GL_POSITION, position);
 
-   glTranslated (0.0, 0.0, 1.5);
+   //glTranslated (0.0, 0.0, 1.5);
    glDisable (GL_LIGHTING);
    glPushMatrix();
-	   //glColor3f (0.0, 1.0, 1.0);
-	   glutWireCube (0.1);
+	   glColor3f (1.0, 0.0, 0.0);
+	   glTranslatef(position[0],position[1],position[2]);
+	   glutSolidCube (0.1);
    glPopMatrix();
-   glEnable (GL_LIGHTING);
+   //glEnable (GL_LIGHTING);
    glPopMatrix ();
 
    DrawScene(angle);
@@ -167,7 +201,7 @@ void reshape (int w, int h)
    glViewport (0, 0, (GLsizei) w, (GLsizei) h);
    glMatrixMode (GL_PROJECTION);
    glLoadIdentity();
-   gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
+   gluPerspective(100.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
 }
