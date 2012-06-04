@@ -27,13 +27,14 @@
 
 bool gIsVerbose;
 GLSLProgram *gProgram;
-double gSpin = 0;
+//double gSpin = 0;
 bool gShaderEnabled;
-double gTime = 0;
-double angle = 0;
 
-float cameraPosZ = 4.0;
-float worldRotate = 0.0;
+double gTime = 0;
+int frames = 0;
+double fps = 0;
+double cameraPosZ = 4.0;
+double worldRotate = 0.0;
 
 using namespace std;
 
@@ -69,13 +70,15 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 void init( void ){
    glClearColor(0.0, 0.0, 0.0, 0.0);
    glShadeModel(GL_SMOOTH);
+   glEnable(GL_NORMALIZE);
    glEnable(GL_LIGHTING);
    glEnable(GL_LIGHT0);
    glEnable(GL_DEPTH_TEST);
 
+
    gShaderEnabled = true;
 }
-void DrawScene(float angle)
+void DrawScene()
 {
 	//Display lists for objects
 	static GLuint wallList=0, objectList=0;
@@ -175,35 +178,62 @@ void display(void){
    GLfloat position[] = { 0.0, 4.0, 0.0, 0.0 };
 
    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   /* FPS TIMER ON BOTTOM OF SCREEN */
    glPushMatrix ();
-   gluLookAt (0.0, 0.0, cameraPosZ, 
+   gluLookAt (0.0, 0.0, 4.0, 
 			  0.0, 0.0, 0.0, 
 			  0.0, 1.0, 0.0);
-   	//gluLookAt(-2.5f, 3.5f,-2.5f,
-				//0.0f, 0.0f, 0.0f,
-				//0.0f, 1.0f, 0.0f);
 
-	//angle += (clock() - gTime)/10;
-	//gTime = clock();
+   double newTime = clock();
+   
+   frames++;
+
+   	if(newTime-gTime>1.0f)
+	{
+		fps=frames/((newTime-gTime)/CLOCKS_PER_SEC);	//update the number of frames per second
+		gTime = newTime;				//set time for the start of the next count
+		frames=0;					//reset fps for this second
+	}
+	static char fpsString[32];
+	sprintf(fpsString, "%.1f", fps);
+
+	glColor3f(1.0,1.0,1.0);
+	//Print text
+	glRasterPos3f(0.0f, -1.0f,3.0f);
+	for(unsigned int i=0; i<strlen(fpsString); ++i)
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
+
+   glPopMatrix();
+   /********************************************************************/
+
+
+   glPushMatrix();
+
+   //(cameraPosZ-4.0) ensures that our lookAt spot moves as we move
+   gluLookAt (0.0, 0.0, cameraPosZ, 
+			  0.0, 0.0, (cameraPosZ-4.0), 
+			  0.0, 1.0, 0.0);
 
 	glRotatef(worldRotate,0,1,0);
 
 
    glPushMatrix ();
-   glRotated( gSpin, 0.0, 1.0, 0.0 );
+   
    glLightfv (GL_LIGHT0, GL_POSITION, position);
 
    //glTranslated (0.0, 0.0, 1.5);
    glDisable (GL_LIGHTING);
    glPushMatrix();
 	   glColor3f (1.0, 0.0, 0.0);
+	   //glRotated( gSpin, 0.0, 1.0, 0.0 );
 	   glTranslatef(position[0],position[1],position[2]);
+	   
 	   glutSolidCube (0.1);
    glPopMatrix();
-   //glEnable (GL_LIGHTING);
+   glEnable (GL_LIGHTING);
    glPopMatrix ();
 
-   DrawScene(angle);
+   DrawScene();
 
    glPopMatrix ();
    glFlush ();
@@ -222,17 +252,20 @@ void reshape (int w, int h)
 }
 
 void mouse(int button, int state, int x, int y){
-   switch (button) {
-      case GLUT_LEFT_BUTTON:
-         if (state == GLUT_DOWN) {
-           gSpin += 30.0;
-           gSpin = fmod(gSpin, 360.0);
-           glutPostRedisplay();
-         }
-         break;
-      default:
-         break;
-   }
+	// POSSIBLE TO HAVE CLICK TO OUTPUT COLOR OF PIXEL CLICKED ON?
+
+
+   //switch (button) {
+   //   case GLUT_LEFT_BUTTON:
+   //      if (state == GLUT_DOWN) {
+   //        gSpin += 30.0;
+   //        gSpin = fmod(gSpin, 360.0);
+   //        glutPostRedisplay();
+   //      }
+   //      break;
+   //   default:
+   //      break;
+   //}
 }
 
 void keyboard(unsigned char key, int x, int y){
@@ -254,9 +287,10 @@ void keyboard(unsigned char key, int x, int y){
 			  gProgram->deactivate( );
 			}
        break;
-       case 'w':
-			cameraPosZ += -0.1;	  
-			cout << "UP" << endl;
+	   case 'R':
+       case 'r':
+			cameraPosZ = 4.0;	  
+			worldRotate = 0.0;
 	   break;
    }
    glutPostRedisplay();
@@ -269,19 +303,15 @@ void special( int key, int px, int py ){
 	switch (key) {
 	   case GLUT_KEY_UP:
 			cameraPosZ += -0.1;	  
-			cout << "UP" << endl;
 	   break;	
 	   case GLUT_KEY_DOWN:
 			cameraPosZ += 0.1;	  
-			cout << "DOWN" << endl;
 	   break;	
 	   case GLUT_KEY_LEFT:
-			worldRotate += -1.0;	  
-			cout << "LEFT" << endl;
+			worldRotate += -2.0;	  
 	   break;
 	   case GLUT_KEY_RIGHT:
-			worldRotate += 1.0;	  
-			cout << "RIGHT" << endl;
+			worldRotate += 2.0;	  
 	   break;
 	}
 
@@ -298,7 +328,7 @@ int main(int argc, char** argv){
   int ch;
   string vertexShaderSrc, fragmentShaderSrc;
 
-  gTime = clock();
+ 
   
   static struct option longopts[] = {
     { "fragmentshader", required_argument, NULL, 'f' },
