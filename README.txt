@@ -15,5 +15,10 @@ All files must be in the same directory to be found.
 * This test implementation will attempt to model the global illumination in the scene more like a wave rather than a point light source
 
 
+* RayTracer_GLSL_Compare.jpg shows current OpenGL output in comparison to the rayTracer output
 
 
+TODO:
+1) Add Shadows to the scene using shadow maps
+2) Add an fps tracker
+3) Add Light_Wave logic
