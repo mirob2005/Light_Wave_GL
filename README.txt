@@ -17,8 +17,22 @@ All files must be in the same directory to be found.
 
 * RayTracer_GLSL_Compare.jpg shows current OpenGL output in comparison to the rayTracer output
 
+* FPS is shown at the bottom of the screen
+
 
 TODO:
 1) Add Shadows to the scene using shadow maps
-2) Add an fps tracker
-3) Add Light_Wave logic
+2) Add Light_Wave logic
+
+COMMAND LINE (currently):
+
+LIGHT_WAVE_GL.exe -x diffuse.vs -f diffuse.fs
+
+KEYBOARD CONTROLS:
+ESC, 'q' - QUIT
+UP ARROW - move camera forward
+DOWN ARROW - move camera back
+LEFT ARROW - rotate camera to the left (neg rotation around y)
+RIGHT ARROW - rotate camera to the right (pos rotation around y)
+
+'r' - reset scene
