@@ -32,6 +32,9 @@ bool gShaderEnabled;
 double gTime = 0;
 double angle = 0;
 
+float cameraPosZ = 4.0;
+float worldRotate = 0.0;
+
 using namespace std;
 
 void shaderInit( const char *vsFile, const char *fsFile ){
@@ -75,19 +78,27 @@ void init( void ){
 void DrawScene(float angle)
 {
 	//Display lists for objects
-	static GLuint wallList=0;
+	static GLuint wallList=0, objectList=0;
 
-	// Draw Spheres
-	glPushMatrix();
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glTranslatef(-2.5,-2.5,-2.5);	
-		glutSolidSphere(1.5f,25,25);
-	glPopMatrix();
-	glPushMatrix();
-		glColor3f(1.0f, 1.0f, 1.0f);
-		glTranslatef(2.0,-3,0);	
-		glutSolidSphere(1.0f,25,25);
-	glPopMatrix();
+	// Draw Objects
+	if(!objectList)
+	{
+		objectList=glGenLists(1);
+		glNewList(objectList, GL_COMPILE);
+		{
+			glPushMatrix();
+				glColor3f(1.0f, 1.0f, 1.0f);
+				glTranslatef(-2.5,-2.5,-2.5);	
+				glutSolidSphere(1.5f,25,25);
+			glPopMatrix();
+			glPushMatrix();
+				glColor3f(1.0f, 1.0f, 1.0f);
+				glTranslatef(2.0,-3,0);	
+				glutSolidSphere(1.0f,25,25);
+			glPopMatrix();
+		}
+		glEndList();
+	}
 
 	//Build Walls if necessary
 	if(!wallList)
@@ -150,6 +161,7 @@ void DrawScene(float angle)
 
 	//Draw the Scene
 	glCallList(wallList);
+	glCallList(objectList);
 
 }
 
@@ -160,19 +172,22 @@ void DrawScene(float angle)
  *  represents the position of the light.
  */
 void display(void){
-   GLfloat position[] = { 0.0, 4.0, 0.0, 1.0 };
+   GLfloat position[] = { 0.0, 4.0, 0.0, 0.0 };
 
    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
    glPushMatrix ();
-   gluLookAt (0.0, 0.0, 4.0, 
+   gluLookAt (0.0, 0.0, cameraPosZ, 
 			  0.0, 0.0, 0.0, 
 			  0.0, 1.0, 0.0);
    	//gluLookAt(-2.5f, 3.5f,-2.5f,
 				//0.0f, 0.0f, 0.0f,
 				//0.0f, 1.0f, 0.0f);
 
-	angle += (clock() - gTime)/10;
-	gTime = clock();
+	//angle += (clock() - gTime)/10;
+	//gTime = clock();
+
+	glRotatef(worldRotate,0,1,0);
+
 
    glPushMatrix ();
    glRotated( gSpin, 0.0, 1.0, 0.0 );
@@ -222,23 +237,56 @@ void mouse(int button, int state, int x, int y){
 
 void keyboard(unsigned char key, int x, int y){
    switch (key) {
-      case 27:
+       case 27:
+	   case 'Q':
+	   case 'q':
          exit(0);
          break;
        break;
        case 'G':
        case 'g':
-       gShaderEnabled = !gShaderEnabled;
-        if( gShaderEnabled ){
-          fprintf( stderr, "Shader enabled\n" );
-          gProgram->activate( );
-        }else{
-          fprintf( stderr, "Shader disabled\n" );
-          gProgram->deactivate( );
-        }
+		   gShaderEnabled = !gShaderEnabled;
+			if( gShaderEnabled ){
+			  fprintf( stderr, "Shader enabled\n" );
+			  gProgram->activate( );
+			}else{
+			  fprintf( stderr, "Shader disabled\n" );
+			  gProgram->deactivate( );
+			}
        break;
+       case 'w':
+			cameraPosZ += -0.1;	  
+			cout << "UP" << endl;
+	   break;
    }
    glutPostRedisplay();
+}
+
+void special( int key, int px, int py ){
+  // If you need to save what key was last pressed
+  // uncomment the line below
+  //static int sLastKey = key;
+	switch (key) {
+	   case GLUT_KEY_UP:
+			cameraPosZ += -0.1;	  
+			cout << "UP" << endl;
+	   break;	
+	   case GLUT_KEY_DOWN:
+			cameraPosZ += 0.1;	  
+			cout << "DOWN" << endl;
+	   break;	
+	   case GLUT_KEY_LEFT:
+			worldRotate += -1.0;	  
+			cout << "LEFT" << endl;
+	   break;
+	   case GLUT_KEY_RIGHT:
+			worldRotate += 1.0;	  
+			cout << "RIGHT" << endl;
+	   break;
+	}
+
+
+  glutPostRedisplay( );
 }
 
 void usage( string msg = "" ){
@@ -334,6 +382,7 @@ int main(int argc, char** argv){
    glutDisplayFunc(display); 
    glutReshapeFunc(reshape);
    glutMouseFunc(mouse);
+   glutSpecialFunc( special );
    glutKeyboardFunc(keyboard);
    glutMainLoop( );
    return( 0 );

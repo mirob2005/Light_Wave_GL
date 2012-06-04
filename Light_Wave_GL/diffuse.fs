@@ -1,19 +1,26 @@
 varying vec3 normal;
 varying vec3 vertex_to_light_vector;
+varying vec3 light_to_vertex_vector;
+varying vec3 lightDir;
 
 void main( ){
-	// Defining The Material Colors
-	//const vec4 AmbientColor = vec4(0.0, 0.2, 0.0, 1.0);
-	const vec4 DiffuseColor = vec4(1.0, 1.0, 0.0, 1.0);
+	
+	vec4 color = vec4(0.0,0.0,0.0,1.0);
 
 	// Scaling The Input Vector To Length 1
 	vec3 normalized_normal = normalize(normal);
 	vec3 normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
+	vec3 normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);
 
-	// Calculating The Diffuse Term And Clamping It To [0;1]
-	float DiffuseTerm = clamp(dot(normal, vertex_to_light_vector), 0.0, 1.0);
+	// Reflection term of object
+	float DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	
+	//Reflection term of directional light
+	float DiffuseTermLight = abs(dot(lightDir, normalized_light_to_vertex_vector));
 
 	// Calculating The Final Color
-	gl_FragColor = gl_Color;// * DiffuseTerm;
-	//gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+	//color += gl_Color*DiffuseTermLight;
+	//gl_FragColor = gl_Color * DiffuseTermLight;// * DiffuseTermLight;
+	gl_FragColor = color;
 }
