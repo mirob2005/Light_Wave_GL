@@ -324,57 +324,51 @@ void special( int key, int px, int py ){
 int main(int argc, char** argv){
 
   
-  gIsVerbose = false;
+	gIsVerbose = false;
   
-   glutInit(&argc, argv);
+	glutInit(&argc, argv);
 
-   
-   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-   glutInitWindowSize(800, 800); 
-   glutInitWindowPosition(800, 100);
-   glutCreateWindow("GLSL Shader");
-//#ifdef __APPLE__
-//   if( supportsOpenGLVersion( 2, 0 ) ){
-//     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-//   }else{
-//     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
-//     exit(1);
-//   }
-//   if( gProgram->isHardwareAccelerated( ) ){
-//     fprintf( stderr, "Oh and it's hardware accelerated!\n" );
-//   }
-//#else
-//   GLenum err = glewInit();
-//   if( GLEW_OK != err ){
-//     /* Problem: glewInit failed, something is seriously wrong. */
-//     fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-//     exit(1);
-//   }
-//   if( GLEW_VERSION_2_0 ){
-//     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-//   }else{
-//     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
-//     exit(1);
-//   }
-//#endif
-   bool err = GLeeInit();
-   if( err == false){
-     /* Problem: GLeeInit failed...*/
-     fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
-     exit(1);
-   }
+	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitWindowSize(800, 800); 
+	glutInitWindowPosition(800, 100);
+	glutCreateWindow("Light_Wave_GL");
+#ifdef __APPLE__
+	if( supportsOpenGLVersion( 2, 0 ) ){
+	 fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
+	}else{
+	 fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
+	 exit(1);
+	}
+	if( gProgram->isHardwareAccelerated( ) ){
+	 fprintf( stderr, "Oh and it's hardware accelerated!\n" );
+	}
+#else
+	GLboolean err = GLeeInit();
+	if( err == false){
+	 /* Problem: GLeeInit failed...*/
+	 fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
+	 exit(1);
+	}
+	if( GLEW_VERSION_2_0 ){
+	 fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
+	}else{
+	 fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
+	 exit(1);
+	}
+#endif
 
 
 
-   init( );
 
-   shaderInit( "diffuse.vs", "diffuse.fs" );
+	init( );
 
-   glutDisplayFunc(display); 
-   glutReshapeFunc(reshape);
-   glutMouseFunc(mouse);
-   glutSpecialFunc( special );
-   glutKeyboardFunc(keyboard);
-   glutMainLoop( );
-   return( 0 );
+	shaderInit( "diffuse.vs", "diffuse.fs" );
+
+	glutDisplayFunc(display); 
+	glutReshapeFunc(reshape);
+	glutMouseFunc(mouse);
+	glutSpecialFunc( special );
+	glutKeyboardFunc(keyboard);
+	glutMainLoop( );
+	return( 0 );
 }
