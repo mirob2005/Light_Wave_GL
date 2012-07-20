@@ -80,96 +80,91 @@ void init( void ){
 
    gShaderEnabled = true;
 }
-void DrawScene()
+
+
+
+void drawObjects()
 {
-	//Display lists for objects
-	static GLuint wallList=0, objectList=0;
-
-	// Draw Objects
-	if(!objectList)
-	{
-		objectList=glGenLists(1);
-		glNewList(objectList, GL_COMPILE);
-		{
-			glPushMatrix();
-				glColor3f(1.0f, 1.0f, 1.0f);
-				glTranslatef(-2.5,-2.5,-2.5);	
-				glutSolidSphere(1.5f,25,25);
-			glPopMatrix();
-			glPushMatrix();
-				glColor3f(1.0f, 1.0f, 1.0f);
-				glTranslatef(2.0,-3,0);	
-				glutSolidSphere(1.0f,25,25);
-			glPopMatrix();
-		}
-		glEndList();
-	}
-
-	//Build Walls if necessary
-	if(!wallList)
-	{
-		wallList=glGenLists(1);
-		glNewList(wallList, GL_COMPILE);
-		{
-			glPushMatrix();
-				
-				
-				//Left Wall
-				glPushMatrix();
-					glColor3f(0.65f, 0.5f, 0.29f);
-					glTranslatef(-4.0,0,0);
-					glScalef(0.0125f,1.0f,1.0f);
-					glRotatef(90,0,0,1);		
-					glutSolidCube(8.0f);
-				glPopMatrix();
-				//Right Wall
-				glPushMatrix();
-					glColor3f(0.29f, 0.65f, 0.5f);
-					glTranslatef(4.0,0,0);
-					glScalef(0.0125f,1.0f,1.0f);
-					glRotatef(90,0,0,1);		
-					glutSolidCube(8.0f);
-				glPopMatrix();
-				//Top Wall
-				glPushMatrix();
-					glColor3f(1.0f, 1.0f, 1.0f);
-					glTranslatef(0,4.0,0);
-					glScalef(1.0f,0.0125f,1.0f);
-					glutSolidCube(8.0f);
-				glPopMatrix();
-				//Bottom Wall
-				glPushMatrix();
-					glColor3f(0.5f, 0.29f, 0.65f);
-					glTranslatef(0,-4.0,0);
-					glScalef(1.0f,0.0125f,1.0f);
-					glutSolidCube(8.0f);
-				glPopMatrix();
-				//Far Wall
-				glPushMatrix();
-					glColor3f(1.0f, 1.0f, 1.0f);
-					glTranslatef(0,0,-4.0);
-					glScalef(1.0f,1.0f,0.0125f);
-					glutSolidCube(8.0f);
-				glPopMatrix();
-				//Near Wall
-				glPushMatrix();
-					glColor3f(1.0f, 1.0f, 1.0f);
-					glTranslatef(0,0,4.0);
-					glScalef(1.0f,1.0f,0.0125f);
-					glutSolidCube(8.0f);
-				glPopMatrix();
-
-			glPopMatrix();
-		}
-		glEndList();
-	}
-
-	//Draw the Scene
-	glCallList(wallList);
-	glCallList(objectList);
-
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		glTranslatef(-2.5,-2.5,-2.5);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(-2.5,-2.5,-2.5);
+			glutSolidSphere(1.5f,25,25);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
+		glTranslatef(2.0,-3,0);	
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(2.0,-3,0);	
+			glutSolidSphere(1.0f,25,25);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
 }
 
+void drawRoom()
+{
+	// Ground Wall
+	glColor3f(0.5f, 0.29f, 0.65f);
+	glBegin(GL_QUADS);
+	glVertex3f(-4,-4,-4);
+	glVertex3f(-4,-4, 4);
+	glVertex3f( 4,-4, 4);
+	glVertex3f( 4,-4,-4);
+	glEnd();
+
+	// Top Wall
+	glColor3f(0.5f, 0.65f, 0.29f);
+	glBegin(GL_QUADS);
+	glVertex3f(-4,4,-4);
+	glVertex3f( 4,4,-4);
+	glVertex3f( 4,4, 4);
+	glVertex3f(-4,4, 4);
+	glEnd();
+
+	// Far Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glVertex3f(-4,-4,-4);
+	glVertex3f(-4, 4,-4);
+	glVertex3f( 4, 4,-4);
+	glVertex3f( 4,-4,-4);
+	glEnd();
+
+	// Near Wall
+	glColor3f(1.0f, 0.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glVertex3f(-4,-4,4);
+	glVertex3f(-4, 4,4);
+	glVertex3f( 4, 4,4);
+	glVertex3f( 4,-4,4);
+	glEnd();
+
+	// Left Wall
+	glColor3f(0.65f, 0.5f, 0.29f);
+	glBegin(GL_QUADS);
+	glVertex3f(-4,-4,-4);
+	glVertex3f(-4,4, -4);
+	glVertex3f(-4, 4, 4);
+	glVertex3f(-4, -4,4);
+	glEnd();
+
+	// Right Wall
+	glColor3f(0.29f, 0.65f, 0.5f);
+	glBegin(GL_QUADS);
+	glVertex3f(4,-4,-4);
+	glVertex3f(4,-4, 4);
+	glVertex3f(4, 4, 4);
+	glVertex3f(4, 4,-4);
+	glEnd();
+}
 
 /*  Here is where the light position is reset after the modeling
  *  transformation (glRotated) is called.  This places the
@@ -235,7 +230,8 @@ void display(void){
    glEnable (GL_LIGHTING);
    glPopMatrix ();
 
-   DrawScene();
+   drawObjects();
+   drawRoom();
 
    glPopMatrix ();
    glFlush ();
@@ -349,16 +345,7 @@ int main(int argc, char** argv){
 	 fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
 	 exit(1);
 	}
-	if( GLEW_VERSION_2_0 ){
-	 fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-	}else{
-	 fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
-	 exit(1);
-	}
 #endif
-
-
-
 
 	init( );
 
