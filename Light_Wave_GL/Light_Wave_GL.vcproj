@@ -57,7 +57,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="glew32.lib"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
 			/>
@@ -208,18 +207,14 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="GL"
+			Name="GLee"
 			>
 			<File
-				RelativePath=".\GL\glew.h"
+				RelativePath=".\GLee\GLee.c"
 				>
 			</File>
 			<File
-				RelativePath=".\GL\glxew.h"
-				>
-			</File>
-			<File
-				RelativePath=".\GL\wglew.h"
+				RelativePath=".\GLee\GLee.h"
 				>
 			</File>
 		</Filter>

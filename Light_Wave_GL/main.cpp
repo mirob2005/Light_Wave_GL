@@ -1,6 +1,8 @@
  
 #define _CRT_SECURE_NO_WARNINGS
 
+#include "GLee/GLee.h"
+
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
@@ -11,15 +13,17 @@
 #include "GLSLShader.h"
 
 #ifdef __APPLE__
-/* Apple's weird location of their OpenGL & GLUT implementation */
 #include <GLUT/glut.h>
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glext.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #else
-#include <GL/glew.h>
-#include <GL/glut.h>
+#ifdef _WIN32
+#include "windows.h"
+#endif
+
+#include "GL/glut.h"
 #endif
 
 
@@ -329,30 +333,39 @@ int main(int argc, char** argv){
    glutInitWindowSize(800, 800); 
    glutInitWindowPosition(800, 100);
    glutCreateWindow("GLSL Shader");
-#ifdef __APPLE__
-   if( supportsOpenGLVersion( 2, 0 ) ){
-     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-   }else{
-     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
+//#ifdef __APPLE__
+//   if( supportsOpenGLVersion( 2, 0 ) ){
+//     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
+//   }else{
+//     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
+//     exit(1);
+//   }
+//   if( gProgram->isHardwareAccelerated( ) ){
+//     fprintf( stderr, "Oh and it's hardware accelerated!\n" );
+//   }
+//#else
+//   GLenum err = glewInit();
+//   if( GLEW_OK != err ){
+//     /* Problem: glewInit failed, something is seriously wrong. */
+//     fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+//     exit(1);
+//   }
+//   if( GLEW_VERSION_2_0 ){
+//     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
+//   }else{
+//     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
+//     exit(1);
+//   }
+//#endif
+   bool err = GLeeInit();
+   if( err == false){
+     /* Problem: GLeeInit failed...*/
+     fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
      exit(1);
    }
-   if( gProgram->isHardwareAccelerated( ) ){
-     fprintf( stderr, "Oh and it's hardware accelerated!\n" );
-   }
-#else
-   GLenum err = glewInit();
-   if( GLEW_OK != err ){
-     /* Problem: glewInit failed, something is seriously wrong. */
-     fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-     exit(1);
-   }
-   if( GLEW_VERSION_2_0 ){
-     fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-   }else{
-     fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
-     exit(1);
-   }
-#endif
+
+
+
    init( );
 
    shaderInit( "diffuse.vs", "diffuse.fs" );
