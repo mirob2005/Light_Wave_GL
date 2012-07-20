@@ -19,8 +19,8 @@ void main( ){
 	float DiffuseTermLight = abs(dot(lightDir, normalized_light_to_vertex_vector));
 
 	// Calculating The Final Color
-	color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+	//color += gl_Color*DiffuseTermLight*DiffuseTermObj;
 	//color += gl_Color*DiffuseTermLight;
-	//gl_FragColor = gl_Color * DiffuseTermLight;// * DiffuseTermLight;
-	gl_FragColor = color;
+	gl_FragColor = gl_Color * DiffuseTermLight;// * DiffuseTermLight;
+	//gl_FragColor = color;
 }
