@@ -8,8 +8,6 @@
 #include <iostream>
 #include <time.h>
 
-#include "getopt.h"
-
 #include "GLSLShader.h"
 
 #ifdef __APPLE__
@@ -319,67 +317,17 @@ void special( int key, int px, int py ){
   glutPostRedisplay( );
 }
 
-void usage( string msg = "" ){
-  cerr << msg.c_str( );
-  cerr << "usage: shader [-hv] -x vertexshadersrc.vs -f fragmentshadersrc.fs" << endl;
-}
-
 int main(int argc, char** argv){
-  int ch;
-  string vertexShaderSrc, fragmentShaderSrc;
 
- 
-  
-  static struct option longopts[] = {
-    { "fragmentshader", required_argument, NULL, 'f' },
-    { "vertexshader", required_argument, NULL, 'x' },
-    { "combo", required_argument, NULL, 'c' },
-    { "verbose", no_argument, NULL, 'v' },
-    { "help", no_argument, NULL, 'h' },
-    { NULL, 0, NULL, 0 }
-  };
   
   gIsVerbose = false;
   
-  if( argc < 3 ){
-    usage( string( "You must specify the correct number of parameters.\n" ) );
-    exit(1);
-  }
-  
    glutInit(&argc, argv);
-   while( (ch = getopt_long(argc, argv, "c:x:f:vh", longopts, NULL)) != -1 ){
-     switch( ch ){
-       case 'c':
-         /* basename for vertex and fragment shader file */
-         vertexShaderSrc = string(optarg) + string(".vs");
-         fragmentShaderSrc = string(optarg) + string(".fs");
-         break;
-       case 'x':
-         /* input vertex shader file */
-        vertexShaderSrc = string( optarg );
-       break;
-       case 'f':
-         /* input fragment shader file */
-        fragmentShaderSrc = string( optarg );
-       break;
-       case 'v':
-         /* turn on verbose logging */
-         gIsVerbose = true;
-       break;
-       case 'h':
-         usage( );
-         return(0);
-       break;
-       default:
-         /* do nothing */
-         fprintf( stderr, "Ignoring unknown option: %c\n", ch );
-       break;
-     } 
-   }
+
    
    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
    glutInitWindowSize(800, 800); 
-   glutInitWindowPosition(100, 100);
+   glutInitWindowPosition(800, 100);
    glutCreateWindow("GLSL Shader");
 #ifdef __APPLE__
    if( supportsOpenGLVersion( 2, 0 ) ){
@@ -407,7 +355,7 @@ int main(int argc, char** argv){
 #endif
    init( );
 
-   shaderInit( vertexShaderSrc.c_str( ), fragmentShaderSrc.c_str( ) );
+   shaderInit( "diffuse.vs", "diffuse.fs" );
 
    glutDisplayFunc(display); 
    glutReshapeFunc(reshape);
