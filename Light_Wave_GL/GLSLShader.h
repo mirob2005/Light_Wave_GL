@@ -12,19 +12,23 @@
  *
  */
 
+#include "GLee/GLee.h"
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <cassert>
 #include "misc.h"
 
+
 #ifdef __APPLE__
-/* Apple's weird location of their OpenGL & GLUT implementation */
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/glu.h>
 #else
-#include <GL/gl.h>
-#include <GL/glu.h>
+#ifdef _WIN32
+#include "windows.h"
+#endif
+#include "GL/glut.h"
 #endif
 
 

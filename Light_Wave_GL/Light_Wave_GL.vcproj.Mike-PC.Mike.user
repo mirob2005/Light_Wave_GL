@@ -11,7 +11,7 @@
 			<DebugSettings
 				Command="$(TargetPath)"
 				WorkingDirectory=""
-				CommandArguments="-x diffuse.vs -f diffuse.fs"
+				CommandArguments=""
 				Attach="false"
 				DebuggerType="3"
 				Remote="1"
