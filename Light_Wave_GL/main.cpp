@@ -29,13 +29,33 @@
 
 bool gIsVerbose;
 GLSLProgram *gProgram;
-//double gSpin = 0;
 bool gShaderEnabled;
 
+//Globals for keeping FPS
 double gTime = 0;
 int frames = 0;
 double fps = 0;
-double cameraPosZ = 4.0;
+
+//Camera Position
+GLfloat camPosition[] = {0.0, 0.0, 4.0};
+
+//Camera LookAT
+GLfloat camLookAt[] = {0.0, 0.0, 0.0};
+
+//Camera UpVector
+GLfloat camUpVector[] = {0.0, 1.0, 0.0};
+
+//Light Position
+//Needs 4 components for glLightfv params use
+GLfloat lightPosition[] = { 0.0, 4.0, 0.0, 0.0 };
+
+//Light LookAT
+GLfloat lightLookAt[] = {0.0, 0.0, 0.0};
+
+//Light UpVector
+GLfloat lightUpVector[] = {0.0, 1.0, 0.0};
+
+
 double worldRotate = 0.0;
 
 using namespace std;
@@ -166,15 +186,8 @@ void drawRoom()
 	glEnd();
 }
 
-/*  Here is where the light position is reset after the modeling
- *  transformation (glRotated) is called.  This places the
- *  light at a new position in world coordinates.  The cube
- *  represents the position of the light.
- */
-void display(void){
-   GLfloat position[] = { 0.0, 4.0, 0.0, 0.0 };
-
-   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+void displayFPS()
+{
    /* FPS TIMER ON BOTTOM OF SCREEN */
    glPushMatrix ();
    gluLookAt (0.0, 0.0, 4.0, 
@@ -201,42 +214,48 @@ void display(void){
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
 
    glPopMatrix();
-   /********************************************************************/
+}
 
+void display(void){
 
-   glPushMatrix();
+	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-   //(cameraPosZ-4.0) ensures that our lookAt spot moves as we move
-   gluLookAt (0.0, 0.0, cameraPosZ, 
-			  0.0, 0.0, (cameraPosZ-4.0), 
-			  0.0, 1.0, 0.0);
+	displayFPS();
+
+	glPushMatrix();
+
+	// Set up Camera
+	gluLookAt (camPosition[0], camPosition[1], camPosition[2], 
+			   camLookAt[0], camLookAt[1], camLookAt[2],
+			   camUpVector[0], camUpVector[1], camUpVector[2]);
 
 	glRotatef(worldRotate,0,1,0);
 
 
-   glPushMatrix ();
-   
-   glLightfv (GL_LIGHT0, GL_POSITION, position);
+	glPushMatrix ();
 
-   //glTranslated (0.0, 0.0, 1.5);
-   glDisable (GL_LIGHTING);
-   glPushMatrix();
-	   glColor3f (1.0, 0.0, 0.0);
-	   //glRotated( gSpin, 0.0, 1.0, 0.0 );
-	   glTranslatef(position[0],position[1],position[2]);
-	   
-	   glutSolidCube (0.1);
-   glPopMatrix();
-   glEnable (GL_LIGHTING);
-   glPopMatrix ();
+	GLfloat lightDirection[] = {lightLookAt[0]-lightPosition[0],lightLookAt[1]-lightPosition[1],lightLookAt[2]-lightPosition[2]};
+	glLightfv (GL_LIGHT0, GL_POSITION, lightPosition);
+	glLightfv (GL_LIGHT0, GL_SPOT_DIRECTION, lightDirection);
 
-   drawObjects();
-   drawRoom();
+	//glTranslated (0.0, 0.0, 1.5);
+	glDisable (GL_LIGHTING);
+	glPushMatrix();
+		glColor3f (1.0, 0.0, 0.0);
+		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
 
-   glPopMatrix ();
-   glFlush ();
-   glutSwapBuffers();
-   glutPostRedisplay();
+		glutSolidCube (0.1);
+	glPopMatrix();
+	glEnable (GL_LIGHTING);
+	glPopMatrix ();
+
+	drawObjects();
+	drawRoom();
+
+	glPopMatrix ();
+	glFlush ();
+	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 void reshape (int w, int h)
@@ -256,9 +275,6 @@ void mouse(int button, int state, int x, int y){
    //switch (button) {
    //   case GLUT_LEFT_BUTTON:
    //      if (state == GLUT_DOWN) {
-   //        gSpin += 30.0;
-   //        gSpin = fmod(gSpin, 360.0);
-   //        glutPostRedisplay();
    //      }
    //      break;
    //   default:
@@ -287,7 +303,8 @@ void keyboard(unsigned char key, int x, int y){
        break;
 	   case 'R':
        case 'r':
-			cameraPosZ = 4.0;	  
+			camPosition[2] = 4.0;
+			camLookAt[2] = 0.0;
 			worldRotate = 0.0;
 	   break;
    }
@@ -300,10 +317,12 @@ void special( int key, int px, int py ){
   //static int sLastKey = key;
 	switch (key) {
 	   case GLUT_KEY_UP:
-			cameraPosZ += -0.1;	  
+			camPosition[2] += -0.1;	  
+			camLookAt[2] += -0.1;	
 	   break;	
 	   case GLUT_KEY_DOWN:
-			cameraPosZ += 0.1;	  
+			camPosition[2] += 0.1;
+			camLookAt[2] += 0.1;
 	   break;	
 	   case GLUT_KEY_LEFT:
 			worldRotate += -2.0;	  
