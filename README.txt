@@ -3,6 +3,7 @@ mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
 Thesis Test Implementation using OpenGL and GLSL
 Start Date: 5/31/12
+Updated: 7/20/12
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -15,7 +16,7 @@ All files must be in the same directory to be found.
 * This test implementation will attempt to model the global illumination in the scene more like a wave rather than a point light source
 
 
-* RayTracer_GLSL_Compare.jpg shows current OpenGL output in comparison to the rayTracer output
+// (OLD)RayTracer_GLSL_Compare.jpg shows current OpenGL output in comparison to the rayTracer output
 
 * FPS is shown at the bottom of the screen
 
@@ -26,7 +27,10 @@ TODO:
 
 COMMAND LINE (currently):
 
-LIGHT_WAVE_GL.exe -x diffuse.vs -f diffuse.fs
+LIGHT_WAVE_GL.exe
+
+-> No Additional commandline arguments needed
+-> No Additional dependencies required, now using GLee to avoid the need to add GLEW32.lib
 
 KEYBOARD CONTROLS:
 ESC, 'q' - QUIT
