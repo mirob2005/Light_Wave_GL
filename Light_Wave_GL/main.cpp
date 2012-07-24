@@ -283,30 +283,82 @@ void mouse(int button, int state, int x, int y){
 }
 
 void keyboard(unsigned char key, int x, int y){
-   switch (key) {
-       case 27:
-	   case 'Q':
-	   case 'q':
-         exit(0);
-         break;
-       break;
-       case 'G':
-       case 'g':
-		   gShaderEnabled = !gShaderEnabled;
-			if( gShaderEnabled ){
-			  fprintf( stderr, "Shader enabled\n" );
-			  gProgram->activate( );
-			}else{
-			  fprintf( stderr, "Shader disabled\n" );
-			  gProgram->deactivate( );
-			}
-       break;
-	   case 'R':
-       case 'r':
-			camPosition[2] = 4.0;
-			camLookAt[2] = 0.0;
-			worldRotate = 0.0;
-	   break;
+	if( glutGetModifiers( ) == GLUT_ACTIVE_SHIFT )
+	{
+		switch (key) 
+		{
+		   case 'W':
+		   case 'w':
+			   //Move Camera/focus pt up
+				if(camPosition[1] < 3.5)
+				{
+					camPosition[1]+=0.1;
+					camLookAt[1]+=0.1;
+				}
+		   break;
+		   case 'S':
+		   case 's':
+			   //Move Camera/focus pt down
+				if(camPosition[1] >-3.5)
+				{
+					camPosition[1]+=-0.1;
+					camLookAt[1]+=-0.1;
+				}
+		   break;
+		}
+	}
+	else
+	{
+	   switch (key) {
+		   case 27:
+		   case 'Q':
+		   case 'q':
+			 exit(0);
+			 break;
+		   break;
+		   case 'W':
+		   case 'w':
+			   //Move Camera/focus pt forward
+				//Account for Near viewing distance
+				if(camPosition[2] >-2.9)
+				{
+					camPosition[2]+=-0.1;
+					camLookAt[2]+=-0.1;
+				}
+		   break;
+		   case 'S':
+		   case 's':
+			   //Move Camera/focus pt backward
+				if(camPosition[2] < 3.9)
+				{
+					camPosition[2]+=0.1;
+					camLookAt[2]+=0.1;
+				}
+		   break;
+		   case 'A':
+		   case 'a':
+				worldRotate+=-1.0;
+		   break;
+		   case 'D':
+		   case 'd':
+				worldRotate+=1.0;
+		   break;
+		   case 'R':
+		   case 'r':
+			   //Reset Rotations
+			   worldRotate=0.0;
+		   break;
+		   case 'T':
+		   case 't':
+			   //Restore Camera Defaults
+			   camLookAt[0] = 0;
+			   camLookAt[1] = 0;
+			   camLookAt[2] = 0;
+			   camPosition[0] = 0;
+			   camPosition[1] = 0;
+			   camPosition[2] = 4;
+		   break;
+	   }
    }
    glutPostRedisplay();
 }
@@ -315,23 +367,58 @@ void special( int key, int px, int py ){
   // If you need to save what key was last pressed
   // uncomment the line below
   //static int sLastKey = key;
-	switch (key) {
-	   case GLUT_KEY_UP:
-			camPosition[2] += -0.1;	  
-			camLookAt[2] += -0.1;	
-	   break;	
-	   case GLUT_KEY_DOWN:
-			camPosition[2] += 0.1;
-			camLookAt[2] += 0.1;
-	   break;	
-	   case GLUT_KEY_LEFT:
-			worldRotate += -2.0;	  
-	   break;
-	   case GLUT_KEY_RIGHT:
-			worldRotate += 2.0;	  
-	   break;
+	if( glutGetModifiers( ) == GLUT_ACTIVE_SHIFT )
+	{
+		switch (key) {
+		   case GLUT_KEY_UP:
+				if(lightPosition[1] <3.9)
+				{
+					lightPosition[1] += 0.1; 
+					lightLookAt[1] += 0.1;
+				}
+		   break;	
+		   case GLUT_KEY_DOWN:
+				if(lightPosition[1] >-3.9)
+				{
+					lightPosition[1] -= 0.1;	
+					lightLookAt[1] -= 0.1;
+				}
+		   break;
+		}
 	}
-
+	else
+	{
+		switch (key) {
+		   case GLUT_KEY_UP:
+				if(lightPosition[2] >-3.0)
+				{
+					lightPosition[2] += -0.1;	  
+					lightLookAt[2] += -0.1;	  
+				}
+		   break;	
+		   case GLUT_KEY_DOWN:
+				if(lightPosition[2] <3.0)
+				{
+					lightPosition[2] += 0.1;	
+					lightLookAt[2] += 0.1;	
+				}
+		   break;	
+		   case GLUT_KEY_LEFT:
+				if(lightPosition[0] >-3.0)
+				{
+					lightPosition[0] += -0.1;		  
+					lightLookAt[0] += -0.1;		  
+				}
+		   break;
+		   case GLUT_KEY_RIGHT:
+				if(lightPosition[0] <3.0)
+				{
+					lightPosition[0] += 0.1;	  
+					lightLookAt[0] += 0.1;	  
+				}
+		   break;
+		}
+	}
 
   glutPostRedisplay( );
 }
