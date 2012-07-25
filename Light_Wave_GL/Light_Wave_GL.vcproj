@@ -190,11 +190,7 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\diffuse.fs"
-				>
-			</File>
-			<File
-				RelativePath=".\diffuse.vs"
+				RelativePath=".\fragShader.fs"
 				>
 			</File>
 			<File
@@ -203,6 +199,10 @@
 			</File>
 			<File
 				RelativePath=".\simple.vs"
+				>
+			</File>
+			<File
+				RelativePath=".\vertexShader.vs"
 				>
 			</File>
 		</Filter>

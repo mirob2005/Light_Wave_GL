@@ -1,7 +1,10 @@
+uniform sampler2D ShadowMap;
 varying vec3 normal;
 varying vec3 vertex_to_light_vector;
 varying vec3 light_to_vertex_vector;
 varying vec3 lightDir;
+
+varying vec4 ShadowCoord;
 
 void main( ){
 	
@@ -21,6 +24,19 @@ void main( ){
 	// Calculating The Final Color
 	//color += gl_Color*DiffuseTermLight*DiffuseTermObj;
 	//color += gl_Color*DiffuseTermLight;
-	gl_FragColor = gl_Color * DiffuseTermLight;// * DiffuseTermLight;
+	color = gl_Color * DiffuseTermLight * DiffuseTermLight;
 	//gl_FragColor = color;
+
+	vec4 shadowCoordinateWdivide = ShadowCoord / ShadowCoord.w ;
+	
+	// Used to lower moiré pattern and self-shadowing
+	shadowCoordinateWdivide.z += 0.0001;
+	
+	float distanceFromLight = texture2D(ShadowMap,shadowCoordinateWdivide.st).z;
+	
+	float shadow = 1.0;
+ 	if (ShadowCoord.w >= 0.0)
+ 		shadow = distanceFromLight < shadowCoordinateWdivide.z ? 0.5 : 1.0 ;
+  	
+  	gl_FragColor =	 shadow * color;  
 }

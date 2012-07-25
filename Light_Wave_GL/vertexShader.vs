@@ -3,6 +3,8 @@ varying vec3 vertex_to_light_vector;
 varying vec3 light_to_vertex_vector;
 varying vec3 lightDir;
 
+varying vec4 ShadowCoord;
+
 void main( ){
 	gl_FrontColor = gl_Color;
 	gl_BackColor = gl_Color;
@@ -13,7 +15,7 @@ void main( ){
 	normal = gl_NormalMatrix * gl_Normal; 
 	
 	//Light Direction
-	lightDir = normalize(vec3(gl_LightSource[0].position));
+	lightDir = normalize(vec3(gl_LightSource[0].spotDirection));
 
 	// Transforming The Vertex Position To ModelView-Space
 	vec4 vertex_in_modelview_space = gl_ModelViewMatrix * gl_Vertex;
@@ -22,4 +24,6 @@ void main( ){
 	vertex_to_light_vector = vec3(gl_LightSource[0].position - vertex_in_modelview_space);
 	
 	light_to_vertex_vector = vec3(vertex_in_modelview_space - gl_LightSource[0].position);
+	
+	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
 }
