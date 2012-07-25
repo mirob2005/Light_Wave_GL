@@ -26,8 +26,15 @@
 #include "GL/glut.h"
 #endif
 
+using namespace std;
 
-bool gIsVerbose;
+//Define Resolutions
+int screenWidth = 1280;
+int screenHeight = 960;
+int shadowMapWidth = screenWidth*2;
+int shadowMapHeight = screenHeight*2;
+
+
 GLSLProgram *gProgram;
 bool gShaderEnabled;
 
@@ -37,28 +44,32 @@ int frames = 0;
 double fps = 0;
 
 //Camera Position
-GLfloat camPosition[] = {0.0, 0.0, 4.0};
+GLfloat camPosition[3] = {0.0, 0.0, 4.0};
 
 //Camera LookAT
-GLfloat camLookAt[] = {0.0, 0.0, 0.0};
+GLfloat camLookAt[3] = {0.0, 0.0, 0.0};
 
 //Camera UpVector
-GLfloat camUpVector[] = {0.0, 1.0, 0.0};
+GLfloat camUpVector[3] = {0.0, 1.0, 0.0};
 
 //Light Position
 //Needs 4 components for glLightfv params use
-GLfloat lightPosition[] = { 0.0, 4.0, 0.0, 0.0 };
+GLfloat lightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
 
 //Light LookAT
-GLfloat lightLookAt[] = {0.0, 0.0, 0.0};
+GLfloat lightLookAt[3] = {0.0, 0.0, 0.0};
 
 //Light UpVector
-GLfloat lightUpVector[] = {0.0, 1.0, 0.0};
+GLfloat lightUpVector[3] = {0.0, 0.0, 1.0};
 
-
+//Camera Rotate for now, until a better method is used
 double worldRotate = 0.0;
 
-using namespace std;
+//Variables for using a Frame Buffer Object (FBO) (for shadow mapping)
+GLuint FBOid;
+GLuint shadowMapID;
+GLuint shaderID;
+
 
 void shaderInit( const char *vsFile, const char *fsFile ){
 
@@ -84,21 +95,54 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
   gProgram->isHardwareAccelerated( );
 
+  shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
+
 }
 
 /*  Initialize material property, light source, lighting model,
  *  and depth buffer.
  */
 void init( void ){
-   glClearColor(0.0, 0.0, 0.0, 0.0);
-   glShadeModel(GL_SMOOTH);
-   glEnable(GL_NORMALIZE);
-   glEnable(GL_LIGHTING);
-   glEnable(GL_LIGHT0);
-   glEnable(GL_DEPTH_TEST);
 
+	//Try to create shadow map
+	glGenTextures(1, &shadowMapID);
+	glBindTexture(GL_TEXTURE_2D, shadowMapID);
 
-   gShaderEnabled = true;
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	//Create the Frame Buffer Object
+	if (GL_EXT_framebuffer_object)
+	{
+		//GL_EXT_framebuffer_object is supported
+		glGenFramebuffersEXT(1, &FBOid);
+		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, FBOid);
+	}
+	else cout << "GL_EXT_framebuffer_object not supported!" << endl;
+
+	//No color buffers are written to with our current FBO (shadow map)
+	glDrawBuffer(GL_NONE);
+
+	//Attach the shadow map to the current FBO
+	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,GL_TEXTURE_2D, shadowMapID, 0);
+
+	//Check for errors in the FBO
+	GLenum FBOstatus;
+	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	if(FBOstatus != GL_FRAMEBUFFER_COMPLETE_EXT)
+		cout << "Some requirements or rules for GL_FRAMEBUFFER failed, CANNOT use FBO!" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
+		cout << "This particular implementation is not supported by the OpenGL driver!" << endl;
+	
+	//Clear current binding of the FBO
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+
+	gShaderEnabled = true;
 }
 
 
@@ -153,9 +197,9 @@ void drawRoom()
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
 	glVertex3f(-4,-4,-4);
-	glVertex3f(-4, 4,-4);
+	glVertex3f(4, -4,-4);
 	glVertex3f( 4, 4,-4);
-	glVertex3f( 4,-4,-4);
+	glVertex3f(-4,4,-4);
 	glEnd();
 
 	// Near Wall
@@ -198,7 +242,7 @@ void displayFPS()
    
    frames++;
 
-   	if(newTime-gTime>1.0f)
+   	if(newTime-gTime>500)
 	{
 		fps=frames/((newTime-gTime)/CLOCKS_PER_SEC);	//update the number of frames per second
 		gTime = newTime;				//set time for the start of the next count
@@ -208,8 +252,9 @@ void displayFPS()
 	sprintf(fpsString, "%.1f", fps);
 
 	glColor3f(1.0,1.0,1.0);
+
 	//Print text
-	glRasterPos3f(0.0f, -1.0f,3.0f);
+	glWindowPos2i((GLuint)screenWidth/2,10);
 	for(unsigned int i=0; i<strlen(fpsString); ++i)
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
 
@@ -218,41 +263,138 @@ void displayFPS()
 
 void display(void){
 
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//Begin Shadow Map Creation
+	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.0f,0.0f,0.0f,1.0f);
 
-	displayFPS();
+	glEnable(GL_CULL_FACE);
+	
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
-	glPushMatrix();
+	//Render scene with camera at lightPosition and store depth into the FBO
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,FBOid);	
 
-	// Set up Camera
-	gluLookAt (camPosition[0], camPosition[1], camPosition[2], 
-			   camLookAt[0], camLookAt[1], camLookAt[2],
-			   camUpVector[0], camUpVector[1], camUpVector[2]);
+	//Use fixed function pipline to render shadow map
+	glUseProgramObjectARB(0);
 
-	glRotatef(worldRotate,0,1,0);
+	glViewport(0,0,shadowMapWidth,shadowMapHeight);
+	glClear( GL_DEPTH_BUFFER_BIT);
 
+	//Disable color writing to the frame buffer 
+	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 
-	glPushMatrix ();
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	//Using Light's position, lookAt, up vector
+	gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
+					lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+
+	//Avoid self-shadow
+	glCullFace(GL_FRONT);
+
+	//Draw the scene
+	drawObjects();
+	drawRoom();
+
+	static GLdouble modelViewMatrix[16];
+	static GLdouble projectionMatrix[16];
+
+	//Mmatrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
+	const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
+										0.0, 0.5, 0.0, 0.0,
+										0.0, 0.0, 0.5, 0.0,
+										0.5, 0.5, 0.5, 1.0};
+
+	//Store modelview and projection matrices
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
+	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
+
+	//Use texture7 matrix
+	glMatrixMode(GL_TEXTURE);
+	glActiveTextureARB(GL_TEXTURE7);
+	
+	//Multiply all 3 matrices into texture7
+	glLoadIdentity();	
+	glLoadMatrixd(biasMatrix);
+	glMultMatrixd (projectionMatrix);
+	glMultMatrixd (modelViewMatrix);
+	
+	glMatrixMode(GL_MODELVIEW);
+
+	//Begin rendering from the camera's perspective using our shadow map
+	//Clear current binding of the FBO
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+
+	glViewport(0,0,screenWidth,screenHeight);
+
+	//Enable color writing to the frame buffer
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+
+	//Clear frame buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	//Using our shaders and shadow map
+	glUseProgramObjectARB(gProgram->_object);
+	glUniform1iARB(shaderID,7);
+	glActiveTextureARB(GL_TEXTURE7);
+	glBindTexture(GL_TEXTURE_2D,shadowMapID);
+
+	glShadeModel(GL_SMOOTH);
+	glEnable(GL_NORMALIZE);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 
 	GLfloat lightDirection[] = {lightLookAt[0]-lightPosition[0],lightLookAt[1]-lightPosition[1],lightLookAt[2]-lightPosition[2]};
 	glLightfv (GL_LIGHT0, GL_POSITION, lightPosition);
 	glLightfv (GL_LIGHT0, GL_SPOT_DIRECTION, lightDirection);
 
-	//glTranslated (0.0, 0.0, 1.5);
-	glDisable (GL_LIGHTING);
-	glPushMatrix();
-		glColor3f (1.0, 0.0, 0.0);
-		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 
-		glutSolidCube (0.1);
-	glPopMatrix();
-	glEnable (GL_LIGHTING);
-	glPopMatrix ();
+	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	//Using Camera's position, lookAt, up vector
+	gluLookAt (camPosition[0], camPosition[1], camPosition[2], 
+			   camLookAt[0], camLookAt[1], camLookAt[2],
+			   camUpVector[0], camUpVector[1], camUpVector[2]);
 
+	glCullFace(GL_BACK);
+	glRotatef(worldRotate,0,1,0);
 	drawObjects();
 	drawRoom();
 
-	glPopMatrix ();
+	glDisable (GL_LIGHTING);
+	float markerx,markery,markerz;
+	//LIGHT MARKER
+	// Math is done to ensure light marker is is 'behind' the light
+	glPushMatrix();
+		glColor4f(1.0,1.0f,0,0.0f);
+		if(lightPosition[0] >0)
+			markerx = lightPosition[0]+0.1;
+		else
+			markerx = lightPosition[0]-0.1;
+		if(lightPosition[1] >0)
+			markery = lightPosition[1];//+0.1;
+		else
+			markery = lightPosition[1];//-0.1;
+		if(lightPosition[2] >0)
+			markerz = lightPosition[2]+0.1;
+		else
+			markerz = lightPosition[2]-0.1;
+		glTranslatef(markerx,markery,markerz);
+		glRotatef(-90,1,0,0);
+		glutSolidCone(0.1f,0.2f,25,25);
+	glPopMatrix();
+
+	glEnable(GL_LIGHTING);
+
+	displayFPS();
+
 	glFlush ();
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -262,8 +404,12 @@ void reshape (int w, int h)
 {
    glViewport (0, 0, (GLsizei) w, (GLsizei) h);
    glMatrixMode (GL_PROJECTION);
+   screenWidth = w;
+   screenHeight = h;
+   shadowMapWidth = w*2;
+   shadowMapHeight = h*2;
    glLoadIdentity();
-   gluPerspective(100.0, (GLfloat) w/(GLfloat) h, 1.0, 20.0);
+   gluPerspective(125, (GLfloat) w/(GLfloat) h, 0.1, 20.0);
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
 }
@@ -315,6 +461,17 @@ void keyboard(unsigned char key, int x, int y){
 		   case 'q':
 			 exit(0);
 			 break;
+		   break;
+		   case 'G':
+		   case 'g':
+			   gShaderEnabled = !gShaderEnabled;
+				if( gShaderEnabled ){
+				  fprintf( stderr, "Shader enabled\n" );
+				  gProgram->activate( );
+				}else{
+				  fprintf( stderr, "Shader disabled\n" );
+				  gProgram->deactivate( );
+				}
 		   break;
 		   case 'W':
 		   case 'w':
@@ -424,15 +581,12 @@ void special( int key, int px, int py ){
 }
 
 int main(int argc, char** argv){
-
-  
-	gIsVerbose = false;
   
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(800, 800); 
-	glutInitWindowPosition(800, 100);
+	glutInitWindowSize(screenWidth, screenHeight); 
+	glutInitWindowPosition(400, 10);
 	glutCreateWindow("Light_Wave_GL");
 #ifdef __APPLE__
 	if( supportsOpenGLVersion( 2, 0 ) ){
@@ -455,13 +609,14 @@ int main(int argc, char** argv){
 
 	init( );
 
-	shaderInit( "diffuse.vs", "diffuse.fs" );
+	shaderInit( "vertexShader.vs", "fragShader.fs" );
 
 	glutDisplayFunc(display); 
 	glutReshapeFunc(reshape);
 	glutMouseFunc(mouse);
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
+	glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }
