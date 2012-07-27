@@ -34,14 +34,22 @@ int screenHeight = 960;
 int shadowMapWidth = screenWidth*2;
 int shadowMapHeight = screenHeight*2;
 
-
-GLSLProgram *gProgram;
-bool gShaderEnabled;
-
 //Globals for keeping FPS
 double gTime = 0;
 int frames = 0;
 double fps = 0;
+
+GLSLProgram *gProgram;
+bool gShaderEnabled;
+
+//Chose which object to move... camera, objects in scene
+GLuint option = 0;
+
+/***************VARIABLE***************/
+//Sphere 1
+GLfloat sphere1Position[3] = {-2.5,-2.5,-2.5};
+//Sphere 2
+GLfloat sphere2Position[3] = {2.0,-3.0,0.0};
 
 //Camera Position
 GLfloat camPosition[3] = {0.0, 0.0, 4.0};
@@ -52,7 +60,7 @@ GLfloat camLookAt[3] = {0.0, 0.0, 0.0};
 //Camera UpVector
 GLfloat camUpVector[3] = {0.0, 1.0, 0.0};
 
-//Light Position
+//Light Position, option 0
 //Needs 4 components for glLightfv params use
 GLfloat lightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
 
@@ -64,6 +72,18 @@ GLfloat lightUpVector[3] = {0.0, 0.0, 1.0};
 
 //Camera Rotate for now, until a better method is used
 double worldRotate = 0.0;
+/**************************************/
+/***************DEFAULTS***************/
+const GLfloat defsphere1Position[3] = {-2.5,-2.5,-2.5};
+const GLfloat defsphere2Position[3] = {2.0,-3.0,0.0};
+const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
+const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
+const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
+const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
+const GLfloat deflightLookAt[3] = {0.0, 0.0, 0.0};
+const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
+const double  defworldRotate = 0.0;
+/**************************************/
 
 //Variables for using a Frame Buffer Object (FBO) (for shadow mapping)
 GLuint FBOid;
@@ -149,24 +169,27 @@ void init( void ){
 
 void drawObjects()
 {
+	//Sphere 1, option 1
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-		glTranslatef(-2.5,-2.5,-2.5);
+		glTranslatef(sphere1Position[0],sphere1Position[1],sphere1Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(-2.5,-2.5,-2.5);
+			glTranslatef(sphere1Position[0],sphere1Position[1],sphere1Position[2]);
 			glutSolidSphere(1.5f,25,25);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
+
+	//Sphere2, option 2
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
-		glTranslatef(2.0,-3,0);	
+		glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(2.0,-3,0);	
+			glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
 			glutSolidSphere(1.0f,25,25);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
@@ -433,34 +456,110 @@ void keyboard(unsigned char key, int x, int y){
 	{
 		switch (key) 
 		{
-		   case 'W':
-		   case 'w':
-			   //Move Camera/focus pt up
-				if(camPosition[1] < 3.5)
+			case 'W':
+			case 'w':
+				switch(option)
 				{
-					camPosition[1]+=0.1;
-					camLookAt[1]+=0.1;
-				}
+					case 0:
+						//Move Camera/focus pt up
+						if(camPosition[1] < 3.5)
+						{
+							camPosition[1]+=0.1;
+							camLookAt[1]+=0.1;
+						}
+					break;
+					case 1:
+						//Move Sphere 1 up
+						if(sphere1Position[1] < 4.0)
+						{
+							sphere1Position[1]+=0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 up
+						if(sphere2Position[1] < 4.0)
+						{
+							sphere2Position[1]+=0.1;
+						}
+					break;
+			   }
 		   break;
 		   case 'S':
 		   case 's':
-			   //Move Camera/focus pt down
-				if(camPosition[1] >-3.5)
+				switch(option)
 				{
-					camPosition[1]+=-0.1;
-					camLookAt[1]+=-0.1;
-				}
+					case 0:
+					   //Move Camera/focus pt down
+						if(camPosition[1] >-3.5)
+						{
+							camPosition[1]+=-0.1;
+							camLookAt[1]+=-0.1;
+						}
+					break;
+					case 1:
+						//Move Sphere 1 down
+						if(sphere1Position[1] > -4.0)
+						{
+							sphere1Position[1]+=-0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 up
+						if(sphere2Position[1] > -4.0)
+						{
+							sphere2Position[1]+=-0.1;
+						}
+					break;
+			   }
 		   break;
 		}
 	}
 	else
 	{
 	   switch (key) {
-		   case 27:
-		   case 'Q':
-		   case 'q':
-			 exit(0);
-			 break;
+			case 27:
+			case 'Q':
+			case 'q':
+				exit(0);
+				break;
+			break;
+			case 'H':
+			case 'h':
+				cout << "\nKey Bindings:" << endl;
+				cout << "--------------" << endl;
+				cout << "ESC, Q/q - Exit the program" << endl;
+				cout << "H/h - This help menu" << endl;
+				cout << "0 - Allows you to move the camera using WASD keys" << endl;
+				cout << "1 - Allows you to move the first sphere using WASD keys" << endl;
+				cout << "2 - Allows you to move the second sphere using WASD keys" << endl;
+				cout << "W/w - Move the selected object forward (Default: Camera)" << endl;
+				cout << "A/a - Move the selected object left (Default: Camera)" << endl;
+				cout << "S/s - Move the selected object backward (Default: Camera)" << endl;
+				cout << "D/d - Move the selected object right (Default: Camera)" << endl;
+				cout << "shift+W/w - Move the selected object up (Default: Camera)" << endl;
+				cout << "shift+W/w - Move the selected object down (Default: Camera)" << endl;
+				cout << "UP arrow - Move the light forward" << endl;
+				cout << "DOWN arrow - Move the light backward" << endl;
+				cout << "LEFT arrow - Move the light left" << endl;
+				cout << "RIGHT arrow - Move the light right" << endl;
+				cout << "shift+UP arrow - Move the light up" << endl;
+				cout << "shift+DOWN arrow - Move the light down" << endl;
+				cout << "R/r - Reset camera defaults" << endl;
+				cout << "T/t - Reset sphere position defaults" << endl;
+				cout << "--------------" << endl;
+				cout << endl;
+			break;
+			case '0':
+				option = 0;
+				cout << "Option = " << option << ", WASD keys move the camera!" << endl;
+			break;
+			case '1':
+				option = 1;
+				cout << "Option = " << option << ", WASD keys move sphere 1!" << endl;
+			break;
+			case '2':
+			   option = 2;
+			   cout << "Option = " << option << ", WASD keys move sphere 2!" << endl;
 		   break;
 		   case 'G':
 		   case 'g':
@@ -475,45 +574,130 @@ void keyboard(unsigned char key, int x, int y){
 		   break;
 		   case 'W':
 		   case 'w':
-			   //Move Camera/focus pt forward
-				//Account for Near viewing distance
-				if(camPosition[2] >-2.9)
+				switch(option)
 				{
-					camPosition[2]+=-0.1;
-					camLookAt[2]+=-0.1;
-				}
+					case 0:
+					   //Move Camera/focus pt forward
+						//Account for Near viewing distance
+						if(camPosition[2] >-2.9)
+						{
+							camPosition[2]+=-0.1;
+							camLookAt[2]+=-0.1;
+						}
+					break;
+					case 1:
+						//Move Sphere 1 forward
+						if(sphere1Position[2] >-4.0)
+						{
+							sphere1Position[2]+=-0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 forward
+						if(sphere2Position[2] >-4.0)
+						{
+							sphere2Position[2]+=-0.1;
+						}
+					break;
+			   }
 		   break;
 		   case 'S':
 		   case 's':
-			   //Move Camera/focus pt backward
-				if(camPosition[2] < 3.9)
+				switch(option)
 				{
-					camPosition[2]+=0.1;
-					camLookAt[2]+=0.1;
-				}
+					case 0:
+					   //Move Camera/focus pt backward
+						if(camPosition[2] < 3.9)
+						{
+							camPosition[2]+=0.1;
+							camLookAt[2]+=0.1;
+						}
+					break;
+					case 1:
+						//Move Sphere 1 backward
+						if(sphere1Position[2] < 4.0)
+						{
+							sphere1Position[2]+=0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 backward
+						if(sphere2Position[2] < 4.0)
+						{
+							sphere2Position[2]+=0.1;
+						}
+					break;
+			   }
 		   break;
 		   case 'A':
 		   case 'a':
-				worldRotate+=-1.0;
+				switch(option)
+				{
+					case 0:
+						//Rotate scene to the left
+					   worldRotate+=-1.0;
+					break;
+					case 1:
+						//Move Sphere 1 left
+						if(sphere1Position[0] >-4.0)
+						{
+							sphere1Position[0]+=-0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 left
+						if(sphere2Position[0] >-4.0)
+						{
+							sphere2Position[0]+=-0.1;
+						}
+					break;
+			   }
 		   break;
 		   case 'D':
 		   case 'd':
-				worldRotate+=1.0;
+				switch(option)
+				{
+					case 0:
+						//Rotate scene to the right
+						worldRotate+=1.0;
+					break;
+					case 1:
+						//Move Sphere 1 right
+						if(sphere1Position[0] < 4.0)
+						{
+							sphere1Position[0]+=0.1;
+						}
+					break;
+					case 2:
+						//Move Sphere 2 right
+						if(sphere2Position[0] < 4.0)
+						{
+							sphere2Position[0]+=0.1;
+						}
+					break;
+			   }
 		   break;
 		   case 'R':
 		   case 'r':
 			   //Reset Rotations
-			   worldRotate=0.0;
+			   worldRotate=defworldRotate;
+			   //Restore Camera Defaults
+			   camLookAt[0] = defcamLookAt[0];
+			   camLookAt[1] = defcamLookAt[1];
+			   camLookAt[2] = defcamLookAt[2];
+			   camPosition[0] = defcamPosition[0];
+			   camPosition[1] = defcamPosition[1];
+			   camPosition[2] = defcamPosition[2];
 		   break;
 		   case 'T':
 		   case 't':
-			   //Restore Camera Defaults
-			   camLookAt[0] = 0;
-			   camLookAt[1] = 0;
-			   camLookAt[2] = 0;
-			   camPosition[0] = 0;
-			   camPosition[1] = 0;
-			   camPosition[2] = 4;
+				//Reset Sphere movements
+			   sphere1Position[0] = defsphere1Position[0];
+			   sphere1Position[1] = defsphere1Position[1];
+			   sphere1Position[2] = defsphere1Position[2];
+			   sphere2Position[0] = defsphere2Position[0];
+			   sphere2Position[1] = defsphere2Position[1];
+			   sphere2Position[2] = defsphere2Position[2];
 		   break;
 	   }
    }
