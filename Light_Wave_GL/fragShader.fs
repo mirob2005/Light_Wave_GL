@@ -6,6 +6,8 @@ varying vec3 lightDir;
 
 varying vec4 ShadowCoord;
 
+varying vec4 debugOutput;
+
 void main( ){
 	
 	vec4 color = vec4(0.0,0.0,0.0,1.0);
@@ -38,5 +40,6 @@ void main( ){
  	if (ShadowCoord.w >= 0.0)
  		shadow = distanceFromLight < shadowCoordinateWdivide.z ? 0.5 : 1.0 ;
   	
-  	gl_FragColor =	 shadow * color;  
+  	//gl_FragColor =	 shadow * color;  
+  	gl_FragColor = debugOutput;
 }

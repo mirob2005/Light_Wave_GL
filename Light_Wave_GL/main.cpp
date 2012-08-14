@@ -45,6 +45,11 @@ bool gShaderEnabled;
 //Chose which object to move... camera, objects in scene
 GLuint option = 0;
 
+//Constants used in shaders
+const double lightsAngle = 9;
+const double lightsPerRay = 4;
+const double numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
+
 /***************VARIABLE***************/
 //Sphere 1
 GLfloat sphere1Position[3] = {-2.5,-2.5,-2.5};
@@ -332,9 +337,47 @@ void display(void){
 										0.0, 0.0, 0.5, 0.0,
 										0.5, 0.5, 0.5, 1.0};
 
-	//Store modelview and projection matrices
+	//Store modelview and projection matrices for shadows
 	glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
 	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
+
+/*************************************************/
+	//NEX CODE HERE
+
+	//Matrix is Blue, Green, Red, Purple... matrix is row order
+	const GLdouble color_Matrix[16] = {	1.0, 0.0, 0.0, 0.5, 
+										0.0, 1.0, 0.0, 0.0,
+										0.0, 0.0, 1.0, 0.5,
+										0.0, 0.0, 0.0, 0.0};
+	
+	
+	//Use texture6 matrix
+	glMatrixMode(GL_TEXTURE);
+	glActiveTextureARB(GL_TEXTURE6);
+	
+	//Multiply all 3 matrices into texture6
+	glLoadIdentity();	
+	glLoadMatrixd(color_Matrix);
+
+
+	//can Add lihgt color or attenuation to last column
+	const GLdouble light_Matrix[16] = {	lightPosition[0], lightLookAt[0], lightsAngle, 0.0, 
+										lightPosition[1], lightLookAt[1], lightsPerRay, 0.0,
+										lightPosition[2], lightLookAt[2], numLights, 0.0,
+										lightPosition[3], 0.0, 0.0, 0.0};
+	
+	
+	//Use texture5 matrix
+	glMatrixMode(GL_TEXTURE);
+	glActiveTextureARB(GL_TEXTURE5);
+	
+	//Multiply all 3 matrices into texture6
+	glLoadIdentity();	
+	glLoadMatrixd(light_Matrix);
+
+
+/*************************************************/
+
 
 	//Use texture7 matrix
 	glMatrixMode(GL_TEXTURE);
@@ -765,7 +808,7 @@ void special( int key, int px, int py ){
 }
 
 int main(int argc, char** argv){
-  
+
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
