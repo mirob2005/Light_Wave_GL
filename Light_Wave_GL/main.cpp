@@ -46,9 +46,9 @@ bool gShaderEnabled;
 GLuint option = 0;
 
 //Constants used in shaders
-const double lightsAngle = 9;
-const double lightsPerRay = 4;
-const double numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
+const int lightsAngle = 9;
+const int lightsPerRay = 4;
+const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 
 /***************VARIABLE***************/
 //Sphere 1
@@ -206,6 +206,7 @@ void drawRoom()
 	// Ground Wall
 	glColor3f(0.5f, 0.29f, 0.65f);
 	glBegin(GL_QUADS);
+	glNormal3f(0,1,0);
 	glVertex3f(-4,-4,-4);
 	glVertex3f(-4,-4, 4);
 	glVertex3f( 4,-4, 4);
@@ -215,6 +216,7 @@ void drawRoom()
 	// Top Wall
 	glColor3f(0.5f, 0.65f, 0.29f);
 	glBegin(GL_QUADS);
+	glNormal3f(0,-1,0);
 	glVertex3f(-4,4,-4);
 	glVertex3f( 4,4,-4);
 	glVertex3f( 4,4, 4);
@@ -224,6 +226,7 @@ void drawRoom()
 	// Far Wall
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glBegin(GL_QUADS);
+	glNormal3f(0,0,1);
 	glVertex3f(-4,-4,-4);
 	glVertex3f(4, -4,-4);
 	glVertex3f( 4, 4,-4);
@@ -233,6 +236,7 @@ void drawRoom()
 	// Near Wall
 	glColor3f(1.0f, 0.0f, 1.0f);
 	glBegin(GL_QUADS);
+	glNormal3f(0,0,-1);
 	glVertex3f(-4,-4,4);
 	glVertex3f(-4, 4,4);
 	glVertex3f( 4, 4,4);
@@ -242,6 +246,7 @@ void drawRoom()
 	// Left Wall
 	glColor3f(0.65f, 0.5f, 0.29f);
 	glBegin(GL_QUADS);
+	glNormal3f(1,0,0);
 	glVertex3f(-4,-4,-4);
 	glVertex3f(-4,4, -4);
 	glVertex3f(-4, 4, 4);
@@ -251,6 +256,7 @@ void drawRoom()
 	// Right Wall
 	glColor3f(0.29f, 0.65f, 0.5f);
 	glBegin(GL_QUADS);
+	glNormal3f(-1,0,0);
 	glVertex3f(4,-4,-4);
 	glVertex3f(4,-4, 4);
 	glVertex3f(4, 4, 4);
@@ -359,14 +365,13 @@ void display(void){
 	glLoadIdentity();	
 	glLoadMatrixd(color_Matrix);
 
-
+	//Light Position, Light Normal, light_wave properties (may need to be const in shader, remove?)
 	//can Add lihgt color or attenuation to last column
-	const GLdouble light_Matrix[16] = {	lightPosition[0], lightLookAt[0], lightsAngle, 0.0, 
-										lightPosition[1], lightLookAt[1], lightsPerRay, 0.0,
-										lightPosition[2], lightLookAt[2], numLights, 0.0,
+	const GLdouble light_Matrix[16] = {	lightPosition[0], lightLookAt[0] - lightPosition[0], lightsAngle, 0.0, 
+										lightPosition[1], lightLookAt[1] - lightPosition[1], lightsPerRay, 0.0,
+										lightPosition[2], lightLookAt[2] - lightPosition[2], numLights, 0.0,
 										lightPosition[3], 0.0, 0.0, 0.0};
-	
-	
+
 	//Use texture5 matrix
 	glMatrixMode(GL_TEXTURE);
 	glActiveTextureARB(GL_TEXTURE5);
@@ -452,11 +457,15 @@ void display(void){
 			markerz = lightPosition[2]+0.1;
 		else
 			markerz = lightPosition[2]-0.1;
-		glTranslatef(markerx,markery,markerz);
-		glRotatef(-90,1,0,0);
-		glutSolidCone(0.1f,0.2f,25,25);
+		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
+		//glRotatef(-90,1,0,0);
+		glutSolidSphere(0.1f,25,25);
 	glPopMatrix();
 
+	glPushMatrix();
+		glColor3f(1,0,0);
+		glTranslatef(lightLookAt[0], lightLookAt[1], lightLookAt[2]);
+		glutSolidSphere(.1f,25,25);
 	glEnable(GL_LIGHTING);
 
 	displayFPS();
@@ -777,28 +786,28 @@ void special( int key, int px, int py ){
 				if(lightPosition[2] >-3.0)
 				{
 					lightPosition[2] += -0.1;	  
-					lightLookAt[2] += -0.1;	  
+					//lightLookAt[2] += -0.1;	  
 				}
 		   break;	
 		   case GLUT_KEY_DOWN:
 				if(lightPosition[2] <3.0)
 				{
 					lightPosition[2] += 0.1;	
-					lightLookAt[2] += 0.1;	
+					//lightLookAt[2] += 0.1;	
 				}
 		   break;	
 		   case GLUT_KEY_LEFT:
 				if(lightPosition[0] >-3.0)
 				{
 					lightPosition[0] += -0.1;		  
-					lightLookAt[0] += -0.1;		  
+					//lightLookAt[0] += -0.1;		  
 				}
 		   break;
 		   case GLUT_KEY_RIGHT:
 				if(lightPosition[0] <3.0)
 				{
 					lightPosition[0] += 0.1;	  
-					lightLookAt[0] += 0.1;	  
+					//lightLookAt[0] += 0.1;	  
 				}
 		   break;
 		}
