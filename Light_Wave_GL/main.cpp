@@ -95,6 +95,9 @@ GLuint FBOid;
 GLuint shadowMapID;
 GLuint shaderID;
 
+//GLuint lightBufferID;
+//GLuint lightID;
+
 
 void shaderInit( const char *vsFile, const char *fsFile ){
 
@@ -121,6 +124,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
   gProgram->isHardwareAccelerated( );
 
   shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
+  //lightID = glGetUniformLocationARB(gProgram->_object, "LightMap");
 
 }
 
@@ -128,6 +132,23 @@ void shaderInit( const char *vsFile, const char *fsFile ){
  *  and depth buffer.
  */
 void init( void ){
+
+	//GLubyte lightData[10] = {1,2,3,4,5,6,7,8,9,0};
+
+	////Try to create light map
+	//glGenTextures(1, &lightBufferID);
+	//glBindTexture(GL_TEXTURE_1D, lightBufferID);
+
+	//glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	//glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	//glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	//glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	//glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, 10, 0, GL_RGB, GL_UNSIGNED_BYTE, lightData);
+	//glBindTexture(GL_TEXTURE_1D, 0);
+
+
+
 
 	//Try to create shadow map
 	glGenTextures(1, &shadowMapID);
@@ -348,6 +369,7 @@ void display(void){
 	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
 
 /*************************************************/
+
 	//NEX CODE HERE
 
 	//Matrix is Blue, Green, Red, Purple... matrix is row order
@@ -410,6 +432,9 @@ void display(void){
 
 	//Using our shaders and shadow map
 	glUseProgramObjectARB(gProgram->_object);
+	//glUniform1iARB(lightID,0);
+	//glActiveTexture(GL_TEXTURE0);
+	//glBindTexture(GL_TEXTURE_1D,lightBufferID);
 	glUniform1iARB(shaderID,7);
 	glActiveTextureARB(GL_TEXTURE7);
 	glBindTexture(GL_TEXTURE_2D,shadowMapID);
