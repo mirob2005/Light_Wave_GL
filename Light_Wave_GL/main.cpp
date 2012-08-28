@@ -39,6 +39,13 @@ double gTime = 0;
 int frames = 0;
 double fps = 0;
 
+/*  Scene Changer
+---------------------------
+	Scene #0 = Cornell Box 
+	Scene #1 = Chess Scene 
+*/
+int gScene = 0;
+
 GLSLProgram *gProgram;
 bool gShaderEnabled;
 
@@ -191,10 +198,130 @@ void init( void ){
 	gShaderEnabled = true;
 }
 
-
-
-void drawObjects()
+void drawChessScene()
 {
+	//Draw Objects
+	//Replace with Chess pieces
+	//Sphere 1, option 1
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		glTranslatef(0,0,0);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(-3.75,-3,3.75);
+			glutSolidSphere(0.5f,25,25);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+	//Sphere2, option 2
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
+		glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+			glutSolidSphere(0.5f,25,25);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	//Chess Board
+	bool black = true;
+	for(int row=0; row < 8; row++)
+	{
+		if(black)
+		{
+			glColor3f(0.420f, 0.180f, 0.098f);
+			black = false;
+		}
+		else
+		{
+			glColor3f(0.757f,0.592f,0.443f);
+			black = true;
+		}
+		for(int column=0; column <8; column++)
+		{
+			if(black)
+			{
+				glColor3f(0.420f, 0.180f, 0.098f);
+				black = false;
+			}
+			else
+			{
+				glColor3f(0.757f,0.592f,0.443f);
+				black = true;
+			}
+			glBegin(GL_QUADS);
+			glNormal3f(0,1,0);
+			glVertex3f(-4+row,-4,-4+column);
+			glVertex3f(-4+row,-4,-4+column+1);
+			glVertex3f(-4+row+1,-4,-4+column+1);
+			glVertex3f(-4+row+1,-4,-4+column);
+			glEnd();
+		}
+	}
+
+	// Top Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glNormal3f(0,-1,0);
+	glVertex3f(-4,4,-4);
+	glVertex3f( 4,4,-4);
+	glVertex3f( 4,4, 4);
+	glVertex3f(-4,4, 4);
+	glEnd();
+
+	// Far Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glNormal3f(0,0,1);
+	glVertex3f(-4,-4,-4);
+	glVertex3f(4, -4,-4);
+	glVertex3f( 4, 4,-4);
+	glVertex3f(-4,4,-4);
+	glEnd();
+
+	// Near Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glNormal3f(0,0,-1);
+	glVertex3f(-4,-4,4);
+	glVertex3f(-4, 4,4);
+	glVertex3f( 4, 4,4);
+	glVertex3f( 4,-4,4);
+	glEnd();
+
+	// Left Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glNormal3f(1,0,0);
+	glVertex3f(-4,-4,-4);
+	glVertex3f(-4,4, -4);
+	glVertex3f(-4, 4, 4);
+	glVertex3f(-4, -4,4);
+	glEnd();
+
+	// Right Wall
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+	glNormal3f(-1,0,0);
+	glVertex3f(4,-4,-4);
+	glVertex3f(4,-4, 4);
+	glVertex3f(4, 4, 4);
+	glVertex3f(4, 4,-4);
+	glEnd();
+
+	glPopMatrix();
+}
+
+void drawCornellBox()
+{
+	//Draw Objects
 	//Sphere 1, option 1
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
@@ -220,10 +347,9 @@ void drawObjects()
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
-}
 
-void drawRoom()
-{
+	//Draw Room
+	glPushMatrix();
 	// Ground Wall
 	glColor3f(0.5f, 0.29f, 0.65f);
 	glBegin(GL_QUADS);
@@ -283,6 +409,8 @@ void drawRoom()
 	glVertex3f(4, 4, 4);
 	glVertex3f(4, 4,-4);
 	glEnd();
+
+	glPopMatrix();
 }
 
 void displayFPS()
@@ -352,8 +480,10 @@ void display(void){
 	glCullFace(GL_FRONT);
 
 	//Draw the scene
-	drawObjects();
-	drawRoom();
+	if(gScene==0)
+		drawCornellBox();
+	else
+		drawChessScene();
 
 	static GLdouble modelViewMatrix[16];
 	static GLdouble projectionMatrix[16];
@@ -461,8 +591,12 @@ void display(void){
 
 	glCullFace(GL_BACK);
 	glRotatef(worldRotate,0,1,0);
-	drawObjects();
-	drawRoom();
+	
+
+	if(gScene==0)
+		drawCornellBox();
+	else
+		drawChessScene();
 
 	glDisable (GL_LIGHTING);
 	float markerx,markery,markerz;
