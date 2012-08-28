@@ -44,7 +44,7 @@ double fps = 0;
 	Scene #0 = Cornell Box 
 	Scene #1 = Chess Scene 
 */
-int gScene = 0;
+int gScene = 1;
 
 GLSLProgram *gProgram;
 bool gShaderEnabled;
@@ -58,10 +58,10 @@ const int lightsPerRay = 4;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 
 /***************VARIABLE***************/
-//Sphere 1
-GLfloat sphere1Position[3] = {-2.5,-2.5,-2.5};
-//Sphere 2
-GLfloat sphere2Position[3] = {2.0,-3.0,0.0};
+//Object 1
+GLfloat object1Position[3] = {-2.5,-2.5,-2.5};
+//Object 2
+GLfloat object2Position[3] = {2.0,-3.0,0.0};
 
 //Camera Position
 GLfloat camPosition[3] = {0.0, 0.0, 4.0};
@@ -86,8 +86,8 @@ GLfloat lightUpVector[3] = {0.0, 0.0, 1.0};
 double worldRotate = 0.0;
 /**************************************/
 /***************DEFAULTS***************/
-const GLfloat defsphere1Position[3] = {-2.5,-2.5,-2.5};
-const GLfloat defsphere2Position[3] = {2.0,-3.0,0.0};
+const GLfloat defobject1Position[3] = {-2.5,-2.5,-2.5};
+const GLfloat defobject2Position[3] = {2.0,-3.0,0.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
@@ -154,9 +154,6 @@ void init( void ){
 	//glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, 10, 0, GL_RGB, GL_UNSIGNED_BYTE, lightData);
 	//glBindTexture(GL_TEXTURE_1D, 0);
 
-
-
-
 	//Try to create shadow map
 	glGenTextures(1, &shadowMapID);
 	glBindTexture(GL_TEXTURE_2D, shadowMapID);
@@ -200,29 +197,72 @@ void init( void ){
 
 void drawChessScene()
 {
+	
+	GLUquadricObj *qobj;
+	qobj = gluNewQuadric();
 	//Draw Objects
 	//Replace with Chess pieces
-	//Sphere 1, option 1
+	//Object 1, option 1
+	
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-		glTranslatef(0,0,0);
+		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+		glTranslatef(0,-0.5,0);
+		glScalef(1,2,1);
+		glRotatef(90,1,0,0);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(-3.75,-3,3.75);
-			glutSolidSphere(0.5f,25,25);
+			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+			glTranslatef(0,-0.5,0);
+			glScalef(1,2,1);
+			glRotatef(90,1,0,0);
+			glutSolidCube(0.5f);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
-	//Sphere2, option 2
 	glPushMatrix();
-		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
-		glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+		glTranslatef(0,-1.25,0);
+		glScalef(2,1,2);
+		glRotatef(90,1,0,0);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+			glTranslatef(0,-1.25,0);
+			glScalef(2,1,2);
+			glRotatef(90,1,0,0);
+			glutSolidCube(0.5f);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+		glTranslatef(0,0.25,0);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
+			glTranslatef(0,0.25,0);
+			glutSolidSphere(0.5,25,25);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+
+	//Object 2, option 2
+	glPushMatrix();
+		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
+		glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTextureARB(GL_TEXTURE7);
+		glPushMatrix();
+			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glutSolidSphere(0.5f,25,25);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
@@ -322,27 +362,27 @@ void drawChessScene()
 void drawCornellBox()
 {
 	//Draw Objects
-	//Sphere 1, option 1
+	//Object 1, option 1
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-		glTranslatef(sphere1Position[0],sphere1Position[1],sphere1Position[2]);
+		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(sphere1Position[0],sphere1Position[1],sphere1Position[2]);
+			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glutSolidSphere(1.5f,25,25);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
-	//Sphere2, option 2
+	//Object 2, option 2
 	glPushMatrix();
 		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
-		glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+		glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		glActiveTextureARB(GL_TEXTURE7);
 		glPushMatrix();
-			glTranslatef(sphere2Position[0],sphere2Position[1],sphere2Position[2]);
+			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glutSolidSphere(1.0f,25,25);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
@@ -617,7 +657,6 @@ void display(void){
 		else
 			markerz = lightPosition[2]-0.1;
 		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
-		//glRotatef(-90,1,0,0);
 		glutSolidSphere(0.1f,25,25);
 	glPopMatrix();
 
@@ -680,17 +719,17 @@ void keyboard(unsigned char key, int x, int y){
 						}
 					break;
 					case 1:
-						//Move Sphere 1 up
-						if(sphere1Position[1] < 4.0)
+						//Move Object 1 up
+						if(object1Position[1] < 4.0)
 						{
-							sphere1Position[1]+=0.1;
+							object1Position[1]+=0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 up
-						if(sphere2Position[1] < 4.0)
+						//Move Object 2 up
+						if(object2Position[1] < 4.0)
 						{
-							sphere2Position[1]+=0.1;
+							object2Position[1]+=0.1;
 						}
 					break;
 			   }
@@ -708,17 +747,17 @@ void keyboard(unsigned char key, int x, int y){
 						}
 					break;
 					case 1:
-						//Move Sphere 1 down
-						if(sphere1Position[1] > -4.0)
+						//Move Object 1 down
+						if(object1Position[1] > -4.0)
 						{
-							sphere1Position[1]+=-0.1;
+							object1Position[1]+=-0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 up
-						if(sphere2Position[1] > -4.0)
+						//Move Object 2 up
+						if(object2Position[1] > -4.0)
 						{
-							sphere2Position[1]+=-0.1;
+							object2Position[1]+=-0.1;
 						}
 					break;
 			   }
@@ -741,8 +780,8 @@ void keyboard(unsigned char key, int x, int y){
 				cout << "ESC, Q/q - Exit the program" << endl;
 				cout << "H/h - This help menu" << endl;
 				cout << "0 - Allows you to move the camera using WASD keys" << endl;
-				cout << "1 - Allows you to move the first sphere using WASD keys" << endl;
-				cout << "2 - Allows you to move the second sphere using WASD keys" << endl;
+				cout << "1 - Allows you to move the first Object using WASD keys" << endl;
+				cout << "2 - Allows you to move the second Object using WASD keys" << endl;
 				cout << "W/w - Move the selected object forward (Default: Camera)" << endl;
 				cout << "A/a - Move the selected object left (Default: Camera)" << endl;
 				cout << "S/s - Move the selected object backward (Default: Camera)" << endl;
@@ -756,7 +795,8 @@ void keyboard(unsigned char key, int x, int y){
 				cout << "shift+UP arrow - Move the light up" << endl;
 				cout << "shift+DOWN arrow - Move the light down" << endl;
 				cout << "R/r - Reset camera defaults" << endl;
-				cout << "T/t - Reset sphere position defaults" << endl;
+				cout << "T/t - Reset Object position defaults" << endl;
+				cout << "G/g - Change Scene" << endl;
 				cout << "--------------" << endl;
 				cout << endl;
 			break;
@@ -766,22 +806,15 @@ void keyboard(unsigned char key, int x, int y){
 			break;
 			case '1':
 				option = 1;
-				cout << "Option = " << option << ", WASD keys move sphere 1!" << endl;
+				cout << "Option = " << option << ", WASD keys move Object 1!" << endl;
 			break;
 			case '2':
 			   option = 2;
-			   cout << "Option = " << option << ", WASD keys move sphere 2!" << endl;
+			   cout << "Option = " << option << ", WASD keys move Object 2!" << endl;
 		   break;
 		   case 'G':
 		   case 'g':
-			   gShaderEnabled = !gShaderEnabled;
-				if( gShaderEnabled ){
-				  fprintf( stderr, "Shader enabled\n" );
-				  gProgram->activate( );
-				}else{
-				  fprintf( stderr, "Shader disabled\n" );
-				  gProgram->deactivate( );
-				}
+			   gScene = (gScene+1)%2;
 		   break;
 		   case 'W':
 		   case 'w':
@@ -797,17 +830,17 @@ void keyboard(unsigned char key, int x, int y){
 						}
 					break;
 					case 1:
-						//Move Sphere 1 forward
-						if(sphere1Position[2] >-4.0)
+						//Move Object 1 forward
+						if(object1Position[2] >-4.0)
 						{
-							sphere1Position[2]+=-0.1;
+							object1Position[2]+=-0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 forward
-						if(sphere2Position[2] >-4.0)
+						//Move Object 2 forward
+						if(object2Position[2] >-4.0)
 						{
-							sphere2Position[2]+=-0.1;
+							object2Position[2]+=-0.1;
 						}
 					break;
 			   }
@@ -825,17 +858,17 @@ void keyboard(unsigned char key, int x, int y){
 						}
 					break;
 					case 1:
-						//Move Sphere 1 backward
-						if(sphere1Position[2] < 4.0)
+						//Move Object 1 backward
+						if(object1Position[2] < 4.0)
 						{
-							sphere1Position[2]+=0.1;
+							object1Position[2]+=0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 backward
-						if(sphere2Position[2] < 4.0)
+						//Move Object 2 backward
+						if(object2Position[2] < 4.0)
 						{
-							sphere2Position[2]+=0.1;
+							object2Position[2]+=0.1;
 						}
 					break;
 			   }
@@ -849,17 +882,17 @@ void keyboard(unsigned char key, int x, int y){
 					   worldRotate+=-1.0;
 					break;
 					case 1:
-						//Move Sphere 1 left
-						if(sphere1Position[0] >-4.0)
+						//Move Object 1 left
+						if(object1Position[0] >-4.0)
 						{
-							sphere1Position[0]+=-0.1;
+							object1Position[0]+=-0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 left
-						if(sphere2Position[0] >-4.0)
+						//Move Object 2 left
+						if(object2Position[0] >-4.0)
 						{
-							sphere2Position[0]+=-0.1;
+							object2Position[0]+=-0.1;
 						}
 					break;
 			   }
@@ -873,17 +906,17 @@ void keyboard(unsigned char key, int x, int y){
 						worldRotate+=1.0;
 					break;
 					case 1:
-						//Move Sphere 1 right
-						if(sphere1Position[0] < 4.0)
+						//Move Object 1 right
+						if(object1Position[0] < 4.0)
 						{
-							sphere1Position[0]+=0.1;
+							object1Position[0]+=0.1;
 						}
 					break;
 					case 2:
-						//Move Sphere 2 right
-						if(sphere2Position[0] < 4.0)
+						//Move Object 2 right
+						if(object2Position[0] < 4.0)
 						{
-							sphere2Position[0]+=0.1;
+							object2Position[0]+=0.1;
 						}
 					break;
 			   }
@@ -902,13 +935,13 @@ void keyboard(unsigned char key, int x, int y){
 		   break;
 		   case 'T':
 		   case 't':
-				//Reset Sphere movements
-			   sphere1Position[0] = defsphere1Position[0];
-			   sphere1Position[1] = defsphere1Position[1];
-			   sphere1Position[2] = defsphere1Position[2];
-			   sphere2Position[0] = defsphere2Position[0];
-			   sphere2Position[1] = defsphere2Position[1];
-			   sphere2Position[2] = defsphere2Position[2];
+				//Reset Object movements
+			   object1Position[0] = defobject1Position[0];
+			   object1Position[1] = defobject1Position[1];
+			   object1Position[2] = defobject1Position[2];
+			   object2Position[0] = defobject2Position[0];
+			   object2Position[1] = defobject2Position[1];
+			   object2Position[2] = defobject2Position[2];
 		   break;
 	   }
    }
