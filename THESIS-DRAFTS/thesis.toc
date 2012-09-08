@@ -23,15 +23,15 @@
 \contentsline {section}{\numberline {3.1}IMPLEMENTATION GOALS}{21}
 \contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{22}
 \contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{24}
-\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{27}
-\contentsline {subsection}{\numberline {3.3.2}OPENGL}{27}
-\contentsline {subsection}{\numberline {3.3.3}GLSL}{27}
-\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{27}
-\contentsline {chapter}{\numberline {4}SAMPLE CODE}{29}
-\contentsline {section}{\numberline {4.1}VERTEX SHADER CODE}{29}
-\contentsline {section}{\numberline {4.2}FRAGMENT SHADER CODE}{29}
-\contentsline {section}{\numberline {4.3}ADDITIONAL CODE}{29}
-\contentsline {chapter}{\numberline {5}RESULTS}{30}
-\contentsline {section}{\numberline {5.1}RESULTS}{30}
-\contentsline {section}{\numberline {5.2}IMAGES}{30}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{31}
+\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{29}
+\contentsline {subsection}{\numberline {3.3.2}OPENGL}{29}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{29}
+\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{30}
+\contentsline {chapter}{\numberline {4}SAMPLE CODE}{32}
+\contentsline {section}{\numberline {4.1}VERTEX SHADER CODE}{32}
+\contentsline {section}{\numberline {4.2}FRAGMENT SHADER CODE}{32}
+\contentsline {section}{\numberline {4.3}ADDITIONAL CODE}{32}
+\contentsline {chapter}{\numberline {5}RESULTS}{33}
+\contentsline {section}{\numberline {5.1}RESULTS}{33}
+\contentsline {section}{\numberline {5.2}IMAGES}{33}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{34}

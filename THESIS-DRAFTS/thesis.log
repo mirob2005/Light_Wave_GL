@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  8 SEP 2012 01:10
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  8 SEP 2012 01:37
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -350,17 +350,45 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \cur@col=\count180
 \conditionsep=\skip60
 )
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count181
+))
+\Gin@req@height=\dimen137
+\Gin@req@width=\dimen138
+)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen137
-\epsfframethickness=\dimen138
-\epsfrsize=\dimen139
-\epsftmp=\dimen140
-\epsftsize=\dimen141
-\epsfxsize=\dimen142
-\epsfysize=\dimen143
-\pspoints=\dimen144
+\epsfframemargin=\dimen139
+\epsfframethickness=\dimen140
+\epsfrsize=\dimen141
+\epsftmp=\dimen142
+\epsftsize=\dimen143
+\epsfxsize=\dimen144
+\epsfysize=\dimen145
+\pspoints=\dimen146
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -369,41 +397,55 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 74.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 74.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
+("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count182
+\scratchdimen=\dimen147
+\scratchbox=\box36
+\nofMPsegments=\count183
+\nofMParguments=\count184
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count185
+\MPscratchDim=\dimen148
+\MPnumerator=\count186
+\everyMPtoPDFconversion=\toks40
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 75.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 75.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 75.
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
+Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
+Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--74
+Underfull \hbox (badness 10000) in paragraph at lines 75--75
 
  []
 
@@ -429,7 +471,25 @@ Overfull \vbox (41.39453pt too high) has occurred while \output is active []
 
 
 
-] [5] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.tex
+] [5]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 \listoffigures
+                   
+? 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
+\tf@lof=\write4
+ [6
+
+
+
+]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.tex
 CHAPTER 1.
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
@@ -537,49 +597,101 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [22] [23] [24]
+ [22] [23] [24] <Figure31.jpg, id=101, 747.79375pt x 530.98375pt>
+File: Figure31.jpg Graphic file (type jpg)
+
+<use Figure31.jpg>
+Package pdftex.def Info: Figure31.jpg used on input line 23.
+(pdftex.def)             Requested size: 215.00313pt x 152.6688pt.
+ <Figure32.jpg, id=102, 514.92375pt x 426.59375pt>
+File: Figure32.jpg Graphic file (type jpg)
+
+<use Figure32.jpg>
+Package pdftex.def Info: Figure32.jpg used on input line 33.
+(pdftex.def)             Requested size: 215.00313pt x 178.12015pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure33.jpg, id=103, 791.95876pt x 510.90875pt>
+File: Figure33.jpg Graphic file (type jpg)
+ <use Figure33.jpg>
+Package pdftex.def Info: Figure33.jpg used on input line 41.
+(pdftex.def)             Requested size: 215.00313pt x 138.7034pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure34.jpg, id=104, 771.88374pt x 539.01375pt>
+File: Figure34.jpg Graphic file (type jpg)
+ <use Figure34.jpg>
+Package pdftex.def Info: Figure34.jpg used on input line 50.
+(pdftex.def)             Requested size: 215.00313pt x 150.13324pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[25 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>]
+<Figure35.jpg, id=108, 1197.47375pt x 534.99875pt>
+File: Figure35.jpg Graphic file (type jpg)
+ <use Figure35.jpg>
+Package pdftex.def Info: Figure35.jpg used on input line 59.
+(pdftex.def)             Requested size: 215.00313pt x 96.0507pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [25] [26] [27]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 64.
-
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
+<Figure36.jpg, id=113, 960.58875pt x 832.10875pt>
+File: Figure36.jpg Graphic file (type jpg)
+ <use Figure36.jpg>
+Package pdftex.def Info: Figure36.jpg used on input line 70.
+(pdftex.def)             Requested size: 215.00313pt x 186.23872pt.
+ [27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg> <D:/_Programmin
+g/Light_Wave_GL/THESIS-DRAFTS/Figure34.jpg>] [28 <D:/_Programming/Light_Wave_GL
+/THESIS-DRAFTS/Figure35.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figur
+e36.jpg>]
+[29]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
+ ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
-) [28]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
+ [30])
+[31] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
-) [29
+) [32
 
 
 
 ] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-) [30
+) [33
 
 
 
 ] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [31
+) [34
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [32
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [35
 
 
-] [33]
-[34]
+] [36]
+[37]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no í in font cmr12!
- [35]) [36] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [38]) [39] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -588,13 +700,13 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 5305 strings out of 494049
- 86714 string characters out of 3146068
- 127779 words of memory out of 3000000
- 8500 multiletter control sequences out of 15000+200000
+ 6203 strings out of 494049
+ 99048 string characters out of 3146068
+ 143754 words of memory out of 3000000
+ 9361 multiletter control sequences out of 15000+200000
  7680 words of font info for 27 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,10n,33p,2288b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,10n,33p,2288b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
@@ -605,9 +717,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (40 pages, 188303 bytes).
+Output written on thesis.pdf (44 pages, 672403 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
+ 187 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

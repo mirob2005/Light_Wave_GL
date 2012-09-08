@@ -16,30 +16,63 @@ This study shows that visibility approximations can be made when rendering indir
 
 \section{IMPLEMENTATION DETAILS} \label{sec:impdetails}
 
-As stated in section \ref{sec:impgoals}, the goal of this implementation is to propose a real-time rendering technique that will render global illumination on the GPU through the use of OpenGL and GLSL.  The primary focus is to render indirect illumination with the findings on scientifically accurate versus perceptually pleasing in mind.  As such, we will ignore the indirect bouncing of light (the infinite series portion of the rendering equation), but try to simulate using the VPL technique as introduced in \cite{Keller1997}.  We will accomplish this simulation through the method of VPL placement and handling.  The VPL's will be structured in hemispheres around the primary light source.  The original implementation will include VPL's at every $5$ degrees around the z-axis of the light source resulting in 360 degrees / 5 degrees per ray = 72 rays of VPL's forming a circle around the light source.
+As stated in section \ref{sec:impgoals}, the goal of this implementation is to propose a real-time rendering technique that will render global illumination on the GPU through the use of OpenGL and GLSL.  The primary focus is to render indirect illumination with the findings on scientifically accurate versus perceptually pleasing in mind.  As such, we will ignore the indirect bouncing of light (the infinite series portion of the rendering equation), but try to simulate using the VPL technique as introduced in \cite{Keller1997}.  We will accomplish this simulation through the method of VPL placement and handling.  The VPL's will be structured in hemispheres around the primary light source.  The original implementation will include VPL's at every $5$ degrees around the z-axis of the light source resulting in 360 degrees / 5 degrees per ray = 72 rays of VPL's forming a circle around the light source. See figure \ref{fig:3.1}.
 
-Figure---------------------------(4.1)
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure31.jpg}
+  \caption{The light source is facing the reader (ie. direction/normal pointing out of the paper. Angles not drawn to scale.}
+	\label{fig:3.1}
+\end{figure}
 
-Next, the VPL's will be structured at every 5 degrees around the y-axis of the light source resulting in 90degrees/5degrees per ray = 18 rays of VPL's for every one of the 72 rays around the z-axis.  This totals in 1296 rays plus the vertical ray along the z-axis resulting in 1297 rays to form a hemisphere around the light.
 
-Figure--------------------------------(4.2)
-Figure--------------------------------(4.3)
+Next, the VPL's will be structured at every 5 degrees around the y-axis of the light source resulting in 90degrees/5degrees per ray = 18 rays of VPL's for every one of the 72 rays around the z-axis.  This totals in 1296 rays plus the vertical ray along the z-axis resulting in 1297 rays to form a hemisphere around the light. See figures \ref{fig:3.2} and \ref{fig:3.3}.
 
-Next, we will have multiple VPL's on each of these rays.  This implementation will have 5 VPL's per ray.  This results in having 5 stacked hemispheres of increasing radii and a total of 6485 VPL's.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure32.jpg}
+  \caption{The light source is facing downwards. The arrow going down signifies the vertical ray added to the total of 1296 VPL's. Angles not drawn to scale.}
+	\label{fig:3.2}
+\end{figure}
 
-Figure--------------------------------(4.4)
 
-The distance from the primary light to each of the VPL's on each ray will be calculated based off of the depth of the scene.  This information is made available in the shadow maps in order to render direct shadows.  The distance between VPL's on each ray will be logarithmic as shown below and the attenuation will be exponential.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure33.jpg}
+  \caption{Figures \ref{fig:3.1} and \ref{fig:3.2} together form a hemisphere. The arrow signifies the primary light source's direction and is the additional vertical ray added to the total of 1296 VPL's.}
+	\label{fig:3.3}
+\end{figure}
 
-Figure--------------------------------(4.5)
+Next, we will have multiple VPL's on each of these rays.  This implementation will have 5 VPL's per ray.  This results in having 5 stacked hemispheres of increasing radii and a total of 6485 VPL's. See figure \ref{fig:3.4}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure34.jpg}
+  \caption{5 stacked hemispheres formed by the VPL's around the primary light source. Distances between hemispheres are not drawn to scale.}
+	\label{fig:3.4}
+\end{figure}
+
+The distance from the primary light to each of the VPL's on each ray will be calculated based off of the depth of the scene.  This information is made available in the shadow maps in order to render direct shadows.  The distance between VPL's on each ray will be logarithmic as shown below and the attenuation will be exponential.  See figure \ref{fig:3.5}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure35.jpg}
+  \caption{Showing the logarithmic structure of the VPL's.  Attenuation levels would be 5\%, 10\%, 20\%, 40\%, and 80\% from the left to right.}
+	\label{fig:3.5}
+\end{figure}
 
 The goal of this structure is to simulate multiple waves of VPL's flowing outward from the primary light source in order to simulate the light transport as wave-like in order to simulate indirect illumination using only the direct illumination of these VPL's while ignoring the bouncing of light among surfaces.  An additional goal of this implementation is to have the resulting technique be scalable.  This organization of the VPL's will allow us to use more or less VPL's depending on quality and performance desires.  As such, we can increase or decrease the corresponding angles to reduce or increase the number of VPL's used as well as increase or decrease the number of hemisphere shells used.  Also, we can use stochastic sampling in order to turn off or on certain VPL's in order to introduce “noise” in the implementation as well as decrease the number of VPL's required.  As shown in the previous section, noise can be perceptually pleasing provided it is in smooth graduations.
 
-The VPL's contributions will computed as shown below.  The VPL's will act similar to directional lights in that the normal of the VPL will be used in computing the radiance that it provides.  If the surface point is in front of the VPL, it will receive the full radiance amount accounting for distance to the VPL as well as its attenuation.  If the surface point is behind the VPL, it will receive half of the radiance it would otherwise receive.  
+The VPL's contributions will computed as shown below.  The VPL's will act similar to directional lights in that the normal of the VPL will be used in computing the radiance that it provides.  If the surface point is in front of the VPL, it will receive the full radiance amount accounting for distance to the VPL as well as its attenuation.  If the surface point is behind the VPL, it will receive half of the radiance it would otherwise receive.  See figure \ref{fig:3.6}.
 
-Figure--------------------------------(4.6)
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{Figure36.jpg}
+  \caption{Showing the radiance contribution of a VPL on a surface point based off whether it is in front or behind the light.  The arrow signifies the VPL's direction/normal.}
+	\label{fig:3.6}
+\end{figure}
 
-	Occlusion will be handled with a shadow map as in \cite{Williams1978} and \cite{Reeves1987} to render shadows for the direct illumination based solely off of the primary light source.  This method is very cheap and provides sufficient shadows for the purposes of this implementation.  The indirect occlusion will handled one of two ways.  One way is to use the idea of imperfect visibility as in \cite{Ritschel2008} for all VPL's or through the use of regular shadow maps on stochastically sampled VPL's
+Occlusion will be handled with a shadow map as in \cite{Williams1978} and \cite{Reeves1987} to render shadows for the direct illumination based solely off of the primary light source.  This method is very cheap and provides sufficient shadows for the purposes of this implementation.  The indirect occlusion will handled one of two ways.  One way is to use the idea of imperfect visibility as in \cite{Ritschel2008} for all VPL's or through the use of regular shadow maps on stochastically sampled VPL's
 
 \subsection{GPU AND CPU FUNCTIONS}
 
