@@ -1,38 +1,37 @@
 \contentsline {chapter}{\numberline {1}BACKGROUND}{1}
-\contentsline {chapter}{\numberline {2}PREVIOUS WORK}{3}
-\contentsline {section}{\numberline {2.1}REAL-TIME VERSUS OFFLINE RENDERING TECHNIQUES}{3}
-\contentsline {section}{\numberline {2.2}THE RENDERING EQUATION}{3}
-\contentsline {section}{\numberline {2.3}OFFLINE RENDERING TECHNIQUES}{6}
-\contentsline {subsection}{\numberline {2.3.1}RAY TRACING}{6}
-\contentsline {subsection}{\numberline {2.3.2}RADIOSITY}{7}
-\contentsline {subsection}{\numberline {2.3.3}PHOTON MAPS}{8}
-\contentsline {chapter}{\numberline {3}MORE FORMAT REQUIREMENTS}{10}
-\contentsline {section}{\numberline {3.1}Thesis Format Specs}{10}
-\contentsline {subsection}{\numberline {3.1.1}Font}{10}
-\contentsline {subsection}{\numberline {3.1.2}Margins}{10}
-\contentsline {subsection}{\numberline {3.1.3}Tables and Figures}{10}
-\contentsline {subsection}{\numberline {3.1.4}Page Numbers}{12}
-\contentsline {chapter}{\numberline {4}MORE FORMAT REQUIREMENTS}{13}
-\contentsline {section}{\numberline {4.1}Thesis Format Specs}{13}
-\contentsline {subsection}{\numberline {4.1.1}Font}{13}
-\contentsline {subsection}{\numberline {4.1.2}Margins}{13}
-\contentsline {subsection}{\numberline {4.1.3}Tables and Figures}{13}
-\contentsline {subsection}{\numberline {4.1.4}Page Numbers}{15}
-\contentsline {chapter}{\numberline {5}MORE FORMAT REQUIREMENTS}{16}
-\contentsline {section}{\numberline {5.1}Thesis Format Specs}{16}
-\contentsline {subsection}{\numberline {5.1.1}Font}{16}
-\contentsline {subsection}{\numberline {5.1.2}Margins}{16}
-\contentsline {subsection}{\numberline {5.1.3}Tables and Figures}{16}
-\contentsline {subsection}{\numberline {5.1.4}Page Numbers}{18}
-\contentsline {chapter}{\numberline {6}MORE FORMAT REQUIREMENTS}{19}
-\contentsline {section}{\numberline {6.1}Thesis Format Specs}{19}
-\contentsline {subsection}{\numberline {6.1.1}Font}{19}
-\contentsline {subsection}{\numberline {6.1.2}Margins}{19}
-\contentsline {subsection}{\numberline {6.1.3}Tables and Figures}{19}
-\contentsline {subsection}{\numberline {6.1.4}Page Numbers}{21}
-\contentsline {chapter}{\numberline {7}MORE FORMAT REQUIREMENTS}{22}
-\contentsline {section}{\numberline {7.1}Thesis Format Specs}{22}
-\contentsline {subsection}{\numberline {7.1.1}Font}{22}
-\contentsline {subsection}{\numberline {7.1.2}Margins}{22}
-\contentsline {subsection}{\numberline {7.1.3}Tables and Figures}{22}
-\contentsline {subsection}{\numberline {7.1.4}Page Numbers}{24}
+\contentsline {section}{\numberline {1.1}LIGHT AS A PARTICLE AND A WAVE}{1}
+\contentsline {section}{\numberline {1.2}TERMINOLOGY}{2}
+\contentsline {chapter}{\numberline {2}PREVIOUS WORK}{4}
+\contentsline {section}{\numberline {2.1}REAL-TIME VERSUS OFFLINE RENDERING TECHNIQUES}{4}
+\contentsline {section}{\numberline {2.2}THE RENDERING EQUATION}{4}
+\contentsline {section}{\numberline {2.3}OFFLINE RENDERING TECHNIQUES}{7}
+\contentsline {subsection}{\numberline {2.3.1}RAY TRACING}{7}
+\contentsline {subsection}{\numberline {2.3.2}RADIOSITY}{8}
+\contentsline {subsection}{\numberline {2.3.3}PHOTON MAPS}{9}
+\contentsline {subsection}{\numberline {2.3.4}OTHER OFFLINE RENDERING TECHNIQUES}{11}
+\contentsline {subsubsection}{VIRTUAL POINT LIGHTS}{11}
+\contentsline {subsubsection}{MATRIX SAMPLING}{12}
+\contentsline {subsubsection}{SHADOW MAPS}{13}
+\contentsline {subsubsection}{VIRTUAL RAY LIGHTS}{14}
+\contentsline {section}{\numberline {2.4}REAL-TIME RENDERING TECHNIQUES}{14}
+\contentsline {subsection}{\numberline {2.4.1}\textit {INSTANT RADIOSITY}}{15}
+\contentsline {subsection}{\numberline {2.4.2}ADAPTATIONS OF \textit {INSTANT RADIOSITY}}{16}
+\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{16}
+\contentsline {subsubsection}{SCREEN SPACE ALGORITHMS}{18}
+\contentsline {subsection}{\numberline {2.4.3}SPHERICAL HARMONICS AND LATTICE-BASED METHODS}{19}
+\contentsline {chapter}{\numberline {3}IMPLEMENTATION}{21}
+\contentsline {section}{\numberline {3.1}IMPLEMENTATION GOALS}{21}
+\contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{22}
+\contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{24}
+\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{27}
+\contentsline {subsection}{\numberline {3.3.2}OPENGL}{27}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{27}
+\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{27}
+\contentsline {chapter}{\numberline {4}SAMPLE CODE}{29}
+\contentsline {section}{\numberline {4.1}VERTEX SHADER CODE}{29}
+\contentsline {section}{\numberline {4.2}FRAGMENT SHADER CODE}{29}
+\contentsline {section}{\numberline {4.3}ADDITIONAL CODE}{29}
+\contentsline {chapter}{\numberline {5}RESULTS}{30}
+\contentsline {section}{\numberline {5.1}RESULTS}{30}
+\contentsline {section}{\numberline {5.2}IMAGES}{30}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{31}

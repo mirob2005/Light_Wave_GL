@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  7 SEP 2012 17:50
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  8 SEP 2012 01:10
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -46,86 +46,364 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 Using Chicago Manual of Style bibliography: 31 August 1992
 \bibhang=\skip43
 \bibindent=\dimen103
-) ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\breqn.sty"
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\expl3.sty"
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3names.sty"
+Package: l3names 2011/01/08 v2122 L3 Experimental Naming Scheme for TeX Primiti
+ves
+)
+Package: expl3 2011/04/09 v2222 L3 Experimental code bundle wrapper
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\etex.sty"
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count91
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3basics.sty"
+Package: l3basics 2011/04/23 v2246 L3 Experimental basic definitions
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3expan.sty"
+Package: l3expan 2011/04/09 v2223 L3 Experimental Argument Expansion module
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3tl.sty"
+Package: l3tl 2011/04/09 v2223 L3 Experimental Token Lists
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3int.sty"
+Package: l3int 2011/04/11 v2229 L3 Experimental Integer module
+\l_tmpa_int=\count92
+\l_tmpb_int=\count93
+\l_tmpc_int=\count94
+\g_tmpa_int=\count95
+\g_tmpb_int=\count96
+\c_max_int=\count97
+\g_tl_inline_level_int=\count98
+\g_prg_inline_level_int=\count99
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3quark.sty"
+Package: l3quark 2011/04/14 v2234 L3 Experimental Quark Commands
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3seq.sty"
+Package: l3seq 2011/04/21 v2245 The LaTeX3 kernel: sequences and stacks
+\g_seq_nesting_depth_int=\count100
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3toks.sty"
+Package: l3toks 2011/04/09 v2223 L3 Experimental Token Registers
+\l_tmpb_toks=\toks14
+\l_tmpc_toks=\toks15
+\g_tmpa_toks=\toks16
+\g_tmpb_toks=\toks17
+\g_tmpc_toks=\toks18
+\c_empty_toks=\toks19
+\l_tl_replace_toks=\toks20
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3prg.sty"
+Package: l3prg 2011/04/09 v2223 L3 Experimental control structures
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3clist.sty"
+Package: l3clist 2011/04/09 v2223 L3 Experimental comma separated lists
+\g_clist_map_inline_int=\count101
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3token.sty"
+Package: l3token 2011/04/09 v2223 L3 Experimental token investigation and manip
+ulation
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3prop.sty"
+Package: l3prop 2011/04/09 v2223 L3 Experimental Property Lists
+\g_prop_inline_level_int=\count102
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3msg.sty"
+Package: l3msg 2010/10/02 v2052 L3 Experimental LaTeX Messages module
+\l_msg_redirect_classes_prop=\toks21
+\l_msg_redirect_names_prop=\toks22
+\l_msg_redirect_fatal_prop=\toks23
+\l_msg_redirect_error_prop=\toks24
+\l_msg_redirect_warning_prop=\toks25
+\l_msg_redirect_info_prop=\toks26
+\l_msg_redirect_log_prop=\toks27
+\l_msg_redirect_trace_prop=\toks28
+\l_msg_redirect_none_prop=\toks29
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3io.sty"
+Package: l3io 2010/10/03 v2063 L3 Experimental i/o module
+\g_iow_streams_prop=\toks30
+\g_ior_streams_prop=\toks31
+\l_iow_stream_int=\count103
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3skip.sty"
+Package: l3skip 2011/02/15 v2149 L3 Experimental skip registers
+\l_tmpa_skip=\skip44
+\l_tmpb_skip=\skip45
+\l_tmpc_skip=\skip46
+\g_tmpa_skip=\skip47
+\g_tmpb_skip=\skip48
+\l_tmpa_dim=\dimen104
+\l_tmpb_dim=\dimen105
+\l_tmpc_dim=\dimen106
+\l_tmpd_dim=\dimen107
+\g_tmpa_dim=\dimen108
+\g_tmpb_dim=\dimen109
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3box.sty"
+Package: l3box 2011/04/09 v2223 L3 Experimental Box module
+\l_tmpb_box=\box29
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3keyval.sty"
+Package: l3keyval 2011/04/09 v2223 L3 Experimental keyval processing
+\l_KV_level_int=\count104
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3keys.sty"
+Package: l3keys 2010/11/11 v2082 L3 Experimental key-value support
+\l_keys_choice_int=\count105
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3precom.sty"
+Package: l3precom 2011/04/09 v2223 L3 Experimental precompilation module
+\g_gen_sym_int=\count106
+\g_ggen_sym_int=\count107
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3xref.sty"
+Package: l3xref 2011/04/09 v2223 L3 Experimental cross referencing
+\g_xref_all_curr_immediate_fields_prop=\toks32
+\g_xref_all_curr_deferred_fields_prop=\toks33
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3file.sty"
+Package: l3file 2011/04/21 v2242 The LaTeX3 kernel: file operations
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3fp.sty"
+Package: l3fp 2011/03/19 v2201 L3 Experimental floating-point operations
+\c_one_million=\count108
+\c_one_hundred_million=\count109
+\c_five_hundred_million=\count110
+\c_one_thousand_million=\count111
+\c_fp_pi_by_four_decimal_int=\count112
+\c_fp_pi_by_four_extended_int=\count113
+\c_fp_pi_decimal_int=\count114
+\c_fp_pi_extended_int=\count115
+\c_fp_two_pi_decimal_int=\count116
+\c_fp_two_pi_extended_int=\count117
+\l_fp_count_int=\count118
+\l_fp_div_offset_int=\count119
+\l_fp_exp_integer_int=\count120
+\l_fp_exp_decimal_int=\count121
+\l_fp_exp_extended_int=\count122
+\l_fp_exp_exponent_int=\count123
+\l_fp_input_a_sign_int=\count124
+\l_fp_input_a_integer_int=\count125
+\l_fp_input_a_decimal_int=\count126
+\l_fp_input_a_exponent_int=\count127
+\l_fp_input_b_sign_int=\count128
+\l_fp_input_b_integer_int=\count129
+\l_fp_input_b_decimal_int=\count130
+\l_fp_input_b_exponent_int=\count131
+\l_fp_input_a_extended_int=\count132
+\l_fp_input_b_extended_int=\count133
+\l_fp_mul_a_i_int=\count134
+\l_fp_mul_a_ii_int=\count135
+\l_fp_mul_a_iii_int=\count136
+\l_fp_mul_a_iv_int=\count137
+\l_fp_mul_a_v_int=\count138
+\l_fp_mul_a_vi_int=\count139
+\l_fp_mul_b_i_int=\count140
+\l_fp_mul_b_ii_int=\count141
+\l_fp_mul_b_iii_int=\count142
+\l_fp_mul_b_iv_int=\count143
+\l_fp_mul_b_v_int=\count144
+\l_fp_mul_b_vi_int=\count145
+\l_fp_mul_output_int=\count146
+\l_fp_output_sign_int=\count147
+\l_fp_output_integer_int=\count148
+\l_fp_output_decimal_int=\count149
+\l_fp_output_exponent_int=\count150
+\l_fp_output_extended_int=\count151
+\l_fp_round_position_int=\count152
+\l_fp_round_target_int=\count153
+\l_fp_split_sign_int=\count154
+\l_fp_tmp_int=\count155
+\l_fp_trig_octant_int=\count156
+\l_fp_trig_sign_int=\count157
+\l_fp_trig_decimal_int=\count158
+\l_fp_trig_extended_int=\count159
+\l_fp_tmp_dim=\dimen110
+\l_fp_tmp_skip=\skip49
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3luatex.sty"
+Package: l3luatex 2010/07/18 v1985 L3 Experimental LuaTeX functions
+\g_cctab_allocate_int=\count160
+\g_cctab_stack_int=\count161
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count162
+\calc@Bcount=\count163
+\calc@Adimen=\dimen111
+\calc@Bdimen=\dimen112
+\calc@Askip=\skip50
+\calc@Bskip=\skip51
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count164
+\calc@Cskip=\skip52
+))
+Package: breqn 2009/08/07 v0.98a Breaking equations
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\flexisym.sty"
+Package: flexisym 2010/09/17 v0.97b Make math characters macros
+LaTeX Info: Redefining \textprime on input line 296.
+LaTeX Info: Redefining \not on input line 354.
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\cmbase.sym"
+File: cmbase.sym 2007/12/19 v0.92
+LaTeX Info: Redefining \hbar on input line 323.
+LaTeX Info: Redefining \surd on input line 325.
+LaTeX Info: Redefining \angle on input line 333.
+LaTeX Info: Redefining \neq on input line 334.
+LaTeX Info: Redefining \mapsto on input line 335.
+LaTeX Info: Redefining \cong on input line 336.
+LaTeX Info: Redefining \notin on input line 339.
+LaTeX Info: Redefining \rightleftharpoons on input line 340.
+LaTeX Info: Redefining \doteq on input line 341.
+LaTeX Info: Redefining \hookrightarrow on input line 342.
+LaTeX Info: Redefining \hookleftarrow on input line 343.
+LaTeX Info: Redefining \bowtie on input line 344.
+LaTeX Info: Redefining \models on input line 345.
+LaTeX Info: Redefining \Longrightarrow on input line 346.
+LaTeX Info: Redefining \longrightarrow on input line 347.
+LaTeX Info: Redefining \Longleftarrow on input line 348.
+LaTeX Info: Redefining \longleftarrow on input line 349.
+LaTeX Info: Redefining \longmapsto on input line 350.
+LaTeX Info: Redefining \longleftrightarrow on input line 351.
+LaTeX Info: Redefining \Longleftrightarrow on input line 352.
+LaTeX Info: Redefining \cdots on input line 356.
+LaTeX Info: Redefining \vdots on input line 359.
+LaTeX Info: Redefining \ddots on input line 364.
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\mathstyle.sty"
+Package: mathstyle 2010/11/17 v0.89
+LaTeX Info: Redefining \displaystyle on input line 77.
+LaTeX Info: Redefining \textstyle on input line 79.
+LaTeX Info: Redefining \scriptstyle on input line 81.
+LaTeX Info: Redefining \scriptscriptstyle on input line 83.
+))
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks34
+)
+\@emptytoks=\toks35
+\inf@bad=\count165
+\maxint=\count166
+\listwidth=\dimen113
+\eqnumsep=\dimen114
+\eqmargin=\dimen115
+\eqlinespacing=\skip53
+\eqlineskip=\skip54
+\eqlineskiplimit=\dimen116
+\eqbinoffset=\muskip10
+\eqdelimoffset=\muskip11
+\eqindentstep=\dimen117
+\eqstyle=\toks36
+\eqbreakdepth=\count167
+\eqinterlinepenalty=\count168
+\intereqpenalty=\count169
+\intereqskip=\skip55
+\prerelpenalty=\count170
+\prebinoppenalty=\count171
+\Dmedmuskip=\muskip12
+\Dthickmuskip=\muskip13
+\eqleftskip=\skip56
+\eqrightskip=\skip57
+\eq@vspan=\skip58
+\eq@binoffset=\muskip14
+\EQ@box=\box30
+\EQ@copy=\box31
+\EQ@numbox=\box32
+\eq@wdNum=\dimen118
+\GRP@numbox=\box33
+\grp@wdNum=\dimen119
+\eq@lines=\count172
+\eq@curline=\count173
+\eq@badness=\count174
+\EQ@vims=\count175
+\eq@dp=\dimen120
+\eq@wdL=\dimen121
+\eq@wdT=\dimen122
+\eq@wdMin=\dimen123
+\grp@wdL=\dimen124
+\grp@wdR=\dimen125
+\grp@wdT=\dimen126
+\eq@wdRmax=\dimen127
+\eq@firstht=\dimen128
+\eq@wdCond=\dimen129
+\eq@indentstep=\dimen130
+\eq@linewidth=\dimen131
+\grp@linewidth=\dimen132
+\eq@hshift=\dimen133
+\eq@given@sidespace=\dimen134
+\mathindent=\dimen135
+\eq@final@linecount=\count176
+\eq@wdR=\dimen136
+\EQ@continue=\toks37
+\lr@level=\count177
+\GRP@queue=\toks38
+\c@parentequation=\count178
+\GRP@box=\box34
+\GRP@wholebox=\box35
+\darraycolsep=\skip59
+\cur@row=\count179
+\cur@col=\count180
+\conditionsep=\skip60
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen104
-\epsfframethickness=\dimen105
-\epsfrsize=\dimen106
-\epsftmp=\dimen107
-\epsftsize=\dimen108
-\epsfxsize=\dimen109
-\epsfysize=\dimen110
-\pspoints=\dimen111
+\epsfframemargin=\dimen137
+\epsfframethickness=\dimen138
+\epsfrsize=\dimen139
+\epsftmp=\dimen140
+\epsftsize=\dimen141
+\epsfxsize=\dimen142
+\epsfysize=\dimen143
+\pspoints=\dimen144
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux
-
-LaTeX Warning: Label `table-1' multiply defined.
-
-
-LaTeX Warning: Label `fig-1' multiply defined.
-
-) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux
-
-LaTeX Warning: Label `table-1' multiply defined.
-
-
-LaTeX Warning: Label `fig-1' multiply defined.
-
-) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux
-
-LaTeX Warning: Label `table-1' multiply defined.
-
-
-LaTeX Warning: Label `fig-1' multiply defined.
-
-) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter7.aux
-
-LaTeX Warning: Label `table-1' multiply defined.
-
-
-LaTeX Warning: Label `fig-1' multiply defined.
-
-))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 73.
+(Font)              <12> on input line 74.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 73.
+(Font)              <8> on input line 74.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 73.
+(Font)              <6> on input line 74.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 73--73
+Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 73--73
+Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 73--73
+Overfull \hbox (12.0pt too wide) in paragraph at lines 74--74
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--73
+Underfull \hbox (badness 10000) in paragraph at lines 74--74
 
  []
 
@@ -141,7 +419,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--73
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.tex) [3
 
 ]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc)
+\tf@toc=\write3
+
 Overfull \vbox (41.39453pt too high) has occurred while \output is active []
 
 
@@ -149,9 +429,7 @@ Overfull \vbox (41.39453pt too high) has occurred while \output is active []
 
 
 
-])
-\tf@toc=\write3
- [5] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.tex
+] [5] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.tex
 CHAPTER 1.
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
@@ -173,205 +451,163 @@ Missing character: There is no ù in font cmr12!
 
 
 
-] [2] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.tex
+] [2] [3] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.tex
 CHAPTER 2.
-[3
+[4
 
 
 
-] [4] [5]
+] [5] [6]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-
-
-LaTeX Warning: Citation `Whitted1980' on page 6 undefined on input line 56.
-
-
-LaTeX Warning: Reference `sec:RT' on page 6 undefined on input line 56.
-
-
-LaTeX Warning: Citation `Whitted1980' on page 6 undefined on input line 58.
-
-
-LaTeX Warning: Citation `Whitted1980' on page 6 undefined on input line 58.
-
-[6]
-
-LaTeX Warning: Reference `render4' on page 7 undefined on input line 64.
-
-! Undefined control sequence.
-l.64 ...iya1986} as $I =  g\epsilon +gMog\epsilono
-                                                   +gMogMog\epsilono + ‚Ä¶ $...
-
-? 
-! Undefined control sequence.
-l.64 ...g\epsilon +gMog\epsilono +gMogMog\epsilono
-                                                   + ‚Ä¶ $ with $Mo$ as a sc...
-
-? 
+ [7]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ¶ in font cmr12!
-! Undefined control sequence.
-l.64 ...he diffuse component. The term $g\epsilono
-                                                  $ has shadows with point r...
-
-? 
-
-LaTeX Warning: Citation `Goral' on page 7 undefined on input line 68.
-
-[7]
+ [8]
 Missing character: There is no œ in font cmr12!
 Missing character: There is no Å in font cmr12!
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.77 
-     
-? 
-
-Overfull \hbox (1612.26111pt too wide) in paragraph at lines 76--77
-\OT1/cmr/m/n/12 face $\OML/cmm/m/it/12 j$\OT1/cmr/m/n/12 , and $\OML/cmm/m/it/1
-2 H[]istheincidentradiantenergyarrivingatsurface$\OT1/cmr/m/n/12 j$\OML/cmm/m/i
-t/12 perunittimeperunitarea:Equation\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/cmr
-/m/n/12 8[]\OML/cmm/m/it/12 canbederivedusingourrenderingequation\OT1/cmr/m/n/1
-2 (\OML/cmm/m/it/12 equation\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
-1[])(\OML/cmm/m/it/12 Kajiya\OT1/cmr/m/n/12 1986)\OML/cmm/m/it/12 byintegrating
-overallsurfacesinthescenetocalculatethehemisphericalquantities; calculatingthec
-ontributionoftheemittanceandreflectancetermsbycheckingforocclusions; andusingth
-osecalculationstherenderingequationbecomes \OT1/cmr/m/n/12 :$ 
- []
-
-
-LaTeX Warning: Citation `Jensen1996' on page 8 undefined on input line 86.
-
-[8]
-
-LaTeX Warning: Citation `Jensen1996' on page 9 undefined on input line 88.
-
-! Undefined control sequence.
-l.97 ...cos(\theta_{i})d\omega_{i}) + \int_{\OMEGA
-                                                  }(f_{r,s}(L_{i,c}+L_{i,d})...
-
-? 
-
-Overfull \hbox (80.76631pt too wide) detected at line 98
-\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = [][](\OML/cmm/m/it/12 f[]L[] []\OT1/cmr/
-m/n/12 (\OML/cmm/m/it/12 []\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 d![]\OT1/cmr/m/n/
-12 ) + [][](\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L[] \OT1/cmr/
-m/n/12 + \OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 ) [](\OML/cmm/m/it/12 []\OT1/cmr/
-m/n/12 )\OML/cmm/m/it/12 d![]\OT1/cmr/m/n/12 ) + [][](\OML/cmm/m/it/12 f[]L[] [
-]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 []\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 d![]\OT
-1/cmr/m/n/12 ) + [][](\OML/cmm/m/it/12 f[]L[] []\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 []\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 d![]\OT1/cmr/m/n/12 )[]
- []
-
-) [9] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
+ [9] [10]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [11] [12] [13]
+Missing character: There is no Û in font cmr12!
+Missing character: There is no · in font cmr12!
+ [14] [15] [16] [17] [18] [19])
+[20] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 14.
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+[21
+
+
+
+]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [22] [23] [24]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [25] [26] [27]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 64.
+
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
- [10
-
-
-
-]
-(sail.eps
-)
-[11
-Non-PDF special ignored!]) [12]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
+) [28]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
-[13
+) [29
 
 
 
-]
-(sail.eps
-)
-[14
-Non-PDF special ignored!]) [15]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-[16
+) [30
 
 
 
-]
-(sail.eps
-)
-[17
-Non-PDF special ignored!]) [18]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[19
+) [31
 
 
 
-]
-(sail.eps
-)
-[20
-Non-PDF special ignored!]) [21]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter7.tex
-CHAPTER 7.
-[22
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [32
 
 
-
-]
-(sail.eps
-)
-[23
-Non-PDF special ignored!]) [24]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl) [25
-
-
-]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+] [33]
+[34]
+Missing character: There is no Û in font cmr12!
+Missing character: There is no · in font cmr12!
+Missing character: There is no í in font cmr12!
+ [35]) [36] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter7.aux))
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 523 strings out of 494049
- 8691 string characters out of 3146068
- 62275 words of memory out of 3000000
- 3808 multiletter control sequences out of 15000+200000
+ 5305 strings out of 494049
+ 86714 string characters out of 3146068
+ 127779 words of memory out of 3000000
+ 8500 multiletter control sequences out of 15000+200000
  7680 words of font info for 27 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 25i,10n,21p,2288b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<D:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (29 pages, 157790 bytes).
+ 37i,10n,33p,2288b,218s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on thesis.pdf (40 pages, 188303 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
+ 168 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
