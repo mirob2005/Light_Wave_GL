@@ -1,0 +1,41 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Cook}{Cook}{1986}]{Cook1986}
+Cook, R.~L. (1986, January).
+\newblock Stochastic sampling in computer graphics.
+\newblock {\em ACM Trans. Graph.\/}~{\em 5\/}(1), 51--72.
+
+\bibitem[\protect\citeauthoryear{Goral, Torrance, Greenberg, and
+  Battaile}{Goral et~al.}{1984}]{Goral1984}
+Goral, C.~M., K.~E. Torrance, D.~P. Greenberg, and B.~Battaile (1984).
+\newblock Modeling the interaction of light between diffuse surfaces.
+\newblock In {\em Proceedings of the 11th annual conference on Computer
+  graphics and interactive techniques}, SIGGRAPH '84, New York, NY, USA, pp.\
+  213--222. ACM.
+
+\bibitem[\protect\citeauthoryear{Immel, Cohen, and Greenberg}{Immel
+  et~al.}{1986}]{Immel1986}
+Immel, D.~S., M.~F. Cohen, and D.~P. Greenberg (1986, August).
+\newblock A radiosity method for non-diffuse environments.
+\newblock {\em SIGGRAPH Comput. Graph.\/}~{\em 20\/}(4), 133--142.
+
+\bibitem[\protect\citeauthoryear{Kajiya}{Kajiya}{1986}]{Kajiya1986}
+Kajiya, J.~T. (1986).
+\newblock The rendering equation.
+\newblock In {\em Proceedings of the 13th annual conference on Computer
+  graphics and interactive techniques}, SIGGRAPH '86, New York, NY, USA, pp.\
+  143--150. ACM.
+
+\bibitem[\protect\citeauthoryear{Serway and Jewett}{Serway and
+  Jewett}{2004}]{Serway2004}
+Serway, R.~A. and J.~W. Jewett (2004).
+\newblock {\em Physics for Scientists and Engineers}, Volume~2.
+\newblock Brooks Cole.
+
+\bibitem[\protect\citeauthoryear{Ward, Rubinstein, and Clear}{Ward
+  et~al.}{1988}]{Ward1988}
+Ward, G.~J., F.~M. Rubinstein, and R.~D. Clear (1988, June).
+\newblock A ray tracing solution for diffuse interreflection.
+\newblock {\em SIGGRAPH Comput. Graph.\/}~{\em 22\/}(4), 85--92.
+
+\end{thebibliography}

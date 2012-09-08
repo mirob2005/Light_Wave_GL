@@ -1,0 +1,116 @@
+\chapter{PREVIOUS WORK}
+
+\section{REAL-TIME VERSUS OFFLINE RENDERING TECHNIQUES}
+
+Rendering techniques can be broken down into two distinct categories: real-time and offline.  Offline rendering techniques require anywhere from seconds to many hours to render a single image.  Current offline rendering techniques are able to render a ultra-realistic image that take into account many light sources as well as many types of light principles such as reflections, refraction, sub-surface light scatter, and more in very complicated scenes consisting of millions of triangles and at fairly high resolutions.  Real-time rendering techniques render images at a fast enough rate to support multiple frames a second and vary greatly.  These algorithms can be broken down into dynamic and static.  Dynamic scenes allow a user to interact with the scene and actively change the scene such as moving the geometry, the camera, or the light source whereas static scene do not.  As opposed to offline algorithms, real-time algorithms often have to make sacrifices when rendering the scene and therefore can't be as scientifically accurate as offline algorithms.  Regardless of whether the algorithm is offline or real-time, the algorithm can trace it's roots back to a single equation, \textit{The Rendering Equation}.
+
+\section{THE RENDERING EQUATION}
+
+When discussing light transport in computer graphics, the most significant paper is \textit{The Rendering Equation} \cite{Kajiya1986}.  In it Kajiya presents an equation that generalizes most rendering algorithms.  Such a statement can be confirmed by the fact that all rendering equations try to recreate the scattering of light off of different types of surfaces and materials.  The rendering equation is an integral that is adapted from the study of radiative heat transfer for use in computer graphics with an aim at balancing the energy flow between surfaces.  The equation, however, is still an approximation because it does not take into account diffraction and it assumes that the space between objects, such as air, is of homogeneous refractive index meaning that light won't refract due to particles in the air.
+
+\begin{equation}
+I(x,x') = g(x,x')[\epsilon(x,x')+\int_{S} \rho(x,x',x'')I(x',x'')dx''] \label{eqn:render}
+\end{equation}
+
+The rendering equation is broken down into 4 parts.  First, $I(x,x')$ is the intensity of light or energy of radiation passing from point $x'$ to point $x$ measured in energy of radiation per unit time per unit area.  Second, the geometry term, $g(x,x')$, indicates the occlusion of objects by other objects.  This term is either $0$, if $x$ and $x'$ are not visible from one another, or $1/r^2$ where $r$ is the distance between $x$ and $x'$ if $x$ and $x'$ are visible from one another.  Third, the emittance term, $\epsilon(x,x')$, measures the energy emitted from point $x'$ that reaches point $x$.  Lastly, the scattering term, $\rho(x,x',x'')$, is the intensity of energy scattered by a surface point $x'$ that originated from point $x''$ and then ends at point $x$.  As mentioned in the previous section, illumination can be calculated using the Neumann series.  A Neumann series is a mathematical series of the form:
+
+\begin{equation}
+\sum_{k=0}^{\infty}T^k \label{eqn:neumann}
+\end{equation}
+
+where $T$ is an operator and therefore $T^k$ is a notation for $k$ consecutive operations of operator $T$. 
+
+Furthermore, the rendering equation can also be approximated using the Neumann series.  This is done by rewriting the rendering equation above (\ref{eqn:render}) as:
+
+\begin{equation}
+I = g\epsilon +gMI \label{eqn:render2}
+\end{equation}
+
+where $M$ is the linear operator given by the integral in the rendering equation.  Next, we rewrite equation \ref{eqn:render2} as:
+
+\begin{equation}
+(1-gM)I = g\epsilon \label{eqn:render3}
+\end{equation}
+
+so that we can invert it to get:
+
+\begin{equation}
+I = g\epsilon + gMg\epsilon + gMgMg\epsilon +g(Mg)^3\epsilon + ... \label{eqn:render4}
+\end{equation}
+
+Equation \ref{eqn:render4} is a Neumann series of the form:
+
+\begin{equation}
+I = g\epsilon\sum_{k=0}^{\infty}(Mg)^k \label{eqn:render5}
+\end{equation}
+
+Equation \ref{eqn:render5} indicates that the rendering equation (equation \ref{eqn:render}) is the final intensity of radiation transfer as a sum of a direct term, a once scattered term, a twice scattered term, and so on.  Therefore, as mentioned in the previous section, indirect illumination can be calculated by summing light incident on a surface due to the reflection of light $n$-times all the way up to infinity.  The more scattered terms we include in the calculation, the better the approximation but worse performance.  Therefore, in real-time applications, this needs to be avoided.  
+
+Next, we show how the rendering equation can be seen has a generalization of most rendering algorithms, but first we must cover some other rendering equations.  A good place to start is with offline rendering techniques.
+
+\section{OFFLINE RENDERING TECHNIQUES}
+Key examples of offline rendering techniques are ray tracing, radiosity, and photon maps.  We begin with ray tracing.
+
+\subsection{RAY TRACING}
+
+Ray tracing is a technique for rendering an image of a three-dimensional scene by casting rays from a camera positioned somewhere in the scene.  These rays are shot into the scene and register the first surface it hits.  From this surface point, additional rays goes to each of the light sources to determine occlusion from the light sources as well as to other surfaces to calculate reflections.  These rays can also be used to calculate other lighting phenomena such as refractions.  The rays from the camera can be cast into the scene using different sampling patterns and techniques such as 1 per pixel or many per pixel.  Also, the rays can be cast through the center of each pixel or through the use of stochastic sampling can be cast through non-uniformly spaced location in each pixel to avoid aliasing artifacts or “jaggies.” Ray tracing is able to recreate ultra-realistic scenes but at a high cost.  Examples of ray tracing techniques include \cite{Whitted1980}, \cite{Cook1986}, and \cite{Ward1988}.  With adaptations to ray tracing techniques and advances in technology, there now exist some interactive ray-tracing techniques mentioned in section \ref{sec:RT}.
+
+Ray tracing can also be related to the rendering equation.  \cite{Whitted1980} describes a new approximation for ray tracing by rewriting the Phong illumination model in order to improve the quality of specular reflections.  The Phong illumination model is a way of calculating lighting on a surface through the combination of three components ambient, diffuse, and specular.  Diffuse is the reflection of light from rough surfaces, specular is the reflection of light on shiny surfaces, and the ambient component accounts for the amount of light that is scattered throughout the scene.  The ambient term is most similar to indirect lighting, but is a user-specified amount to avoid any actual calculations.  The improved model from \cite{Whitted1980} is written:
+
+\begin{equation}
+I = I_{a} + k_{d}\sum_{j=1}^{j=ls}(\bar{N}\cdot\bar{L}_{j})+k_{s}S + k_{t}T \label{eqn:raytrace1}
+\end{equation}
+
+where $S$ is the intensity of light incident from the specular reflection direction, $k_{t}$ is the transmission coefficient, and $T$ is the intensity of light from the transmitted light direction. $k_{s}$ and $k_{t}$ are coefficients that are to be used to try to accurately model the Fresnel reflection law.  Equation \ref{eqn:raytrace1} is in the form of equation \ref{eqn:render4} from \cite{Kajiya1986} as $I =  g\epsilon +gMog\epsilono +gMogMog\epsilono + … $ with $Mo$ as a scattering model which is the sum of reflection and refraction as well as a cosine term that is the diffuse component. The term $g\epsilono$ has shadows with point radiators and the ambient term can be interpreted as the $\epsilon$ term.  Lastly, $M$ is approximated by summing over all the light sources rather than using integration.
+
+\subsection{RADIOSITY}
+
+Radiosity is a type of rendering algorithm that was adapted for use in computer graphics from thermal engineering techniques.  The method is based on the fundamental Law of Conservation of Energy within a closed area.  It provides a global solution for the intensity of light incident on each surface by solving a system of linear equations that describes the transfer of energy between each surface in the scene.  Examples of radiosity are seen in \cite{Immel1986} and \cite{Goral}.
+
+Radiosity is a natural extension from the rendering equation (equation \ref{eqn:render}) since its focus is on the balancing the energy flow.  The only difference is that radiosity makes assumptions about the reflectance characteristics of the surface material.  Radiosity is found by taking the hemispherical integral of the energy leaving the surface called flux which can be found using the following from \cite{Goral1984}:
+
+\begin{equation}
+B_{j} = E_{j} + \rho_{j}H_{j} \label{eqn:radiosity1}
+\end{equation}
+
+where $B_{j}$ is the rate of energy leaving the surface $j$ measured in energy per unit time per unit area, $E_{j}$ is the rate of direct energy emission,  $ρ_{j}$ is the reflectivity of surface $j$, and $H_{j} is the incident radiant energy arriving at surface $j$ per unit time per unit area. Equation \ref{eqn:radiosity1} can be derived using our rendering equation (equation \ref{eqn:render}) \cite{Kajiya1986} by integrating over all surfaces in the scene to calculate the hemispherical quantities, calculating the contribution of the emittance and reflectance terms by checking for occlusions, and using those calculations the rendering equation becomes:
+
+\begin{equation}
+dB(x') = \pi[\epsilon_{0} + \rho_{0}H(x')]dx' \label{eqn:radiosity2}
+\end{equation}
+
+where $\epsilon_{0}$ is the hemispherical emittance of the surface element $dx'$, $\rho_{0}$ comes from the reflectance term, and $H$ is the hemispherical incident energy per unit time per unit area.  This adaptation of the rendering equation (equation \ref{eqn:radiosity2}) is the same as the radiosity equation shown above (equation \ref{eqn:radiosity1}).
+
+\subsection{PHOTON MAPS}
+
+Photon maps originally introduced in \cite{Jensen1996} is a two pass global illumination method.  As mentioned in the Background section, Einstein coined the term photons as the particles present in the energy of light waves.  In the method of photon mapping, the term photon is used in a similar context.  The first pass of the method consists of making two photon maps by emitting packets of energy called photons from the light sources and storing where they hit surfaces in the scene.  The second pass of the method calls for the use of a distribution ray tracer that is optimized using the data gathered in the photon maps.  Photon maps are able to render complex lighting principles such as caustics.
+
+Photon maps are an extension to the rendering equation (equation \ref{eqn:render}) as well.  During the second pass of the method, the scene is rendered by calculating the radiance by tracing a ray from the eye through the pixel and into the scene using ray tracing, and the radiance is computed at the first surface that the ray hits.  The surface radiance leaving the point of intersection $x$ in some direction is computed using the equation from \cite{Jensen1996}:
+
+\begin{equation}
+L_{s}(x,\psi_{r} = L_{e}(x,\psi_{r} + \int_{\Omega}(f_{r}(x,\psi_{i};\psi_{r})L_{i}(x,\psi_{i})\cos(\theta_{i})d\omega_{i}) \label{eqn:photon1}
+\end{equation}
+
+where $L_{e}$ is the radiance emitted by the surface, $L_{i}$ is the incoming radiance in the direction $\psi_{i}$, and $f_{r}$ is the BRDF or bidirectional reflectance distribution function, which is a four-dimensional function that describes how light is reflected at a surface point.  Lastly, $\Omega$ is the sphere of incoming directions.  This can be broken down into a sum of four components:
+
+\begin{equation}
+L_{r} = \int_{\Omega} (f_{r}L_{i,l}\cos(\theta_{i})d\omega_{i}) + \int_{\OMEGA}(f_{r,s}(L_{i,c}+L_{i,d})\cos(\theta_{i})d\omega_{i}) + \int_{\Omega} (f_{r,d}L_{i,c}\cos(\theta_{i})d\omega_{i}) + \int_{\Omega}(f_{r,d}L_{i,d}\cos(\theta_{i})d\omega_{i}) \label{eqn:photon2}
+\end{equation}
+
+where the first term of equation \ref{eqn:photon2} is the contribution by direct illumination, the second term is the contribution by specular reflection, the third term is the contribution by caustics, and the fourth term is the contribution by soft indirect illumination.  Both equations \ref{eqn:photon1} and \ref{eqn:photon2} are direct adaptations from the rendering equation in \cite{Kajiya1986} (equation \ref{eqn:render}).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
