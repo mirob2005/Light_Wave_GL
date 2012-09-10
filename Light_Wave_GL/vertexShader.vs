@@ -1,15 +1,14 @@
-varying vec3 normal;
-varying vec3 vertex_to_light_vector;
-varying vec3 light_to_vertex_vector;
-varying vec3 lightDir;
-
-varying vec4 vertex_in_modelview_space;
+uniform sampler1D vplPosTex;
+uniform sampler1D vplNorTex;
 
 varying vec4 ShadowCoord;
+varying vec4 color;
 
-varying vec4 debugOutput;
+//varying vec4 debugOutput;
 
 void main( ){
+    color = vec4(0.0,0.0,0.0,1.0);
+
 	gl_FrontColor = gl_Color;
 	gl_BackColor = gl_Color;
 	
@@ -18,13 +17,13 @@ void main( ){
 
 	// Transforming The Normal To ModelView-Space
 	//Rotate camera cause the normals to change
-	normal = gl_NormalMatrix * gl_Normal;
+	vec3 normal = gl_NormalMatrix * gl_Normal;
 	
 	// Transforming The Vertex Position To ModelView-Space
 	vec4 vertex_in_modelview_space = gl_ModelViewMatrix * gl_Vertex;
 	
 /////////////////////////////////////////////////////////////////////////////////////////	
-	//NEW CODE
+	//Access Primary Light Position, Normal from Texture 5
 	
 	//Use this to extract rows from the matrix (or column as it appears in .cpp):
 	//(1.0,0.0,0.0,0.0) = first row
@@ -36,12 +35,61 @@ void main( ){
 	vec4 extractRow3 = vec4(0.0,0.0,1.0,0.0);
 	vec4 extractRow4 = vec4(0.0,0.0,0.0,1.0);
 	
-	//Texture 5 is light Matrix
-	//Texture 6 is color tests
 	vec4 masterLightPosition = extractRow1*gl_TextureMatrix[5];
 	vec4 masterLightNormal = extractRow2*gl_TextureMatrix[5];
 	vec4 lightProperties = extractRow3*gl_TextureMatrix[5];
 	
+/////////////////////////////////////////////////////////////////
+		
+	//Light Direction/Normal
+	vec3 lightDir = normalize(vec3(masterLightNormal));
+	
+	// Calculating The Vector From The Vertex Position To The Light Position and vice versa
+	vec3 vertex_to_light_vector = vec3(masterLightPosition - vertex_in_modelview_space);
+	vec3 light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);	
+	
+    // Normalizing Vectors
+	vec3 normalized_normal = normalize(normal);	
+	vec3 normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
+	vec3 normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
+	
+/////////////////////////////////////////////////////////////////	
+
+
+
+
+	float maxDistance = 4.0;
+    //Access the vpl___Tex using this:
+    //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
+    vec3 vplPosition = texture1D(vplPosTex,0).xyz;
+    vec3 vplNormal = texture1D(vplNorTex,1).xyz;
+    
+    vplPosition = (vplPosition-0.5)*(maxDistance*2);
+    vplNormal= (vplNormal-0.5)*(maxDistance*2);
+    
+    vec3 normalized_vplNormal = normalize(vplNormal);
+   
+  	vertex_to_light_vector = vec3(vplPosition - vertex_in_modelview_space);
+	light_to_vertex_vector = vec3(vertex_in_modelview_space - vplPosition);
+  	
+  	
+  	// Reflection term of object
+	float DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	
+	//Reflection term of directional light
+	float DiffuseTermLight = clamp(dot(normalized_vplNormal, normalized_light_to_vertex_vector),0.0,1.0);
+
+	// Calculating The Final Color
+	color += gl_Color*DiffuseTermLight*DiffuseTermObj;		
+	
+
+
+	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
+}
+
+/*
+   //debugOutput = vec4(lightDir,1);
+
 	double lightsAngle = lightProperties.x;
 	double lightsPerRay = lightProperties.y;
 	int numLights = lightProperties.z;
@@ -49,7 +97,7 @@ void main( ){
 	//11228 = 1604*7 = (lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1))*7
 	//double[11228] light_Array;
 
-	/*
+	
 	//Begin Virtual Light Creation:
 	// First Ray (<0,-1,0> ray
 	for(int i = 0; i <lightsPerRay; i++) {
@@ -66,24 +114,4 @@ void main( ){
 		// Cam Attenuation - only attenuating all colors of light evenly 90%,70%,50%,30%,10%
 		//light_Array[i*7+6] = .9;
 	}
-	*/
-/////////////////////////////////////////////////////////////////
-	
-		
-	//Light Direction/Normal
-	lightDir = normalize(vec3(masterLightNormal));
-	
-	// Calculating The Vector From The Vertex Position To The Light Position and vice versa
-	vertex_to_light_vector = vec3(masterLightPosition - vertex_in_modelview_space);
-	light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);	
-	
-	
-	
-	
-	
-	
-	
-	//debugOutput = vec4(lightDir,1);
-	
-	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
-}
+*/

@@ -146,39 +146,6 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 void init( void ){
 
 	/*
-		VPL Texture Generation
-	*/
-	//Position
-	GLfloat vplDataPos[6] = {1,0,0,0,0,1};
-
-	//Try to create light map
-	glGenTextures(1, &vpl_pos_TexID);
-	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
-
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 2, 0, GL_RGB, GL_FLOAT, vplDataPos);
-	glBindTexture(GL_TEXTURE_1D, 0);
-
-	//Normals
-	GLfloat vplDataNor[6] = {0,1,0,1,0,};
-
-	//Try to create light map
-	glGenTextures(1, &vpl_nor_TexID);
-	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
-
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 2, 0, GL_RGB, GL_FLOAT, vplDataNor);
-	glBindTexture(GL_TEXTURE_1D, 0);
-
-	/*
 		Shadow Map Generation
 	*/
 
@@ -514,7 +481,56 @@ void displayFPS()
 
 void display(void){
 
-	//Begin Shadow Map Creation
+	/*
+		VPL Texture Generation
+	*/
+
+	//Position
+	//Max Size allocated should be 3 times # in glTexImage1D
+	GLfloat vplDataPos[3] = {lightPosition[0],lightPosition[1],lightPosition[2]};
+
+	float maxDistance = 4.0;
+	for(int i=0; i<3; i++)
+	{
+		vplDataPos[i] = (vplDataPos[i]/(maxDistance*2))+0.5;
+	}
+
+
+	//Create VPL Position Texture
+	glGenTextures(1, &vpl_pos_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataPos);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	//Normals
+	GLfloat vplDataNor[3] = {lightLookAt[0] - lightPosition[0],lightLookAt[1] - lightPosition[1],lightLookAt[2] - lightPosition[2]};
+
+	for(int i=0; i<3; i++)
+	{
+		vplDataNor[i] = (vplDataNor[i]/(maxDistance*2))+0.5;
+	}
+
+	//Create VPL Normal Texture
+	glGenTextures(1, &vpl_nor_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataNor);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	/*
+		Begin Shadow Map Creation
+	*/
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.0f,0.0f,0.0f,1.0f);
 
