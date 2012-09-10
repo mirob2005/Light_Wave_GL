@@ -179,7 +179,7 @@ void generateVPLs( void )
 	**************************************************************************************/
 
 	vplDataPos = new GLfloat[3*numLights];
-	vplDataNor = new GLfloat[3*numLights];
+	vplDataNor = new GLfloat[4*numLights];
 
 	// First Ray (<0,-1,0> ray
 	for(int i = 0; i <lightsPerRay; i++) {
@@ -189,12 +189,12 @@ void generateVPLs( void )
 		vplDataPos[i*3+2] = lightPosition[2] + (lightNormalVector[2])*maxDistance * ((i+0.001)/lightsPerRay);
 		
 		// VPL Normal
-		vplDataNor[i*3+0] = lightNormalVector[0];
-		vplDataNor[i*3+1] = lightNormalVector[1];
-		vplDataNor[i*3+2] = lightNormalVector[2];
+		vplDataNor[i*4+0] = lightNormalVector[0];
+		vplDataNor[i*4+1] = lightNormalVector[1];
+		vplDataNor[i*4+2] = lightNormalVector[2];
 		
 		// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
-		//Change vplDataNor to be RGBA?
+		vplDataNor[i*4+3] = 0.05*(2^i);
 	}
 	
 	int i = lightsPerRay;
@@ -213,12 +213,12 @@ void generateVPLs( void )
 				
 				// VPL Normal
 				vecNormalize(normal);
-				vplDataNor[i*3+0] = normal[0];
-				vplDataNor[i*3+1] = normal[1];
-				vplDataNor[i*3+2] = normal[2];
+				vplDataNor[i*4+0] = normal[0];
+				vplDataNor[i*4+1] = normal[1];
+				vplDataNor[i*4+2] = normal[2];
 				
 				// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
-				//Change vplDataNor to be RGBA?
+				vplDataNor[i*4+3] = 0.05*(2^counter);
 				i++;
 			}
 			interpolate++;
@@ -231,7 +231,7 @@ void generateVPLs( void )
 		vplDataPos[i] = (vplDataPos[i]/maxDistance)+0.5;
 	}
 
-	for(int i=0; i<3*numLights; i++)
+	for(int i=0; i<4*numLights; i++)
 	{
 		vplDataNor[i] = (vplDataNor[i]/maxDistance)+0.5;
 	}
@@ -262,7 +262,7 @@ void generateVPLs( void )
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
 
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, numLights, 0, GL_RGB, GL_FLOAT, vplDataNor);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA16, numLights, 0, GL_RGBA, GL_FLOAT, vplDataNor);
 	glBindTexture(GL_TEXTURE_1D, 0);
 
 	updateVPLs = false;

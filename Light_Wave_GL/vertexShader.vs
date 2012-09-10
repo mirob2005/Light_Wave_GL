@@ -75,6 +75,7 @@ void main( ){
 	   //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
 	   vec3 vplPosition = texture1D(vplPosTex,i).xyz;
 	   vec3 vplNormal = texture1D(vplNorTex,i).xyz;
+	   float vplAttenuation = texture1D(vplNorTex,i).w;
        
 	   vplPosition = (vplPosition-0.5)*maxDistance;
 	   vplNormal= (vplNormal-0.5)*maxDistance;
@@ -102,7 +103,7 @@ void main( ){
 	   DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
 
 	   // Calculating The VPL Contribution
-	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj*(1-vplAttenuation);
    }	
 
 
