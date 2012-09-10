@@ -51,11 +51,6 @@ GLSLProgram *gProgram;
 //Chose which object to move... camera, objects in scene
 GLuint option = 0;
 
-//Constants used in shaders
-const int lightsAngle = 9;
-const int lightsPerRay = 4;
-const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
-
 /***************VARIABLE***************/
 //Object 1
 GLfloat object1Position[3] = {-2.5,-2.5,-2.5};
@@ -81,6 +76,11 @@ GLfloat lightLookAt[3] = {0.0, 0.0, 0.0};
 //Light UpVector
 GLfloat lightUpVector[3] = {0.0, 0.0, 1.0};
 
+//Light Normal/Direction
+GLfloat lightNormalVector[3] = {lightLookAt[0] - lightPosition[0], 
+								lightLookAt[1] - lightPosition[1], 
+								lightLookAt[2] - lightPosition[2]};
+
 //Camera Rotate for now, until a better method is used
 double worldRotate = 0.0;
 /**************************************/
@@ -96,18 +96,31 @@ const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
 const double  defworldRotate = 0.0;
 /**************************************/
 
-//Variables for using a Frame Buffer Object (FBO) (for shadow mapping)
+/*
+	FOR SHADOW MAPPING
+*/
 GLuint FBOid;
 GLuint shadowMapID;
 GLuint shadow_shaderID;
 
+/*
+	FOR VPL's
+*/
+
 // For VPL Position Texture
 GLuint vpl_pos_TexID;
 GLuint vpl_pos_shaderID;
+GLfloat *vplDataPos;
 
 // For VPL Normal Texture
 GLuint vpl_nor_TexID;
 GLuint vpl_nor_shaderID;
+GLfloat *vplDataNor;
+
+//Constants used in shaders
+const int lightsAngle = 5;
+const int lightsPerRay = 5;
+const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 
 //Set to true when the light source is moved:
 bool updateVPLs = true;
@@ -142,22 +155,91 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 }
 
+
+
 void generateVPLs( void )
 {
+	float maxDistance = 8.0;
+
+	lightNormalVector[0] = lightLookAt[0] - lightPosition[0];
+	lightNormalVector[1] = lightLookAt[1] - lightPosition[1];
+	lightNormalVector[2] = lightLookAt[2] - lightPosition[2];
+
+	vecNormalize(lightNormalVector);
+
+	/*
+		VPL DATA GENERATION
+	*/
+
+	/**************************************************************************************
+	* Creating VPL's with center(3: x,y,z), normal(3: x,y,z), //attenuation(1) (not yet)
+	* 6485 Lights, 1297rays *5per ray
+	* 72 horizontal (360 degrees/5) * 18 vertical (90/5) + 1 (<0,-1,0> ray) = 1297 Directional Lights
+	* NOTE: DOES NOT INCLUDE PRIMARY DIRECTIONAL LIGHT (INDIRECT ONES ONLY)
+	**************************************************************************************/
+
+	vplDataPos = new GLfloat[3*numLights];
+	vplDataNor = new GLfloat[3*numLights];
+
+	// First Ray (<0,-1,0> ray
+	for(int i = 0; i <lightsPerRay; i++) {
+		// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
+		vplDataPos[i*3+0] = lightPosition[0] + (lightNormalVector[0])*maxDistance * ((i+0.001)/lightsPerRay);
+		vplDataPos[i*3+1] = lightPosition[1] + (lightNormalVector[1])*maxDistance * ((i+0.001)/lightsPerRay);
+		vplDataPos[i*3+2] = lightPosition[2] + (lightNormalVector[2])*maxDistance * ((i+0.001)/lightsPerRay);
+		
+		// VPL Normal
+		vplDataNor[i*3+0] = lightNormalVector[0];
+		vplDataNor[i*3+1] = lightNormalVector[1];
+		vplDataNor[i*3+2] = lightNormalVector[2];
+		
+		// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
+		//Change vplDataNor to be RGBA?
+	}
+	
+	int i = lightsPerRay;
+	int interpolate = 1;
+
+	for(int angleXZ = 0; angleXZ <360; angleXZ = angleXZ +lightsAngle) {
+		for(int angleXY = 275; angleXY <=360; angleXY = angleXY +lightsAngle){
+			for(int counter = 0; counter <lightsPerRay; counter++) {
+				//Direction of the computed ray
+				float normal[3] = {cos(angleXZ*3.1416/180)*cos(angleXY*3.1416/180),sin(angleXY*3.1416/180),-sin(angleXZ*3.1416/180)};
+				
+				// VPL Position   = primary light pos+ normal    * maxDistance * 1/lightsPerRay   
+				vplDataPos[i*3+0] = lightPosition[0] + normal[0] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
+				vplDataPos[i*3+1] = lightPosition[1] + normal[1] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
+				vplDataPos[i*3+2] = lightPosition[2] + normal[2] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
+				
+				// VPL Normal
+				vecNormalize(normal);
+				vplDataNor[i*3+0] = normal[0];
+				vplDataNor[i*3+1] = normal[1];
+				vplDataNor[i*3+2] = normal[2];
+				
+				// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
+				//Change vplDataNor to be RGBA?
+				i++;
+			}
+			interpolate++;
+		}
+		interpolate = 1;
+	}
+
+	for(int i=0; i<3*numLights; i++)
+	{
+		vplDataPos[i] = (vplDataPos[i]/maxDistance)+0.5;
+	}
+
+	for(int i=0; i<3*numLights; i++)
+	{
+		vplDataNor[i] = (vplDataNor[i]/maxDistance)+0.5;
+	}
+
+
 	/*
 		VPL Texture Generation
 	*/
-
-	//Position
-	//Max Size allocated should be 3 times # in glTexImage1D
-	GLfloat vplDataPos[3] = {lightPosition[0],lightPosition[1],lightPosition[2]};
-
-	float maxDistance = 4.0;
-	for(int i=0; i<3; i++)
-	{
-		vplDataPos[i] = (vplDataPos[i]/(maxDistance*2))+0.5;
-	}
-
 
 	//Create VPL Position Texture
 	glGenTextures(1, &vpl_pos_TexID);
@@ -168,16 +250,8 @@ void generateVPLs( void )
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
 
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataPos);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, numLights, 0, GL_RGB, GL_FLOAT, vplDataPos);
 	glBindTexture(GL_TEXTURE_1D, 0);
-
-	//Normals
-	GLfloat vplDataNor[3] = {lightLookAt[0] - lightPosition[0],lightLookAt[1] - lightPosition[1],lightLookAt[2] - lightPosition[2]};
-
-	for(int i=0; i<3; i++)
-	{
-		vplDataNor[i] = (vplDataNor[i]/(maxDistance*2))+0.5;
-	}
 
 	//Create VPL Normal Texture
 	glGenTextures(1, &vpl_nor_TexID);
@@ -188,7 +262,7 @@ void generateVPLs( void )
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
 
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataNor);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, numLights, 0, GL_RGB, GL_FLOAT, vplDataNor);
 	glBindTexture(GL_TEXTURE_1D, 0);
 
 	updateVPLs = false;
@@ -621,9 +695,9 @@ void display(void){
 
 	//Light Position, Light Normal, light_wave properties (may need to be const in shader, remove?)
 	//can Add lihgt color or attenuation to last column
-	const GLdouble light_Matrix[16] = {	lightPosition[0], lightLookAt[0] - lightPosition[0], lightsAngle, 0.0, 
-										lightPosition[1], lightLookAt[1] - lightPosition[1], lightsPerRay, 0.0,
-										lightPosition[2], lightLookAt[2] - lightPosition[2], numLights, 0.0,
+	const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, 0.0, 
+										lightPosition[1], lightNormalVector[1], lightsPerRay, 0.0,
+										lightPosition[2], lightNormalVector[2], numLights, 0.0,
 										lightPosition[3], 0.0, 0.0, 0.0};
 
 	//Use texture5 matrix

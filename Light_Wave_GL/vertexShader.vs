@@ -66,19 +66,19 @@ void main( ){
 
 
 
-
-	//float maxDistance = 4.0;
+    int numLights = lightProperties.z;
+	float maxDistance = 8.0;
     //Access the vpl___Tex using this:
     //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
-    //vec3 vplPosition = texture1D(vplPosTex,0).xyz;
-    //vec3 vplNormal = texture1D(vplNorTex,0).xyz;
+    vec3 vplPosition = texture1D(vplPosTex,0).xyz;
+    vec3 vplNormal = texture1D(vplNorTex,1111).xyz;
     
-    //vplPosition = (vplPosition-0.5)*(maxDistance*2);
-    //vplNormal= (vplNormal-0.5)*(maxDistance*2);
+    vplPosition = (vplPosition-0.5)*maxDistance;
+    vplNormal= (vplNormal-0.5)*maxDistance;
     
-    //vec3 normalized_vplNormal = normalize(vplNormal);
+    vec3 normalized_vplNormal = normalize(vplNormal);
    
-		
+	color = vec4(abs(normalized_vplNormal),1);	
 	
 
 
