@@ -44,7 +44,7 @@ double fps = 0;
 	Scene #0 = Cornell Box 
 	Scene #1 = Chess Scene 
 */
-int gScene = 1;
+int gScene = 0;
 
 GLSLProgram *gProgram;
 bool gShaderEnabled;
@@ -100,11 +100,15 @@ const double  defworldRotate = 0.0;
 //Variables for using a Frame Buffer Object (FBO) (for shadow mapping)
 GLuint FBOid;
 GLuint shadowMapID;
-GLuint shaderID;
+GLuint shadow_shaderID;
 
-//GLuint lightBufferID;
-//GLuint lightID;
+// For VPL Position Texture
+GLuint vpl_pos_TexID;
+GLuint vpl_pos_shaderID;
 
+// For VPL Normal Texture
+GLuint vpl_nor_TexID;
+GLuint vpl_nor_shaderID;
 
 void shaderInit( const char *vsFile, const char *fsFile ){
 
@@ -130,8 +134,9 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
   gProgram->isHardwareAccelerated( );
 
-  shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
-  //lightID = glGetUniformLocationARB(gProgram->_object, "LightMap");
+  shadow_shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
+  vpl_pos_shaderID = glGetUniformLocationARB(gProgram->_object, "vplPosTex");
+  vpl_nor_shaderID = glGetUniformLocationARB(gProgram->_object, "vplNorTex");
 
 }
 
@@ -140,19 +145,42 @@ void shaderInit( const char *vsFile, const char *fsFile ){
  */
 void init( void ){
 
-	//GLubyte lightData[10] = {1,2,3,4,5,6,7,8,9,0};
+	/*
+		VPL Texture Generation
+	*/
+	//Position
+	GLfloat vplDataPos[6] = {1,0,0,0,0,1};
 
-	////Try to create light map
-	//glGenTextures(1, &lightBufferID);
-	//glBindTexture(GL_TEXTURE_1D, lightBufferID);
+	//Try to create light map
+	glGenTextures(1, &vpl_pos_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
 
-	//glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	//glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	//glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
 
-	//glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, 10, 0, GL_RGB, GL_UNSIGNED_BYTE, lightData);
-	//glBindTexture(GL_TEXTURE_1D, 0);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 2, 0, GL_RGB, GL_FLOAT, vplDataPos);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	//Normals
+	GLfloat vplDataNor[6] = {0,1,0,1,0,};
+
+	//Try to create light map
+	glGenTextures(1, &vpl_nor_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 2, 0, GL_RGB, GL_FLOAT, vplDataNor);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	/*
+		Shadow Map Generation
+	*/
 
 	//Try to create shadow map
 	glGenTextures(1, &shadowMapID);
@@ -528,7 +556,7 @@ void display(void){
 	static GLdouble modelViewMatrix[16];
 	static GLdouble projectionMatrix[16];
 
-	//Mmatrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
+	//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
 	const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
 										0.0, 0.5, 0.0, 0.0,
 										0.0, 0.0, 0.5, 0.0,
@@ -542,20 +570,20 @@ void display(void){
 
 	//NEX CODE HERE
 
-	//Matrix is Blue, Green, Red, Purple... matrix is row order
-	const GLdouble color_Matrix[16] = {	1.0, 0.0, 0.0, 0.5, 
-										0.0, 1.0, 0.0, 0.0,
-										0.0, 0.0, 1.0, 0.5,
-										0.0, 0.0, 0.0, 0.0};
-	
-	
-	//Use texture6 matrix
-	glMatrixMode(GL_TEXTURE);
-	glActiveTextureARB(GL_TEXTURE6);
-	
-	//Multiply all 3 matrices into texture6
-	glLoadIdentity();	
-	glLoadMatrixd(color_Matrix);
+	////Matrix is Blue, Green, Red, Purple... matrix is row order
+	//const GLdouble color_Matrix[16] = {	1.0, 0.0, 0.0, 0.5, 
+	//									0.0, 1.0, 0.0, 0.0,
+	//									0.0, 0.0, 1.0, 0.5,
+	//									0.0, 0.0, 0.0, 0.0};
+	//
+	//
+	////Use texture6 matrix
+	//glMatrixMode(GL_TEXTURE);
+	//glActiveTextureARB(GL_TEXTURE6);
+	//
+	////Multiply matrix into texture6
+	//glLoadIdentity();	
+	//glLoadMatrixd(color_Matrix);
 
 	//Light Position, Light Normal, light_wave properties (may need to be const in shader, remove?)
 	//can Add lihgt color or attenuation to last column
@@ -568,7 +596,7 @@ void display(void){
 	glMatrixMode(GL_TEXTURE);
 	glActiveTextureARB(GL_TEXTURE5);
 	
-	//Multiply all 3 matrices into texture6
+	//Multiply light_matrix into texture6
 	glLoadIdentity();	
 	glLoadMatrixd(light_Matrix);
 
@@ -602,10 +630,16 @@ void display(void){
 
 	//Using our shaders and shadow map
 	glUseProgramObjectARB(gProgram->_object);
-	//glUniform1iARB(lightID,0);
-	//glActiveTexture(GL_TEXTURE0);
-	//glBindTexture(GL_TEXTURE_1D,lightBufferID);
-	glUniform1iARB(shaderID,7);
+
+	glUniform1iARB(vpl_pos_shaderID,1);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
+
+	glUniform1iARB(vpl_nor_shaderID,2);
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
+
+	glUniform1iARB(shadow_shaderID,7);
 	glActiveTextureARB(GL_TEXTURE7);
 	glBindTexture(GL_TEXTURE_2D,shadowMapID);
 

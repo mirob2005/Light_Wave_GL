@@ -3,6 +3,8 @@ varying vec3 vertex_to_light_vector;
 varying vec3 light_to_vertex_vector;
 varying vec3 lightDir;
 
+varying vec4 vertex_in_modelview_space;
+
 varying vec4 ShadowCoord;
 
 varying vec4 debugOutput;
