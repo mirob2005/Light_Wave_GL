@@ -47,7 +47,6 @@ double fps = 0;
 int gScene = 0;
 
 GLSLProgram *gProgram;
-bool gShaderEnabled;
 
 //Chose which object to move... camera, objects in scene
 GLuint option = 0;
@@ -110,6 +109,9 @@ GLuint vpl_pos_shaderID;
 GLuint vpl_nor_TexID;
 GLuint vpl_nor_shaderID;
 
+//Set to true when the light source is moved:
+bool updateVPLs = true;
+
 void shaderInit( const char *vsFile, const char *fsFile ){
 
   VertexShader vertexShader( vsFile );
@@ -140,10 +142,66 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 }
 
+void generateVPLs( void )
+{
+	/*
+		VPL Texture Generation
+	*/
+
+	//Position
+	//Max Size allocated should be 3 times # in glTexImage1D
+	GLfloat vplDataPos[3] = {lightPosition[0],lightPosition[1],lightPosition[2]};
+
+	float maxDistance = 4.0;
+	for(int i=0; i<3; i++)
+	{
+		vplDataPos[i] = (vplDataPos[i]/(maxDistance*2))+0.5;
+	}
+
+
+	//Create VPL Position Texture
+	glGenTextures(1, &vpl_pos_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataPos);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	//Normals
+	GLfloat vplDataNor[3] = {lightLookAt[0] - lightPosition[0],lightLookAt[1] - lightPosition[1],lightLookAt[2] - lightPosition[2]};
+
+	for(int i=0; i<3; i++)
+	{
+		vplDataNor[i] = (vplDataNor[i]/(maxDistance*2))+0.5;
+	}
+
+	//Create VPL Normal Texture
+	glGenTextures(1, &vpl_nor_TexID);
+	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
+
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
+
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataNor);
+	glBindTexture(GL_TEXTURE_1D, 0);
+
+	updateVPLs = false;
+
+}
+
 /*  Initialize material property, light source, lighting model,
  *  and depth buffer.
  */
 void init( void ){
+
+	//Initialize VPLs
+	generateVPLs();
 
 	/*
 		Shadow Map Generation
@@ -187,7 +245,6 @@ void init( void ){
 	//Clear current binding of the FBO
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 
-	gShaderEnabled = true;
 }
 
 void drawChessScene()
@@ -481,52 +538,9 @@ void displayFPS()
 
 void display(void){
 
-	/*
-		VPL Texture Generation
-	*/
-
-	//Position
-	//Max Size allocated should be 3 times # in glTexImage1D
-	GLfloat vplDataPos[3] = {lightPosition[0],lightPosition[1],lightPosition[2]};
-
-	float maxDistance = 4.0;
-	for(int i=0; i<3; i++)
-	{
-		vplDataPos[i] = (vplDataPos[i]/(maxDistance*2))+0.5;
-	}
-
-
-	//Create VPL Position Texture
-	glGenTextures(1, &vpl_pos_TexID);
-	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
-
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataPos);
-	glBindTexture(GL_TEXTURE_1D, 0);
-
-	//Normals
-	GLfloat vplDataNor[3] = {lightLookAt[0] - lightPosition[0],lightLookAt[1] - lightPosition[1],lightLookAt[2] - lightPosition[2]};
-
-	for(int i=0; i<3; i++)
-	{
-		vplDataNor[i] = (vplDataNor[i]/(maxDistance*2))+0.5;
-	}
-
-	//Create VPL Normal Texture
-	glGenTextures(1, &vpl_nor_TexID);
-	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
-
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, 1, 0, GL_RGB, GL_FLOAT, vplDataNor);
-	glBindTexture(GL_TEXTURE_1D, 0);
+	//Update VPLs if updateVPLs = true (light is moved)
+	if(updateVPLs)
+		generateVPLs();
 
 	/*
 		Begin Shadow Map Creation
@@ -600,6 +614,10 @@ void display(void){
 	////Multiply matrix into texture6
 	//glLoadIdentity();	
 	//glLoadMatrixd(color_Matrix);
+
+/*
+	Intializing Texture 5 to be used to pass in primary light properties
+*/
 
 	//Light Position, Light Normal, light_wave properties (may need to be const in shader, remove?)
 	//can Add lihgt color or attenuation to last column
@@ -1010,6 +1028,7 @@ void special( int key, int px, int py ){
 				{
 					lightPosition[1] += 0.1; 
 					lightLookAt[1] += 0.1;
+					updateVPLs = true;
 				}
 		   break;	
 		   case GLUT_KEY_DOWN:
@@ -1017,6 +1036,7 @@ void special( int key, int px, int py ){
 				{
 					lightPosition[1] -= 0.1;	
 					lightLookAt[1] -= 0.1;
+					updateVPLs = true;
 				}
 		   break;
 		}
@@ -1028,7 +1048,8 @@ void special( int key, int px, int py ){
 				if(lightPosition[2] >-3.0)
 				{
 					lightPosition[2] += -0.1;	  
-					//lightLookAt[2] += -0.1;	  
+					//lightLookAt[2] += -0.1;	 
+					updateVPLs = true;
 				}
 		   break;	
 		   case GLUT_KEY_DOWN:
@@ -1036,20 +1057,23 @@ void special( int key, int px, int py ){
 				{
 					lightPosition[2] += 0.1;	
 					//lightLookAt[2] += 0.1;	
+					updateVPLs = true;
 				}
 		   break;	
 		   case GLUT_KEY_LEFT:
 				if(lightPosition[0] >-3.0)
 				{
 					lightPosition[0] += -0.1;		  
-					//lightLookAt[0] += -0.1;		  
+					//lightLookAt[0] += -0.1;	
+					updateVPLs = true;
 				}
 		   break;
 		   case GLUT_KEY_RIGHT:
 				if(lightPosition[0] <3.0)
 				{
 					lightPosition[0] += 0.1;	  
-					//lightLookAt[0] += 0.1;	  
+					//lightLookAt[0] += 0.1;	
+					updateVPLs = true;
 				}
 		   break;
 		}
