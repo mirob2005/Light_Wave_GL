@@ -2,12 +2,14 @@ uniform sampler1D vplPosTex;
 uniform sampler1D vplNorTex;
 
 varying vec4 ShadowCoord;
-varying vec4 color;
+varying vec4 direct_color;
+varying vec4 indirect_color;
 
 //varying vec4 debugOutput;
 
 void main( ){
-    color = vec4(0.0,0.0,0.0,1.0);
+    direct_color = vec4(0.0,0.0,0.0,1.0);
+    indirect_color = vec4(0.0,0.0,0.0,1.0);
 
 	gl_FrontColor = gl_Color;
 	gl_BackColor = gl_Color;
@@ -59,11 +61,11 @@ void main( ){
 	float DiffuseTermLight = clamp(dot(lightDir, normalized_light_to_vertex_vector),0.0,1.0);
 
 	// Calculating The Color from the primary light
-	color += gl_Color*DiffuseTermLight*DiffuseTermObj;	
+	direct_color += gl_Color*DiffuseTermLight*DiffuseTermObj;	
 	
 	
 /////////////////////////////////////////////////////////////////	
-/*
+
     int numLights = lightProperties.z;
 	float maxDistance = 8.0;
 	
@@ -88,16 +90,21 @@ void main( ){
 	   normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
 	   normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
      	
+	   //Clamping between -0.5 and 1 allows for an angle of of 240 degeres (120*2) instead of 180 degrees (90*2)
   	   // Reflection term of object
-	   DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	   DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), -0.5, 1.0);
    	
 	   //Reflection term of directional light
-	   DiffuseTermLight = clamp(dot(normalized_vplNormal, normalized_light_to_vertex_vector),0.0,1.0);
+	   DiffuseTermLight = clamp(dot(normalized_vplNormal, normalized_light_to_vertex_vector),-0.5,1.0);
+	   
+	   //Normalize larger angle allowances
+	   DiffuseTermObj = (DiffuseTermObj + 0.5)/1.5;
+	   DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
 
 	   // Calculating The VPL Contribution
-	   color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj;
    }	
-*/
+
 
 	
 
