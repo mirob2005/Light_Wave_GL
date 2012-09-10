@@ -752,13 +752,6 @@ void display(void){
 	glBindTexture(GL_TEXTURE_2D,shadowMapID);
 
 	glShadeModel(GL_SMOOTH);
-	glEnable(GL_NORMALIZE);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
-	GLfloat lightDirection[] = {lightLookAt[0]-lightPosition[0],lightLookAt[1]-lightPosition[1],lightLookAt[2]-lightPosition[2]};
-	glLightfv (GL_LIGHT0, GL_POSITION, lightPosition);
-	glLightfv (GL_LIGHT0, GL_SPOT_DIRECTION, lightDirection);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -780,24 +773,9 @@ void display(void){
 	else
 		drawChessScene();
 
-	glDisable (GL_LIGHTING);
-	float markerx,markery,markerz;
 	//LIGHT MARKER
-	// Math is done to ensure light marker is is 'behind' the light
 	glPushMatrix();
 		glColor4f(1.0,1.0f,0,0.0f);
-		if(lightPosition[0] >0)
-			markerx = lightPosition[0]+0.1;
-		else
-			markerx = lightPosition[0]-0.1;
-		if(lightPosition[1] >0)
-			markery = lightPosition[1];//+0.1;
-		else
-			markery = lightPosition[1];//-0.1;
-		if(lightPosition[2] >0)
-			markerz = lightPosition[2]+0.1;
-		else
-			markerz = lightPosition[2]-0.1;
 		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
 		glutSolidSphere(0.1f,25,25);
 	glPopMatrix();
@@ -806,7 +784,6 @@ void display(void){
 		glColor3f(1,0,0);
 		glTranslatef(lightLookAt[0], lightLookAt[1], lightLookAt[2]);
 		glutSolidSphere(.1f,25,25);
-	glEnable(GL_LIGHTING);
 
 	displayFPS();
 

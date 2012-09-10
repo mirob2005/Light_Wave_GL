@@ -58,27 +58,47 @@ void main( ){
 	//Reflection term of directional light
 	float DiffuseTermLight = clamp(dot(lightDir, normalized_light_to_vertex_vector),0.0,1.0);
 
-	// Calculating The Final Color
+	// Calculating The Color from the primary light
 	color += gl_Color*DiffuseTermLight*DiffuseTermObj;	
 	
 	
 /////////////////////////////////////////////////////////////////	
-
-
-
+/*
     int numLights = lightProperties.z;
 	float maxDistance = 8.0;
-    //Access the vpl___Tex using this:
-    //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
-    vec3 vplPosition = texture1D(vplPosTex,0).xyz;
-    vec3 vplNormal = texture1D(vplNorTex,1111).xyz;
-    
-    vplPosition = (vplPosition-0.5)*maxDistance;
-    vplNormal= (vplNormal-0.5)*maxDistance;
-    
-    vec3 normalized_vplNormal = normalize(vplNormal);
-   
-	color = vec4(abs(normalized_vplNormal),1);	
+	
+	for(int i=0; i< numLights; i++)
+	{
+	   //Access the vpl___Tex using this:
+	   //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
+	   vec3 vplPosition = texture1D(vplPosTex,i).xyz;
+	   vec3 vplNormal = texture1D(vplNorTex,i).xyz;
+       
+	   vplPosition = (vplPosition-0.5)*maxDistance;
+	   vplNormal= (vplNormal-0.5)*maxDistance;
+       
+	   vec3 normalized_vplNormal = normalize(vplNormal);
+
+
+	   // Calculating The Vector From The Vertex Position To The Light Position and vice versa
+	   vertex_to_light_vector = vec3(vplPosition - vertex_in_modelview_space);
+	   light_to_vertex_vector = vec3(vertex_in_modelview_space - vplPosition);	
+   	
+	   // Normalizing Vectors
+	   normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
+	   normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
+     	
+  	   // Reflection term of object
+	   DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+   	
+	   //Reflection term of directional light
+	   DiffuseTermLight = clamp(dot(normalized_vplNormal, normalized_light_to_vertex_vector),0.0,1.0);
+
+	   // Calculating The VPL Contribution
+	   color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+   }	
+*/
+
 	
 
 
