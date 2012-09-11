@@ -1162,6 +1162,9 @@ int main(int argc, char** argv){
 
 	init( );
 
+	cout << "Using these parameters:\nLight Angle = "<< lightsAngle << "\nLights Per Ray = " << lightsPerRay << 
+			"\nTotal VPL's Used = " << numLights << endl;
+
 	shaderInit( "vertexShader.vs", "fragShader.fs" );
 
 	glutDisplayFunc(display); 

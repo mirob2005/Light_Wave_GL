@@ -89,10 +89,13 @@ void main( ){
    	
 	   // Normalizing Vectors
 	   normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
-	   normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
+	   normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);
+	   
+	   //Distance Vector
+	   float distance_vertex_to_light = length(vertex_to_light_vector);
      	
   	   // Reflection term of object
-	   float DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	   DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
    	
 	   //Reflection term of directional light
 	   DiffuseTermLight = dot(normalized_vplNormal, normalized_light_to_vertex_vector);
@@ -103,12 +106,11 @@ void main( ){
 	   DiffuseTermLight = clamp(DiffuseTermLight, 0.0, 1.0);
 
 	   // Calculating The VPL Contribution
-	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj*(1-vplAttenuation);
+	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj*(1-vplAttenuation)/max(1,distance_vertex_to_light);
    }	
 
-
+   indirect_color = vec4(indirect_color.r/(numLights/10),indirect_color.g/(numLights/10),indirect_color.b/(numLights/10),1);
 	
-
 
 	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
 }
