@@ -118,12 +118,16 @@ GLuint vpl_nor_shaderID;
 GLfloat *vplDataNor;
 
 //Constants used in shaders
-const int lightsAngle = 5;
-const int lightsPerRay = 5;
+const int lightsAngle = 45;
+const int lightsPerRay = 2;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
+const float pi = 3.14159265359;
 
 //Set to true when the light source is moved:
 bool updateVPLs = true;
+
+//Show VPL's
+bool showVPLs = true;
 
 void shaderInit( const char *vsFile, const char *fsFile ){
 
@@ -159,7 +163,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 void generateVPLs( void )
 {
-	float maxDistance = 8.0;
+	float maxDistance = 4.0;
 
 	lightNormalVector[0] = lightLookAt[0] - lightPosition[0];
 	lightNormalVector[1] = lightLookAt[1] - lightPosition[1];
@@ -172,7 +176,7 @@ void generateVPLs( void )
 	*/
 
 	/**************************************************************************************
-	* Creating VPL's with center(3: x,y,z), normal(3: x,y,z), //attenuation(1) (not yet)
+	* Creating VPL's with center(3: x,y,z), normal(3: x,y,z), attenuation(1)
 	* 6485 Lights, 1297rays *5per ray
 	* 72 horizontal (360 degrees/5) * 18 vertical (90/5) + 1 (<0,-1,0> ray) = 1297 Directional Lights
 	* NOTE: DOES NOT INCLUDE PRIMARY DIRECTIONAL LIGHT (INDIRECT ONES ONLY)
@@ -184,9 +188,9 @@ void generateVPLs( void )
 	// First Ray (<0,-1,0> ray
 	for(int i = 0; i <lightsPerRay; i++) {
 		// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
-		vplDataPos[i*3+0] = lightPosition[0] + (lightNormalVector[0])*maxDistance * ((i+0.001)/lightsPerRay);
-		vplDataPos[i*3+1] = lightPosition[1] + (lightNormalVector[1])*maxDistance * ((i+0.001)/lightsPerRay);
-		vplDataPos[i*3+2] = lightPosition[2] + (lightNormalVector[2])*maxDistance * ((i+0.001)/lightsPerRay);
+		vplDataPos[i*3+0] = lightPosition[0] + lightNormalVector[0]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
+		vplDataPos[i*3+1] = lightPosition[1] + lightNormalVector[1]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
+		vplDataPos[i*3+2] = lightPosition[2] + lightNormalVector[2]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
 		
 		// VPL Normal
 		vplDataNor[i*4+0] = lightNormalVector[0];
@@ -194,48 +198,70 @@ void generateVPLs( void )
 		vplDataNor[i*4+2] = lightNormalVector[2];
 		
 		// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
-		vplDataNor[i*4+3] = 0.05*(2^i);
+		vplDataNor[i*4+3] = 0.05*pow(2.0,i);
 	}
-	
+
 	int i = lightsPerRay;
-	int interpolate = 1;
 
-	for(int angleXZ = 0; angleXZ <360; angleXZ = angleXZ +lightsAngle) {
-		for(int angleXY = 275; angleXY <=360; angleXY = angleXY +lightsAngle){
-			for(int counter = 0; counter <lightsPerRay; counter++) {
-				//Direction of the computed ray
-				float normal[3] = {cos(angleXZ*3.1416/180)*cos(angleXY*3.1416/180),sin(angleXY*3.1416/180),-sin(angleXZ*3.1416/180)};
-				
-				// VPL Position   = primary light pos+ normal    * maxDistance * 1/lightsPerRay   
-				vplDataPos[i*3+0] = lightPosition[0] + normal[0] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
-				vplDataPos[i*3+1] = lightPosition[1] + normal[1] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
-				vplDataPos[i*3+2] = lightPosition[2] + normal[2] * (maxDistance-(4.0/interpolate))*(((counter%lightsPerRay)+0.001)/lightsPerRay);
-				
-				// VPL Normal
-				vecNormalize(normal);
-				vplDataNor[i*4+0] = normal[0];
-				vplDataNor[i*4+1] = normal[1];
-				vplDataNor[i*4+2] = normal[2];
-				
-				// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
-				vplDataNor[i*4+3] = 0.05*(2^counter);
-				i++;
+	for(int angleY = 0; angleY < 360; angleY = angleY+lightsAngle)
+	{
+		for(int angleZ = lightsAngle; angleZ <= 90; angleZ = angleZ+lightsAngle)
+		{
+			
+			float normal[3] = {lightNormalVector[0],lightNormalVector[1],lightNormalVector[2]};
+			float temp0=normal[0];
+			float temp1=normal[1];
+			float temp2=normal[2];
+			normal[0] = cos(angleZ*pi/180)*temp0-sin(angleZ*pi/180)*temp1;
+			normal[1] = sin(angleZ*pi/180)*temp0+cos(angleZ*pi/180)*temp1;
+
+			vecNormalize(normal);
+			temp0=normal[0];
+			temp1=normal[1];
+			temp2=normal[2];
+
+			normal[0] = cos(angleY*pi/180)*temp0+sin(angleY*pi/180)*temp2;
+			normal[2] = -sin(angleY*pi/180)*temp0+cos(angleY*pi/180)*temp2;
+			vecNormalize(normal);
+			
+
+			for(int counter = 0; counter < lightsPerRay; counter ++)
+			{
+
+			// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
+			vplDataPos[i*3+0] = lightPosition[0] + normal[0]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
+			vplDataPos[i*3+1] = lightPosition[1] + normal[1]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
+			vplDataPos[i*3+2] = lightPosition[2] + normal[2]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
+
+
+			// VPL Normal
+			vplDataNor[i*4+0] = normal[0];
+			vplDataNor[i*4+1] = normal[1];
+			vplDataNor[i*4+2] = normal[2];
+			
+			// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
+			vplDataNor[i*4+3] = 0.05*pow(2.0,counter);
+
+			i++;
 			}
-			interpolate++;
+				
+				
 		}
-		interpolate = 1;
 	}
 
-	for(int i=0; i<3*numLights; i++)
+
+	if(!showVPLs)
 	{
-		vplDataPos[i] = (vplDataPos[i]/maxDistance)+0.5;
-	}
+		for(int i=0; i<3*numLights; i++)
+		{
+			vplDataPos[i] = (vplDataPos[i]/maxDistance)+0.5;
+		}
 
-	for(int i=0; i<4*numLights; i++)
-	{
-		vplDataNor[i] = (vplDataNor[i]/maxDistance)+0.5;
+		for(int i=0; i<4*numLights; i++)
+		{
+			vplDataNor[i] = (vplDataNor[i]/maxDistance)+0.5;
+		}
 	}
-
 
 	/*
 		VPL Texture Generation
@@ -737,7 +763,8 @@ void display(void){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//Using our shaders and shadow map
-	glUseProgramObjectARB(gProgram->_object);
+	if(!showVPLs)
+		glUseProgramObjectARB(gProgram->_object);
 
 	glUniform1iARB(vpl_pos_shaderID,1);
 	glActiveTexture(GL_TEXTURE1);
@@ -773,6 +800,25 @@ void display(void){
 	else
 		drawChessScene();
 
+
+	/*
+		VPL Debug Section - Display sphere at each VPL to test distribution
+	*/
+	if(showVPLs)
+	{
+		for(int i =0; i<numLights; i++)
+		{
+			glPushMatrix();
+				glColor3f(1.0f,0.0f,0.0f);
+				glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
+				glutSolidSphere(0.1,25,25);
+			glPopMatrix();
+		}
+	}
+
+
+/////////////////////////////////////////////////////////////////////////////
+
 	//LIGHT MARKER
 	glPushMatrix();
 		glColor4f(1.0,1.0f,0,0.0f);
@@ -781,7 +827,7 @@ void display(void){
 	glPopMatrix();
 
 	glPushMatrix();
-		glColor3f(1,0,0);
+		glColor4f(1.0,1.0f,0,0.0f);
 		glTranslatef(lightLookAt[0], lightLookAt[1], lightLookAt[2]);
 		glutSolidSphere(.1f,25,25);
 
@@ -1165,7 +1211,8 @@ int main(int argc, char** argv){
 	cout << "Using these parameters:\nLight Angle = "<< lightsAngle << "\nLights Per Ray = " << lightsPerRay << 
 			"\nTotal VPL's Used = " << numLights << endl;
 
-	shaderInit( "vertexShader.vs", "fragShader.fs" );
+	if(!showVPLs)
+		shaderInit( "vertexShader.vs", "fragShader.fs" );
 
 	glutDisplayFunc(display); 
 	glutReshapeFunc(reshape);
