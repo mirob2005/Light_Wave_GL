@@ -21,6 +21,7 @@ void main( ){
  		shadow = distanceFromLight < shadowCoordinateWdivide.z ? 0.0 : 1.0 ;
 
 	
+	//gl_FragColor =	 (direct_color*shadow);
 	//gl_FragColor = indirect_color;
   	gl_FragColor =	 (direct_color*shadow) + indirect_color;
   	

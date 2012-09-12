@@ -93,6 +93,9 @@ const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
 const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
 const GLfloat deflightLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
+const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
+										deflightLookAt[1] - deflightPosition[1], 
+										deflightLookAt[2] - deflightPosition[2]};
 const double  defworldRotate = 0.0;
 /**************************************/
 
@@ -118,8 +121,8 @@ GLuint vpl_nor_shaderID;
 GLfloat *vplDataNor;
 
 //Constants used in shaders
-const int lightsAngle = 45;
-const int lightsPerRay = 2;
+const int lightsAngle = 5;
+const int lightsPerRay = 5;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
 
@@ -127,7 +130,7 @@ const float pi = 3.14159265359;
 bool updateVPLs = true;
 
 //Show VPL's
-bool showVPLs = true;
+bool showVPLs = false;
 
 void shaderInit( const char *vsFile, const char *fsFile ){
 
@@ -163,7 +166,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 void generateVPLs( void )
 {
-	float maxDistance = 4.0;
+	float maxDistance = 8.0;
 
 	lightNormalVector[0] = lightLookAt[0] - lightPosition[0];
 	lightNormalVector[1] = lightLookAt[1] - lightPosition[1];
@@ -187,15 +190,17 @@ void generateVPLs( void )
 
 	// First Ray (<0,-1,0> ray
 	for(int i = 0; i <lightsPerRay; i++) {
-		// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
-		vplDataPos[i*3+0] = lightPosition[0] + lightNormalVector[0]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
-		vplDataPos[i*3+1] = lightPosition[1] + lightNormalVector[1]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
-		vplDataPos[i*3+2] = lightPosition[2] + lightNormalVector[2]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
+		float normal[3] = {deflightNormalVector[0],deflightNormalVector[1],deflightNormalVector[2]};
+		vecNormalize(normal);
+
+		vplDataPos[i*3+0] = lightPosition[0] + normal[0]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
+		vplDataPos[i*3+1] = lightPosition[1] + normal[1]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
+		vplDataPos[i*3+2] = lightPosition[2] + normal[2]*(maxDistance - (maxDistance/pow(2.0,(i+1))));
 		
 		// VPL Normal
-		vplDataNor[i*4+0] = lightNormalVector[0];
-		vplDataNor[i*4+1] = lightNormalVector[1];
-		vplDataNor[i*4+2] = lightNormalVector[2];
+		vplDataNor[i*4+0] = normal[0];
+		vplDataNor[i*4+1] = normal[1];
+		vplDataNor[i*4+2] = normal[2];
 		
 		// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
 		vplDataNor[i*4+3] = 0.05*pow(2.0,i);
@@ -208,7 +213,7 @@ void generateVPLs( void )
 		for(int angleZ = lightsAngle; angleZ <= 90; angleZ = angleZ+lightsAngle)
 		{
 			
-			float normal[3] = {lightNormalVector[0],lightNormalVector[1],lightNormalVector[2]};
+			float normal[3] = {deflightNormalVector[0],deflightNormalVector[1],deflightNormalVector[2]};
 			float temp0=normal[0];
 			float temp1=normal[1];
 			float temp2=normal[2];
@@ -227,41 +232,66 @@ void generateVPLs( void )
 
 			for(int counter = 0; counter < lightsPerRay; counter ++)
 			{
+				// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
+				vplDataPos[i*3+0] = lightPosition[0] + normal[0]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
+				vplDataPos[i*3+1] = lightPosition[1] + normal[1]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
+				vplDataPos[i*3+2] = lightPosition[2] + normal[2]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
 
-			// VPL Position   = primary light pos+ primary light normal  *maxDistance * 1/lightsPerRay      
-			vplDataPos[i*3+0] = lightPosition[0] + normal[0]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
-			vplDataPos[i*3+1] = lightPosition[1] + normal[1]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
-			vplDataPos[i*3+2] = lightPosition[2] + normal[2]*(maxDistance - (maxDistance/pow(2.0,(counter+1))));
 
-
-			// VPL Normal
-			vplDataNor[i*4+0] = normal[0];
-			vplDataNor[i*4+1] = normal[1];
-			vplDataNor[i*4+2] = normal[2];
-			
-			// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
-			vplDataNor[i*4+3] = 0.05*pow(2.0,counter);
-
-			i++;
-			}
+				// VPL Normal
+				vplDataNor[i*4+0] = normal[0];
+				vplDataNor[i*4+1] = normal[1];
+				vplDataNor[i*4+2] = normal[2];
 				
-				
+				// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
+				vplDataNor[i*4+3] = 0.05*pow(2.0,counter);
+
+				i++;
+			}	
 		}
 	}
-
 
 	if(!showVPLs)
 	{
 		for(int i=0; i<3*numLights; i++)
 		{
-			vplDataPos[i] = (vplDataPos[i]/maxDistance)+0.5;
+			vplDataPos[i] = (vplDataPos[i]/(4*maxDistance))+0.5;
 		}
 
 		for(int i=0; i<4*numLights; i++)
 		{
-			vplDataNor[i] = (vplDataNor[i]/maxDistance)+0.5;
+			vplDataNor[i] = (vplDataNor[i]/(4*maxDistance))+0.5;
 		}
 	}
+	
+	////Simulate Clamping process of the texture
+	//for(int i=0; i<3*numLights; i++)
+	//{
+	//	if(vplDataPos[i]<0)
+	//		vplDataPos[i]=0;
+	//	else if(vplDataPos[i] >1)
+	//		vplDataPos[i]=1;
+	//}
+
+	//for(int i=0; i<4*numLights; i++)
+	//{
+	//	if(vplDataNor[i]<0)
+	//		vplDataNor[i]=0;
+	//	else if(vplDataNor[i] >1)
+	//		vplDataNor[i]=1;
+	//}
+
+	//for(int i=0; i<3*numLights; i++)
+	//{
+	//	vplDataPos[i] = (vplDataPos[i]-0.5)*maxDistance*4;
+	//}
+
+	//for(int i=0; i<4*numLights; i++)
+	//{
+	//	vplDataNor[i] = (vplDataNor[i]-0.5)*maxDistance*4;
+	//}
+
+
 
 	/*
 		VPL Texture Generation
