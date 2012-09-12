@@ -22,7 +22,6 @@
 #ifdef _WIN32
 #include "windows.h"
 #endif
-
 #include "GL/glut.h"
 #endif
 
@@ -157,10 +156,15 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
   gProgram->isHardwareAccelerated( );
 
+#ifdef __APPLE__
+  shadow_shaderID = glGetUniformLocation(gProgram->_object, "ShadowMap");
+  vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
+  vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
+#else
   shadow_shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
   vpl_pos_shaderID = glGetUniformLocationARB(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocationARB(gProgram->_object, "vplNorTex");
-
+#endif
 }
 
 
@@ -394,7 +398,12 @@ void drawChessScene()
 		glScalef(1,2,1);
 		glRotatef(90,1,0,0);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif
+		
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glTranslatef(0,-0.5,0);
@@ -412,7 +421,11 @@ void drawChessScene()
 		glScalef(2,1,2);
 		glRotatef(90,1,0,0);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glTranslatef(0,-1.25,0);
@@ -428,7 +441,12 @@ void drawChessScene()
 		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 		glTranslatef(0,0.25,0);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif
+		
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glTranslatef(0,0.25,0);
@@ -443,7 +461,11 @@ void drawChessScene()
 		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
 		glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif
 		glPushMatrix();
 			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glutSolidSphere(0.5f,25,25);
@@ -550,7 +572,11 @@ void drawCornellBox()
 		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
 		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glutSolidSphere(1.5f,25,25);
@@ -563,7 +589,11 @@ void drawCornellBox()
 		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
 		glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 		glMatrixMode(GL_TEXTURE);
+		#ifdef __APPLE__
+		glActiveTexture(GL_TEXTURE7);
+		#else
 		glActiveTextureARB(GL_TEXTURE7);
+		#endif	
 		glPushMatrix();
 			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glutSolidSphere(1.0f,25,25);
@@ -687,7 +717,12 @@ void display(void){
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,FBOid);	
 
 	//Use fixed function pipline to render shadow map
+	#ifdef __APPLE__
+	glUseProgramObject(0);
+	#else
 	glUseProgramObjectARB(0);
+	#endif
+	
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
 	glClear( GL_DEPTH_BUFFER_BIT);
@@ -740,7 +775,11 @@ void display(void){
 	//
 	////Use texture6 matrix
 	//glMatrixMode(GL_TEXTURE);
+	//#ifdef __APPLE__
+	//glActiveTexture(GL_TEXTURE6);
+	//#else
 	//glActiveTextureARB(GL_TEXTURE6);
+	//#endif
 	//
 	////Multiply matrix into texture6
 	//glLoadIdentity();	
@@ -759,7 +798,11 @@ void display(void){
 
 	//Use texture5 matrix
 	glMatrixMode(GL_TEXTURE);
+	#ifdef __APPLE__	
+	glActiveTexture(GL_TEXTURE5);
+	#else
 	glActiveTextureARB(GL_TEXTURE5);
+	#endif
 	
 	//Multiply light_matrix into texture6
 	glLoadIdentity();	
@@ -771,7 +814,11 @@ void display(void){
 
 	//Use texture7 matrix
 	glMatrixMode(GL_TEXTURE);
+	#ifdef __APPLE__
+	glActiveTexture(GL_TEXTURE7);
+	#else
 	glActiveTextureARB(GL_TEXTURE7);
+	#endif
 	
 	//Multiply all 3 matrices into texture7
 	glLoadIdentity();	
@@ -793,20 +840,38 @@ void display(void){
 	//Clear frame buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+#ifdef __APPLE__
+	//Using our shaders and shadow map
+	if(!showVPLs)
+		glUseProgramObject(gProgram->_object);
+
+	glUniform1i(vpl_pos_shaderID,1);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
+
+	glUniform1i(vpl_nor_shaderID,2);
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
+
+	glUniform1i(shadow_shaderID,7);
+	glActiveTexture(GL_TEXTURE7);
+#else
 	//Using our shaders and shadow map
 	if(!showVPLs)
 		glUseProgramObjectARB(gProgram->_object);
 
 	glUniform1iARB(vpl_pos_shaderID,1);
-	glActiveTexture(GL_TEXTURE1);
+	glActiveTextureARB(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
 
 	glUniform1iARB(vpl_nor_shaderID,2);
-	glActiveTexture(GL_TEXTURE2);
+	glActiveTextureARB(GL_TEXTURE2);
 	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
 
 	glUniform1iARB(shadow_shaderID,7);
 	glActiveTextureARB(GL_TEXTURE7);
+#endif
+
 	glBindTexture(GL_TEXTURE_2D,shadowMapID);
 
 	glShadeModel(GL_SMOOTH);
