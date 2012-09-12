@@ -31,8 +31,9 @@ using namespace std;
 //Define Resolutions
 int screenWidth = 1280;
 int screenHeight = 960;
-int shadowMapWidth = screenWidth*2;
-int shadowMapHeight = screenHeight*2;
+int shadowRatio = 10;
+int shadowMapWidth = screenWidth*shadowRatio;
+int shadowMapHeight = screenHeight*shadowRatio;
 
 //Globals for keeping FPS
 double gTime = 0;
@@ -874,8 +875,8 @@ void reshape (int w, int h)
    glMatrixMode (GL_PROJECTION);
    screenWidth = w;
    screenHeight = h;
-   shadowMapWidth = w*2;
-   shadowMapHeight = h*2;
+   shadowMapWidth = w*shadowRatio;
+   shadowMapHeight = h*shadowRatio;
    glLoadIdentity();
    gluPerspective(125, (GLfloat) w/(GLfloat) h, 0.1, 20.0);
    glMatrixMode(GL_MODELVIEW);
