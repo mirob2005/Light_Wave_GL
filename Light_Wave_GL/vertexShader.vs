@@ -47,7 +47,7 @@ void main( ){
 	
 	// Calculating The Vector From The Vertex Position To The Light Position and vice versa
 	vec3 vertex_to_light_vector = vec3(masterLightPosition - vertex_in_modelview_space);
-	vec3 light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);	
+	vec3 light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);
 	
     // Normalizing Vectors
 	vec3 normalized_normal = normalize(normal);	
@@ -77,8 +77,9 @@ void main( ){
 	   vec3 vplNormal = texture1D(vplNorTex,i).xyz;
 	   float vplAttenuation = texture1D(vplNorTex,i).w;
        
-	   vplPosition = (vplPosition-0.5)*maxDistance;
-	   vplNormal= (vplNormal-0.5)*maxDistance;
+	   vplPosition = (vplPosition-0.5)*maxDistance*4;
+	   vplNormal= (vplNormal-0.5)*maxDistance*4;
+	   vplAttenuation= (vplAttenuation-0.5)*maxDistance*4;
        
 	   vec3 normalized_vplNormal = normalize(vplNormal);
 
@@ -102,15 +103,15 @@ void main( ){
 	   
 	   //Clamping between -0.5 and 1 allows for an angle of of 240 degeres (120*2) instead of 180 degrees (90*2)
 	   //Normalize larger angle allowances
-	   DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
+	   //DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
 	   DiffuseTermLight = clamp(DiffuseTermLight, 0.0, 1.0);
 
 	   // Calculating The VPL Contribution
-	   indirect_color += gl_Color*DiffuseTermLight*DiffuseTermObj*(1-vplAttenuation)/max(1,distance_vertex_to_light);
+	   indirect_color += gl_Color*DiffuseTermObj*DiffuseTermLight*(1-vplAttenuation);///distance_vertex_to_light;
    }	
 
-   indirect_color = vec4(indirect_color.r/(numLights/10),indirect_color.g/(numLights/10),indirect_color.b/(numLights/10),1);
-	
+   //indirect_color = vec4(indirect_color.r/numLights,indirect_color.g/numLights,indirect_color.b/numLights,1);
+	//indirect_color = indirect_color/numLights;
 
 	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
 }
