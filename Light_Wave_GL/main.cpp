@@ -1304,6 +1304,13 @@ int main(int argc, char** argv){
 
 	init( );
 
+	char *GL_version=(char *)glGetString(GL_VERSION);
+	printf("You are using OpenGL version %s\n", GL_version);
+
+	char *GLSL_version=(char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+	printf("You are using GLSL version %s\n\n", GLSL_version);
+
+
 	cout << "Using these parameters:\nLight Angle = "<< lightsAngle << "\nLights Per Ray = " << lightsPerRay << 
 			"\nTotal VPL's Used = " << numLights << endl;
 
