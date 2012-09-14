@@ -1,3 +1,5 @@
+#version 120
+
 uniform sampler1D vplPosTex;
 uniform sampler1D vplNorTex;
 
@@ -66,7 +68,7 @@ void main( ){
 	
 /////////////////////////////////////////////////////////////////	
 
-    int numLights = lightProperties.z;
+    int numLights = int(lightProperties.z);
 	float maxDistance = 8.0;
 	
 	for(int i=0; i< numLights; i++)
@@ -85,8 +87,8 @@ void main( ){
 
 
 	   // Calculating The Vector From The Vertex Position To The Light Position and vice versa
-	   vertex_to_light_vector = vec3(vplPosition - vertex_in_modelview_space);
-	   light_to_vertex_vector = vec3(vertex_in_modelview_space - vplPosition);	
+	   vertex_to_light_vector = vec3(vplPosition - vec3(vertex_in_modelview_space));
+	   light_to_vertex_vector = vec3(vec3(vertex_in_modelview_space) - vplPosition);	
    	
 	   // Normalizing Vectors
 	   normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);

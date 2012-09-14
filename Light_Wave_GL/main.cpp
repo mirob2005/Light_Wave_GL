@@ -365,6 +365,7 @@ void init( void ){
 
 	//No color buffers are written to with our current FBO (shadow map)
 	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
 
 	//Attach the shadow map to the current FBO
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,GL_TEXTURE_2D, shadowMapID, 0);
@@ -372,10 +373,23 @@ void init( void ){
 	//Check for errors in the FBO
 	GLenum FBOstatus;
 	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	if(FBOstatus != GL_FRAMEBUFFER_COMPLETE_EXT)
-		cout << "Some requirements or rules for GL_FRAMEBUFFER failed, CANNOT use FBO!" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
+		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
 	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
-		cout << "This particular implementation is not supported by the OpenGL driver!" << endl;
+		cout << "GL_FRAMEBUFFER_UNSUPPORTED_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT" << endl;
+
 	
 	//Clear current binding of the FBO
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
@@ -1314,7 +1328,12 @@ int main(int argc, char** argv){
 	printf("Provided by this vendor %s\n", GL_vendor);
 
 	char *GL_renderer=(char *)glGetString(GL_RENDERER);
-	printf("Using this renderer %s\n\n", GL_renderer);
+	printf("Using this renderer %s\n", GL_renderer);
+
+	// get max texture stacks
+	GLint texturesize[100];
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, texturesize);
+	printf("The largest support texture size is: %i\n\n", texturesize);
 
 
 	cout << "Using these parameters:\nLight Angle = "<< lightsAngle << "\nLights Per Ray = " << lightsPerRay << 
