@@ -30,7 +30,7 @@ using namespace std;
 //Define Resolutions
 int screenWidth = 1280;
 int screenHeight = 960;
-int shadowRatio = 10;
+int shadowRatio = 4;
 int shadowMapWidth = screenWidth*shadowRatio;
 int shadowMapHeight = screenHeight*shadowRatio;
 
@@ -51,11 +51,25 @@ GLSLProgram *gProgram;
 //Chose which object to move... camera, objects in scene
 GLuint option = 0;
 
+/***************DEFAULTS***************/
+const GLfloat defobject1Position[3] = {2.0,-3.0,0.0};
+const GLfloat defobject2Position[3] = {-2,-3,-2};
+const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
+const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
+const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
+const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
+const GLfloat deflightLookAt[3] = {0.0, 0.0, 0.0};
+const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
+const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
+										deflightLookAt[1] - deflightPosition[1], 
+										deflightLookAt[2] - deflightPosition[2]};
+const double  defworldRotate = 0.0;
+/**************************************/
 /***************VARIABLE***************/
 //Object 1
-GLfloat object1Position[3] = {-2.5,-2.5,-2.5};
+GLfloat object1Position[3] = {defobject1Position[0],defobject1Position[1],defobject1Position[2]};
 //Object 2
-GLfloat object2Position[3] = {2.0,-3.0,0.0};
+GLfloat object2Position[3] = {defobject2Position[0],defobject2Position[1],defobject2Position[2]};
 
 //Camera Position
 GLfloat camPosition[3] = {0.0, 0.0, 4.0};
@@ -83,20 +97,6 @@ GLfloat lightNormalVector[3] = {lightLookAt[0] - lightPosition[0],
 
 //Camera Rotate for now, until a better method is used
 double worldRotate = 0.0;
-/**************************************/
-/***************DEFAULTS***************/
-const GLfloat defobject1Position[3] = {-2.5,-2.5,-2.5};
-const GLfloat defobject2Position[3] = {2.0,-3.0,0.0};
-const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
-const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
-const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
-const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
-const GLfloat deflightLookAt[3] = {0.0, 0.0, 0.0};
-const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
-const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
-										deflightLookAt[1] - deflightPosition[1], 
-										deflightLookAt[2] - deflightPosition[2]};
-const double  defworldRotate = 0.0;
 /**************************************/
 
 /*
@@ -398,9 +398,7 @@ void init( void ){
 
 void drawChessScene()
 {
-	
-	GLUquadricObj *qobj;
-	qobj = gluNewQuadric();
+
 	//Draw Objects
 	//Replace with Chess pieces
 	//Object 1, option 1
@@ -580,10 +578,76 @@ void drawChessScene()
 
 void drawCornellBox()
 {
-	//Draw Objects
-	//Object 1, option 1
+	GLfloat room_vertices[] = {-4,-4,-4,-4,-4,4,4,-4,4,4,-4,-4,
+						  -4,4,-4,4,4,-4,4,4,4,-4,4,4,
+						  -4,-4,-4,4,-4,-4,4,4,-4,-4,4,-4,
+						  -4,-4,4,-4,4,4,4,4,4,4,-4,4,
+						  -4,-4,-4,-4,4,-4,-4,4,4,-4,-4,4,
+						  4,-4,-4,4,-4,4,4,4,4,4,4,-4};
+	GLfloat room_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						1,0,0,1,0,0,1,0,0,1,0,0,
+						0,1,0,0,1,0,0,1,0,0,1,0};
+	GLfloat room_normals[] = {0,1,0,0,1,0,0,1,0,0,1,0,
+						0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+						0,0,1,0,0,1,0,0,1,0,0,1,
+						0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+						1,0,0,1,0,0,1,0,0,1,0,0,
+						-1,0,0,-1,0,0,-1,0,0,-1,0,0};
+
+	GLfloat box1_vertices[] = {	-1,1,-1,-1,1,1,1,1,1,1,1,-1,
+								-1,-1,-1,1,-1,-1,1,-1,1,-1,-1,1,
+								1,1,1,-1,1,1,-1,-1,1,1,-1,1,
+								1,1,-1,1,-1,-1,-1,-1,-1,-1,1,-1,
+								-1,-1,1,-1,1,1,-1,1,-1,-1,-1,-1,
+								1,1,-1,1,1,1,1,-1,1,1,-1,-1};
+	GLfloat box1_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1,	
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1};
+	GLfloat box1_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
+								0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+								0,0,1,0,0,1,0,0,1,0,0,1,
+								0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+								-1,0,0,-1,0,0,-1,0,0,-1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0};
+
+	GLfloat box2_vertices[] = {	-1,3,-1,-1,3,1,1,3,1,1,3,-1,
+								-1,-1,-1,1,-1,-1,1,-1,1,-1,-1,1,
+								1,3,1,-1,3,1,-1,-1,1,1,-1,1,
+								1,3,-1,1,-1,-1,-1,-1,-1,-1,3,-1,
+								-1,-1,1,-1,3,1,-1,3,-1,-1,-1,-1,
+								1,3,-1,1,3,1,1,-1,1,1,-1,-1};
+	GLfloat box2_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1,	
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1,
+							1,1,1,1,1,1,1,1,1,1,1,1};
+	GLfloat box2_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
+								0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+								0,0,1,0,0,1,0,0,1,0,0,1,
+								0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+								-1,0,0,-1,0,0,-1,0,0,-1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0};
+
+
+
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glNormalPointer(GL_FLOAT, 0, room_normals);
+	glColorPointer(3, GL_FLOAT, 0, room_colors);
+	glVertexPointer(3, GL_FLOAT, 0, room_vertices);
+	glDrawArrays(GL_QUADS,0,24);
+
 	glPushMatrix();
-		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
 		glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		#ifdef __APPLE__
@@ -593,91 +657,35 @@ void drawCornellBox()
 		#endif
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
-			glutSolidSphere(1.5f,25,25);
+			glNormalPointer(GL_FLOAT, 0, box1_normals);
+			glColorPointer(3, GL_FLOAT, 0, box1_colors);
+			glVertexPointer(3, GL_FLOAT, 0, box1_vertices);
+			glDrawArrays(GL_QUADS,0,24);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
-	//Object 2, option 2
 	glPushMatrix();
-		glColor4f(0.0f, 0.0f, 1.0f,1.0f);
 		glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 		glMatrixMode(GL_TEXTURE);
 		#ifdef __APPLE__
 		glActiveTexture(GL_TEXTURE7);
 		#else
 		glActiveTextureARB(GL_TEXTURE7);
-		#endif	
+		#endif
 		glPushMatrix();
 			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
-			glutSolidSphere(1.0f,25,25);
+			glNormalPointer(GL_FLOAT, 0, box2_normals);
+			glColorPointer(3, GL_FLOAT, 0, box2_colors);
+			glVertexPointer(3, GL_FLOAT, 0, box2_vertices);
+			glDrawArrays(GL_QUADS,0,24);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
-	//Draw Room
-	glPushMatrix();
-	// Ground Wall
-	glColor3f(0.5f, 0.29f, 0.65f);
-	glBegin(GL_QUADS);
-	glNormal3f(0,1,0);
-	glVertex3f(-4,-4,-4);
-	glVertex3f(-4,-4, 4);
-	glVertex3f( 4,-4, 4);
-	glVertex3f( 4,-4,-4);
-	glEnd();
-
-	// Top Wall
-	glColor3f(0.5f, 0.65f, 0.29f);
-	glBegin(GL_QUADS);
-	glNormal3f(0,-1,0);
-	glVertex3f(-4,4,-4);
-	glVertex3f( 4,4,-4);
-	glVertex3f( 4,4, 4);
-	glVertex3f(-4,4, 4);
-	glEnd();
-
-	// Far Wall
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glBegin(GL_QUADS);
-	glNormal3f(0,0,1);
-	glVertex3f(-4,-4,-4);
-	glVertex3f(4, -4,-4);
-	glVertex3f( 4, 4,-4);
-	glVertex3f(-4,4,-4);
-	glEnd();
-
-	// Near Wall
-	glColor3f(1.0f, 0.0f, 1.0f);
-	glBegin(GL_QUADS);
-	glNormal3f(0,0,-1);
-	glVertex3f(-4,-4,4);
-	glVertex3f(-4, 4,4);
-	glVertex3f( 4, 4,4);
-	glVertex3f( 4,-4,4);
-	glEnd();
-
-	// Left Wall
-	glColor3f(0.65f, 0.5f, 0.29f);
-	glBegin(GL_QUADS);
-	glNormal3f(1,0,0);
-	glVertex3f(-4,-4,-4);
-	glVertex3f(-4,4, -4);
-	glVertex3f(-4, 4, 4);
-	glVertex3f(-4, -4,4);
-	glEnd();
-
-	// Right Wall
-	glColor3f(0.29f, 0.65f, 0.5f);
-	glBegin(GL_QUADS);
-	glNormal3f(-1,0,0);
-	glVertex3f(4,-4,-4);
-	glVertex3f(4,-4, 4);
-	glVertex3f(4, 4, 4);
-	glVertex3f(4, 4,-4);
-	glEnd();
-
-	glPopMatrix();
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 }
 
 void displayFPS()
@@ -731,11 +739,7 @@ void display(void){
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,FBOid);	
 
 	//Use fixed function pipline to render shadow map
-	#ifdef __APPLE__
-	glUseProgramObject(0);
-	#else
 	glUseProgramObjectARB(0);
-	#endif
 	
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
@@ -854,10 +858,11 @@ void display(void){
 	//Clear frame buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	if(!showVPLs)
+		glUseProgramObjectARB(gProgram->_object);
+
 #ifdef __APPLE__
 	//Using our shaders and shadow map
-	if(!showVPLs)
-		glUseProgramObject(gProgram->_object);
 
 	glUniform1i(vpl_pos_shaderID,1);
 	glActiveTexture(GL_TEXTURE1);
@@ -871,8 +876,6 @@ void display(void){
 	glActiveTexture(GL_TEXTURE7);
 #else
 	//Using our shaders and shadow map
-	if(!showVPLs)
-		glUseProgramObjectARB(gProgram->_object);
 
 	glUniform1iARB(vpl_pos_shaderID,1);
 	glActiveTextureARB(GL_TEXTURE1);
@@ -914,18 +917,44 @@ void display(void){
 	/*
 		VPL Debug Section - Display sphere at each VPL to test distribution
 	*/
+
+	GLfloat VPL_vertices[] = {	-0.05,0.05,-0.05,-0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05,-0.05,
+								-0.05,-0.05,-0.05,0.05,-0.05,-0.05,0.05,-0.05,0.05,-0.05,-0.05,0.05,
+								0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05,0.05,0.05,-0.05,0.05,
+								0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,-0.05,-0.05,0.05,-0.05,
+								-0.05,-0.05,0.05,-0.05,0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,
+								0.05,0.05,-0.05,0.05,0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05};
+
+	GLfloat VPL_colors[] = {	1,0,0,1,0,0,1,0,0,1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0};
+
+	GLfloat VPL_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
+								0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+								0,0,1,0,0,1,0,0,1,0,0,1,
+								0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+								-1,0,0,-1,0,0,-1,0,0,-1,0,0,
+								1,0,0,1,0,0,1,0,0,1,0,0};
 	if(showVPLs)
 	{
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glEnableClientState(GL_NORMAL_ARRAY);
+		glNormalPointer(GL_FLOAT, 0, VPL_normals);
+		glColorPointer(3, GL_FLOAT, 0, VPL_colors);
+		glVertexPointer(3, GL_FLOAT, 0, VPL_vertices);
 		for(int i =0; i<numLights; i++)
 		{
 			glPushMatrix();
-				glColor3f(1.0f,0.0f,0.0f);
 				glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
-				glutSolidSphere(0.1,25,25);
+				glDrawArrays(GL_QUADS,0,24);			
 			glPopMatrix();
 		}
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_COLOR_ARRAY);
+		glDisableClientState(GL_NORMAL_ARRAY);
 	}
-
 
 /////////////////////////////////////////////////////////////////////////////
 
