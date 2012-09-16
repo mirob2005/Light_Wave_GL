@@ -169,6 +169,10 @@
 				RelativePath=".\misc.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\scene.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -181,6 +185,10 @@
 			</File>
 			<File
 				RelativePath=".\misc.h"
+				>
+			</File>
+			<File
+				RelativePath=".\scene.h"
 				>
 			</File>
 		</Filter>
