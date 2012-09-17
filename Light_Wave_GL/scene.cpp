@@ -89,11 +89,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 		glPushMatrix();
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
 			glPushMatrix();
 				glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 				glNormalPointer(GL_FLOAT, 0, box1_normals);
@@ -107,11 +103,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 		glPushMatrix();
 			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
 			glPushMatrix();
 				glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 				glNormalPointer(GL_FLOAT, 0, box2_normals);
@@ -139,12 +131,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 			glScalef(1,2,1);
 			glRotatef(90,1,0,0);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
-			
 			glPushMatrix();
 				glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 				glTranslatef(0,-0.5,0);
@@ -162,11 +149,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 			glScalef(2,1,2);
 			glRotatef(90,1,0,0);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
 			glPushMatrix();
 				glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 				glTranslatef(0,-1.25,0);
@@ -182,12 +165,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 			glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 			glTranslatef(0,0.25,0);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
-			
 			glPushMatrix();
 				glTranslatef(object1Position[0],object1Position[1],object1Position[2]);
 				glTranslatef(0,0.25,0);
@@ -202,11 +180,7 @@ void drawScene(int scene, GLfloat *object1Position, GLfloat *object2Position)
 			glColor4f(0.0f, 0.0f, 1.0f,1.0f);
 			glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 			glMatrixMode(GL_TEXTURE);
-			#ifdef __APPLE__
 			glActiveTexture(GL_TEXTURE7);
-			#else
-			glActiveTextureARB(GL_TEXTURE7);
-			#endif
 			glPushMatrix();
 				glTranslatef(object2Position[0],object2Position[1],object2Position[2]);
 				glutSolidSphere(0.5f,25,25);
