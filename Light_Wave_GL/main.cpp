@@ -73,31 +73,29 @@ GLfloat object1Position[3] = {defobject1Position[0],defobject1Position[1],defobj
 GLfloat object2Position[3] = {defobject2Position[0],defobject2Position[1],defobject2Position[2]};
 
 //Camera Position
-GLfloat camPosition[3] = {0.0, 0.0, 4.0};
+GLfloat camPosition[3] = {defcamPosition[0],defcamPosition[1],defcamPosition[2]};
 
 //Camera LookAT
-GLfloat camLookAt[3] = {0.0, 0.0, 0.0};
+GLfloat camLookAt[3] = {defcamLookAt[0],defcamLookAt[1],defcamLookAt[2]};
 
 //Camera UpVector
-GLfloat camUpVector[3] = {0.0, 1.0, 0.0};
+GLfloat camUpVector[3] = {defcamUpVector[0],defcamUpVector[1],defcamUpVector[2]};
 
 //Light Position, option 0
 //Needs 4 components for glLightfv params use
-GLfloat lightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
+GLfloat lightPosition[4] = { deflightPosition[0], deflightPosition[1], deflightPosition[2], deflightPosition[3]};
 
 //Light LookAT
-GLfloat lightLookAt[3] = {0.0, 0.0, 0.0};
+GLfloat lightLookAt[3] = {deflightLookAt[0],deflightLookAt[1],deflightLookAt[2]};
 
 //Light UpVector
-GLfloat lightUpVector[3] = {0.0, 0.0, 1.0};
+GLfloat lightUpVector[3] = {deflightUpVector[0],deflightUpVector[1],deflightUpVector[2]};
 
 //Light Normal/Direction
-GLfloat lightNormalVector[3] = {lightLookAt[0] - lightPosition[0], 
-								lightLookAt[1] - lightPosition[1], 
-								lightLookAt[2] - lightPosition[2]};
+GLfloat lightNormalVector[3] = {deflightNormalVector[0],deflightNormalVector[1],deflightNormalVector[2]};
 
 //Camera Rotate for now, until a better method is used
-double worldRotate = 0.0;
+double worldRotate = defworldRotate;
 /**************************************/
 
 /*
@@ -157,15 +155,11 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
   gProgram->isHardwareAccelerated( );
 
-#ifdef __APPLE__
+
   shadow_shaderID = glGetUniformLocation(gProgram->_object, "ShadowMap");
   vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
-#else
-  shadow_shaderID = glGetUniformLocationARB(gProgram->_object, "ShadowMap");
-  vpl_pos_shaderID = glGetUniformLocationARB(gProgram->_object, "vplPosTex");
-  vpl_nor_shaderID = glGetUniformLocationARB(gProgram->_object, "vplNorTex");
-#endif
+
 }
 
 
@@ -270,7 +264,7 @@ void generateVPLs( void )
 		}
 	}
 	
-	////Simulate Clamping process of the texture
+	////Simulate Clamping process of the texture --DEBUG
 	//for(int i=0; i<3*numLights; i++)
 	//{
 	//	if(vplDataPos[i]<0)
@@ -331,9 +325,6 @@ void generateVPLs( void )
 
 }
 
-/*  Initialize material property, light source, lighting model,
- *  and depth buffer.
- */
 void init( void ){
 
 	//Initialize VPLs
@@ -377,6 +368,7 @@ void init( void ){
 	//Check for errors in the FBO
 	GLenum FBOstatus;
 	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	cout << "glCheckFramebufferStatusEXT returned: ";
 	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
 		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
 	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
@@ -491,64 +483,31 @@ void display(void){
 	glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
 	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
 
-/*************************************************/
-
-	//NEX CODE HERE
-
-	////Matrix is Blue, Green, Red, Purple... matrix is row order
-	//const GLdouble color_Matrix[16] = {	1.0, 0.0, 0.0, 0.5, 
-	//									0.0, 1.0, 0.0, 0.0,
-	//									0.0, 0.0, 1.0, 0.5,
-	//									0.0, 0.0, 0.0, 0.0};
-	//
-	//
-	////Use texture6 matrix
-	//glMatrixMode(GL_TEXTURE);
-	//#ifdef __APPLE__
-	//glActiveTexture(GL_TEXTURE6);
-	//#else
-	//glActiveTextureARB(GL_TEXTURE6);
-	//#endif
-	//
-	////Multiply matrix into texture6
-	//glLoadIdentity();	
-	//glLoadMatrixd(color_Matrix);
 
 /*
 	Intializing Texture 5 to be used to pass in primary light properties
 */
 
-	//Light Position, Light Normal, light_wave properties (may need to be const in shader, remove?)
-	//can Add lihgt color or attenuation to last column
+	//Light Position, Light Normal, light_wave properties
+	//Last Column available for additional parameters
 	const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, 0.0, 
 										lightPosition[1], lightNormalVector[1], lightsPerRay, 0.0,
 										lightPosition[2], lightNormalVector[2], numLights, 0.0,
 										lightPosition[3], 0.0, 0.0, 0.0};
 
 	//Use texture5 matrix
-	glMatrixMode(GL_TEXTURE);
-	#ifdef __APPLE__	
+	glMatrixMode(GL_TEXTURE);	
 	glActiveTexture(GL_TEXTURE5);
-	#else
-	glActiveTextureARB(GL_TEXTURE5);
-	#endif
+
 	
 	//Multiply light_matrix into texture6
 	glLoadIdentity();	
 	glLoadMatrixd(light_Matrix);
 
-
-/*************************************************/
-
-
 	//Use texture7 matrix
 	glMatrixMode(GL_TEXTURE);
-	#ifdef __APPLE__
 	glActiveTexture(GL_TEXTURE7);
-	#else
-	glActiveTextureARB(GL_TEXTURE7);
-	#endif
-	
+
 	//Multiply all 3 matrices into texture7
 	glLoadIdentity();	
 	glLoadMatrixd(biasMatrix);
@@ -572,7 +531,7 @@ void display(void){
 	if(!showVPLs)
 		glUseProgramObjectARB(gProgram->_object);
 
-#ifdef __APPLE__
+
 	//Using our shaders and shadow map
 
 	glUniform1i(vpl_pos_shaderID,1);
@@ -585,20 +544,6 @@ void display(void){
 
 	glUniform1i(shadow_shaderID,7);
 	glActiveTexture(GL_TEXTURE7);
-#else
-	//Using our shaders and shadow map
-
-	glUniform1iARB(vpl_pos_shaderID,1);
-	glActiveTextureARB(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
-
-	glUniform1iARB(vpl_nor_shaderID,2);
-	glActiveTextureARB(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
-
-	glUniform1iARB(shadow_shaderID,7);
-	glActiveTextureARB(GL_TEXTURE7);
-#endif
 
 	glBindTexture(GL_TEXTURE_2D,shadowMapID);
 
@@ -624,7 +569,7 @@ void display(void){
 
 
 	/*
-		VPL Debug Section - Display sphere at each VPL to test distribution
+		VPL Debug Section - Display cube at each VPL to test distribution
 	*/
 
 	GLfloat VPL_vertices[] = {	-0.05,0.05,-0.05,-0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05,-0.05,
@@ -634,50 +579,53 @@ void display(void){
 								-0.05,-0.05,0.05,-0.05,0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,
 								0.05,0.05,-0.05,0.05,0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05};
 
-	GLfloat VPL_colors[] = {	1,0,0,1,0,0,1,0,0,1,0,0,
-								1,0,0,1,0,0,1,0,0,1,0,0,
-								1,0,0,1,0,0,1,0,0,1,0,0,
-								1,0,0,1,0,0,1,0,0,1,0,0};
-
 	GLfloat VPL_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
 								0,-1,0,0,-1,0,0,-1,0,0,-1,0,
 								0,0,1,0,0,1,0,0,1,0,0,1,
 								0,0,-1,0,0,-1,0,0,-1,0,0,-1,
 								-1,0,0,-1,0,0,-1,0,0,-1,0,0,
 								1,0,0,1,0,0,1,0,0,1,0,0};
+			
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glNormalPointer(GL_FLOAT, 0, VPL_normals);
+	glVertexPointer(3, GL_FLOAT, 0, VPL_vertices);
+	
 	if(showVPLs)
 	{
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_COLOR_ARRAY);
-		glEnableClientState(GL_NORMAL_ARRAY);
-		glNormalPointer(GL_FLOAT, 0, VPL_normals);
-		glColorPointer(3, GL_FLOAT, 0, VPL_colors);
-		glVertexPointer(3, GL_FLOAT, 0, VPL_vertices);
+
+
 		for(int i =0; i<numLights; i++)
 		{
 			glPushMatrix();
+				glColor3f(1.0f,0.0f,0.0f);
 				glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
 				glDrawArrays(GL_QUADS,0,24);			
 			glPopMatrix();
 		}
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_COLOR_ARRAY);
-		glDisableClientState(GL_NORMAL_ARRAY);
 	}
-
 /////////////////////////////////////////////////////////////////////////////
+
 
 	//LIGHT MARKER
 	glPushMatrix();
-		glColor4f(1.0,1.0f,0,0.0f);
+		glColor3f(1.0f,1.0f,0.0f);
 		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
-		glutSolidSphere(0.1f,25,25);
+		glScalef(2,2,2);
+		glDrawArrays(GL_QUADS,0,24);
 	glPopMatrix();
 
+	//Light LookAT marker
 	glPushMatrix();
-		glColor4f(1.0,1.0f,0,0.0f);
+		glColor3f(1.0f,1.0f,0.0f);
 		glTranslatef(lightLookAt[0], lightLookAt[1], lightLookAt[2]);
-		glutSolidSphere(.1f,25,25);
+		glScalef(2,2,2);
+		glDrawArrays(GL_QUADS,0,24);
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 
 	displayFPS();
 
@@ -1035,24 +983,13 @@ int main(int argc, char** argv){
 	glutInitWindowSize(screenWidth, screenHeight); 
 	glutInitWindowPosition(400, 10);
 	glutCreateWindow("Light_Wave_GL");
-#ifdef __APPLE__
-	if( supportsOpenGLVersion( 2, 0 ) ){
-	 fprintf( stderr, "Congrats! OpenGL Shading Language is supported.\n" );
-	}else{
-	 fprintf( stderr, "OpenGL Shading Language not supported. Sorry.\n" );
-	 exit(1);
-	}
-	if( gProgram->isHardwareAccelerated( ) ){
-	 fprintf( stderr, "Oh and it's hardware accelerated!\n" );
-	}
-#else
+
 	GLboolean err = GLeeInit();
 	if( err == false){
 	 /* Problem: GLeeInit failed...*/
 	 fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
 	 exit(1);
 	}
-#endif
 
 	init( );
 
@@ -1066,12 +1003,7 @@ int main(int argc, char** argv){
 	printf("Provided by this vendor %s\n", GL_vendor);
 
 	char *GL_renderer=(char *)glGetString(GL_RENDERER);
-	printf("Using this renderer %s\n", GL_renderer);
-
-	// get max texture stacks
-	GLint texturesize[100];
-    glGetIntegerv(GL_MAX_TEXTURE_SIZE, texturesize);
-	printf("The largest support texture size is: %i\n\n", texturesize);
+	printf("Using this renderer %s\n\n", GL_renderer);
 
 
 	cout << "Using these parameters:\nLight Angle = "<< lightsAngle << "\nLights Per Ray = " << lightsPerRay << 
