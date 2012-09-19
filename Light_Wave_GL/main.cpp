@@ -12,6 +12,7 @@
 
 #include "GLSLShader.h"
 #include "scene.h"
+#include "FrameSaver.h"
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -39,6 +40,9 @@ int shadowMapHeight = screenHeight*shadowRatio;
 double gTime = 0;
 int frames = 0;
 double fps = 0;
+
+FrameSaver g_frameSaver;
+int g_recording = 0;
 
 /*  Scene Changer
 ---------------------------
@@ -629,6 +633,8 @@ void display(void){
 
 	displayFPS();
 
+	if( g_recording == 1) g_frameSaver.DumpPPM(screenWidth,screenHeight);
+
 	glFlush ();
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -904,6 +910,22 @@ void keyboard(unsigned char key, int x, int y){
 			   object2Position[1] = defobject2Position[1];
 			   object2Position[2] = defobject2Position[2];
 		   break;
+		   case 'm':
+				if( g_recording == 1 )
+				{
+					std::cout << "Frame recording disabled." << std::endl;
+					g_recording = 0 ;
+				}
+				else
+				{
+					std::cout << "Frame recording enabled." << std::endl;
+					g_recording = 1  ;
+				}
+				g_frameSaver.Toggle();
+				break ;
+		   case 'i':
+				g_frameSaver.DumpPPM(screenWidth,screenHeight) ;
+				break;
 	   }
    }
    glutPostRedisplay();
