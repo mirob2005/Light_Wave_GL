@@ -533,8 +533,13 @@ void display(void){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	if(!showVPLs)
-		glUseProgramObjectARB(gProgram->_object);
-
+	{
+		#ifdef __APPLE__
+			glUseProgramObjectARB((void*)gProgram->_object);
+		#else
+			glUseProgramObjectARB((GLhandleARB)gProgram->_object);		
+		#endif
+	}
 
 	//Using our shaders and shadow map
 
@@ -1006,12 +1011,15 @@ int main(int argc, char** argv){
 	glutInitWindowPosition(400, 10);
 	glutCreateWindow("Light_Wave_GL");
 
-	GLboolean err = GLeeInit();
-	if( err == false){
-	 /* Problem: GLeeInit failed...*/
-	 fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
-	 exit(1);
-	}
+	#ifdef _WIN32
+		GLboolean err = GLeeInit();
+		if( err == false){
+		 /* Problem: GLeeInit failed...*/
+		 fprintf(stderr, "Error: %s\n",GLeeGetErrorString());
+		 exit(1);
+		}
+	#endif
+
 
 	init( );
 
