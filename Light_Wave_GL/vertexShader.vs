@@ -69,19 +69,28 @@ void main( ){
 /////////////////////////////////////////////////////////////////	
 
     int numLights = int(lightProperties.z);
-	float maxDistance = 8.0;
+	float maxDistance = 4.0;
 	
-	for(int i=0; i< numLights; i++)
+	/*
+	float texCoord = (60.0/numLights);
+	
+	vec3 vplPosition = texture1D(vplNorTex,texCoord).rgb;
+	float att = texture1D(vplNorTex,texCoord).a;
+	//indirect_color = vec4((att*2)-1,(att*2)-1,(att*2)-1,1);
+	indirect_color = vec4(abs((vplPosition-0.5)*maxDistance*4.0),1.0);
+	*/
+	
+	for(int i=1; i< numLights+1; i++)
 	{
-	   //Access the vpl___Tex using this:
-	   //texture1D(vpl___Tex,'coord').xyz; gets the 3 coords
-	   vec3 vplPosition = texture1D(vplPosTex,i).xyz;
-	   vec3 vplNormal = texture1D(vplNorTex,i).xyz;
-	   float vplAttenuation = texture1D(vplNorTex,i).w;
+	   float texCoord = (float(i)/numLights);
+
+	   vec3 vplPosition = texture1D(vplPosTex,texCoord).rgb;
+	   vec3 vplNormal = texture1D(vplNorTex,texCoord).rgb;
+	   float vplAttenuation = texture1D(vplNorTex,texCoord).a;
        
-	   vplPosition = (vplPosition-0.5)*maxDistance*4;
-	   vplNormal= (vplNormal-0.5)*maxDistance*4;
-	   vplAttenuation= (vplAttenuation-0.5)*maxDistance*4;
+	   vplPosition = (vplPosition-0.5)*maxDistance*4.0;
+	   vplNormal= (vplNormal-0.5)*maxDistance*4.0;
+	   vplAttenuation= (vplAttenuation-0.5)*maxDistance*4.0;
        
 	   vec3 normalized_vplNormal = normalize(vplNormal);
 
@@ -105,7 +114,7 @@ void main( ){
 	   
 	   //Clamping between -0.5 and 1 allows for an angle of of 240 degeres (120*2) instead of 180 degrees (90*2)
 	   //Normalize larger angle allowances
-	   //DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
+	   DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
 	   DiffuseTermLight = clamp(DiffuseTermLight, 0.0, 1.0);
 
 	   // Calculating The VPL Contribution
@@ -113,7 +122,9 @@ void main( ){
    }	
 
    //indirect_color = vec4(indirect_color.r/numLights,indirect_color.g/numLights,indirect_color.b/numLights,1);
-	//indirect_color = indirect_color/numLights;
+	indirect_color = indirect_color/numLights;
 
 	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
+	
+	//debugOutput = indirect_color;
 }

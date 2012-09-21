@@ -170,7 +170,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 void generateVPLs( void )
 {
-	float maxDistance = 8.0;
+	float maxDistance = 4.0;
 
 	lightNormalVector[0] = lightLookAt[0] - lightPosition[0];
 	lightNormalVector[1] = lightLookAt[1] - lightPosition[1];
@@ -254,6 +254,11 @@ void generateVPLs( void )
 			}	
 		}
 	}
+//for(int i =60; i<65; i++)
+//{
+//	cout << vplDataNor[4*i+0]<< endl << vplDataNor[4*i+1] << endl << vplDataNor[4*i+2] << endl << vplDataNor[4*i+3]<<endl<<endl;
+//
+//}
 
 	if(!showVPLs)
 	{
@@ -304,25 +309,25 @@ void generateVPLs( void )
 	//Create VPL Position Texture
 	glGenTextures(1, &vpl_pos_TexID);
 	glBindTexture(GL_TEXTURE_1D, vpl_pos_TexID);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, numLights, 0, GL_RGB, GL_FLOAT, &vplDataPos[0]);
 
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB16, numLights, 0, GL_RGB, GL_FLOAT, vplDataPos);
+	
 	glBindTexture(GL_TEXTURE_1D, 0);
 
 	//Create VPL Normal Texture
 	glGenTextures(1, &vpl_nor_TexID);
 	glBindTexture(GL_TEXTURE_1D, vpl_nor_TexID);
+	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA, numLights, 0, GL_RGBA, GL_FLOAT, &vplDataNor[0]);
 
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-
-	glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA16, numLights, 0, GL_RGBA, GL_FLOAT, vplDataNor);
+	
 	glBindTexture(GL_TEXTURE_1D, 0);
 
 	updateVPLs = false;
