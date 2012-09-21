@@ -774,6 +774,8 @@ void keyboard(unsigned char key, int x, int y){
 				cout << "R/r - Reset camera defaults" << endl;
 				cout << "T/t - Reset Object position defaults" << endl;
 				cout << "G/g - Change Scene" << endl;
+				cout << "I/i - Capture screenshot" << endl;
+				cout << "M/m - Enable Frame Recording" << endl;
 				cout << "--------------" << endl;
 				cout << endl;
 			break;
@@ -920,6 +922,7 @@ void keyboard(unsigned char key, int x, int y){
 			   object2Position[1] = defobject2Position[1];
 			   object2Position[2] = defobject2Position[2];
 		   break;
+		   case 'M':
 		   case 'm':
 				if( g_recording == 1 )
 				{
@@ -932,10 +935,11 @@ void keyboard(unsigned char key, int x, int y){
 					g_recording = 1  ;
 				}
 				g_frameSaver.Toggle();
-				break ;
+		   break ;
+		   case 'I':
 		   case 'i':
 				g_frameSaver.DumpPPM(screenWidth,screenHeight) ;
-				break;
+			break;
 	   }
    }
    glutPostRedisplay();
