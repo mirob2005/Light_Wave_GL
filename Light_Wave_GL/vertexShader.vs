@@ -3,14 +3,13 @@
 uniform sampler1D vplPosTex;
 uniform sampler1D vplNorTex;
 
+varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normalized_light_to_vertex_vector;
+
 varying vec4 ShadowCoord;
-varying vec4 direct_color;
 varying vec4 indirect_color;
 
-//varying vec4 debugOutput;
-
 void main( ){
-    direct_color = vec4(0.0,0.0,0.0,1.0);
+    
     indirect_color = vec4(0.0,0.0,0.0,1.0);
 
 	gl_FrontColor = gl_Color;
@@ -26,7 +25,7 @@ void main( ){
 	// Transforming The Vertex Position To ModelView-Space
 	vec4 vertex_in_modelview_space = gl_ModelViewMatrix * gl_Vertex;
 	
-/////////////////////////////////////////////////////////////////////////////////////////	
+	/////////////////////////////////////////////////////////////////////////////////////////	
 	//Primary Lighting Calculations:
 	
 	//Access Primary Light Position, Normal from Texture 5
@@ -45,40 +44,22 @@ void main( ){
 	vec4 lightProperties = extractRow3*gl_TextureMatrix[5];
 		
 	//Light Direction/Normal
-	vec3 lightDir = normalize(vec3(masterLightNormal));
+	lightDir = normalize(vec3(masterLightNormal));
 	
 	// Calculating The Vector From The Vertex Position To The Light Position and vice versa
 	vec3 vertex_to_light_vector = vec3(masterLightPosition - vertex_in_modelview_space);
 	vec3 light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);
 	
     // Normalizing Vectors
-	vec3 normalized_normal = normalize(normal);	
-	vec3 normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
-	vec3 normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
-  	
-  	// Reflection term of object
-	float DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	normalized_normal = normalize(normal);	
+	normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
+	normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
 	
-	//Reflection term of directional light
-	float DiffuseTermLight = clamp(dot(lightDir, normalized_light_to_vertex_vector),0.0,1.0);
-
-	// Calculating The Color from the primary light
-	direct_color += gl_Color*DiffuseTermLight*DiffuseTermObj;	
-	
-	
-/////////////////////////////////////////////////////////////////	
+   /////////////////////////////////////////////////////////////////
+	//Indirect Lighting Calculations:
 
     int numLights = int(lightProperties.z);
 	float maxDistance = 4.0;
-	
-	/*
-	float texCoord = (60.0/numLights);
-	
-	vec3 vplPosition = texture1D(vplNorTex,texCoord).rgb;
-	float att = texture1D(vplNorTex,texCoord).a;
-	//indirect_color = vec4((att*2)-1,(att*2)-1,(att*2)-1,1);
-	indirect_color = vec4(abs((vplPosition-0.5)*maxDistance*4.0),1.0);
-	*/
 	
 	for(int i=1; i< numLights+1; i++)
 	{
@@ -96,21 +77,21 @@ void main( ){
 
 
 	   // Calculating The Vector From The Vertex Position To The Light Position and vice versa
-	   vertex_to_light_vector = vec3(vplPosition - vec3(vertex_in_modelview_space));
-	   light_to_vertex_vector = vec3(vec3(vertex_in_modelview_space) - vplPosition);	
+	   vec3 vertex_to_light_vector = vec3(vplPosition - vec3(vertex_in_modelview_space));
+	   vec3 light_to_vertex_vector = vec3(vec3(vertex_in_modelview_space) - vplPosition);	
    	
 	   // Normalizing Vectors
-	   normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
-	   normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);
+	   vec3 normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
+	   vec3 normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);
 	   
 	   //Distance Vector
 	   float distance_vertex_to_light = length(vertex_to_light_vector);
      	
   	   // Reflection term of object
-	   DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
+	   float DiffuseTermObj = clamp(dot(normalized_normal, normalized_vertex_to_light_vector), 0.0, 1.0);
    	
 	   //Reflection term of directional light
-	   DiffuseTermLight = dot(normalized_vplNormal, normalized_light_to_vertex_vector);
+	   float DiffuseTermLight = dot(normalized_vplNormal, normalized_light_to_vertex_vector);
 	   
 	   //Clamping between -0.5 and 1 allows for an angle of of 240 degeres (120*2) instead of 180 degrees (90*2)
 	   //Normalize larger angle allowances
@@ -121,10 +102,9 @@ void main( ){
 	   indirect_color += gl_Color*DiffuseTermObj*DiffuseTermLight*(1-vplAttenuation);///distance_vertex_to_light;
    }	
 
-   //indirect_color = vec4(indirect_color.r/numLights,indirect_color.g/numLights,indirect_color.b/numLights,1);
-	indirect_color = indirect_color/numLights;
+   indirect_color = vec4(indirect_color.r/numLights,indirect_color.g/numLights,indirect_color.b/numLights,1);
+	
 
 	ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
 	
-	//debugOutput = indirect_color;
 }
