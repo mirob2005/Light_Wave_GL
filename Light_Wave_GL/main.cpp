@@ -482,6 +482,7 @@ void display(void){
 
 	static GLdouble modelViewMatrix[16];
 	static GLdouble projectionMatrix[16];
+	//static GLdouble textureMatrix[16];
 
 	//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
 	const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
@@ -521,6 +522,16 @@ void display(void){
 	glLoadMatrixd(biasMatrix);
 	glMultMatrixd (projectionMatrix);
 	glMultMatrixd (modelViewMatrix);
+
+	
+	//glGetDoublev(GL_TEXTURE_MATRIX, textureMatrix);
+
+	//cout << projectionMatrix[0] << ", " <<projectionMatrix[1] << ", " <<projectionMatrix[2] << ", " <<projectionMatrix[3] << endl;
+	//cout << projectionMatrix[4] << ", " <<projectionMatrix[5] << ", " <<projectionMatrix[6] << ", " <<projectionMatrix[7] << endl;
+	//cout << projectionMatrix[8] << ", " <<projectionMatrix[9] << ", " <<projectionMatrix[10] << ", " <<projectionMatrix[11] << endl;
+	//cout << projectionMatrix[12] << ", " <<projectionMatrix[13] << ", " <<projectionMatrix[14] << ", " <<projectionMatrix[15] << endl;
+
+	//cin.get();
 
 	glMatrixMode(GL_MODELVIEW);
 
