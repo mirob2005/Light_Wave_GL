@@ -4,6 +4,7 @@ uniform sampler1D vplPosTex;
 uniform sampler1D vplNorTex;
 
 varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normalized_light_to_vertex_vector;
+varying vec3 normalized_viewing_position_vector;
 
 varying vec4 ShadowCoord;
 varying vec4 indirect_color;
@@ -42,6 +43,7 @@ void main( ){
 	vec4 masterLightPosition = extractRow1*gl_TextureMatrix[5];
 	vec4 masterLightNormal = extractRow2*gl_TextureMatrix[5];
 	vec4 lightProperties = extractRow3*gl_TextureMatrix[5];
+	vec4 cameraPosition = extractRow4*gl_TextureMatrix[5];
 		
 	//Light Direction/Normal
 	lightDir = normalize(vec3(masterLightNormal));
@@ -50,10 +52,15 @@ void main( ){
 	vec3 vertex_to_light_vector = vec3(masterLightPosition - vertex_in_modelview_space);
 	vec3 light_to_vertex_vector = vec3(vertex_in_modelview_space - masterLightPosition);
 	
+	// Calculating The Vector From The Vertex Position To The Camera Position
+	vec3 vertex_to_camera_vector = vec3(cameraPosition - vertex_in_modelview_space);
+	
     // Normalizing Vectors
 	normalized_normal = normalize(normal);	
 	normalized_vertex_to_light_vector = normalize(vertex_to_light_vector);
-	normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);	
+	normalized_light_to_vertex_vector = normalize(light_to_vertex_vector);
+	normalized_viewing_position_vector = normalize(vertex_to_camera_vector);
+		
 	
    /////////////////////////////////////////////////////////////////
 	//Indirect Lighting Calculations:

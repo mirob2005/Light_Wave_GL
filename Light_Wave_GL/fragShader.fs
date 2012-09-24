@@ -3,6 +3,7 @@
 uniform sampler2D ShadowMap;
 
 varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normalized_light_to_vertex_vector;
+varying vec3 normalized_viewing_position_vector;
 
 varying vec4 ShadowCoord;
 varying vec4 indirect_color;
@@ -26,6 +27,8 @@ void main( ){
 /*
  *	Primary Lighting Calculations
  */
+ 
+    // DIFFUSE
     vec4 direct_color = vec4(0.0,0.0,0.0,1.0);
 	 
 	vec3 n = normalize(normalized_normal);
@@ -39,9 +42,24 @@ void main( ){
 	
 	//Reflection term of directional light
 	float DiffuseTermLight = clamp(dot(ldir, LtV),0.0,1.0);
-
+	
 	// Calculating The Color from the primary light
-	direct_color += gl_Color*DiffuseTermLight*DiffuseTermObj;	
+	direct_color += gl_Color*DiffuseTermLight*DiffuseTermObj;
+	
+	//SPECULAR
+	vec3 viewVec = normalize(normalized_viewing_position_vector);
+	float SpecularTerm = 0.0;
+	float normal_dot_light = dot(n,VtL);
+	if(normal_dot_light > 0.0)
+	{
+	  vec3 Reflection = vec3(2.0*vec3(n)*normal_dot_light)-VtL;
+	  SpecularTerm = dot(Reflection, viewVec);
+	}
+		
+	if(SpecularTerm > 0.0)
+	{
+	  direct_color += gl_Color*pow(SpecularTerm,5);	
+	}
 /////////////////////////////////////////////////////////////////
 	
 	//gl_FragColor =	 direct_color;

@@ -463,10 +463,11 @@ void display(void){
 	//Disable color writing to the frame buffer 
 	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 
+
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-
 	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	//Using Light's position, lookAt, up vector
@@ -499,17 +500,16 @@ void display(void){
 
 	//Light Position, Light Normal, light_wave properties
 	//Last Column available for additional parameters
-	const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, 0.0, 
-										lightPosition[1], lightNormalVector[1], lightsPerRay, 0.0,
-										lightPosition[2], lightNormalVector[2], numLights, 0.0,
+	const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
+										lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
+										lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
 										lightPosition[3], 0.0, 0.0, 0.0};
 
 	//Use texture5 matrix
 	glMatrixMode(GL_TEXTURE);	
 	glActiveTexture(GL_TEXTURE5);
 
-	
-	//Multiply light_matrix into texture6
+	//Multiply light_matrix into texture5
 	glLoadIdentity();	
 	glLoadMatrixd(light_Matrix);
 
@@ -522,7 +522,7 @@ void display(void){
 	glLoadMatrixd(biasMatrix);
 	glMultMatrixd (projectionMatrix);
 	glMultMatrixd (modelViewMatrix);
-	
+
 	glMatrixMode(GL_MODELVIEW);
 
 	//Begin rendering from the camera's perspective using our shadow map
