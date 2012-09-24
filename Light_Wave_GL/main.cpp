@@ -493,10 +493,9 @@ void display(void){
 	glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
 	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
 
-
-/*
+	/*
 	Intializing Texture 5 to be used to pass in primary light properties
-*/
+	*/
 
 	//Light Position, Light Normal, light_wave properties
 	//Last Column available for additional parameters
