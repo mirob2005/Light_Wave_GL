@@ -3,7 +3,7 @@ mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
 Thesis Test Implementation using OpenGL and GLSL
 Start Date: 5/31/12
-Updated: 7/26/12
+Updated: 9/23/12
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -21,7 +21,9 @@ All files must be in the same directory to be found.
 TODO:
 1) (DONE) Add Shadows to the scene using shadow maps
 2) (DONE) Add commands to move objects in the scene
-3) Add Light_Wave logic
+3) (DONE) Add Light_Wave logic
+4) (DONE) Add Specular
+5) Add Indirect Shadows
 
 COMMAND LINE (currently):
 
@@ -51,3 +53,6 @@ shift+S - move object down
 
 R - reset camera
 T - reset spheres
+
+I - Take SnapShot
+M - Take continuous snapshots
