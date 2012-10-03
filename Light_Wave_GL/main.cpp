@@ -63,8 +63,8 @@ const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
 const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
-const GLfloat deflightLookAt[3] = {0.0, 0.0, 0.0};
-const GLfloat deflightUpVector[3] = {0.0, 0.0, 1.0};
+const GLfloat deflightLookAt[3] = {deflightPosition[0], deflightPosition[1]-0.1, deflightPosition[2]};
+const GLfloat deflightUpVector[3] = {0.0, 0.0, -1.0};
 const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
 										deflightLookAt[1] - deflightPosition[1], 
 										deflightLookAt[2] - deflightPosition[2]};
@@ -526,10 +526,10 @@ void display(void){
 	
 	//glGetDoublev(GL_TEXTURE_MATRIX, textureMatrix);
 
-	//cout << projectionMatrix[0] << ", " <<projectionMatrix[1] << ", " <<projectionMatrix[2] << ", " <<projectionMatrix[3] << endl;
-	//cout << projectionMatrix[4] << ", " <<projectionMatrix[5] << ", " <<projectionMatrix[6] << ", " <<projectionMatrix[7] << endl;
-	//cout << projectionMatrix[8] << ", " <<projectionMatrix[9] << ", " <<projectionMatrix[10] << ", " <<projectionMatrix[11] << endl;
-	//cout << projectionMatrix[12] << ", " <<projectionMatrix[13] << ", " <<projectionMatrix[14] << ", " <<projectionMatrix[15] << endl;
+	//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
+	//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
+	//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
+	//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
 
 	//cin.get();
 
@@ -987,7 +987,7 @@ void special( int key, int px, int py ){
 				if(lightPosition[2] >-3.0)
 				{
 					lightPosition[2] += -0.1;	  
-					//lightLookAt[2] += -0.1;	 
+					lightLookAt[2] += -0.1;	 
 					updateVPLs = true;
 				}
 		   break;	
@@ -995,7 +995,7 @@ void special( int key, int px, int py ){
 				if(lightPosition[2] <3.0)
 				{
 					lightPosition[2] += 0.1;	
-					//lightLookAt[2] += 0.1;	
+					lightLookAt[2] += 0.1;	
 					updateVPLs = true;
 				}
 		   break;	
@@ -1003,7 +1003,7 @@ void special( int key, int px, int py ){
 				if(lightPosition[0] >-3.0)
 				{
 					lightPosition[0] += -0.1;		  
-					//lightLookAt[0] += -0.1;	
+					lightLookAt[0] += -0.1;	
 					updateVPLs = true;
 				}
 		   break;
@@ -1011,7 +1011,7 @@ void special( int key, int px, int py ){
 				if(lightPosition[0] <3.0)
 				{
 					lightPosition[0] += 0.1;	  
-					//lightLookAt[0] += 0.1;	
+					lightLookAt[0] += 0.1;	
 					updateVPLs = true;
 				}
 		   break;
