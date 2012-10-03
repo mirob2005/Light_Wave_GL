@@ -7,6 +7,7 @@ varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normal
 varying vec3 normalized_viewing_position_vector;
 
 varying vec4 ShadowCoord;
+varying vec4 INDShadowCoord;
 varying vec4 indirect_color;
 
 void main( ){
@@ -123,7 +124,23 @@ void main( ){
    biasMatrix[2] = vec4(0.0, 0.0, 0.5, 0.0);
    biasMatrix[3] = vec4(0.5, 0.5, 0.5, 1.0); 
  
-   vec3 eye = vec3(masterLightPosition);
+   mat4 projectionMatrix;
+   float fovy = 125.0;
+   float pi = 3.14159265359;
+   float f = tan((90.0-(fovy/2.0))*pi/180.0);
+   float aspect = 1.3333;
+   float FAR = 20.0;
+   float NEAR = 0.1;
+   projectionMatrix[0] = vec4(f/aspect,0.0,0.0,0.0);
+   projectionMatrix[1] = vec4(0.0,f,0.0,0.0);
+   projectionMatrix[2] = vec4(0.0,0.0,(FAR+NEAR)/(NEAR-FAR),-1.0);
+   projectionMatrix[3] = vec4(0.0,0.0,(2*FAR*NEAR)/(NEAR-FAR),0.0);   
+   
+   float texCoord = (1.0/numLights);
+   vec3 vplPosition = texture1D(vplPosTex,texCoord).rgb;    
+   vplPosition = (vplPosition-0.5)*maxDistance*4.0;  
+  
+   vec3 eye = vec3(vplPosition);
    vec3 center = vec3(eye.x,eye.y-0.1,eye.z);
    vec3 fvec = vec3(center-eye);  
    vec3 F  = normalize(fvec); 
@@ -151,25 +168,10 @@ void main( ){
    
    mat4 modelviewMatrix;
    modelviewMatrix = transpose(translate*model);
- 
-   mat4 projectionMatrix;
-   float fovy = 125.0;
-   float pi = 3.14159265359;
-   float f = tan((90.0-(fovy/2.0))*pi/180.0);
-   float aspect = 1.3333;
-   float FAR = 20.0;
-   float NEAR = 0.1;
-   projectionMatrix[0] = vec4(f/aspect,0.0,0.0,0.0);
-   projectionMatrix[1] = vec4(0.0,f,0.0,0.0);
-   projectionMatrix[2] = vec4(0.0,0.0,(FAR+NEAR)/(NEAR-FAR),-1.0);
-   projectionMatrix[3] = vec4(0.0,0.0,(2*FAR*NEAR)/(NEAR-FAR),0.0);  
   
    mat4 shadowMatrix;
    shadowMatrix = biasMatrix*projectionMatrix*modelviewMatrix;
    
-   ShadowCoord= shadowMatrix * gl_Vertex;
-   
-   
-  //ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
-	
+   INDShadowCoord= shadowMatrix * gl_Vertex; 
+   ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;	
 }
