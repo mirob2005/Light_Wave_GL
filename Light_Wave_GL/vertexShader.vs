@@ -116,49 +116,42 @@ void main( ){
    //Shadow Projection and Modelview Matrices Calculation
    
    //Column Major Order Matrices - set 1st, 2nd,... columns
-   /*
+   
    mat4 biasMatrix;
    biasMatrix[0] = vec4(0.5, 0.0, 0.0, 0.0);
    biasMatrix[1] = vec4(0.0, 0.5, 0.0, 0.0);
    biasMatrix[2] = vec4(0.0, 0.0, 0.5, 0.0);
-   biasMatrix[3] = vec4(0.5, 0.5, 0.5, 1.0);
+   biasMatrix[3] = vec4(0.5, 0.5, 0.5, 1.0); 
+ 
+   vec3 eye = vec3(masterLightPosition);
+   vec3 center = vec3(eye.x,eye.y-0.1,eye.z);
+   vec3 fvec = vec3(center-eye);  
+   vec3 F  = normalize(fvec); 
+   
+   vec3 UP = vec3(0,0,-1); 
+   vec3 S = cross(F,UP);
+   vec3 U = cross(S,F);
+   
+   mat4 model;
+   
+   model[0] = vec4(S.x,U.x,-F.x,0.0);
+   model[1] = vec4(S.y,U.y,-F.y,0.0);
+   model[2] = vec4(S.z,U.z,-F.z,0.0);
+   model[3] = vec4(0.0,0.0,0.0,1.0);
+   
+   model = transpose(model);
+   
+   mat4 translate;
+   translate[0] = vec4(1.0,0.0,0.0,0.0);
+   translate[1] = vec4(0.0,1.0,0.0,0.0);
+   translate[2] = vec4(0.0,0.0,1.0,0.0);
+   translate[3] = vec4(-eye.x, -eye.y, -eye.z, 1.0);
+   
+   translate = transpose(translate);
    
    mat4 modelviewMatrix;
-   modelviewMatrix[0] = vec4(-1.0,0.0,0.0,0.0);
-   modelviewMatrix[1] = vec4(0.0,0.0,1.0,0.0);
-   modelviewMatrix[2] = vec4(0.0,1.0,0.0,0.0);
-   modelviewMatrix[3] = vec4(0.0,0.0,-3.9,1.0);
-   
-   mat4 projectionMatrix;
-   projectionMatrix[0] = vec4(0.39,0.0,0.0,0.0);
-   projectionMatrix[1] = vec4(0.0,0.52,0.0,0.0);
-   projectionMatrix[2] = vec4(0.0,0.0,-1.01,-1.0);
-   projectionMatrix[3] = vec4(0.0,0.0,-0.2,0.0);
-   */
-   
-   /*
-   mat4 biasMatrix;
-   biasMatrix[0] = vec4(0.5, 0.0, 0.0, 0.0);
-   biasMatrix[1] = vec4(0.0, 0.5, 0.0, 0.0);
-   biasMatrix[2] = vec4(0.0, 0.0, 0.5, 0.0);
-   biasMatrix[3] = vec4(0.5, 0.5, 0.5, 1.0);
-
-   mat4 modelviewMatrix;
-   vec3 eye = vec3(masterLightPosition.xyz);
-   vec3 center = vec3(0.0,0.0,0.0);
-   vec3 F = vec3(center-eye);
-   vec3 UP = vec3(0.0,0.0,1.0);
-   vec3 up = normalize(UP);
-   vec3 fvec  = normalize(F);
-   vec3 s = cross(fvec,up);
-   vec3 u = cross(s,fvec);
-   vec3 newUP = vec3(1.0,0.0,0.0);
-   //vec3 eyeUP = cross(newUP,eye);
-   modelviewMatrix[0] = vec4(s,0.0);
-   modelviewMatrix[1] = vec4(u,0.0);
-   modelviewMatrix[2] = vec4(-fvec,0.0);
-   modelviewMatrix[3] = vec4(-eye.x,-eye.y,-eye.z,1.0);
-   
+   modelviewMatrix = transpose(translate*model);
+ 
    mat4 projectionMatrix;
    float fovy = 125.0;
    float pi = 3.14159265359;
@@ -169,14 +162,14 @@ void main( ){
    projectionMatrix[0] = vec4(f/aspect,0.0,0.0,0.0);
    projectionMatrix[1] = vec4(0.0,f,0.0,0.0);
    projectionMatrix[2] = vec4(0.0,0.0,(FAR+NEAR)/(NEAR-FAR),-1.0);
-   projectionMatrix[3] = vec4(0.0,0.0,(2*FAR*NEAR)/(NEAR-FAR),0.0);
-   
+   projectionMatrix[3] = vec4(0.0,0.0,(2*FAR*NEAR)/(NEAR-FAR),0.0);  
+  
    mat4 shadowMatrix;
    shadowMatrix = biasMatrix*projectionMatrix*modelviewMatrix;
    
    ShadowCoord= shadowMatrix * gl_Vertex;
-   */
    
-  ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
+   
+  //ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;
 	
 }
