@@ -10,6 +10,8 @@ varying vec4 ShadowCoord;
 varying vec4 INDShadowCoord;
 varying vec4 indirect_color;
 
+uniform mat4x4 LightTexture;
+
 void main( ){
     
     indirect_color = vec4(0.0,0.0,0.0,1.0);
@@ -174,4 +176,5 @@ void main( ){
    
    INDShadowCoord= shadowMatrix * gl_Vertex; 
    ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;	
+   //ShadowCoord= LightTexture * gl_Vertex;	
 }

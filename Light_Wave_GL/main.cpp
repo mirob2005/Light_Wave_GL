@@ -133,6 +133,8 @@ GLuint dirSMtex;
 GLuint dirFBOid;
 GLuint dirUniID;
 
+GLuint lightMatrix;
+
 /*
 	FOR INDIRECT SHADOW MAPPING
 */
@@ -199,6 +201,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
   vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
 
+  lightMatrix = glGetUniformLocation(gProgram->_object, "LightTexture");
 }
 
 
@@ -378,60 +381,9 @@ void init( void ){
 		Shadow Map Generation
 	*/
 
-	//Try to create shadow map
+
 	glGenTextures(1, &dirSMtex);
-	glBindTexture(GL_TEXTURE_2D, dirSMtex);
-
-	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
-		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	//Create the Frame Buffer Object
-	glGenFramebuffers(1, &dirFBOid);
-	glBindFramebuffer(GL_FRAMEBUFFER, dirFBOid);
-
-	//No color buffers are written to with our current FBO (shadow map)
-	glDrawBuffers(0, NULL);
-
-	//Attach the shadow map to the current FBO
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D, dirSMtex,0);
-
-	//Check for errors in the FBO
-	GLenum FBOstatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-	cout << "glCheckFramebufferStatus returned (DIRECT): ";
-	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE)
-		cout << "GL_FRAMEBUFFER_COMPLETE" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED)
-		cout << "GL_FRAMEBUFFER_UNSUPPORTED" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER" << endl;
-
-	
-	//Clear current binding of the FBO
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-
-	///*
-	//	INDIRECT Shadow Map Generation
-	//*/
-
-
-	//Try to create a 3D texture
-	glGenTextures(1, &indSMtex);
-	glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
-
+	glBindTexture(GL_TEXTURE_2D_ARRAY, dirSMtex);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -439,27 +391,18 @@ void init( void ){
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_DEPTH_TEXTURE_MODE, GL_INTENSITY);
-
-	glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, shadowMapWidth, shadowMapHeight, 5, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, shadowMapWidth, shadowMapHeight, 2, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
-	msglError();
-
-	//Create the Frame Buffer Object
-	glGenFramebuffers(1, &indFBOid);
-	glBindFramebuffer(GL_FRAMEBUFFER, indFBOid);
-
-	//No color buffers are written to with our current FBO (shadow map)
+	glGenFramebuffers(1, &dirFBOid);
+	glBindFramebuffer(GL_FRAMEBUFFER, dirFBOid);
 	glDrawBuffers(0, NULL);
-	
-	//Clear current binding of the FBO
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	msglError();
 
 	//Check for errors in the FBO
-	FBOstatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-	cout << "glCheckFramebufferStatus returned (INDIRECT): ";
+	GLenum FBOstatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	cout << "glCheckFramebufferStatus returned: ";
 	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE)
 		cout << "GL_FRAMEBUFFER_COMPLETE" << endl;
 	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED)
@@ -472,7 +415,6 @@ void init( void ){
 		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER" << endl;
 	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER)
 		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER" << endl;
-
 }
 
 
@@ -505,6 +447,10 @@ void display(void){
 	if(updateVPLs)
 		generateVPLs();
 
+			static GLdouble modelViewMatrix[16];
+			static GLdouble projectionMatrix[16];
+			static GLdouble textureMatrix[16];
+
 	/*
 		Begin Shadow Map Creation
 	*/
@@ -515,147 +461,116 @@ void display(void){
 	
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
-	//Render scene with camera at lightPosition and store depth into the FBO
-	glBindFramebuffer(GL_FRAMEBUFFER,dirFBOid);	
-
 	//Use fixed function pipline to render shadow map
 	glUseProgramObjectARB(0);
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//Disable color writing to the frame buffer 
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+	//i =0 Direct Shadow Map, i=1 First Indirect Light
+	for(int i = 0; i <2; i++) 
+	{
 
+		//Render scene with camera at lightPosition and store depth into the FBO
+		glBindFramebuffer(GL_FRAMEBUFFER,dirFBOid);	
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+		glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, dirSMtex, 0, i);
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	//Using Light's position, lookAt, up vector
-	gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
-					lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+		glClear(GL_DEPTH_BUFFER_BIT);
 
-	//Avoid self-shadow
-	glCullFace(GL_FRONT);
-
-	//Draw the scene
-	drawScene(gScene, object1Position, object2Position);
-
-	static GLdouble modelViewMatrix[16];
-	static GLdouble projectionMatrix[16];
-	//static GLdouble textureMatrix[16];
-
-	//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
-	const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
-										0.0, 0.5, 0.0, 0.0,
-										0.0, 0.0, 0.5, 0.0,
-										0.5, 0.5, 0.5, 1.0};
-
-	//Store modelview and projection matrices for shadows
-	glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
-	glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
-
-	/*
-	Intializing Texture 5 to be used to pass in primary light properties
-	*/
-
-	//Light Position, Light Normal, light_wave properties
-	//Last Column available for additional parameters
-	const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
-										lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
-										lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
-										lightPosition[3], 0.0, 0.0, 0.0};
-
-	//Use texture5 matrix
-	glMatrixMode(GL_TEXTURE);	
-	glActiveTexture(GL_TEXTURE5);
-
-	//Multiply light_matrix into texture5
-	glLoadIdentity();	
-	glLoadMatrixd(light_Matrix);
-
-	//Use texture7 matrix
-	glMatrixMode(GL_TEXTURE);
-	glActiveTexture(GL_TEXTURE7);
-
-	//Multiply all 3 matrices into texture7
-	glLoadIdentity();	
-	glLoadMatrixd(biasMatrix);
-	glMultMatrixd (projectionMatrix);
-	glMultMatrixd (modelViewMatrix);
-
-	
-	//glGetDoublev(GL_TEXTURE_MATRIX, textureMatrix);
-
-	//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
-	//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
-	//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
-	//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
-
-	//cin.get();
-
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-	/*
-		Begin INDIRECT Shadow Map Creation
-	*/
-
-	//Use fixed function pipline to render shadow map
-	glUseProgramObjectARB(0);
-
-	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f,0.0f,0.0f,1.0f);
-
-	
-	
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
-
-	glViewport(0,0,shadowMapWidth,shadowMapHeight);
-	
-
-	//Render scene with camera at lightPosition and store depth into the FBO
-	glBindFramebuffer(GL_FRAMEBUFFER,indFBOid);	
-
-	glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, indFBOid, 0, 0);
-
-	glClear(GL_DEPTH_BUFFER_BIT);
-	glEnable(GL_CULL_FACE);
-
-	//Disable color writing to the frame buffer 
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+		//Disable color writing to the frame buffer 
+		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 
 
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+		if(i==0)
+		{
+			glMatrixMode(GL_MODELVIEW);
+			glLoadIdentity();
+			//Using Light's position, lookAt, up vector
+			gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
+							lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+		}
+		else
+		{
+			glMatrixMode(GL_MODELVIEW);
+			glLoadIdentity();
 
-	float VPLpositionX,VPLpositionY,VPLpositionZ;
+			float VPLpositionX,VPLpositionY,VPLpositionZ;
 
-	VPLpositionX = (vplDataPos[0]-0.5)*maxDistance*4;
-	VPLpositionY = (vplDataPos[1]-0.5)*maxDistance*4;
-	VPLpositionZ = (vplDataPos[2]-0.5)*maxDistance*4;
+			VPLpositionX = (vplDataPos[0]-0.5)*maxDistance*4;
+			VPLpositionY = (vplDataPos[1]-0.5)*maxDistance*4;
+			VPLpositionZ = (vplDataPos[2]-0.5)*maxDistance*4;
 
-	//Using Light's position, lookAt, up vector
-	//gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
-	//				lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+			//Using Light's position, lookAt, up vector
+			gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
+							lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+		}
 
-	gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
-					lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+		//Avoid self-shadow
+		glCullFace(GL_FRONT);
 
-	//Avoid self-shadow
-	glCullFace(GL_FRONT);
+		//Draw the scene
+		drawScene(gScene, object1Position, object2Position);
 
-	//Draw the scene
-	drawScene(gScene, object1Position, object2Position);
+		if(i==0)
+		{
 
-	//Clear current binding of the FBO
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+			//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
+			const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
+												0.0, 0.5, 0.0, 0.0,
+												0.0, 0.0, 0.5, 0.0,
+												0.5, 0.5, 0.5, 1.0};
+
+			//Store modelview and projection matrices for shadows
+			glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
+			glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
+
+			/*
+			Intializing Texture 5 to be used to pass in primary light properties
+			*/
+
+			//Light Position, Light Normal, light_wave properties
+			//Last Column available for additional parameters
+			const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
+												lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
+												lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
+												lightPosition[3], 0.0, 0.0, 0.0};
+
+			//Use texture5 matrix
+			glMatrixMode(GL_TEXTURE);	
+			glActiveTexture(GL_TEXTURE5);
+
+			//Multiply light_matrix into texture5
+			glLoadIdentity();	
+			glLoadMatrixd(light_Matrix);
+
+			//Use texture7 matrix
+			glMatrixMode(GL_TEXTURE);
+			glActiveTexture(GL_TEXTURE7);
+
+			//Multiply all 3 matrices into texture7
+			glLoadIdentity();	
+			glLoadMatrixd(biasMatrix);
+			glMultMatrixd (projectionMatrix);
+			glMultMatrixd (modelViewMatrix);
+
+			
+			glGetDoublev(GL_TEXTURE_MATRIX, textureMatrix);
+
+			//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
+			//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
+			//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
+			//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
+
+			//cin.get();
+		}
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	}
 
 
 	glViewport(0,0,screenWidth,screenHeight);
@@ -677,6 +592,8 @@ void display(void){
 
 	//Using our shaders and shadow map
 
+	glUniformMatrix4fv(lightMatrix, 6, GL_FALSE, (GLfloat*)textureMatrix);
+
 	glUniform1i(vpl_pos_shaderID,1);
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
@@ -687,11 +604,11 @@ void display(void){
 
 	glUniform1i(dirUniID,7);
 	glActiveTexture(GL_TEXTURE7);
-	glBindTexture(GL_TEXTURE_2D,dirSMtex);
+	glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
 
-	glUniform1i(indUniID,4);
-	glActiveTexture(GL_TEXTURE4);
-	glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
+	//glUniform1i(indUniID,4);
+	//glActiveTexture(GL_TEXTURE4);
+	//glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
 
 	glShadeModel(GL_SMOOTH);
 
