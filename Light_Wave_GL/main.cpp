@@ -30,9 +30,9 @@
 using namespace std;
 
 //Define Resolutions
-int screenWidth = 1280;
-int screenHeight = 960;
-int shadowRatio = 4;
+int screenWidth = 1024;
+int screenHeight = 840;
+int shadowRatio = 2;
 int shadowMapWidth = screenWidth*shadowRatio;
 int shadowMapHeight = screenHeight*shadowRatio;
 
@@ -103,6 +103,12 @@ double worldRotate = defworldRotate;
 /**************************************/
 
 /*
+	FOR 3D TEXTURE
+*/
+GLuint threeDtexture;
+GLuint tdFBOid;
+GLuint threeDtextureID;
+/*
 	FOR SHADOW MAPPING
 */
 GLuint FBOid;
@@ -143,6 +149,7 @@ bool updateVPLs = true;
 //Show VPL's
 bool showVPLs = false;
 
+
 void shaderInit( const char *vsFile, const char *fsFile ){
 
   VertexShader vertexShader( vsFile );
@@ -170,6 +177,7 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
   shadow_shaderID = glGetUniformLocation(gProgram->_object, "ShadowMap");
   INDshadow_shaderID = glGetUniformLocation(gProgram->_object, "INDShadowMap");
+  threeDtextureID = glGetUniformLocation(gProgram->_object, "tdtexture");
   vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
 
@@ -347,6 +355,69 @@ void init( void ){
 	//Initialize VPLs
 	generateVPLs();
 
+
+	////Try to create a 3D texture
+	glGenTextures(1, &threeDtexture);
+	glBindTexture(GL_TEXTURE_3D, threeDtexture);
+
+	glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP);
+	
+	glTexImage3D( GL_TEXTURE_3D, 0, GL_RGB, shadowMapWidth, shadowMapHeight, 2, 0,
+		GL_RED, GL_FLOAT, 0);
+
+	glBindTexture(GL_TEXTURE_3D, 0);
+
+	msglError();
+
+	//Create the Frame Buffer Object
+	if (GL_EXT_framebuffer_object)
+	{
+		//GL_EXT_framebuffer_object is supported
+		glGenFramebuffersEXT(1, &tdFBOid);
+		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, tdFBOid);
+	}
+	else cout << "GL_EXT_framebuffer_object not supported!" << endl;
+
+	//No color buffers are written to with our current FBO (shadow map)
+	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
+
+
+	//Attach the shadow map to the current FBO
+	glFramebufferTexture3DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,GL_TEXTURE_3D, threeDtexture,0,1);
+
+	//Check for errors in the FBO
+	GLenum FBOstatus;
+	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	cout << "glCheckFramebufferStatusEXT returned (3D tex): ";
+	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
+		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
+		cout << "GL_FRAMEBUFFER_UNSUPPORTED_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT" << endl;
+
+	
+	//Clear current binding of the FBO
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+
+	msglError();
+
+
 	/*
 		Shadow Map Generation
 	*/
@@ -355,15 +426,13 @@ void init( void ){
 	glGenTextures(1, &shadowMapID);
 	glBindTexture(GL_TEXTURE_2D, shadowMapID);
 
+	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
+		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
+
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-	//glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP );
-
-	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
-		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);	
-
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	
 	glBindTexture(GL_TEXTURE_2D, 0);
 
@@ -385,7 +454,7 @@ void init( void ){
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,GL_TEXTURE_2D, shadowMapID,0);
 
 	//Check for errors in the FBO
-	GLenum FBOstatus;
+	
 	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 	cout << "glCheckFramebufferStatusEXT returned (DIRECT): ";
 	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
@@ -427,8 +496,7 @@ void init( void ){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
 	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-	//glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP );
-
+	
 	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
 		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);	
 
@@ -621,7 +689,8 @@ void display(void){
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
 	//Render scene with camera at lightPosition and store depth into the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,INDFBOid);	
+	//glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,tdFBOid);	
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,INDFBOid);
 
 	//Use fixed function pipline to render shadow map
 	glUseProgramObjectARB(0);
@@ -704,6 +773,10 @@ void display(void){
 	glUniform1i(INDshadow_shaderID,3);
 	glActiveTexture(GL_TEXTURE3);
 	glBindTexture(GL_TEXTURE_2D,INDshadowMapID);
+
+	glUniform1i(threeDtextureID,4);
+	glActiveTexture(GL_TEXTURE4);
+	glBindTexture(GL_TEXTURE_3D,threeDtexture);
 
 	glShadeModel(GL_SMOOTH);
 
