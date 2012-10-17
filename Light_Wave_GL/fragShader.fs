@@ -1,8 +1,9 @@
 #version 120
 
+#extension GL_EXT_texture_array : enable
+
 uniform sampler2D ShadowMap;
-uniform sampler2D INDShadowMap;
-uniform sampler3D tdtexture;
+uniform sampler2DArrayShadow tdtexture;
 
 varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normalized_light_to_vertex_vector;
 varying vec3 normalized_viewing_position_vector;
@@ -33,11 +34,14 @@ void main( ){
 	 
 	
 	//distanceFromLight = texture3D(tdtexture,vec3(shadowCoordinateWdivide.st,1)).z;
-	distanceFromLight = texture2D(INDShadowMap,vec2(shadowCoordinateWdivide.st)).z;
+	//distanceFromLight = texture2D(INDShadowMap,vec2(shadowCoordinateWdivide.st)).z;
 	
-	float INDshadow = 1.0;
- 	if (INDShadowCoord.w >= 0.0)
- 		INDshadow = (distanceFromLight) < shadowCoordinateWdivide.z ? 0.0 : 1.0 ;		
+	
+	
+	float INDshadow = 0.0;
+ 	INDshadow += shadow2DArray(tdtexture, vec4(ShadowCoord.xy / ShadowCoord.w, 0, ShadowCoord.z / ShadowCoord.w)).r;
+ 	//if (INDShadowCoord.w >= 0.0)
+ 	//	INDshadow = (distanceFromLight) < shadowCoordinateWdivide.z ? 0.0 : 1.0 ;		
 	
 /*
  *	Primary Lighting Calculations
@@ -78,11 +82,11 @@ void main( ){
 /////////////////////////////////////////////////////////////////
 	
 	//gl_FragColor =	 direct_color;
-	//gl_FragColor =	 (direct_color*shadow);
+	gl_FragColor =	 (direct_color*shadow);
 	//gl_FragColor = indirect_color;
 	//gl_FragColor = indirect_color*INDshadow;
 	//gl_FragColor =	 (direct_color*shadow) + (indirect_color);
-  	gl_FragColor =	 (direct_color*shadow) + (0.5*indirect_color) + (0.5*indirect_color*INDshadow);
+  	//gl_FragColor =	 (direct_color*shadow) + (0.5*indirect_color) + (0.5*indirect_color*INDshadow);
   	
   	//Test for Correct Normals
   	//gl_FragColor = vec4(abs(normalized_normal),1);
