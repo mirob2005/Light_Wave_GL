@@ -25,7 +25,31 @@
 #include "windows.h"
 #endif
 #include "GL/glut.h"
+#include "GL/glext.h"
+#include "GL/wglext.h"
 #endif
+
+// GL_ARB_framebuffer_object
+PFNGLISRENDERBUFFERPROC glIsRenderbuffer;
+PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
+PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
+PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
+PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
+PFNGLGETRENDERBUFFERPARAMETERIVPROC glGetRenderbufferParameteriv;
+PFNGLISFRAMEBUFFERPROC glIsFramebuffer;
+PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
+PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
+PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
+PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
+PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
+PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
+PFNGLFRAMEBUFFERTEXTURE3DPROC glFramebufferTexture3D;
+PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
+PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
+PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
+PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;
+PFNGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
 
 using namespace std;
 
@@ -103,24 +127,18 @@ double worldRotate = defworldRotate;
 /**************************************/
 
 /*
-	FOR 3D TEXTURE
+	FOR DIRECT SHADOW MAPPING
 */
-GLuint threeDtexture;
-GLuint tdFBOid;
-GLuint threeDtextureID;
-/*
-	FOR SHADOW MAPPING
-*/
-GLuint FBOid;
-GLuint shadowMapID;
-GLuint shadow_shaderID;
+GLuint dirSMtex;
+GLuint dirFBOid;
+GLuint dirUniID;
 
 /*
 	FOR INDIRECT SHADOW MAPPING
 */
-GLuint INDFBOid;
-GLuint INDshadowMapID;
-GLuint INDshadow_shaderID;
+GLuint indSMtex;
+GLuint indFBOid;
+GLuint indUniID;
 
 /*
 	FOR VPL's
@@ -175,9 +193,9 @@ void shaderInit( const char *vsFile, const char *fsFile ){
   gProgram->isHardwareAccelerated( );
 
 
-  shadow_shaderID = glGetUniformLocation(gProgram->_object, "ShadowMap");
-  INDshadow_shaderID = glGetUniformLocation(gProgram->_object, "INDShadowMap");
-  threeDtextureID = glGetUniformLocation(gProgram->_object, "tdtexture");
+  dirUniID = glGetUniformLocation(gProgram->_object, "ShadowMap");
+  
+  indUniID = glGetUniformLocation(gProgram->_object, "tdtexture");
   vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
 
@@ -356,75 +374,13 @@ void init( void ){
 	generateVPLs();
 
 
-	////Try to create a 3D texture
-	glGenTextures(1, &threeDtexture);
-	glBindTexture(GL_TEXTURE_3D, threeDtexture);
-
-	glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-	glTexParameterf( GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP);
-	
-	glTexImage3D( GL_TEXTURE_3D, 0, GL_RGB, shadowMapWidth, shadowMapHeight, 2, 0,
-		GL_RED, GL_FLOAT, 0);
-
-	glBindTexture(GL_TEXTURE_3D, 0);
-
-	msglError();
-
-	//Create the Frame Buffer Object
-	if (GL_EXT_framebuffer_object)
-	{
-		//GL_EXT_framebuffer_object is supported
-		glGenFramebuffersEXT(1, &tdFBOid);
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, tdFBOid);
-	}
-	else cout << "GL_EXT_framebuffer_object not supported!" << endl;
-
-	//No color buffers are written to with our current FBO (shadow map)
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-
-
-	//Attach the shadow map to the current FBO
-	glFramebufferTexture3DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,GL_TEXTURE_3D, threeDtexture,0,1);
-
-	//Check for errors in the FBO
-	GLenum FBOstatus;
-	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	cout << "glCheckFramebufferStatusEXT returned (3D tex): ";
-	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
-		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
-		cout << "GL_FRAMEBUFFER_UNSUPPORTED_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT" << endl;
-
-	
-	//Clear current binding of the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-
-	msglError();
-
-
 	/*
 		Shadow Map Generation
 	*/
 
 	//Try to create shadow map
-	glGenTextures(1, &shadowMapID);
-	glBindTexture(GL_TEXTURE_2D, shadowMapID);
+	glGenTextures(1, &dirSMtex);
+	glBindTexture(GL_TEXTURE_2D, dirSMtex);
 
 	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
 		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);
@@ -437,112 +393,86 @@ void init( void ){
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//Create the Frame Buffer Object
-	if (GL_EXT_framebuffer_object)
-	{
-		//GL_EXT_framebuffer_object is supported
-		glGenFramebuffersEXT(1, &FBOid);
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, FBOid);
-	}
-	else cout << "GL_EXT_framebuffer_object not supported!" << endl;
+	glGenFramebuffers(1, &dirFBOid);
+	glBindFramebuffer(GL_FRAMEBUFFER, dirFBOid);
 
 	//No color buffers are written to with our current FBO (shadow map)
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-
+	glDrawBuffers(0, NULL);
 
 	//Attach the shadow map to the current FBO
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,GL_TEXTURE_2D, shadowMapID,0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,GL_TEXTURE_2D, dirSMtex,0);
 
 	//Check for errors in the FBO
-	
-	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	cout << "glCheckFramebufferStatusEXT returned (DIRECT): ";
-	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
-		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
-		cout << "GL_FRAMEBUFFER_UNSUPPORTED_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT" << endl;
+	GLenum FBOstatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	cout << "glCheckFramebufferStatus returned (DIRECT): ";
+	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE)
+		cout << "GL_FRAMEBUFFER_COMPLETE" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED)
+		cout << "GL_FRAMEBUFFER_UNSUPPORTED" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER" << endl;
 
 	
 	//Clear current binding of the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
+	///*
+	//	INDIRECT Shadow Map Generation
+	//*/
 
 
+	//Try to create a 3D texture
+	glGenTextures(1, &indSMtex);
+	glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
 
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_DEPTH_TEXTURE_MODE, GL_INTENSITY);
 
+	glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, shadowMapWidth, shadowMapHeight, 5, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
-	/*
-		INDIRECT Shadow Map Generation
-	*/
-
-	//Try to create shadow map
-	glGenTextures(1, &INDshadowMapID);
-	glBindTexture(GL_TEXTURE_2D, INDshadowMapID);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP );
-	
-	glTexImage2D( GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, shadowMapWidth, shadowMapHeight, 0,
-		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, 0);	
-
-	
-	glBindTexture(GL_TEXTURE_2D, 0);
+	msglError();
 
 	//Create the Frame Buffer Object
-	if (GL_EXT_framebuffer_object)
-	{
-		//GL_EXT_framebuffer_object is supported
-		glGenFramebuffersEXT(1, &INDFBOid);
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, INDFBOid);
-	}
-	else cout << "GL_EXT_framebuffer_object not supported!" << endl;
+	glGenFramebuffers(1, &indFBOid);
+	glBindFramebuffer(GL_FRAMEBUFFER, indFBOid);
 
 	//No color buffers are written to with our current FBO (shadow map)
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-
-
-	//Attach the shadow map to the current FBO
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT,GL_TEXTURE_2D, INDshadowMapID,0);
-
-	//Check for errors in the FBO
-	FBOstatus = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	cout << "glCheckFramebufferStatusEXT returned (INDIRECT): ";
-	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE_EXT)
-		cout << "GL_FRAMEBUFFER_COMPLETE_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED_EXT)
-		cout << "GL_FRAMEBUFFER_UNSUPPORTED_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT" << endl;
-	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT)
-		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT" << endl;
-
+	glDrawBuffers(0, NULL);
 	
 	//Clear current binding of the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	msglError();
+
+	//Check for errors in the FBO
+	FBOstatus = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	cout << "glCheckFramebufferStatus returned (INDIRECT): ";
+	if(FBOstatus == GL_FRAMEBUFFER_COMPLETE)
+		cout << "GL_FRAMEBUFFER_COMPLETE" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_UNSUPPORTED)
+		cout << "GL_FRAMEBUFFER_UNSUPPORTED" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER" << endl;
+	if(FBOstatus == GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER)
+		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER" << endl;
+
 }
 
 
@@ -586,11 +516,10 @@ void display(void){
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
 	//Render scene with camera at lightPosition and store depth into the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,FBOid);	
+	glBindFramebuffer(GL_FRAMEBUFFER,dirFBOid);	
 
 	//Use fixed function pipline to render shadow map
 	glUseProgramObjectARB(0);
-	
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -668,27 +597,32 @@ void display(void){
 
 	//cin.get();
 
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 	/*
 		Begin INDIRECT Shadow Map Creation
 	*/
-	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f,0.0f,0.0f,1.0f);
-
-	glEnable(GL_CULL_FACE);
-	
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
-
-	//Render scene with camera at lightPosition and store depth into the FBO
-	//glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,tdFBOid);	
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,INDFBOid);
 
 	//Use fixed function pipline to render shadow map
 	glUseProgramObjectARB(0);
+
+	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.0f,0.0f,0.0f,1.0f);
+
 	
+	
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+
+	//Render scene with camera at lightPosition and store depth into the FBO
+	glBindFramebuffer(GL_FRAMEBUFFER,indFBOid);	
+
+	glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, indFBOid, 0, 0);
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_CULL_FACE);
 
 	//Disable color writing to the frame buffer 
 	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
@@ -708,7 +642,10 @@ void display(void){
 	VPLpositionZ = (vplDataPos[2]-0.5)*maxDistance*4;
 
 	//Using Light's position, lookAt, up vector
-	gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
+	//gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
+	//				lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+
+	gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
 					lightUpVector[0],lightUpVector[1],lightUpVector[2]);
 
 	//Avoid self-shadow
@@ -717,18 +654,9 @@ void display(void){
 	//Draw the scene
 	drawScene(gScene, object1Position, object2Position);
 
-
-
-
-
-
-
-
-	glMatrixMode(GL_MODELVIEW);
-
-	//Begin rendering from the camera's perspective using our shadow map
 	//Clear current binding of the FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 
 	glViewport(0,0,screenWidth,screenHeight);
 
@@ -757,17 +685,13 @@ void display(void){
 	glActiveTexture(GL_TEXTURE2);
 	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
 
-	glUniform1i(shadow_shaderID,7);
+	glUniform1i(dirUniID,7);
 	glActiveTexture(GL_TEXTURE7);
-	glBindTexture(GL_TEXTURE_2D,shadowMapID);
+	glBindTexture(GL_TEXTURE_2D,dirSMtex);
 
-	glUniform1i(INDshadow_shaderID,3);
-	glActiveTexture(GL_TEXTURE3);
-	glBindTexture(GL_TEXTURE_2D,INDshadowMapID);
-
-	glUniform1i(threeDtextureID,4);
+	glUniform1i(indUniID,4);
 	glActiveTexture(GL_TEXTURE4);
-	glBindTexture(GL_TEXTURE_3D,threeDtexture);
+	glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
 
 	glShadeModel(GL_SMOOTH);
 
@@ -1236,6 +1160,27 @@ int main(int argc, char** argv){
 		 exit(1);
 		}
 	#endif
+
+	glIsRenderbuffer = (PFNGLISRENDERBUFFERPROC)wglGetProcAddress("glIsRenderbuffer");
+	glBindRenderbuffer = (PFNGLBINDRENDERBUFFERPROC)wglGetProcAddress("glBindRenderbuffer");
+	glDeleteRenderbuffers = (PFNGLDELETERENDERBUFFERSPROC)wglGetProcAddress("glDeleteRenderbuffers");
+	glGenRenderbuffers = (PFNGLGENRENDERBUFFERSPROC)wglGetProcAddress("glGenRenderbuffers");
+	glRenderbufferStorage = (PFNGLRENDERBUFFERSTORAGEPROC)wglGetProcAddress("glRenderbufferStorage");
+	glGetRenderbufferParameteriv = (PFNGLGETRENDERBUFFERPARAMETERIVPROC)wglGetProcAddress("glGetRenderbufferParameteriv");
+	glIsFramebuffer = (PFNGLISFRAMEBUFFERPROC)wglGetProcAddress("glIsFramebuffer");
+	glBindFramebuffer = (PFNGLBINDFRAMEBUFFERPROC)wglGetProcAddress("glBindFramebuffer");
+	glDeleteFramebuffers = (PFNGLDELETEFRAMEBUFFERSPROC)wglGetProcAddress("glDeleteFramebuffers");
+	glGenFramebuffers = (PFNGLGENFRAMEBUFFERSPROC)wglGetProcAddress("glGenFramebuffers");
+	glCheckFramebufferStatus = (PFNGLCHECKFRAMEBUFFERSTATUSPROC)wglGetProcAddress("glCheckFramebufferStatus");
+	glFramebufferTexture1D = (PFNGLFRAMEBUFFERTEXTURE1DPROC)wglGetProcAddress("glFramebufferTexture1D");
+	glFramebufferTexture2D = (PFNGLFRAMEBUFFERTEXTURE2DPROC)wglGetProcAddress("glFramebufferTexture2D");
+	glFramebufferTexture3D = (PFNGLFRAMEBUFFERTEXTURE3DPROC)wglGetProcAddress("glFramebufferTexture3D");
+	glFramebufferRenderbuffer = (PFNGLFRAMEBUFFERRENDERBUFFERPROC)wglGetProcAddress("glFramebufferRenderbuffer");
+	glGetFramebufferAttachmentParameteriv = (PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC)wglGetProcAddress("glGetFramebufferAttachmentParameteriv");
+	glGenerateMipmap = (PFNGLGENERATEMIPMAPPROC)wglGetProcAddress("glGenerateMipmap");
+	glBlitFramebuffer = (PFNGLBLITFRAMEBUFFERPROC)wglGetProcAddress("glBlitFramebuffer");
+	glRenderbufferStorageMultisample = (PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC)wglGetProcAddress("glRenderbufferStorageMultisample");
+	glFramebufferTextureLayer = (PFNGLFRAMEBUFFERTEXTURELAYERPROC)wglGetProcAddress("glFramebufferTextureLayer");
 
 
 	init( );
