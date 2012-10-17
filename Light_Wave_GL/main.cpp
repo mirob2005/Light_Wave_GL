@@ -39,7 +39,7 @@ int shadowMapHeight = screenHeight*shadowRatio;
 //Globals for keeping FPS
 double gTime = 0;
 int frames = 0;
-double fps = 0;
+int fps = 0;
 
 FrameSaver g_frameSaver;
 int g_recording = 0;
@@ -549,33 +549,24 @@ void init( void ){
 
 void displayFPS()
 {
-   /* FPS TIMER ON BOTTOM OF SCREEN */
-   glPushMatrix ();
-   gluLookAt (0.0, 0.0, 4.0, 
-			  0.0, 0.0, 0.0, 
-			  0.0, 1.0, 0.0);
-
+   /* FPS SHOWN ON WINDOW TITLE */
    double newTime = clock();
-   
-   frames++;
 
-   	if(newTime-gTime>500)
+   	if(newTime-gTime>1000)
 	{
-		fps=frames/((newTime-gTime)/CLOCKS_PER_SEC);	//update the number of frames per second
-		gTime = newTime;				//set time for the start of the next count
-		frames=0;					//reset fps for this second
+		fps=frames;
+		gTime = newTime;			//set time for the start of the next count
+		frames=0;					//reset frame count for this second
 	}
-	static char fpsString[32];
-	sprintf(fpsString, "%.1f", fps);
-
-	glColor3f(1.0,1.0,1.0);
+	else
+	{
+		frames++;
+	}
+	static char fpsString[64];
+	sprintf(fpsString, "Light_Wave_GL  -  FPS:%i",fps);
 
 	//Print text
-	glWindowPos2i((GLuint)screenWidth/2,10);
-	for(unsigned int i=0; i<strlen(fpsString); ++i)
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, fpsString[i]);
-
-   glPopMatrix();
+	glutSetWindowTitle(fpsString);
 }
 
 void display(void){
