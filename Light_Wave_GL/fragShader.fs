@@ -2,6 +2,7 @@
 
 uniform sampler2D ShadowMap;
 uniform sampler2D INDShadowMap;
+uniform sampler3D tdtexture;
 
 varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normalized_light_to_vertex_vector;
 varying vec3 normalized_viewing_position_vector;
@@ -31,11 +32,12 @@ void main( ){
 	shadowCoordinateWdivide = INDShadowCoordADJ / INDShadowCoordADJ.w ;
 	 
 	
-	distanceFromLight = texture2D(INDShadowMap,shadowCoordinateWdivide.st).z;
+	//distanceFromLight = texture3D(tdtexture,vec3(shadowCoordinateWdivide.st,1)).z;
+	distanceFromLight = texture2D(INDShadowMap,vec2(shadowCoordinateWdivide.st)).z;
 	
 	float INDshadow = 1.0;
  	if (INDShadowCoord.w >= 0.0)
- 		INDshadow = distanceFromLight < shadowCoordinateWdivide.z ? 0.0 : 1.0 ;		
+ 		INDshadow = (distanceFromLight) < shadowCoordinateWdivide.z ? 0.0 : 1.0 ;		
 	
 /*
  *	Primary Lighting Calculations
