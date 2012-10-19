@@ -82,7 +82,7 @@ GLuint option = 0;
 
 /***************DEFAULTS***************/
 const GLfloat defobject1Position[3] = {2.0,-3.0,0.0};
-const GLfloat defobject2Position[3] = {-2,-3,-2};
+const GLfloat defobject2Position[3] = {-2.0,-3.0,-2.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
@@ -162,6 +162,9 @@ const int lightsPerRay = 5;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
 float maxDistance = 4.0;
+
+const int numINDshadows = 20;
+int randomNumber[numINDshadows];
 
 //Set to true when the light source is moved:
 bool updateVPLs = true;
@@ -376,12 +379,14 @@ void init( void ){
 	//Initialize VPLs
 	generateVPLs();
 
+	for(int x = 0; x < numINDshadows; x++)
+	{
+		randomNumber[x] = rand() % numLights;
+	}
 
 	/*
 		Shadow Map Generation
 	*/
-
-
 	glGenTextures(1, &dirSMtex);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, dirSMtex);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -391,7 +396,8 @@ void init( void ){
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_R_TO_TEXTURE);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_COMPARE_FUNC, GL_LEQUAL);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_DEPTH_TEXTURE_MODE, GL_INTENSITY);
-	glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, shadowMapWidth, shadowMapHeight, 2, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	//Adding 1 to layer to account for the first one being direct shadow map
+	glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, shadowMapWidth, shadowMapHeight, numINDshadows+1, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 
 	glGenFramebuffers(1, &dirFBOid);
@@ -447,9 +453,15 @@ void display(void){
 	if(updateVPLs)
 		generateVPLs();
 
-			static GLdouble modelViewMatrix[16];
-			static GLdouble projectionMatrix[16];
-			static GLdouble textureMatrix[16];
+	GLfloat modelViewMatrix[16];
+	GLfloat projectionMatrix[16];
+	GLfloat textureMatrix[numINDshadows][16];
+
+	//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
+	const GLfloat biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
+										0.0, 0.5, 0.0, 0.0,
+										0.0, 0.0, 0.5, 0.0,
+										0.5, 0.5, 0.5, 1.0};
 
 	/*
 		Begin Shadow Map Creation
@@ -466,8 +478,8 @@ void display(void){
 
 	glViewport(0,0,shadowMapWidth,shadowMapHeight);
 
-	//i =0 Direct Shadow Map, i=1 First Indirect Light
-	for(int i = 0; i <2; i++) 
+	//i =0 Direct Shadow Map, i=1+ Indirect Lights
+	for(int i = 0; i <numINDshadows+1; i++) 
 	{
 
 		//Render scene with camera at lightPosition and store depth into the FBO
@@ -500,9 +512,13 @@ void display(void){
 
 			float VPLpositionX,VPLpositionY,VPLpositionZ;
 
-			VPLpositionX = (vplDataPos[0]-0.5)*maxDistance*4;
-			VPLpositionY = (vplDataPos[1]-0.5)*maxDistance*4;
-			VPLpositionZ = (vplDataPos[2]-0.5)*maxDistance*4;
+			
+			//int randomNumber = rand() % numLights;
+
+
+			VPLpositionX = (vplDataPos[3*randomNumber[i-1]]-0.5)*maxDistance*4;
+			VPLpositionY = (vplDataPos[3*randomNumber[i-1]+1]-0.5)*maxDistance*4;
+			VPLpositionZ = (vplDataPos[3*randomNumber[i-1]+2]-0.5)*maxDistance*4;
 
 			//Using Light's position, lookAt, up vector
 			gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
@@ -515,63 +531,57 @@ void display(void){
 		//Draw the scene
 		drawScene(gScene, object1Position, object2Position);
 
+		//Store modelview and projection matrices for shadows
+		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
+		glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
+
+		/*
+		Intializing Texture 5 to be used to pass in primary light properties
+		*/
+
+		//Light Position, Light Normal, light_wave properties
+		//Last Column available for additional parameters
+		const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
+											lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
+											lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
+											lightPosition[3], 0.0, 0.0, 0.0};
+
+		//Use texture5 matrix
+		glMatrixMode(GL_TEXTURE);	
+		glActiveTexture(GL_TEXTURE5);
+
+		//Multiply light_matrix into texture5
+		glLoadIdentity();	
+		glLoadMatrixf(light_Matrix);
+
+
+		glMatrixMode(GL_TEXTURE);
 		if(i==0)
-		{
-
-			//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
-			const GLdouble biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
-												0.0, 0.5, 0.0, 0.0,
-												0.0, 0.0, 0.5, 0.0,
-												0.5, 0.5, 0.5, 1.0};
-
-			//Store modelview and projection matrices for shadows
-			glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
-			glGetDoublev(GL_PROJECTION_MATRIX, projectionMatrix);
-
-			/*
-			Intializing Texture 5 to be used to pass in primary light properties
-			*/
-
-			//Light Position, Light Normal, light_wave properties
-			//Last Column available for additional parameters
-			const GLdouble light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
-												lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
-												lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
-												lightPosition[3], 0.0, 0.0, 0.0};
-
-			//Use texture5 matrix
-			glMatrixMode(GL_TEXTURE);	
-			glActiveTexture(GL_TEXTURE5);
-
-			//Multiply light_matrix into texture5
-			glLoadIdentity();	
-			glLoadMatrixd(light_Matrix);
-
-			//Use texture7 matrix
-			glMatrixMode(GL_TEXTURE);
 			glActiveTexture(GL_TEXTURE7);
+		else
+			glActiveTexture(GL_TEXTURE6);
 
-			//Multiply all 3 matrices into texture7
-			glLoadIdentity();	
-			glLoadMatrixd(biasMatrix);
-			glMultMatrixd (projectionMatrix);
-			glMultMatrixd (modelViewMatrix);
+		//Multiply all 3 matrices into texture7
+		glLoadIdentity();	
+		glLoadMatrixf(biasMatrix);
+		glMultMatrixf(projectionMatrix);
+		glMultMatrixf(modelViewMatrix);
 
-			
-			glGetDoublev(GL_TEXTURE_MATRIX, textureMatrix);
+		if(i!=0)
+			glGetFloatv(GL_TEXTURE_MATRIX, textureMatrix[i-1]);
 
-			//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
-			//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
-			//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
-			//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
+		//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
+		//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
+		//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
+		//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
 
-			//cin.get();
-		}
+		//cin.get();
+		
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	}
-
+	
 
 	glViewport(0,0,screenWidth,screenHeight);
 
@@ -592,7 +602,7 @@ void display(void){
 
 	//Using our shaders and shadow map
 
-	glUniformMatrix4fv(lightMatrix, 6, GL_FALSE, (GLfloat*)textureMatrix);
+	glUniformMatrix4fv(lightMatrix, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
 
 	glUniform1i(vpl_pos_shaderID,1);
 	glActiveTexture(GL_TEXTURE1);

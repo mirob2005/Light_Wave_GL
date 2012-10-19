@@ -8,7 +8,7 @@ varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normal
 varying vec3 normalized_viewing_position_vector;
 
 varying vec4 ShadowCoord;
-varying vec4 INDShadowCoord;
+varying vec4 INDShadowCoord[20];
 varying vec4 indirect_color;
 
 void main( ){
@@ -19,8 +19,12 @@ void main( ){
 
 	//INDIRECT Shadow Mapping	
 	float INDshadow = 0.0;
-	INDshadow += shadow2DArray(ShadowMap, vec4(INDShadowCoord.xy / INDShadowCoord.w, 1, INDShadowCoord.z / INDShadowCoord.w)).r;
+	for(int i = 0; i < 20; i++)
+	{
+		INDshadow += shadow2DArray(ShadowMap, vec4(INDShadowCoord[i].xy / INDShadowCoord[i].w, i+1, INDShadowCoord[i].z / INDShadowCoord[i].w)).r;
+	}
 	
+	INDshadow /= 20.0;	
 	
 /*
  *	Primary Lighting Calculations
@@ -64,8 +68,9 @@ void main( ){
 	//gl_FragColor =	 (direct_color*shadow);
 	//gl_FragColor = indirect_color;
 	//gl_FragColor = indirect_color*INDshadow;
-	gl_FragColor =	 (direct_color*shadow) + (indirect_color);
-    //gl_FragColor =	 (direct_color*shadow) + (0.5*indirect_color) + (0.5*indirect_color*INDshadow);
+	//gl_FragColor =	 (direct_color*shadow) + (indirect_color);
+    gl_FragColor =	 (direct_color*shadow) + (indirect_color*INDshadow);
+    //gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) + (0.2*indirect_color) + (0.8*indirect_color*INDshadow);
   	
   	//Test for Correct Normals
   	//gl_FragColor = vec4(abs(normalized_normal),1);
