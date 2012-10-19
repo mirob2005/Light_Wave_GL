@@ -7,10 +7,10 @@ varying vec3 normalized_normal,normalized_vertex_to_light_vector,lightDir,normal
 varying vec3 normalized_viewing_position_vector;
 
 varying vec4 ShadowCoord;
-varying vec4 INDShadowCoord;
+varying vec4 INDShadowCoord[20];
 varying vec4 indirect_color;
 
-uniform mat4x4 LightTexture;
+uniform mat4x4 LightTexture[20];
 
 void main( ){
     
@@ -130,7 +130,7 @@ void main( ){
    float fovy = 125.0;
    float pi = 3.14159265359;
    float f = tan((90.0-(fovy/2.0))*pi/180.0);
-   float aspect = 1.3333;
+   float aspect = 1.219;
    float FAR = 20.0;
    float NEAR = 0.1;
    projectionMatrix[0] = vec4(f/aspect,0.0,0.0,0.0);
@@ -174,7 +174,15 @@ void main( ){
    mat4 shadowMatrix;
    shadowMatrix = biasMatrix*projectionMatrix*modelviewMatrix;
    
-   INDShadowCoord= shadowMatrix * gl_Vertex; 
+   
+   
+   for(int i = 0; i < 20; i++) 
+   {
+	  INDShadowCoord[i] = LightTexture[i] * gl_Vertex;
+   }
+   //INDShadowCoord[i]= LightTexture[1] * gl_Vertex; 
+   //INDShadowCoord= shadowMatrix * gl_Vertex; 
+   
+   
    ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;	
-   //ShadowCoord= LightTexture * gl_Vertex;	
 }
