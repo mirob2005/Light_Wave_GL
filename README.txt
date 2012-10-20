@@ -1,9 +1,9 @@
 Michael Robertson
 mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
-Thesis Test Implementation using OpenGL and GLSL
+Thesis Implementation using OpenGL and GLSL
 Start Date: 5/31/12
-Updated: 9/23/12
+Updated: 10/19/12
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -15,7 +15,7 @@ All files must be in the same directory to be found.
 
 * This test implementation will attempt to model the global illumination in the scene more like a wave rather than a point light source
 
-* FPS is shown at the bottom of the screen
+* FPS is shown in the title bar
 
 
 TODO:
@@ -23,7 +23,7 @@ TODO:
 2) (DONE) Add commands to move objects in the scene
 3) (DONE) Add Light_Wave logic
 4) (DONE) Add Specular
-5) Add Indirect Shadows
+5) (DONE) Add Indirect Shadows
 
 COMMAND LINE (currently):
 
@@ -53,6 +53,7 @@ shift+S - move object down
 
 R - reset camera
 T - reset spheres
+G - Alternate between shaders on and shaders off with VPLs visible
 
 I - Take SnapShot
 M - Take continuous snapshots
