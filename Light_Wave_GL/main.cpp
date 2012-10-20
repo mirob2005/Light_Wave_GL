@@ -68,12 +68,6 @@ int fps = 0;
 FrameSaver g_frameSaver;
 int g_recording = 0;
 
-/*  Scene Changer
----------------------------
-	Scene #0 = Cornell Box 
-	Scene #1 = Chess Scene 
-*/
-
 GLSLProgram *gProgram;
 
 //Chose which object to move... camera, objects in scene
@@ -293,11 +287,6 @@ void generateVPLs( void )
 			}	
 		}
 	}
-//for(int i =60; i<65; i++)
-//{
-//	cout << vplDataNor[4*i+0]<< endl << vplDataNor[4*i+1] << endl << vplDataNor[4*i+2] << endl << vplDataNor[4*i+3]<<endl<<endl;
-//
-//}
 
 	if(!showVPLs)
 	{
@@ -538,8 +527,7 @@ void display(void){
 		Intializing Texture 5 to be used to pass in primary light properties
 		*/
 
-		//Light Position, Light Normal, light_wave properties
-		//Last Column available for additional parameters
+		//Light Position, Light Normal, light_wave properties, Camera Position
 		const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
 											lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
 											lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
@@ -675,24 +663,6 @@ void display(void){
 			glPopMatrix();
 		}
 	}
-/////////////////////////////////////////////////////////////////////////////
-
-
-	//LIGHT MARKER
-	glPushMatrix();
-		glColor3f(1.0f,1.0f,0.0f);
-		glTranslatef(lightPosition[0],lightPosition[1],lightPosition[2]);
-		glScalef(2,2,2);
-		glDrawArrays(GL_QUADS,0,24);
-	glPopMatrix();
-
-	//Light LookAT marker
-	glPushMatrix();
-		glColor3f(1.0f,1.0f,0.0f);
-		glTranslatef(lightLookAt[0], lightLookAt[1], lightLookAt[2]);
-		glScalef(2,2,2);
-		glDrawArrays(GL_QUADS,0,24);
-	glPopMatrix();
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
