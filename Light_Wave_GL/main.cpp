@@ -73,7 +73,6 @@ int g_recording = 0;
 	Scene #0 = Cornell Box 
 	Scene #1 = Chess Scene 
 */
-int gScene = 0;
 
 GLSLProgram *gProgram;
 
@@ -529,7 +528,7 @@ void display(void){
 		glCullFace(GL_FRONT);
 
 		//Draw the scene
-		drawScene(gScene, object1Position, object2Position);
+		drawScene(object1Position, object2Position);
 
 		//Store modelview and projection matrices for shadows
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
@@ -637,7 +636,7 @@ void display(void){
 	glRotatef(worldRotate,0,1,0);
 	
 
-	drawScene(gScene, object1Position, object2Position);
+	drawScene(object1Position, object2Position);
 
 
 
@@ -667,8 +666,6 @@ void display(void){
 	
 	if(showVPLs)
 	{
-
-
 		for(int i =0; i<numLights; i++)
 		{
 			glPushMatrix();
@@ -832,7 +829,7 @@ void keyboard(unsigned char key, int x, int y){
 				cout << "shift+DOWN arrow - Move the light down" << endl;
 				cout << "R/r - Reset camera defaults" << endl;
 				cout << "T/t - Reset Object position defaults" << endl;
-				cout << "G/g - Change Scene" << endl;
+				cout << "G/g - Turn off shaders, show VPL's" << endl;
 				cout << "I/i - Capture screenshot" << endl;
 				cout << "M/m - Enable Frame Recording" << endl;
 				cout << "--------------" << endl;
@@ -852,7 +849,16 @@ void keyboard(unsigned char key, int x, int y){
 		   break;
 		   case 'G':
 		   case 'g':
-			   gScene = (gScene+1)%2;
+			   if(showVPLs) 
+			   {
+				   showVPLs = false;
+				   updateVPLs = true;
+			   }
+			   else 
+			   {
+				   showVPLs = true;
+				   updateVPLs = true;
+			   }
 		   break;
 		   case 'W':
 		   case 'w':
