@@ -1486,20 +1486,20 @@ GLEE_EXTERN PFNGLWINDOWPOS3SVPROC pglWindowPos3sv;
 #define GL_DYNAMIC_READ                                    0x88E9
 #define GL_DYNAMIC_COPY                                    0x88EA
 #define GL_SAMPLES_PASSED                                  0x8914
-#define GL_FOG_COORD_SRC                                   GL_FOG_COORDINATE_SOURCE
-#define GL_FOG_COORD                                       GL_FOG_COORDINATE
-#define GL_CURRENT_FOG_COORD                               GL_CURRENT_FOG_COORDINATE
-#define GL_FOG_COORD_ARRAY_TYPE                            GL_FOG_COORDINATE_ARRAY_TYPE
-#define GL_FOG_COORD_ARRAY_STRIDE                          GL_FOG_COORDINATE_ARRAY_STRIDE
-#define GL_FOG_COORD_ARRAY_POINTER                         GL_FOG_COORDINATE_ARRAY_POINTER
-#define GL_FOG_COORD_ARRAY                                 GL_FOG_COORDINATE_ARRAY
-#define GL_FOG_COORD_ARRAY_BUFFER_BINDING                  GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING
-#define GL_SRC0_RGB                                        GL_SOURCE0_RGB
-#define GL_SRC1_RGB                                        GL_SOURCE1_RGB
-#define GL_SRC2_RGB                                        GL_SOURCE2_RGB
-#define GL_SRC0_ALPHA                                      GL_SOURCE0_ALPHA
-#define GL_SRC1_ALPHA                                      GL_SOURCE1_ALPHA
-#define GL_SRC2_ALPHA                                      GL_SOURCE2_ALPHA
+//#define GL_FOG_COORD_SRC                                   GL_FOG_COORDINATE_SOURCE
+//#define GL_FOG_COORD                                       GL_FOG_COORDINATE
+//#define GL_CURRENT_FOG_COORD                               GL_CURRENT_FOG_COORDINATE
+//#define GL_FOG_COORD_ARRAY_TYPE                            GL_FOG_COORDINATE_ARRAY_TYPE
+//#define GL_FOG_COORD_ARRAY_STRIDE                          GL_FOG_COORDINATE_ARRAY_STRIDE
+//#define GL_FOG_COORD_ARRAY_POINTER                         GL_FOG_COORDINATE_ARRAY_POINTER
+//#define GL_FOG_COORD_ARRAY                                 GL_FOG_COORDINATE_ARRAY
+//#define GL_FOG_COORD_ARRAY_BUFFER_BINDING                  GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING
+//#define GL_SRC0_RGB                                        GL_SOURCE0_RGB
+//#define GL_SRC1_RGB                                        GL_SOURCE1_RGB
+//#define GL_SRC2_RGB                                        GL_SOURCE2_RGB
+//#define GL_SRC0_ALPHA                                      GL_SOURCE0_ALPHA
+//#define GL_SRC1_ALPHA                                      GL_SOURCE1_ALPHA
+//#define GL_SRC2_ALPHA                                      GL_SOURCE2_ALPHA
 typedef void (APIENTRYP PFNGLGENQUERIESPROC) (GLsizei n, GLuint * ids);
 typedef void (APIENTRYP PFNGLDELETEQUERIESPROC) (GLsizei n, const GLuint * ids);
 typedef GLboolean (APIENTRYP PFNGLISQUERYPROC) (GLuint id);

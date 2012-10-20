@@ -46,10 +46,4 @@ void main( ){
 	//gl_FragColor =	 (direct_color*shadow) + (indirect_color);
     gl_FragColor =	 (direct_color*shadow) + (indirect_color*INDshadow);
     //gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) + (0.2*indirect_color) + (0.8*indirect_color*INDshadow);
-  	
-  	//Test for Correct Normals
-  	//gl_FragColor = vec4(abs(normalized_normal),1);
-  	
-  	//Debug Purposes
-  	//gl_FragColor = vec4(1,1,1,1);
 }

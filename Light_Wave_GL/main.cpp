@@ -54,9 +54,9 @@ PFNGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
 using namespace std;
 
 //Define Resolutions
-int screenWidth = 1024;
-int screenHeight = 840;
-int shadowRatio = 2;
+int screenWidth = 1280;
+int screenHeight = 720;
+int shadowRatio = 3;
 int shadowMapWidth = screenWidth*shadowRatio;
 int shadowMapHeight = screenHeight*shadowRatio;
 
@@ -79,7 +79,7 @@ const GLfloat defobject2Position[3] = {-2.0,-3.0,-2.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
-const GLfloat deflightPosition[4] = { 0.0, 3.9, 0.0, 0.0 };
+const GLfloat deflightPosition[4] = { 0.0, 3.9, 3.0, 0.0 };
 const GLfloat deflightLookAt[3] = {deflightPosition[0], deflightPosition[1]-0.1, deflightPosition[2]};
 const GLfloat deflightUpVector[3] = {0.0, 0.0, -1.0};
 const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
@@ -120,7 +120,7 @@ double worldRotate = defworldRotate;
 /**************************************/
 
 /*
-	FOR DIRECT SHADOW MAPPING
+	FOR SHADOW MAPPING
 */
 GLuint dirSMtex;
 GLuint dirFBOid;
@@ -128,12 +128,6 @@ GLuint dirUniID;
 
 GLuint lightMatrix;
 
-/*
-	FOR INDIRECT SHADOW MAPPING
-*/
-GLuint indSMtex;
-GLuint indFBOid;
-GLuint indUniID;
 
 /*
 	FOR VPL's
@@ -192,11 +186,8 @@ void shaderInit( const char *vsFile, const char *fsFile ){
 
 
   dirUniID = glGetUniformLocation(gProgram->_object, "ShadowMap");
-  
-  indUniID = glGetUniformLocation(gProgram->_object, "tdtexture");
   vpl_pos_shaderID = glGetUniformLocation(gProgram->_object, "vplPosTex");
   vpl_nor_shaderID = glGetUniformLocation(gProgram->_object, "vplNorTex");
-
   lightMatrix = glGetUniformLocation(gProgram->_object, "LightTexture");
 }
 
@@ -500,10 +491,6 @@ void display(void){
 
 			float VPLpositionX,VPLpositionY,VPLpositionZ;
 
-			
-			//int randomNumber = rand() % numLights;
-
-
 			VPLpositionX = (vplDataPos[3*randomNumber[i-1]]-0.5)*maxDistance*4;
 			VPLpositionY = (vplDataPos[3*randomNumber[i-1]+1]-0.5)*maxDistance*4;
 			VPLpositionZ = (vplDataPos[3*randomNumber[i-1]+2]-0.5)*maxDistance*4;
@@ -523,23 +510,7 @@ void display(void){
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
 		glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
 
-		/*
-		Intializing Texture 5 to be used to pass in primary light properties
-		*/
 
-		//Light Position, Light Normal, light_wave properties, Camera Position
-		const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
-											lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
-											lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
-											lightPosition[3], 0.0, 0.0, 0.0};
-
-		//Use texture5 matrix
-		glMatrixMode(GL_TEXTURE);	
-		glActiveTexture(GL_TEXTURE5);
-
-		//Multiply light_matrix into texture5
-		glLoadIdentity();	
-		glLoadMatrixf(light_Matrix);
 
 
 		glMatrixMode(GL_TEXTURE);
@@ -557,17 +528,26 @@ void display(void){
 		if(i!=0)
 			glGetFloatv(GL_TEXTURE_MATRIX, textureMatrix[i-1]);
 
-		//cout << modelViewMatrix[0] << ", " <<modelViewMatrix[1] << ", " <<modelViewMatrix[2] << ", " <<modelViewMatrix[3] << endl;
-		//cout << modelViewMatrix[4] << ", " <<modelViewMatrix[5] << ", " <<modelViewMatrix[6] << ", " <<modelViewMatrix[7] << endl;
-		//cout << modelViewMatrix[8] << ", " <<modelViewMatrix[9] << ", " <<modelViewMatrix[10] << ", " <<modelViewMatrix[11] << endl;
-		//cout << modelViewMatrix[12] << ", " <<modelViewMatrix[13] << ", " <<modelViewMatrix[14] << ", " <<modelViewMatrix[15] << endl;
-
-		//cin.get();
-		
-
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	}
+	/*
+	Intializing Texture 5 to be used to pass in primary light properties
+	*/
+
+	//Light Position, Light Normal, light_wave properties, Camera Position
+	const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
+										lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
+										lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
+										lightPosition[3], 0.0, 0.0, 0.0};
+
+	//Use texture5 matrix
+	glMatrixMode(GL_TEXTURE);	
+	glActiveTexture(GL_TEXTURE5);
+
+	//Multiply light_matrix into texture5
+	glLoadIdentity();	
+	glLoadMatrixf(light_Matrix);
 	
 
 	glViewport(0,0,screenWidth,screenHeight);
@@ -602,10 +582,6 @@ void display(void){
 	glUniform1i(dirUniID,7);
 	glActiveTexture(GL_TEXTURE7);
 	glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
-
-	//glUniform1i(indUniID,4);
-	//glActiveTexture(GL_TEXTURE4);
-	//glBindTexture(GL_TEXTURE_2D_ARRAY, indSMtex);
 
 	glShadeModel(GL_SMOOTH);
 
