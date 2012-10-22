@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  8 SEP 2012 01:37
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  22 OCT 2012 01:09
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -524,14 +524,7 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [7]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ¶ in font cmr12!
- [8]
-Missing character: There is no œ in font cmr12!
-Missing character: There is no Å in font cmr12!
- [9] [10]
+ [7] [8] [9] [10]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -550,11 +543,11 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [11] [12] [13]
+ [11] [12] [13] [14]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
- [14] [15] [16] [17] [18] [19])
-[20] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
+ [15] [16] [17] [18]) [19]
+[20] [21] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
@@ -562,7 +555,7 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[21
+[22
 
 
 
@@ -597,13 +590,13 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [22] [23] [24] <Figure31.jpg, id=101, 747.79375pt x 530.98375pt>
+ [23] [24] [25] <Figure31.jpg, id=104, 747.79375pt x 530.98375pt>
 File: Figure31.jpg Graphic file (type jpg)
 
 <use Figure31.jpg>
 Package pdftex.def Info: Figure31.jpg used on input line 23.
 (pdftex.def)             Requested size: 215.00313pt x 152.6688pt.
- <Figure32.jpg, id=102, 514.92375pt x 426.59375pt>
+ <Figure32.jpg, id=105, 514.92375pt x 426.59375pt>
 File: Figure32.jpg Graphic file (type jpg)
 
 <use Figure32.jpg>
@@ -613,7 +606,7 @@ Package pdftex.def Info: Figure32.jpg used on input line 33.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure33.jpg, id=103, 791.95876pt x 510.90875pt>
+<Figure33.jpg, id=106, 791.95876pt x 510.90875pt>
 File: Figure33.jpg Graphic file (type jpg)
  <use Figure33.jpg>
 Package pdftex.def Info: Figure33.jpg used on input line 41.
@@ -622,7 +615,7 @@ Package pdftex.def Info: Figure33.jpg used on input line 41.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure34.jpg, id=104, 771.88374pt x 539.01375pt>
+<Figure34.jpg, id=107, 771.88374pt x 539.01375pt>
 File: Figure34.jpg Graphic file (type jpg)
  <use Figure34.jpg>
 Package pdftex.def Info: Figure34.jpg used on input line 50.
@@ -631,8 +624,8 @@ Package pdftex.def Info: Figure34.jpg used on input line 50.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[25 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>]
-<Figure35.jpg, id=108, 1197.47375pt x 534.99875pt>
+[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>]
+<Figure35.jpg, id=112, 1197.47375pt x 534.99875pt>
 File: Figure35.jpg Graphic file (type jpg)
  <use Figure35.jpg>
 Package pdftex.def Info: Figure35.jpg used on input line 59.
@@ -647,51 +640,51 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
-<Figure36.jpg, id=113, 960.58875pt x 832.10875pt>
+[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>] [28 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg> <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/Figure34.jpg>] <Figure36.jpg, id=119, 960.58875pt x 832.10875pt>
 File: Figure36.jpg Graphic file (type jpg)
- <use Figure36.jpg>
+
+<use Figure36.jpg>
 Package pdftex.def Info: Figure36.jpg used on input line 70.
 (pdftex.def)             Requested size: 215.00313pt x 186.23872pt.
- [27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg> <D:/_Programmin
-g/Light_Wave_GL/THESIS-DRAFTS/Figure34.jpg>] [28 <D:/_Programming/Light_Wave_GL
-/THESIS-DRAFTS/Figure35.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figur
-e36.jpg>]
-[29]
+ [29 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure35.jpg> <D:/_Programmin
+g/Light_Wave_GL/THESIS-DRAFTS/Figure36.jpg>] [30]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
- ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
- [30])
-[31] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
+ [31]) [32]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
-) [32
+) [33
 
 
 
 ] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-) [33
+) [34
 
 
 
 ] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [34
+) [35
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [35
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [36
 
 
-] [36]
-[37]
+] [37]
+[38]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no í in font cmr12!
- [38]) [39] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [39]) [40] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -706,7 +699,7 @@ Here is how much of TeX's memory you used:
  9361 multiletter control sequences out of 15000+200000
  7680 words of font info for 27 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,10n,33p,2288b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,10n,33p,2282b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
@@ -717,9 +710,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (44 pages, 672403 bytes).
+Output written on thesis.pdf (45 pages, 673765 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
+ 190 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
