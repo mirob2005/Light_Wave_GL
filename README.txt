@@ -3,7 +3,7 @@ mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
 Thesis Implementation using OpenGL and GLSL
 Start Date: 5/31/12
-Updated: 10/19/12
+Updated: 10/24/12
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -24,6 +24,8 @@ TODO:
 3) (DONE) Add Light_Wave logic
 4) (DONE) Add Specular
 5) (DONE) Add Indirect Shadows
+6) Code changes?
+7) Thesis Writing
 
 COMMAND LINE (currently):
 
@@ -39,9 +41,6 @@ UP ARROW - move light forward
 DOWN ARROW - move light back
 LEFT ARROW - move light to the left
 RIGHT ARROW - move light to the right
-
-shift+UP ARROW  = move light up
-shift+DOWN ARROW  = move light down
 
 0,1,2 - select object: camera, sphere 1, sphere2, respectively (Default: camera)
 W - move object forward
