@@ -27,11 +27,11 @@
 \contentsline {subsection}{\numberline {3.3.2}OPENGL}{30}
 \contentsline {subsection}{\numberline {3.3.3}GLSL}{30}
 \contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{31}
-\contentsline {chapter}{\numberline {4}SAMPLE CODE}{33}
-\contentsline {section}{\numberline {4.1}VERTEX SHADER CODE}{33}
-\contentsline {section}{\numberline {4.2}FRAGMENT SHADER CODE}{33}
-\contentsline {section}{\numberline {4.3}ADDITIONAL CODE}{33}
-\contentsline {chapter}{\numberline {5}RESULTS}{34}
-\contentsline {section}{\numberline {5.1}RESULTS}{34}
-\contentsline {section}{\numberline {5.2}IMAGES}{34}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{35}
+\contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{33}
+\contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{33}
+\contentsline {section}{\numberline {4.2}VERTEX SHADER CODE}{37}
+\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{37}
+\contentsline {chapter}{\numberline {5}RESULTS}{38}
+\contentsline {section}{\numberline {5.1}RESULTS}{38}
+\contentsline {section}{\numberline {5.2}IMAGES}{38}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{39}
