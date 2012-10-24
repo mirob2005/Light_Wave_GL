@@ -510,9 +510,6 @@ void display(void){
 		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
 		glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
 
-
-
-
 		glMatrixMode(GL_TEXTURE);
 		if(i==0)
 			glActiveTexture(GL_TEXTURE7);
@@ -602,8 +599,6 @@ void display(void){
 
 	drawScene(object1Position, object2Position);
 
-
-
 	/*
 		VPL Debug Section - Display cube at each VPL to test distribution
 	*/
@@ -667,17 +662,7 @@ void reshape (int w, int h)
 }
 
 void mouse(int button, int state, int x, int y){
-	// POSSIBLE TO HAVE CLICK TO OUTPUT COLOR OF PIXEL CLICKED ON?
-
-
-   //switch (button) {
-   //   case GLUT_LEFT_BUTTON:
-   //      if (state == GLUT_DOWN) {
-   //      }
-   //      break;
-   //   default:
-   //      break;
-   //}
+	//No Implementation
 }
 
 void keyboard(unsigned char key, int x, int y){
@@ -771,8 +756,6 @@ void keyboard(unsigned char key, int x, int y){
 				cout << "DOWN arrow - Move the light backward" << endl;
 				cout << "LEFT arrow - Move the light left" << endl;
 				cout << "RIGHT arrow - Move the light right" << endl;
-				cout << "shift+UP arrow - Move the light up" << endl;
-				cout << "shift+DOWN arrow - Move the light down" << endl;
 				cout << "R/r - Reset camera defaults" << endl;
 				cout << "T/t - Reset Object position defaults" << endl;
 				cout << "G/g - Turn off shaders, show VPL's" << endl;
@@ -957,68 +940,40 @@ void keyboard(unsigned char key, int x, int y){
 }
 
 void special( int key, int px, int py ){
-  // If you need to save what key was last pressed
-  // uncomment the line below
-  //static int sLastKey = key;
-	if( glutGetModifiers( ) == GLUT_ACTIVE_SHIFT )
-	{
-		switch (key) {
-		   case GLUT_KEY_UP:
-				if(lightPosition[1] <3.9)
-				{
-					lightPosition[1] += 0.1; 
-					lightLookAt[1] += 0.1;
-					updateVPLs = true;
-				}
-		   break;	
-		   case GLUT_KEY_DOWN:
-				if(lightPosition[1] >-3.9)
-				{
-					lightPosition[1] -= 0.1;	
-					lightLookAt[1] -= 0.1;
-					updateVPLs = true;
-				}
-		   break;
-		}
+	switch (key) {
+	   case GLUT_KEY_UP:
+			if(lightPosition[2] >-3.0)
+			{
+				lightPosition[2] += -0.1;	  
+				lightLookAt[2] += -0.1;	 
+				updateVPLs = true;
+			}
+	   break;	
+	   case GLUT_KEY_DOWN:
+			if(lightPosition[2] <3.0)
+			{
+				lightPosition[2] += 0.1;	
+				lightLookAt[2] += 0.1;	
+				updateVPLs = true;
+			}
+	   break;	
+	   case GLUT_KEY_LEFT:
+			if(lightPosition[0] >-3.0)
+			{
+				lightPosition[0] += -0.1;		  
+				lightLookAt[0] += -0.1;	
+				updateVPLs = true;
+			}
+	   break;
+	   case GLUT_KEY_RIGHT:
+			if(lightPosition[0] <3.0)
+			{
+				lightPosition[0] += 0.1;	  
+				lightLookAt[0] += 0.1;	
+				updateVPLs = true;
+			}
+	   break;
 	}
-	else
-	{
-		switch (key) {
-		   case GLUT_KEY_UP:
-				if(lightPosition[2] >-3.0)
-				{
-					lightPosition[2] += -0.1;	  
-					lightLookAt[2] += -0.1;	 
-					updateVPLs = true;
-				}
-		   break;	
-		   case GLUT_KEY_DOWN:
-				if(lightPosition[2] <3.0)
-				{
-					lightPosition[2] += 0.1;	
-					lightLookAt[2] += 0.1;	
-					updateVPLs = true;
-				}
-		   break;	
-		   case GLUT_KEY_LEFT:
-				if(lightPosition[0] >-3.0)
-				{
-					lightPosition[0] += -0.1;		  
-					lightLookAt[0] += -0.1;	
-					updateVPLs = true;
-				}
-		   break;
-		   case GLUT_KEY_RIGHT:
-				if(lightPosition[0] <3.0)
-				{
-					lightPosition[0] += 0.1;	  
-					lightLookAt[0] += 0.1;	
-					updateVPLs = true;
-				}
-		   break;
-		}
-	}
-
   glutPostRedisplay( );
 }
 
