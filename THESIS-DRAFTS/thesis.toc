@@ -30,8 +30,8 @@
 \contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{33}
 \contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{33}
 \contentsline {section}{\numberline {4.2}VERTEX SHADER CODE}{37}
-\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{37}
-\contentsline {chapter}{\numberline {5}RESULTS}{38}
-\contentsline {section}{\numberline {5.1}RESULTS}{38}
-\contentsline {section}{\numberline {5.2}IMAGES}{38}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{39}
+\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{40}
+\contentsline {chapter}{\numberline {5}RESULTS}{43}
+\contentsline {section}{\numberline {5.1}RESULTS}{43}
+\contentsline {section}{\numberline {5.2}IMAGES}{43}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{44}
