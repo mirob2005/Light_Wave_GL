@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  22 OCT 2012 01:09
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  24 OCT 2012 01:25
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -378,17 +378,51 @@ Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen137
 \Gin@req@width=\dimen138
 )
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count182
+\lst@gtempboxa=\box36
+\lst@token=\toks39
+\lst@length=\count183
+\lst@currlwidth=\dimen139
+\lst@column=\count184
+\lst@pos=\count185
+\lst@lostspace=\dimen140
+\lst@width=\dimen141
+\lst@newlines=\count186
+\lst@lineno=\count187
+\lst@maxwidth=\dimen142
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count188
+\lst@skipnumbers=\count189
+\lst@framebox=\box37
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen139
-\epsfframethickness=\dimen140
-\epsfrsize=\dimen141
-\epsftmp=\dimen142
-\epsftsize=\dimen143
-\epsfxsize=\dimen144
-\epsfysize=\dimen145
-\pspoints=\dimen146
+\epsfframemargin=\dimen143
+\epsfframethickness=\dimen144
+\epsfrsize=\dimen145
+\epsftmp=\dimen146
+\epsftsize=\dimen147
+\epsfxsize=\dimen148
+\epsfysize=\dimen149
+\pspoints=\dimen150
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -397,55 +431,56 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count182
-\scratchdimen=\dimen147
-\scratchbox=\box36
-\nofMPsegments=\count183
-\nofMParguments=\count184
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count185
-\MPscratchDim=\dimen148
-\MPnumerator=\count186
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count190
+\scratchdimen=\dimen151
+\scratchbox=\box38
+\nofMPsegments=\count191
+\nofMParguments=\count192
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count193
+\MPscratchDim=\dimen152
+\MPnumerator=\count194
+\everyMPtoPDFconversion=\toks41
 )
+\c@lstlisting=\count195
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 75.
+(Font)              <12> on input line 80.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 75.
+(Font)              <8> on input line 80.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 75.
+(Font)              <6> on input line 80.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
+Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
+Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 75--75
+Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
 
  []
 
@@ -479,7 +514,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.93 \listoffigures
+l.98 \listoffigures
                    
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
@@ -660,31 +695,49 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
  [31]) [32]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
-) [33
+
+Overfull \hbox (17.11081pt too wide) detected at line 11
+\OML/cmm/m/it/12 vpl\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 ] 
+= \OML/cmm/m/it/12 lightPosition\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\OT1/c
+mr/m/n/12 ] + \OML/cmm/m/it/12 normal\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\
+OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 maxDistan
+ce \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 maxDistance=\OT1/cmr/m/
+n/12 2[]))[]
+ []
+
+[33
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
+] [34] [35]
+Overfull \hbox (10.18831pt too wide) in paragraph at lines 55--56
+[][][][][][][][][][][][][][] 
+ []
+
+[36]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
+) [37] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-) [34
+) [38
 
 
 
 ] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [35
+) [39
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [36
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [40
 
 
-] [37]
-[38]
+] [41]
+[42]
 Missing character: There is no ó in font cmr12!
 Missing character: There is no á in font cmr12!
 Missing character: There is no ’ in font cmr12!
- [39]) [40] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [43]) [44] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -693,26 +746,27 @@ Missing character: There is no ’ in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 6203 strings out of 494049
- 99048 string characters out of 3146068
- 143754 words of memory out of 3000000
- 9361 multiletter control sequences out of 15000+200000
- 7680 words of font info for 27 fonts, out of 3000000 for 9000
+ 7613 strings out of 494049
+ 119907 string characters out of 3146068
+ 187626 words of memory out of 3000000
+ 10751 multiletter control sequences out of 15000+200000
+ 8237 words of font info for 29 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,10n,33p,2282b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,10n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
 )/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (45 pages, 673765 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmti12.pfb>
+Output written on thesis.pdf (49 pages, 708812 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
+ 207 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

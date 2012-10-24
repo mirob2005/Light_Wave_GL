@@ -16,7 +16,7 @@ This study shows that visibility approximations can be made when rendering indir
 
 \section{IMPLEMENTATION DETAILS} \label{sec:impdetails}
 
-As stated in section \ref{sec:impgoals}, the goal of this implementation is to propose a real-time rendering technique that will render global illumination on the GPU through the use of OpenGL and GLSL.  The primary focus is to render indirect illumination with the findings on scientifically accurate versus perceptually pleasing in mind.  As such, we will ignore the indirect bouncing of light (the infinite series portion of the rendering equation), but try to simulate it using the VPL technique as introduced in \cite{Keller1997}.  We will accomplish this simulation through the method of VPL placement and handling.  The VPL's will be structured in hemispheres around the primary light source.  The default original implementation will include VPL's at every $5$ degrees around the z-axis of the light source resulting in 360 degrees / 5 degrees per ray = 72 rays of VPL's forming a circle around the light source. See figure \ref{fig:3.1}.
+As stated in section \ref{sec:impgoals}, the goal of this implementation is to propose a real-time rendering technique that will render global illumination on the GPU through the use of OpenGL and GLSL.  The primary focus is to render indirect illumination with the findings on scientifically accurate versus perceptually pleasing in mind.  As such, we will ignore the indirect bouncing of light (the infinite series portion of the rendering equation), but try to simulate it using the VPL technique as introduced in \cite{Keller1997}.  We will accomplish this simulation through the method of VPL placement and handling.  The VPL's will be structured in hemispheres around the primary light source.  The default original implementation will include VPL's at every $5$ degrees around the y-axis of the light source resulting in 360 degrees / 5 degrees per ray = 72 rays of VPL's forming a circle around the light source. See figure \ref{fig:3.1}.
 
 \begin{figure}[h!]
   \centering
@@ -26,7 +26,7 @@ As stated in section \ref{sec:impgoals}, the goal of this implementation is to p
 \end{figure}
 
 
-Next, the VPL's will be structured at every 5 degrees around the y-axis of the light source resulting in 90degrees/5degrees per ray = 18 rays of VPL's for every one of the 72 rays around the z-axis.  This totals in 1296 rays plus the vertical ray along the z-axis resulting in 1297 rays to form a hemisphere around the light. See figures \ref{fig:3.2} and \ref{fig:3.3}.
+Next, the VPL's will be structured at every 5 degrees around the z-axis of the light source resulting in 90degrees/5degrees per ray = 18 rays of VPL's for every one of the 72 rays around the z-axis.  This totals in 1296 rays plus the vertical ray along the z-axis resulting in 1297 rays to form a hemisphere around the light. See figures \ref{fig:3.2} and \ref{fig:3.3}.
 
 \begin{figure}[h!]
   \centering
