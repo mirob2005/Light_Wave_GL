@@ -2,9 +2,12 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <GL/gl.h>
 #endif
 
-#include <GL/gl.h>
+#ifdef __APPLE__
+#include <OPENGL/gl.h>
+#endif
 
 #include <iostream>
 
