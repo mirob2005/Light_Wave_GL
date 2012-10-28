@@ -75,7 +75,7 @@ int FrameSaver::DumpPPM(int width, int height)
 	}
 	DumpPPM(fp,width,height) ;
 	fclose(fp) ;
-	ConvertToPng(baseName) ;
+	//ConvertToPng(baseName) ;
 	return 1 ;
 }
 void FrameSaver::ConvertToPng(char *baseName)

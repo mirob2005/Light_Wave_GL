@@ -495,13 +495,26 @@ void display(void){
 			glLoadIdentity();
 
 			float VPLpositionX,VPLpositionY,VPLpositionZ;
+			float VPLnormalX,VPLnormalY,VPLnormalZ;
 
 			VPLpositionX = (vplDataPos[3*randomNumber[i-1]]-0.5)*maxDistance*4;
 			VPLpositionY = (vplDataPos[3*randomNumber[i-1]+1]-0.5)*maxDistance*4;
 			VPLpositionZ = (vplDataPos[3*randomNumber[i-1]+2]-0.5)*maxDistance*4;
 
+			VPLnormalX = (vplDataNor[4*randomNumber[i-1]]-0.5)*maxDistance*4;
+			VPLnormalY = (vplDataNor[4*randomNumber[i-1]+1]-0.5)*maxDistance*4;
+			VPLnormalZ = (vplDataNor[4*randomNumber[i-1]+2]-0.5)*maxDistance*4;
+
+			float yAxis[3] = {0.0,1.0,0.0};
+			float normal[3] = {VPLnormalX,VPLnormalY,VPLnormalZ};
+			float rightVector[3];
+			float upVector[3];
+			crossProduct(normal,yAxis,rightVector);
+			crossProduct(rightVector,normal,upVector);
+
+
 			//Using Light's position, lookAt, up vector
-			gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,VPLpositionX,VPLpositionY-0.1,VPLpositionZ,
+			gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,upVector[0],upVector[1],upVector[2],
 							lightUpVector[0],lightUpVector[1],lightUpVector[2]);
 		}
 
