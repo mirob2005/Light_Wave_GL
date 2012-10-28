@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  24 OCT 2012 16:58
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  28 OCT 2012 01:48
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -625,46 +625,46 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [23] [24] [25] <Figure31.jpg, id=104, 747.79375pt x 530.98375pt>
-File: Figure31.jpg Graphic file (type jpg)
+ [23] [24] [25] <Figure31_gray.jpg, id=104, 460.34167pt x 416.00798pt>
+File: Figure31_gray.jpg Graphic file (type jpg)
 
-<use Figure31.jpg>
-Package pdftex.def Info: Figure31.jpg used on input line 23.
-(pdftex.def)             Requested size: 215.00313pt x 152.6688pt.
- <Figure32.jpg, id=105, 514.92375pt x 426.59375pt>
-File: Figure32.jpg Graphic file (type jpg)
+<use Figure31_gray.jpg>
+Package pdftex.def Info: Figure31_gray.jpg used on input line 23.
+(pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
+ <Figure32_gray.jpg, id=105, 276.32648pt x 277.54109pt>
+File: Figure32_gray.jpg Graphic file (type jpg)
 
-<use Figure32.jpg>
-Package pdftex.def Info: Figure32.jpg used on input line 33.
-(pdftex.def)             Requested size: 215.00313pt x 178.12015pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Figure33.jpg, id=106, 791.95876pt x 510.90875pt>
-File: Figure33.jpg Graphic file (type jpg)
- <use Figure33.jpg>
-Package pdftex.def Info: Figure33.jpg used on input line 41.
-(pdftex.def)             Requested size: 215.00313pt x 138.7034pt.
+<use Figure32_gray.jpg>
+Package pdftex.def Info: Figure32_gray.jpg used on input line 33.
+(pdftex.def)             Requested size: 215.00313pt x 215.95604pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure34.jpg, id=107, 771.88374pt x 539.01375pt>
-File: Figure34.jpg Graphic file (type jpg)
- <use Figure34.jpg>
-Package pdftex.def Info: Figure34.jpg used on input line 50.
-(pdftex.def)             Requested size: 215.00313pt x 150.13324pt.
+<Figure33_gray.jpg, id=106, 320.05286pt x 296.36774pt>
+File: Figure33_gray.jpg Graphic file (type jpg)
+ <use Figure33_gray.jpg>
+Package pdftex.def Info: Figure33_gray.jpg used on input line 41.
+(pdftex.def)             Requested size: 215.00313pt x 199.09444pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>]
-<Figure35.jpg, id=112, 1197.47375pt x 534.99875pt>
-File: Figure35.jpg Graphic file (type jpg)
- <use Figure35.jpg>
-Package pdftex.def Info: Figure35.jpg used on input line 59.
-(pdftex.def)             Requested size: 215.00313pt x 96.0507pt.
+<Figure34_gray.jpg, id=107, 367.42311pt x 268.43143pt>
+File: Figure34_gray.jpg Graphic file (type jpg)
+ <use Figure34_gray.jpg>
+Package pdftex.def Info: Figure34_gray.jpg used on input line 50.
+(pdftex.def)             Requested size: 215.00313pt x 157.07475pt.
+
+[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31_gray.jpg>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure35_gray.jpg, id=112, 250.2121pt x 60.7311pt>
+File: Figure35_gray.jpg Graphic file (type jpg)
+ <use Figure35_gray.jpg>
+Package pdftex.def Info: Figure35_gray.jpg used on input line 59.
+(pdftex.def)             Requested size: 215.00313pt x 52.18692pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -675,16 +675,20 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>] [28 <D:/_Progra
-mming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg> <D:/_Programming/Light_Wave_GL/
-THESIS-DRAFTS/Figure34.jpg>] <Figure36.jpg, id=119, 960.58875pt x 832.10875pt>
-File: Figure36.jpg Graphic file (type jpg)
+[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32_gray.jpg>]
+<Figure36_gray.jpg, id=116, 268.43143pt x 185.22983pt>
+File: Figure36_gray.jpg Graphic file (type jpg)
+ <use Figure36_gray.jpg>
+Package pdftex.def Info: Figure36_gray.jpg used on input line 70.
+(pdftex.def)             Requested size: 215.00313pt x 148.36493pt.
 
-<use Figure36.jpg>
-Package pdftex.def Info: Figure36.jpg used on input line 70.
-(pdftex.def)             Requested size: 215.00313pt x 186.23872pt.
- [29 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure35.jpg> <D:/_Programmin
-g/Light_Wave_GL/THESIS-DRAFTS/Figure36.jpg>] [30]
+[28 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33_gray.jpg>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[29 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure34_gray.jpg> <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure35_gray.jpg>] [30 <D:/_Programming/Ligh
+t_Wave_GL/THESIS-DRAFTS/Figure36_gray.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -748,7 +752,7 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
  7654 strings out of 494049
- 120381 string characters out of 3146068
+ 120531 string characters out of 3146068
  187626 words of memory out of 3000000
  10791 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
@@ -766,7 +770,7 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (54 pages, 729149 bytes).
+Output written on thesis.pdf (54 pages, 406127 bytes).
 PDF statistics:
  226 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

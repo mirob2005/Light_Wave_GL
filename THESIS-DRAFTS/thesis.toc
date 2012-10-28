@@ -25,7 +25,7 @@
 \contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{25}
 \contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{30}
 \contentsline {subsection}{\numberline {3.3.2}OPENGL}{30}
-\contentsline {subsection}{\numberline {3.3.3}GLSL}{30}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{31}
 \contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{31}
 \contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{33}
 \contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{33}
