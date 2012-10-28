@@ -44,6 +44,6 @@ void main( ){
 	//gl_FragColor = indirect_color;
 	//gl_FragColor = (indirect_color*INDshadow);
 	//gl_FragColor =	 (direct_color*shadow) + (indirect_color);
-    gl_FragColor =	 (direct_color*shadow) + (indirect_color*INDshadow);
-    //gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) + (0.2*indirect_color) + (0.8*indirect_color*INDshadow);
+    //gl_FragColor =	 (direct_color*shadow) + (indirect_color*INDshadow);
+    gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) + (0.2*indirect_color) + (0.8*indirect_color*INDshadow);
 }
