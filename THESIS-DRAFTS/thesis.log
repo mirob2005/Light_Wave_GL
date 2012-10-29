@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  28 OCT 2012 01:48
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  29 OCT 2012 00:39
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -496,17 +496,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 80--80
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.tex) [3
 
 ]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc)
-\tf@toc=\write3
-
-Overfull \vbox (41.39453pt too high) has occurred while \output is active []
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc
+Overfull \vbox (29.39453pt too high) has occurred while \output is active []
 
 
 [4
 
 
 
-] [5]
+])
+\tf@toc=\write3
+ [5]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 \listoftables
+                  
+? 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
+\tf@lot=\write4
+ [6
+
+
+
+]
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -518,8 +535,8 @@ l.98 \listoffigures
                    
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
-\tf@lof=\write4
- [6
+\tf@lof=\write5
+ [7
 
 
 
@@ -625,13 +642,13 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [23] [24] [25] <Figure31_gray.jpg, id=104, 460.34167pt x 416.00798pt>
+ [23] [24] [25] <Figure31_gray.jpg, id=108, 460.34167pt x 416.00798pt>
 File: Figure31_gray.jpg Graphic file (type jpg)
 
 <use Figure31_gray.jpg>
 Package pdftex.def Info: Figure31_gray.jpg used on input line 23.
 (pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
- <Figure32_gray.jpg, id=105, 276.32648pt x 277.54109pt>
+ <Figure32_gray.jpg, id=109, 276.32648pt x 277.54109pt>
 File: Figure32_gray.jpg Graphic file (type jpg)
 
 <use Figure32_gray.jpg>
@@ -641,7 +658,7 @@ Package pdftex.def Info: Figure32_gray.jpg used on input line 33.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure33_gray.jpg, id=106, 320.05286pt x 296.36774pt>
+<Figure33_gray.jpg, id=110, 320.05286pt x 296.36774pt>
 File: Figure33_gray.jpg Graphic file (type jpg)
  <use Figure33_gray.jpg>
 Package pdftex.def Info: Figure33_gray.jpg used on input line 41.
@@ -650,7 +667,7 @@ Package pdftex.def Info: Figure33_gray.jpg used on input line 41.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure34_gray.jpg, id=107, 367.42311pt x 268.43143pt>
+<Figure34_gray.jpg, id=111, 367.42311pt x 268.43143pt>
 File: Figure34_gray.jpg Graphic file (type jpg)
  <use Figure34_gray.jpg>
 Package pdftex.def Info: Figure34_gray.jpg used on input line 50.
@@ -660,7 +677,7 @@ Package pdftex.def Info: Figure34_gray.jpg used on input line 50.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure35_gray.jpg, id=112, 250.2121pt x 60.7311pt>
+<Figure35_gray.jpg, id=115, 250.2121pt x 60.7311pt>
 File: Figure35_gray.jpg Graphic file (type jpg)
  <use Figure35_gray.jpg>
 Package pdftex.def Info: Figure35_gray.jpg used on input line 59.
@@ -676,7 +693,7 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
 [27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32_gray.jpg>]
-<Figure36_gray.jpg, id=116, 268.43143pt x 185.22983pt>
+<Figure36_gray.jpg, id=119, 268.43143pt x 185.22983pt>
 File: Figure36_gray.jpg Graphic file (type jpg)
  <use Figure36_gray.jpg>
 Package pdftex.def Info: Figure36_gray.jpg used on input line 70.
@@ -724,25 +741,66 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
  [37] [38] [39] [40]) [41] [42]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-) [43
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+] [44] [45]
+Overfull \hbox (20.49829pt too wide) in paragraph at lines 96--105
+ [] 
+ []
+
+
+Overfull \hbox (20.49829pt too wide) in paragraph at lines 112--122
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (20.49829pt too wide) in paragraph at lines 129--139
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (20.49829pt too wide) in paragraph at lines 146--155
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [46] [47] [48] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [44
+) [49
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [45
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [50
 
 
-] [46]
-[47]
+] [51]
+[52]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no í in font cmr12!
- [48]) [49] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [53]) [54] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -751,10 +809,10 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 7654 strings out of 494049
- 120531 string characters out of 3146068
- 187626 words of memory out of 3000000
- 10791 multiletter control sequences out of 15000+200000
+ 7669 strings out of 494049
+ 120777 string characters out of 3146068
+ 195626 words of memory out of 3000000
+ 10803 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  37i,10n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -770,9 +828,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (54 pages, 406127 bytes).
+Output written on thesis.pdf (60 pages, 420406 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
+ 245 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
