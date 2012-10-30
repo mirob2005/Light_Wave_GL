@@ -155,6 +155,7 @@ const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
 float maxDistance = 4.0;
 
+//Must Change in vertex shader and fragment shader as well
 const int numINDshadows = 20;
 int randomNumber[numINDshadows];
 
