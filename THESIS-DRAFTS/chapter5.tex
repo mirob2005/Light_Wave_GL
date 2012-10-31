@@ -234,22 +234,22 @@ rankValue = fpsGain / (1-calculatedSimilarity)
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
-	    Method & FPS & \% Similarilty to Default & Rank Value\\ \hline
-	    Default Method & 55 & 100 & --\\ \hline
-	    Faked Indirect Lighting (1.3x) & 681 & 91.847 & 76.7816\\ \hline
-	    Indirect Lighting w/out indirect shadows & 161 & 98.563 & 73.7648\\ \hline
-	    Indirect Lighting w/ 15 indirect shadows & 87 & 99.475 & 60.9524\\ \hline
-	    Indirect Lighting w/ 10 indirect shadows & 106 & 98.853 & 44.4638\\ \hline
-	    Direct Lighting ONLY & 681 & 84.426 & 40.1952\\ \hline
+	    Method & FPS & \% Similarilty & Rank Value & Figure\\ \hline
+	    Default Method & 55 & 100 & -- & \ref{fig:defaultimage}\\ \hline
+	    Faked Indirect Lighting (1.3x) & 681 & 91.847 & 76.7816 & \ref{fig:fakedindirect}\\ \hline
+	    Indirect Lighting w/out indirect shadows & 161 & 98.563 & 73.7648 & \ref{fig:0indSM}\\ \hline
+	    Indirect Lighting w/ 15 indirect shadows & 87 & 99.475 & 60.9524 & \ref{fig:15indSM}\\ \hline
+	    Indirect Lighting w/ 10 indirect shadows & 106 & 98.853 & 44.4638 & \ref{fig:10indSM}\\ \hline
+	    Direct Lighting ONLY & 681 & 84.426 & 40.1952 & \ref{fig:directonly}\\ \hline
 	    \hline
 	    \hline
-	    30 Degree Angle Between VPL Rays & 84 & 97.956 & 14.1879\\ \hline
+	    30 Degree Angle Between VPL Rays & 84 & 97.956 & 14.1879 & \ref{fig:VPLangleIncrease}\\ \hline
 	    \hline
 	    \hline
-	    Reduction down to 1 VPL Per Ray & 78 & 91.591 & 2.7352\\ \hline
+	    Reduction down to 1 VPL Per Ray & 78 & 91.591 & 2.7352 & \ref{fig:hemisphereReduction}\\ \hline
 	    \hline
 	    \hline
-	    Resolution Reduction 640x360 & 133 & 99.483 & 150.8704\\ \hline
+	    Resolution Reduction 640x360 & 133 & 99.483 & 150.8704 & \ref{fig:smallerresolution}\\ \hline
 	    \end{tabular}
 	\end{center}
 	\label{table:5.10}
@@ -264,13 +264,14 @@ Table \ref{table:5.10} tells us a few things:
 \end{itemize}
 
 \section{IMAGES}
-This section will be used to show images rendered in real-time from this method and the accompanying parameters chosen.
+This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen.
 
 
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1.0\textwidth]{sample1_gray.jpg}
-  \caption{Light is at the near upper left corner of the scene. This image is used as the reference in the similarity calculations.}
+    \includegraphics[width=1.0\textwidth]{sample1.jpg}
+%    \includegraphics[width=1.0\textwidth]{sample1_gray.jpg}
+  \caption{Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.}
 	\label{fig:defaultimage}
 \end{figure}
 
@@ -278,25 +279,127 @@ This section will be used to show images rendered in real-time from this method 
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{sample2_gray.jpg}
+                \includegraphics[width=\textwidth]{sample2.jpg}
+%                \includegraphics[width=\textwidth]{sample2_gray.jpg}
                 \caption{Light is at the far upper left corner of the scene.}
                 \label{fig:sample2}
         \end{subfigure}
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{sample3_gray.jpg}
+                \includegraphics[width=\textwidth]{sample3.jpg}
+%                \includegraphics[width=\textwidth]{sample3_gray.jpg}
                 \caption{Light is at the far upper right corner of the scene.}
                 \label{fig:sample3}
         \end{subfigure}
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{sample4_gray.jpg}
+                \includegraphics[width=\textwidth]{sample4.jpg}
+%                \includegraphics[width=\textwidth]{sample4_gray.jpg}
                 \caption{Light is at the near upper right corner of the scene.}
                 \label{fig:sample4}
         \end{subfigure}
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\textwidth]{sample5_gray.jpg}
+                \includegraphics[width=\textwidth]{sample5.jpg}
+%                \includegraphics[width=\textwidth]{sample5_gray.jpg}
                 \caption{Light is in the upper center of the scene.}
                 \label{fig:sample5}
         \end{subfigure}
         \caption{Additional Rendered Images Using the Default Parameters}\label{fig:default}
 \end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{direct_only.jpg}
+%    \includegraphics[width=1.0\textwidth]{direct_only_gray.jpg}
+    \caption{Scene rendered with only direct lighting.}
+	\label{fig:directonly}
+\end{figure}
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{indirect_only.jpg}
+%                \includegraphics[width=\textwidth]{indirect_only_gray.jpg}
+                \caption{Indirect Lighting Only w/out Indirect Shadows}
+                \label{fig:indirectonly}
+        \end{subfigure}
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{indirect_only_shadows.jpg}
+%                \includegraphics[width=\textwidth]{indirect_only_shadows_gray.jpg}
+                \caption{Indirect Lighting Only w/ Indirect Shadows}
+                \label{fig:indirectonlyshadows}
+        \end{subfigure}
+        \caption{Images showing the contributions from the VPL's to indirect lighting.}\label{fig:indirect}
+\end{figure}
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{23.jpg}
+%                \includegraphics[width=\textwidth]{23_gray.jpg}
+                \caption{Scene Rendered with Indirect Lighting w/out Indirect Shadows.}
+                \label{fig:0indSM}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{19.jpg}
+%                \includegraphics[width=\textwidth]{19_gray.jpg}
+                \caption{Scene Rendered with Indirect Lighting w/ 15 Indirect Shadow Maps.}
+                \label{fig:15indSM}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.75\textwidth}
+                \includegraphics[width=\textwidth]{20.jpg}
+%                \includegraphics[width=\textwidth]{20_gray.jpg}
+                \caption{Scene Rendered with Indirect Lighting w/ 10 Indirect Shadow Maps.}
+                \label{fig:10indSM}
+        \end{subfigure}
+        \caption{Varying Indirect Lighting Adjustments} \label{fig:indirectimages}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{direct_only_fake_1_3.jpg}
+%    \includegraphics[width=1.0\textwidth]{direct_only_fake_1_3_gray.jpg}
+  \caption{Faked Indirect Lighting with a 1.3x Multiplier.}
+	\label{fig:fakedindirect}
+\end{figure}
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{3.jpg}
+%                \includegraphics[width=\textwidth]{3_gray.jpg}
+                \caption{30 Degree Angle Between VPL Rays.}
+                \label{fig:VPLangleIncrease}
+        \end{subfigure}
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{7.jpg}
+%                \includegraphics[width=\textwidth]{7_gray.jpg}
+                \caption{Reduction down to 1 VPL Per Ray (1 Hemisphere)}
+                \label{fig:hemisphereReduction}
+        \end{subfigure}
+        \caption{Adjusting VPL parameters}\label{fig:vplparameters}
+\end{figure}
+
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{sample1.jpg}
+%                \includegraphics[width=\textwidth]{sample1_gray.jpg}
+                \caption{Default Resolution.}
+                \label{fig:defaultresolution}
+        \end{subfigure}
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{17_resize.jpg}
+%                \includegraphics[width=\textwidth]{17_resize_gray.jpg}
+                \caption{Smaller Resolution Stretched to Default Size}
+                \label{fig:smallerresolution}
+        \end{subfigure}
+        \caption{Comparison of default resolution and a smaller resolution stretched.}\label{fig:artifacts}
+\end{figure}
+
+
 
