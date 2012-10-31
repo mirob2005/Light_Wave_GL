@@ -188,10 +188,10 @@ Regardless of the calculations, a localized difference such as artifacts detract
 
 Table \ref{table:5.8} shows the impact of reducing the number of shadow maps used for indirect shadows.  An interesting note is that when using 10 shadow maps for indirect shadows and when completely ignoring indirect shadows we get near identical similarity measurements to our reference.  This reinforces the notion that indirect shadows are possibly an unnecessary computational burden that can be ignored especially on slower machines.  Recall table \ref{table:5.4} and the comparison of FPS between the two parameter choices.  When choosing to use 10 indirect shadow maps we get 106 FPS, however, when we ignore indirect shadows we get 161 FPS.  For nearly identical globally similarity values, we can gain 55 FPS by ignoring indirect shadows.  This is a major parameter choice to consider when wanting to increase performance.
 
-It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on the idea of the amount of indirect illumination will be discussed in section \ref{sec:alternatives}.
+It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of section \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on the idea of the amount of indirect illumination will be discussed in section \ref{sec:alternatives}.
 
 \subsection{ALTERNATIVES} \label{sec:alternatives}
-The aim of this section is to determine additional sacrifices that could be made in order to improve performance.
+The aim of this section is to determine any additional sacrifices that could be made in order to improve performance.  As shown in table \ref{table:5.8} and discussed above, indirect shadowing is the most computationally expensive scene component that has the least influence of the overall scene.  This may lead one to consider whether or not ignoring indirect lighting could be possible.  However, as shown in table \ref{table:5.9}, we compared our default method with a direct lighting only method.  Using our similarity calculation, we see the lowest similarity of 84.4\%, but the highest performance with 681 FPS.  On a machine that is able to run any of the above parameter choices with at least 30 FPS, it is not necessary to sacrifice this much quality for performance, but for the slowest machines, this may be a necessary choice.
 
 \begin{table}[h!]
 	\caption{Alternative Reductions}
@@ -212,14 +212,56 @@ The aim of this section is to determine additional sacrifices that could be made
 	\label{table:5.9}
 \end{table}
 
-\subsection{FINAL ANALYSIS}
-Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene.
+Also in table \ref{table:5.9}, we include our indirect lighting without indirect shadows method for comparison with it's respectable 161 FPS and 98.5\% similarity.  This was the best performing parameter choice from tables \ref{table:5.1} through \ref{table:5.4}.  Should a compromise between direct lighting only and indirect lighting with no indirect shadows be needed, we included a few alternative approaches in addition to the previous two in table \ref{table:5.9}.  These approaches attempt to fake indirect lighting while achieving the direct only performance.  This is done through the use of scaling the color and shadow contributions in the fragment shader.  As reminded above and discovered in section \ref{sec:study}, the amount of indirect light can contribute to the perceived realism of the scene.  As such, 5 different scaling approaches are included in table \ref{table:5.9} to compare against our reference image.  The multiplier in parenthesis in each table entry shows the amount of scaling done to the direct lighting of the scene.  For example, for the entry with a 1.1 multiplier this means that the final color is calculated as below:
 
+\begin{equation}
+color = (direct\_color*0.5*shadow)+(direct\_color*0.6)
+\end{equation}
 
+For the next entry the 0.6 would be 0.7 and so on.  This way the direct shadows are only half as dark as before and is not purely black and increase the overall brightness of the scene.  As seen in the table, this approach of faking indirect light leads to better similarity numbers than using just the direct lighting approach peaking at the multiplier of 1.3 with a value of 91.8\% in this particular case.  Therefore, should indirect lighting without indirect shadows approach be too much for a particular machine, a faked version of indirect lighting would be a respectable compromise.
 
+\subsection{FINAL ANALYSIS} \label{sec:finalAnalysis}
+Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene.  The benefits of calculating similarities is that it leads to a way of quantifying quality in comparison to our reference image and thus rank parameter choices based off a combination of performance gains and limited quality impact.  It is important to note that changing the resolution size and stretching netted the best similarity results, but due to the introduction of artifacts, those parameter choices will not be included.  It is also important to note that should a smaller resolution size be applicable without the need to stretch to our larger default resolution, this should be the very first choice in increasing performance, because the artifacts are only introduced during the stretching process due to the method of likely naive sampling.
 
+Table \ref{table:5.10} will use the similarity values calculated along with the FPS gain in order to rank the parameter choices.  This will be done using a simple equation:
 
+\begin{equation}
+rankValue = fpsGain / (1-calculatedSimilarity)
+\end{equation}
 
+\begin{table}[h!]
+	\caption{Final Comparisons}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    Method & FPS & \% Similarilty to Default & Rank Value\\ \hline
+	    Default Method & 55 & 100 & --\\ \hline
+	    Faked Indirect Lighting (1.3x) & 681 & 91.847 & 76.7816\\ \hline
+	    Indirect Lighting w/out indirect shadows & 161 & 98.563 & 73.7648\\ \hline
+	    Indirect Lighting w/ 15 indirect shadows & 87 & 99.475 & 60.9524\\ \hline
+	    Indirect Lighting w/ 10 indirect shadows & 106 & 98.853 & 44.4638\\ \hline
+	    Direct Lighting ONLY & 681 & 84.426 & 40.1952\\ \hline
+	    \hline
+	    \hline
+	    30 Degree Angle Between VPL Rays & 84 & 97.956 & 14.1879\\ \hline
+	    \hline
+	    \hline
+	    Reduction down to 1 VPL Per Ray & 78 & 91.591 & 2.7352\\ \hline
+	    \hline
+	    \hline
+	    Resolution Reduction 640x360 & 133 & 99.483 & 150.8704\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:5.10}
+\end{table}
+
+Table \ref{table:5.10} tells us a few things:
+\begin{itemize}
+\item If a smaller resolution size can be used and not stretched, use it.
+\item Indirect Shadows are nice, but is the next thing to be sacrificed if better performance is needed.
+\item If we chose to reduce VPL's, do so by increasing the ray angles, not by reducing hemispheres.
+\item We can experiment with multipliers and get decent faked indirect lighting if nothing else.
+\end{itemize}
 
 \section{IMAGES}
 This section will be used to show images rendered in real-time from this method and the accompanying parameters chosen.  
