@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  30 OCT 2012 21:49
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  31 OCT 2012 02:51
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -833,22 +833,34 @@ Overfull \hbox (5.97621pt too wide) in paragraph at lines 169--179
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48] [49] [50] [51]) [52]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+[48] [49] [50]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[51] [52]
+Overfull \hbox (35.06311pt too wide) in paragraph at lines 235--254
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[53]) [54] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [53
+[55
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [54
+] [56]) [57] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
+[58
 
 
-] [55]
-[56]
+] [59] [60]
 Missing character: There is no ó in font cmr12!
 Missing character: There is no á in font cmr12!
 Missing character: There is no ’ in font cmr12!
- [57]) [58] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [61]) [62]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -857,10 +869,10 @@ Missing character: There is no ’ in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 8821 strings out of 494049
- 136019 string characters out of 3146068
+ 8823 strings out of 494049
+ 136050 string characters out of 3146068
  230042 words of memory out of 3000000
- 11942 multiletter control sequences out of 15000+200000
+ 11944 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  37i,13n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -876,9 +888,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (64 pages, 430934 bytes).
+Output written on thesis.pdf (68 pages, 441089 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
+ 271 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
