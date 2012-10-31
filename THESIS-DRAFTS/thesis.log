@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  29 OCT 2012 00:39
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  30 OCT 2012 21:49
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -378,25 +378,75 @@ Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen137
 \Gin@req@width=\dimen138
 )
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count182
-\lst@gtempboxa=\box36
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
+\c@AlgoLine=\count182
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
+********************************************************
+\skiptotal=\skip61
+\skiplinenumber=\skip62
+\skiprule=\skip63
+\skiphlne=\skip64
+\skiptext=\skip65
+\skiplength=\skip66
+\algomargin=\skip67
+\skipalgocfslide=\skip68
+\algowidth=\dimen139
+\inoutsize=\dimen140
+\inoutline=\dimen141
+\interspacetitleruled=\dimen142
+\interspacealgoruled=\dimen143
+\interspacetitleboxruled=\dimen144
+\algocf@inoutbox=\box36
+\algocf@inputbox=\box37
+\AlCapSkip=\skip69
+\AlCapHSkip=\skip70
+\algocf@nlbox=\box38
+\algocf@hangingbox=\box39
+\algocf@capbox=\box40
+\algoheightruledefault=\skip71
+\algoheightrule=\skip72
+\algotitleheightruledefault=\skip73
+\algotitleheightrule=\skip74
+\c@algocfline=\count183
+\c@algocfproc=\count184
+\c@algocf=\count185
+\algocf@algoframe=\box41
+\algocf@algobox=\box42
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count186
+\lst@gtempboxa=\box43
 \lst@token=\toks39
-\lst@length=\count183
-\lst@currlwidth=\dimen139
-\lst@column=\count184
-\lst@pos=\count185
-\lst@lostspace=\dimen140
-\lst@width=\dimen141
-\lst@newlines=\count186
-\lst@lineno=\count187
-\lst@maxwidth=\dimen142
+\lst@length=\count187
+\lst@currlwidth=\dimen145
+\lst@column=\count188
+\lst@pos=\count189
+\lst@lostspace=\dimen146
+\lst@width=\dimen147
+\lst@newlines=\count190
+\lst@lineno=\count191
+\lst@maxwidth=\dimen148
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count188
-\lst@skipnumbers=\count189
-\lst@framebox=\box37
+\c@lstnumber=\count192
+\lst@skipnumbers=\count193
+\lst@framebox=\box44
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2007/02/22 1.4 listings configuration
@@ -415,14 +465,14 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen143
-\epsfframethickness=\dimen144
-\epsfrsize=\dimen145
-\epsftmp=\dimen146
-\epsftsize=\dimen147
-\epsfxsize=\dimen148
-\epsfysize=\dimen149
-\pspoints=\dimen150
+\epsfframemargin=\dimen149
+\epsfframethickness=\dimen150
+\epsfrsize=\dimen151
+\epsftmp=\dimen152
+\epsftsize=\dimen153
+\epsfxsize=\dimen154
+\epsfysize=\dimen155
+\pspoints=\dimen156
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -431,56 +481,56 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count190
-\scratchdimen=\dimen151
-\scratchbox=\box38
-\nofMPsegments=\count191
-\nofMParguments=\count192
+\scratchcounter=\count194
+\scratchdimen=\dimen157
+\scratchbox=\box45
+\nofMPsegments=\count195
+\nofMParguments=\count196
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count193
-\MPscratchDim=\dimen152
-\MPnumerator=\count194
+\MPscratchCnt=\count197
+\MPscratchDim=\dimen158
+\MPnumerator=\count198
 \everyMPtoPDFconversion=\toks41
 )
-\c@lstlisting=\count195
+\c@lstlisting=\count199
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 80.
+(Font)              <12> on input line 81.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 80.
+(Font)              <8> on input line 81.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 80.
+(Font)              <6> on input line 81.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
+Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
+Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 80--80
+Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--80
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
 
  []
 
@@ -514,7 +564,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.93 \listoftables
+l.94 \listoftables
                   
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
@@ -531,7 +581,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.98 \listoffigures
+l.99 \listoffigures
                    
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
@@ -757,50 +807,48 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-] [44] [45]
-Overfull \hbox (20.49829pt too wide) in paragraph at lines 96--105
+] [44] [45] [46] [47]
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 119--128
  [] 
  []
 
 
-Overfull \hbox (20.49829pt too wide) in paragraph at lines 112--122
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 135--145
  [] 
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (20.49829pt too wide) in paragraph at lines 129--139
- [] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (20.49829pt too wide) in paragraph at lines 146--155
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 152--162
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [46] [47] [48] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 169--179
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[48] [49] [50] [51]) [52]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-) [49
+) [53
 
 
 
-] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [50
+] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [54
 
 
-] [51]
-[52]
+] [55]
+[56]
 Missing character: There is no ó in font cmr12!
 Missing character: There is no á in font cmr12!
 Missing character: There is no ’ in font cmr12!
- [53]) [54] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+ [57]) [58] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -809,13 +857,13 @@ Missing character: There is no ’ in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 7669 strings out of 494049
- 120777 string characters out of 3146068
- 195626 words of memory out of 3000000
- 10803 multiletter control sequences out of 15000+200000
+ 8821 strings out of 494049
+ 136019 string characters out of 3146068
+ 230042 words of memory out of 3000000
+ 11942 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,10n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,13n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
@@ -828,9 +876,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (60 pages, 420406 bytes).
+Output written on thesis.pdf (64 pages, 430934 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
+ 258 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
