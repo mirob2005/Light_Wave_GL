@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  31 OCT 2012 02:51
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  31 OCT 2012 13:57
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -378,9 +378,37 @@ Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen137
 \Gin@req@width=\dimen138
 )
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2010/01/09 v3.1m Customizing captions (AR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
+\captionmargin=\dimen139
+\captionmargin@=\dimen140
+\captionwidth=\dimen141
+\caption@indent=\dimen142
+\caption@parindent=\dimen143
+\caption@hangindent=\dimen144
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1084.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {{\bf #1} #2} \ifdim \wd \@tempboxa >\hsize #1 #2\par \else \hbo
+x to\hsize {\hfil \box \@tempboxa \hfil } \fi .
+\c@ContinuedFloat=\count182
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2008/08/31 v1.0b Adding subcaptions (AR)
+\c@subfigure=\count183
+\c@subtable=\count184
+)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
 Package: algorithm2e 2008/00/00 v3.10 algorithms environments
-\c@AlgoLine=\count182
+\c@AlgoLine=\count185
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -406,12 +434,12 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \skiplength=\skip66
 \algomargin=\skip67
 \skipalgocfslide=\skip68
-\algowidth=\dimen139
-\inoutsize=\dimen140
-\inoutline=\dimen141
-\interspacetitleruled=\dimen142
-\interspacealgoruled=\dimen143
-\interspacetitleboxruled=\dimen144
+\algowidth=\dimen145
+\inoutsize=\dimen146
+\inoutline=\dimen147
+\interspacetitleruled=\dimen148
+\interspacealgoruled=\dimen149
+\interspacetitleboxruled=\dimen150
 \algocf@inoutbox=\box36
 \algocf@inputbox=\box37
 \AlCapSkip=\skip69
@@ -423,29 +451,29 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \algoheightrule=\skip72
 \algotitleheightruledefault=\skip73
 \algotitleheightrule=\skip74
-\c@algocfline=\count183
-\c@algocfproc=\count184
-\c@algocf=\count185
+\c@algocfline=\count186
+\c@algocfproc=\count187
+\c@algocf=\count188
 \algocf@algoframe=\box41
 \algocf@algobox=\box42
 ) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count186
+\lst@mode=\count189
 \lst@gtempboxa=\box43
 \lst@token=\toks39
-\lst@length=\count187
-\lst@currlwidth=\dimen145
-\lst@column=\count188
-\lst@pos=\count189
-\lst@lostspace=\dimen146
-\lst@width=\dimen147
-\lst@newlines=\count190
-\lst@lineno=\count191
-\lst@maxwidth=\dimen148
+\lst@length=\count190
+\lst@currlwidth=\dimen151
+\lst@column=\count191
+\lst@pos=\count192
+\lst@lostspace=\dimen152
+\lst@width=\dimen153
+\lst@newlines=\count193
+\lst@lineno=\count194
+\lst@maxwidth=\dimen154
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count192
-\lst@skipnumbers=\count193
+\c@lstnumber=\count195
+\lst@skipnumbers=\count196
 \lst@framebox=\box44
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
@@ -465,72 +493,75 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen149
-\epsfframethickness=\dimen150
-\epsfrsize=\dimen151
-\epsftmp=\dimen152
-\epsftsize=\dimen153
-\epsfxsize=\dimen154
-\epsfysize=\dimen155
-\pspoints=\dimen156
+\epsfframemargin=\dimen155
+\epsfframethickness=\dimen156
+\epsfrsize=\dimen157
+\epsftmp=\dimen158
+\epsftsize=\dimen159
+\epsfxsize=\dimen160
+\epsfysize=\dimen161
+\pspoints=\dimen162
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count194
-\scratchdimen=\dimen157
+\scratchcounter=\count197
+\scratchdimen=\dimen163
 \scratchbox=\box45
-\nofMPsegments=\count195
-\nofMParguments=\count196
+\nofMPsegments=\count198
+\nofMParguments=\count199
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count197
-\MPscratchDim=\dimen158
-\MPnumerator=\count198
+\MPscratchCnt=\count200
+\MPscratchDim=\dimen164
+\MPnumerator=\count201
 \everyMPtoPDFconversion=\toks41
 )
-\c@lstlisting=\count199
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Normal \count register pool exhausted, switching to extended pool.
+\c@lstlisting=\count277
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 81.
+(Font)              <12> on input line 83.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 81.
+(Font)              <8> on input line 83.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 81.
+(Font)              <6> on input line 83.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
+Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
+Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 81--81
+Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
 
  []
 
@@ -546,30 +577,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--81
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.tex) [3
 
 ]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc
-Overfull \vbox (29.39453pt too high) has occurred while \output is active []
-
-
-[4
-
-
-
-])
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc)
 \tf@toc=\write3
- [5]
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.94 \listoftables
-                  
-? 
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
-\tf@lot=\write4
- [6
+ [4
 
 
 
@@ -581,12 +591,29 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \listoffigures
-                   
+l.96 \listoftables
+                  
+? 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
+\tf@lot=\write4
+ [5
+
+
+
+]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.101 \listoffigures
+                    
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
 \tf@lof=\write5
- [7
+ [6
 
 
 
@@ -603,6 +630,9 @@ Type  H <return>  for immediate help.
 l.1 \chapter{BACKGROUND}
                         
 ? 
+
+LaTeX Warning: Citation `Serway2004' on page 1 undefined on input line 4.
+
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -615,6 +645,9 @@ Missing character: There is no ù in font cmr12!
 
 ] [2] [3] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.tex
 CHAPTER 2.
+
+LaTeX Warning: Citation `Kajiya1986' on page 4 undefined on input line 9.
+
 [4
 
 
@@ -626,7 +659,56 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [7] [8] [9] [10]
+
+
+LaTeX Warning: Citation `Whitted1980' on page 7 undefined on input line 56.
+
+
+LaTeX Warning: Citation `Cook1986' on page 7 undefined on input line 56.
+
+
+LaTeX Warning: Citation `Ward1988' on page 7 undefined on input line 56.
+
+
+LaTeX Warning: Citation `Whitted1980' on page 7 undefined on input line 58.
+
+
+LaTeX Warning: Citation `Whitted1980' on page 7 undefined on input line 58.
+
+[7]
+
+LaTeX Warning: Citation `Kajiya1986' on page 8 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Immel1986' on page 8 undefined on input line 68.
+
+
+LaTeX Warning: Citation `Goral1984' on page 8 undefined on input line 68.
+
+
+LaTeX Warning: Citation `Goral1984' on page 8 undefined on input line 70.
+
+[8]
+
+LaTeX Warning: Citation `Kajiya1986' on page 9 undefined on input line 76.
+
+
+LaTeX Warning: Citation `Jensen1996' on page 9 undefined on input line 86.
+
+[9]
+
+LaTeX Warning: Citation `Jensen1996' on page 10 undefined on input line 88.
+
+[10]
+
+LaTeX Warning: Citation `Kajiya1986' on page 11 undefined on input line 100.
+
+
+LaTeX Warning: Citation `Keller1997' on page 11 undefined on input line 104.
+
+
+LaTeX Warning: Citation `Walter2005' on page 11 undefined on input line 108.
+
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -645,60 +727,195 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [11] [12] [13] [14]
-Missing character: There is no Û in font cmr12!
-Missing character: There is no · in font cmr12!
- [15] [16] [17] [18]) [19]
-[20] [21] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
+
+LaTeX Warning: Citation `Walter2006' on page 11 undefined on input line 108.
+
+
+LaTeX Warning: Citation `Walter2012' on page 11 undefined on input line 108.
+
+[11]
+
+LaTeX Warning: Citation `Havsan2007' on page 12 undefined on input line 112.
+
+
+LaTeX Warning: Citation `Ou2011' on page 12 undefined on input line 112.
+
+
+LaTeX Warning: Citation `Havsan2007' on page 12 undefined on input line 112.
+
+
+LaTeX Warning: Citation `Walter2005' on page 12 undefined on input line 112.
+
+[12]
+
+LaTeX Warning: Citation `Williams1978' on page 13 undefined on input line 116.
+
+
+LaTeX Warning: Citation `Reeves1987' on page 13 undefined on input line 116.
+
+[13]
+
+LaTeX Warning: Citation `Novak2012' on page 14 undefined on input line 120.
+
+
+LaTeX Warning: Citation `Wald2002' on page 14 undefined on input line 124.
+
+
+LaTeX Warning: Citation `Kalos2005' on page 14 undefined on input line 124.
+
+
+LaTeX Warning: Citation `McGuire2009' on page 14 undefined on input line 124.
+
+
+LaTeX Warning: Citation `Keller1997' on page 14 undefined on input line 124.
+
+[14] [15]
+
+LaTeX Warning: Citation `Dachsbacher2003' on page 16 undefined on input line 13
+6.
+
+
+LaTeX Warning: Citation `Dachsbacher2005' on page 16 undefined on input line 13
+8.
+
+[16]
+
+LaTeX Warning: Citation `Dachsbacher2006' on page 17 undefined on input line 14
+8.
+
+
+LaTeX Warning: Citation `Nichols2010' on page 17 undefined on input line 150.
+
+[17]
+
+LaTeX Warning: Citation `Ritschel2008' on page 18 undefined on input line 152.
+
+
+LaTeX Warning: Citation `Nichols2009' on page 18 undefined on input line 156.
+
+
+LaTeX Warning: Citation `Nichols2009a' on page 18 undefined on input line 156.
+
+[18]
+
+LaTeX Warning: Citation `Novak2011' on page 19 undefined on input line 158.
+
+
+LaTeX Warning: Citation `Nijasure2005' on page 19 undefined on input line 162.
+
+
+LaTeX Warning: Citation `Papaioannou2011' on page 19 undefined on input line 16
+2.
+
+
+LaTeX Warning: Citation `Nijasure2005' on page 19 undefined on input line 162.
+
+
+LaTeX Warning: Citation `Kaplanyan2010' on page 19 undefined on input line 162.
+
+
+) [19] [20] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
+
+LaTeX Warning: Citation `Keller1997' on page 21 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Williams1978' on page 21 undefined on input line 5.
+
+
+LaTeX Warning: Citation `Reeves1987' on page 21 undefined on input line 5.
+
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[22
+[21
 
 
 
 ]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
- [23] [24] [25] <Figure31_gray.jpg, id=108, 460.34167pt x 416.00798pt>
-File: Figure31_gray.jpg Graphic file (type jpg)
 
-<use Figure31_gray.jpg>
+LaTeX Warning: Citation `Stokes2004' on page 22 undefined on input line 9.
+
+
+LaTeX Warning: Citation `Stokes2004' on page 22 undefined on input line 9.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+LaTeX Warning: Citation `Yu2009' on page 22 undefined on input line 11.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+LaTeX Warning: Citation `Yu2009' on page 22 undefined on input line 11.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+LaTeX Warning: Citation `Ritschel2008' on page 22 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Zhukov1998' on page 22 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Sloan2007' on page 22 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Ritschel2009' on page 22 undefined on input line 11.
+
+
+LaTeX Warning: Citation `Dachsbacher2005' on page 22 undefined on input line 11
+.
+
+
+LaTeX Warning: Citation `Dachsbacher2006' on page 22 undefined on input line 11
+.
+
+[22]
+
+LaTeX Warning: Citation `Ritschel2008' on page 23 undefined on input line 13.
+
+[23]
+
+LaTeX Warning: Citation `Keller1997' on page 24 undefined on input line 19.
+
+<Figure31_gray.jpg, id=99, 460.34167pt x 416.00798pt>
+File: Figure31_gray.jpg Graphic file (type jpg)
+ <use Figure31_gray.jpg>
 Package pdftex.def Info: Figure31_gray.jpg used on input line 23.
 (pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
- <Figure32_gray.jpg, id=109, 276.32648pt x 277.54109pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24] <Figure32_gray.jpg, id=103, 276.32648pt x 277.54109pt>
 File: Figure32_gray.jpg Graphic file (type jpg)
 
 <use Figure32_gray.jpg>
@@ -708,7 +925,7 @@ Package pdftex.def Info: Figure32_gray.jpg used on input line 33.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure33_gray.jpg, id=110, 320.05286pt x 296.36774pt>
+<Figure33_gray.jpg, id=104, 320.05286pt x 296.36774pt>
 File: Figure33_gray.jpg Graphic file (type jpg)
  <use Figure33_gray.jpg>
 Package pdftex.def Info: Figure33_gray.jpg used on input line 41.
@@ -717,17 +934,16 @@ Package pdftex.def Info: Figure33_gray.jpg used on input line 41.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure34_gray.jpg, id=111, 367.42311pt x 268.43143pt>
+<Figure34_gray.jpg, id=105, 367.42311pt x 268.43143pt>
 File: Figure34_gray.jpg Graphic file (type jpg)
  <use Figure34_gray.jpg>
 Package pdftex.def Info: Figure34_gray.jpg used on input line 50.
 (pdftex.def)             Requested size: 215.00313pt x 157.07475pt.
 
-[26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31_gray.jpg>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure35_gray.jpg, id=115, 250.2121pt x 60.7311pt>
+<Figure35_gray.jpg, id=106, 250.2121pt x 60.7311pt>
 File: Figure35_gray.jpg Graphic file (type jpg)
  <use Figure35_gray.jpg>
 Package pdftex.def Info: Figure35_gray.jpg used on input line 59.
@@ -742,20 +958,27 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32_gray.jpg>]
-<Figure36_gray.jpg, id=119, 268.43143pt x 185.22983pt>
+[25 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31_gray.jpg>] [26 <D:/_P
+rogramming/Light_Wave_GL/THESIS-DRAFTS/Figure32_gray.jpg>]
+<Figure36_gray.jpg, id=114, 268.43143pt x 185.22983pt>
 File: Figure36_gray.jpg Graphic file (type jpg)
  <use Figure36_gray.jpg>
 Package pdftex.def Info: Figure36_gray.jpg used on input line 70.
 (pdftex.def)             Requested size: 215.00313pt x 148.36493pt.
 
-[28 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33_gray.jpg>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure34_gray.jpg> <D:/_Progra
-mming/Light_Wave_GL/THESIS-DRAFTS/Figure35_gray.jpg>] [30 <D:/_Programming/Ligh
-t_Wave_GL/THESIS-DRAFTS/Figure36_gray.jpg>]
+
+LaTeX Warning: Citation `Williams1978' on page 27 undefined on input line 75.
+
+
+LaTeX Warning: Citation `Reeves1987' on page 27 undefined on input line 75.
+
+[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33_gray.jpg>] [28 <D:/_P
+rogramming/Light_Wave_GL/THESIS-DRAFTS/Figure34_gray.jpg> <D:/_Programming/Ligh
+t_Wave_GL/THESIS-DRAFTS/Figure35_gray.jpg>] [29 <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/Figure36_gray.jpg>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 97.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -763,7 +986,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
- [31]) [32]
+ [30]) [31]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
 
@@ -776,19 +999,19 @@ ce \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 maxDistance=\OT1/cmr/m/
 n/12 2[]))[]
  []
 
-[33
+[32
 
 
 
-] [34] [35]
+] [33] [34]
 Overfull \hbox (10.18831pt too wide) in paragraph at lines 55--56
 [][][][][][][][][][][][][][] 
  []
 
-[36]
+[35]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
- [37] [38] [39] [40]) [41] [42]
+ [36] [37] [38] [39]) [40] [41]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
 
@@ -803,11 +1026,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[43
+[42
 
 
 
-] [44] [45] [46] [47]
+] [43] [44] [45] [46]
 Overfull \hbox (5.97621pt too wide) in paragraph at lines 119--128
  [] 
  []
@@ -833,11 +1056,15 @@ Overfull \hbox (5.97621pt too wide) in paragraph at lines 169--179
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[48] [49] [50]
+[47] [48] [49]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[51] [52]
+[50] [51]
+
+LaTeX Warning: Reference `table:5.10' on page 52 undefined on input line 226.
+
+
 Overfull \hbox (35.06311pt too wide) in paragraph at lines 235--254
  [] 
  []
@@ -845,21 +1072,64 @@ Overfull \hbox (35.06311pt too wide) in paragraph at lines 235--254
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[53]) [54] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+
+LaTeX Warning: Reference `table:5.10' on page 52 undefined on input line 258.
+
+[52] <sample1_gray.jpg, id=199, 1284.8pt x 722.7pt>
+File: sample1_gray.jpg Graphic file (type jpg)
+ <use sample1_gray.jpg>
+Package pdftex.def Info: sample1_gray.jpg used on input line 272.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sample2_gray.jpg, id=200, 1284.8pt x 722.7pt>
+File: sample2_gray.jpg Graphic file (type jpg)
+ <use sample2_gray.jpg>
+Package pdftex.def Info: sample2_gray.jpg used on input line 281.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample3_gray.jpg, id=201, 1284.8pt x 722.7pt>
+File: sample3_gray.jpg Graphic file (type jpg)
+ <use sample3_gray.jpg>
+Package pdftex.def Info: sample3_gray.jpg used on input line 286.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample4_gray.jpg, id=202, 1284.8pt x 722.7pt>
+File: sample4_gray.jpg Graphic file (type jpg)
+ <use sample4_gray.jpg>
+Package pdftex.def Info: sample4_gray.jpg used on input line 291.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample5_gray.jpg, id=203, 1284.8pt x 722.7pt>
+File: sample5_gray.jpg Graphic file (type jpg)
+ <use sample5_gray.jpg>
+Package pdftex.def Info: sample5_gray.jpg used on input line 296.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 301.
+
+) [53] [54 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1_gray.jpg>]
+[55 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample2_gray.jpg> <D:/_Program
+ming/Light_Wave_GL/THESIS-DRAFTS/sample3_gray.jpg> <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/sample4_gray.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS
+/sample5_gray.jpg>] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[55
+[56
 
 
 
-] [56]) [57] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
-[58
+] [57]) [58] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
+[59
 
 
-] [59] [60]
+] [60] [61]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no í in font cmr12!
- [61]) [62]
+ [62]) [63]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -867,30 +1137,36 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8823 strings out of 494049
- 136050 string characters out of 3146068
- 230042 words of memory out of 3000000
- 11944 multiletter control sequences out of 15000+200000
+ 9858 strings out of 494049
+ 154552 string characters out of 3146068
+ 253765 words of memory out of 3000000
+ 12968 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  37i,13n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (68 pages, 441089 bytes).
+<D:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<D:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on thesis.pdf (68 pages, 581561 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
+ 276 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
