@@ -31,7 +31,7 @@ file2PixelList = file2Pixels.split()
 
 print('Files inputted', time.clock())
 
-#Can add check wether the 2 files are the same resolution later...
+#Can add check whether the 2 files are the same resolution later...
 maxPixels = 921600*3
 
 

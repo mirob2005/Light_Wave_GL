@@ -89,7 +89,29 @@ Similarly, table \ref{table:5.4} shows the number of indirect shadow maps having
 In summary, when choosing parameters of the method to be run on slower machines, a combination of reducing the resolution and reducing the number of indirect shadow maps would result in the most efficient performance gain in regards to FPS increase.  Next, we will similarly analyze the impact of these parameter changes to the quality of the image in order to see what changes would result in the most efficient reductions while maintaining quality.
 
 \subsection{IMPACT OF PARAMETER CHOICES ON QUALITY} \label{sec:quality}
-Just as important as performance is the quality of the images rendered.  Therefore, this section will detail the quality impact of parameter choice using the default set-up as the reference image.  By detailing this information, it will reveal the ultimate flexibility of the method and whether we can use this method on slower machines with limited quality impact.  We will use the same parameter choices as the tables for section \ref{sec:fps}, but we will be interested in the percentage difference between the chosen parameters and the default parameters.
+Just as important as performance is the quality of the images rendered.  Therefore, this section will detail the quality impact of parameter choice using the default set-up as the reference image.  By detailing this information, it will reveal the ultimate flexibility of the method and whether we can use this method on slower machines with limited quality impact.  We will use the same parameter choices as the tables for section \ref{sec:fps}, but we will be interested in the percentage difference between the chosen parameters and the default parameters.  The percentage difference will be computed using a Python script which takes in two rendered images as input and compares them on a pixel by pixel basis.  This comparison is done as follows:
+
+
+\begin{algorithm}[H]
+ \SetAlgoLined
+ similar = 0.0\;
+ \For{each pixelComponent (R,B,G) in image 1}{
+  \eIf{pixelComponent\_image1 $>=$ pixelComponent\_image2 }{
+   similar += (pixelComponent\_image1 +1) / (pixelComponent\_image2 +1)\;
+   }{
+   similar += (pixelComponent\_image2 +1) / (pixelComponent\_image1 +1)\;
+  }
+ }
+ similar = similar/numPixelComponents\;
+ percentDifference = (1-similar)*100\;
+ \caption{Compute Image Difference}
+ \label{alg:difference}
+\end{algorithm}
+
+Algorithm \ref{alg:difference} adds 1 to the 2 pixel components in order to avoid division by 0.  This way our pixel components will range from 1 to 256.  For example, if image 1 had a value of 200 for the red component of pixel 1 and image 2 had a value of 100 for the red component of pixel 1, we would say that these two images were 50\% different.  We do this calculation for all 3 color components of every pixel in each image and average it out to find the total similarity or difference between the two images.
+
+The purpose of doing such a calculation is simply due to the fact that quantifying the quality of an image or  the similarity with another image is rather subjective.  This way we can assign a value to the comparison which is more objective.  This way we can objectively order the images rendered using different parameters by similarity to the default parameter set-up and declare certain parameter changes as more efficient than others.  By efficient, we mean the parameter changes increase performance with limited quality reductions.  Tables \ref{table:5.5}, \ref{table:5.6}, \ref{table:5.7}, and \ref{table:5.8} show the calculated similarity percentages.  The higher percentage the image, the closer to the reference image it is with 100\% meaning that it is the same image.
+
 
 \begin{table}[h!]
 	\caption{Varying the Angle Between VPL Rays (Impact on Quality)}
@@ -158,9 +180,40 @@ Just as important as performance is the quality of the images rendered.  Therefo
 	\label{table:5.8}
 \end{table}
 
-Tables \ref{table:5.5}, \ref{table:5.6}, \ref{table:5.7}, and \ref{table:5.8} show that ...
+Comparing tables \ref{table:5.5} and \ref{table:5.6} reveals that although the number of VPL's used when increasing our VPL ray angles drops more quickly than when we simply reduce the number of VPL per ray, the higher ray angle images (table \ref{table:5.5}) render more similar images to the reference than when we reduce the number of VPL per ray.  For example, when we use 185 VPL's with an angle of 30 degrees, we get an image that is 98\% similar to the reference, but when we use 1297 VPL's with 1 VPL per ray, we get an image that is only 91.6\% similar to the reference.  This leads us to believe that increasing the angle to reduce the number of VPL's leads to better quality images than reducing the number of VPL's per ray or hemispheres to reduce the number of VPL's.  Such an observation can helps us increase performance and maintain a level of similarity to the reference image.
 
+When looking at table \ref{table:5.7}, we see high values of similarity to the reference, however, these can be misleading.  These values were calculated after rendering the image at the chosen resolution size and then stretching it to the reference image resolution size.  This brings into question the idea of global similarity and local similarity as well as notion of visually pleasing as discussed in section \ref{sec:study}.  Although these images are very similar to the reference in an overall pixel by pixel basis, there are some things that this number does not show us.  It requires looking at the stretched image to realize the effect this has on the image quality.  These images show worsening cases of 'jaggies' or artifacts near the edges of boundaries such as the edges of the boxes as the rendered image's resolution gets smaller.  So in the regard of being similar to the reference these reduced resolution images are, but when stretched they also show localized differences that can be distracting to the eye.  When comparing the reference to the stretched 640x360 images on a local scale such as on the edges of a box, we get a similarity of 97.4\% which is slightly less than the 99.5\%, however, a even more localized comparison such as a few pixels on either side of the boundary line would show even more difference.
 
+Regardless of the calculations, a localized difference such as artifacts detract from the overall realism of the image which is not preferred.  A slight global difference, however, such as a slightly lighter or darker overall image would result in a large difference value but more similar overall to the human eye.  These facts need to be taken into consideration when choosing the method or parameters.  This idea will be covered more in section \ref{sec:alternatives}.
+
+Table \ref{table:5.8} shows the impact of reducing the number of shadow maps used for indirect shadows.  An interesting note is that when using 10 shadow maps for indirect shadows and when completely ignoring indirect shadows we get near identical similarity measurements to our reference.  This reinforces the notion that indirect shadows are possibly an unnecessary computational burden that can be ignored especially on slower machines.  Recall table \ref{table:5.4} and the comparison of FPS between the two parameter choices.  When choosing to use 10 indirect shadow maps we get 106 FPS, however, when we ignore indirect shadows we get 161 FPS.  For nearly identical globally similarity values, we can gain 55 FPS by ignoring indirect shadows.  This is a major parameter choice to consider when wanting to increase performance.
+
+It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on the idea of the amount of indirect illumination will be discussed in section \ref{sec:alternatives}.
+
+\subsection{ALTERNATIVES} \label{sec:alternatives}
+The aim of this section is to determine additional sacrifices that could be made in order to improve performance.
+
+\begin{table}[h!]
+	\caption{Alternative Reductions}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    Method & FPS & \% Similarilty to Default\\ \hline
+	    Default Method & 55 & 100\\ \hline
+	    Direct Lighting ONLY & 681 & 84.426\\ \hline
+	    Indirect Lighting w/out indirect shadows & 161 & 98.563\\ \hline
+	    Faked Indirect Lighting (1.1x) & 681 & 88.217\\ \hline
+	    Faked Indirect Lighting (1.2x) & 681 & 90.675\\ \hline
+	    Faked Indirect Lighting (1.3x) & 681 & 91.847\\ \hline
+	    Faked Indirect Lighting (1.4x) & 681 & 91.393\\ \hline
+	    Faked Indirect Lighting (1.5x) & 681 & 90.161\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:5.9}
+\end{table}
+
+\subsection{FINAL ANALYSIS}
+Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene.
 
 
 

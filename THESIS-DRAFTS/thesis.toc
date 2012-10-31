@@ -35,5 +35,7 @@
 \contentsline {section}{\numberline {5.1}RESULTS}{43}
 \contentsline {subsection}{\numberline {5.1.1}IMPACT OF PARAMETER CHOICES ON FPS}{43}
 \contentsline {subsection}{\numberline {5.1.2}IMPACT OF PARAMETER CHOICES ON QUALITY}{46}
-\contentsline {section}{\numberline {5.2}IMAGES}{47}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{49}
+\contentsline {subsection}{\numberline {5.1.3}ALTERNATIVES}{51}
+\contentsline {subsection}{\numberline {5.1.4}FINAL ANALYSIS}{52}
+\contentsline {section}{\numberline {5.2}IMAGES}{52}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{53}
