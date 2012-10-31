@@ -1,6 +1,8 @@
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The light source (star) is facing the reader (ie. direction/normal pointing out of the paper.}}{26}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The light source (star) is facing downwards. Angles are drawn to scale.}}{27}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Figures 3.1\hbox {} and 3.2\hbox {} together form a hemisphere. View is looking slightly up at the hemisphere.}}{28}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces 5 stacked hemispheres formed by the VPL's around the primary light source. Each hemisphere is a different shade to make distinguishing easier.}}{29}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Showing the logarithmic distances between the VPL's on each ray. The first box on the left is the first VPL on the ray with successive VPL's going towards the right. Distance shown to scale. (Light source is not shown)}}{29}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Showing the wave-like radiance contribution of a VPL. We add an additional 30 degrees of viewable range on the top and bottom limiting the blind spot of the VPL to 120 degrees rather than 180. The arrow signifies the VPL's direction/normal.}}{30}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The light source (star) is facing the reader (ie. direction/normal pointing out of the paper.\relax }}{25}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The light source (star) is facing downwards. Angles are drawn to scale.\relax }}{26}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Figures 3.1\hbox {} and 3.2\hbox {} together form a hemisphere. View is looking slightly up at the hemisphere.\relax }}{27}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 5 stacked hemispheres formed by the VPL's around the primary light source. Each hemisphere is a different shade to make distinguishing easier.\relax }}{28}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Showing the logarithmic distances between the VPL's on each ray. The first box on the left is the first VPL on the ray with successive VPL's going towards the right. Distance shown to scale. (Light source is not shown)\relax }}{28}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Showing the wave-like radiance contribution of a VPL. We add an additional 30 degrees of viewable range on the top and bottom limiting the blind spot of the VPL to 120 degrees rather than 180. The arrow signifies the VPL's direction/normal.\relax }}{29}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image is used as the reference in the similarity calculations.\relax }}{54}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{55}
