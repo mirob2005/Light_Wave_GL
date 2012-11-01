@@ -40,4 +40,4 @@
 \contentsline {section}{\numberline {5.2}IMAGES}{54}
 \contentsline {chapter}{\numberline {6}CONCLUSION}{63}
 \contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{63}
-\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{63}
+\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{64}
