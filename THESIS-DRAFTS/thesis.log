@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  31 OCT 2012 16:48
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  1 NOV 2012 13:07
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -509,18 +509,18 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -541,28 +541,28 @@ Package caption Info: End \AtBeginDocument code.
 Normal \count register pool exhausted, switching to extended pool.
 \c@lstlisting=\count277
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 83.
+(Font)              <12> on input line 84.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 83.
+(Font)              <8> on input line 84.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 83.
+(Font)              <6> on input line 84.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
+Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
+Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 83--83
+Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
 
  []
 
@@ -596,7 +596,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.96 \listoftables
+l.97 \listoftables
                   
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
@@ -613,7 +613,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.101 \listoffigures
+l.102 \listoffigures
                     
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof)
@@ -680,7 +680,7 @@ Missing character: There is no ù in font cmr12!
  [11] [12] [13] [14]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
- [15] [16] [17] [18]) [19]
+ [15] [16] [17] [18] [19])
 [20] [21] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
 Missing character: There is no ‚ in font cmr12!
@@ -730,17 +730,14 @@ File: Figure31.jpg Graphic file (type jpg)
 <use Figure31.jpg>
 Package pdftex.def Info: Figure31.jpg used on input line 23.
 (pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
- <Figure32.jpg, id=109, 276.32648pt x 277.54109pt>
+ [26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>] <Figure32.jpg,
+ id=112, 276.32648pt x 277.54109pt>
 File: Figure32.jpg Graphic file (type jpg)
-
-<use Figure32.jpg>
+ <use Figure32.jpg>
 Package pdftex.def Info: Figure32.jpg used on input line 34.
 (pdftex.def)             Requested size: 215.00313pt x 215.95604pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Figure33.jpg, id=110, 320.05286pt x 296.36774pt>
+<Figure33.jpg, id=113, 320.05286pt x 296.36774pt>
 File: Figure33.jpg Graphic file (type jpg)
  <use Figure33.jpg>
 Package pdftex.def Info: Figure33.jpg used on input line 43.
@@ -749,12 +746,12 @@ Package pdftex.def Info: Figure33.jpg used on input line 43.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Figure34.jpg, id=111, 367.42311pt x 268.43143pt>
+<Figure34.jpg, id=114, 367.42311pt x 268.43143pt>
 File: Figure34.jpg Graphic file (type jpg)
  <use Figure34.jpg>
 Package pdftex.def Info: Figure34.jpg used on input line 53.
 (pdftex.def)             Requested size: 215.00313pt x 157.07475pt.
- [26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>]
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -773,13 +770,14 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
-<Figure36.jpg, id=119, 268.43143pt x 185.22983pt>
+[27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>] [28 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg>]
+<Figure36.jpg, id=122, 268.43143pt x 185.22983pt>
 File: Figure36.jpg Graphic file (type jpg)
  <use Figure36.jpg>
 Package pdftex.def Info: Figure36.jpg used on input line 75.
 (pdftex.def)             Requested size: 215.00313pt x 148.36493pt.
- [28 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg>]
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -868,15 +866,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[51] [52]
+[51] [52] [53]
 Overfull \hbox (23.88976pt too wide) in paragraph at lines 235--254
  [] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[53] <sample1.jpg, id=205, 1284.8pt x 722.7pt>
+<sample1.jpg, id=205, 1284.8pt x 722.7pt>
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
 Package pdftex.def Info: sample1.jpg used on input line 272.
@@ -1027,7 +1022,7 @@ Here is how much of TeX's memory you used:
  13034 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,13n,58p,2282b,1078s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,13n,58p,2282b,1080s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
@@ -1040,7 +1035,7 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (76 pages, 975736 bytes).
+Output written on thesis.pdf (76 pages, 965209 bytes).
 PDF statistics:
  312 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

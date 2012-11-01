@@ -22,9 +22,9 @@
 \contentsline {chapter}{\numberline {3}IMPLEMENTATION}{22}
 \contentsline {section}{\numberline {3.1}IMPLEMENTATION GOALS}{22}
 \contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{23}
-\contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{25}
+\contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{26}
 \contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{30}
-\contentsline {subsection}{\numberline {3.3.2}OPENGL}{30}
+\contentsline {subsection}{\numberline {3.3.2}OPENGL}{31}
 \contentsline {subsection}{\numberline {3.3.3}GLSL}{31}
 \contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{31}
 \contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{33}
