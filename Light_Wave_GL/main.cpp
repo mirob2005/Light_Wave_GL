@@ -84,7 +84,7 @@ const GLfloat defobject2Position[3] = {-2.0,-3.0,-2.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
-const GLfloat deflightPosition[4] = { 0.0, 3.9, 3.0, 0.0 };
+const GLfloat deflightPosition[4] = { 0.0, 4.0, 3.0, 0.0 };
 const GLfloat deflightLookAt[3] = {deflightPosition[0], deflightPosition[1]-0.1, deflightPosition[2]};
 const GLfloat deflightUpVector[3] = {0.0, 0.0, -1.0};
 const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
@@ -133,6 +133,14 @@ GLuint dirUniID;
 
 GLuint lightMatrix;
 
+//Must Change in vertex shader and fragment shader as well
+const int numINDshadows = 20;
+int randomNumber[numINDshadows];
+
+GLfloat modelViewMatrix[16];
+GLfloat projectionMatrix[16];
+GLfloat textureMatrix[numINDshadows][16];
+
 
 /*
 	FOR VPL's
@@ -155,15 +163,19 @@ const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
 float maxDistance = 4.0;
 
-//Must Change in vertex shader and fragment shader as well
-const int numINDshadows = 20;
-int randomNumber[numINDshadows];
+
 
 //Set to true when the light source is moved:
 bool updateVPLs = true;
 
+//Set to true when the light source or an object is moved:
+bool updateShadowMaps = true;
+
 //Show VPL's
 bool showVPLs = false;
+
+//Show boxes or teapot?
+bool box = true;
 
 
 void shaderInit( const char *vsFile, const char *fsFile ){
@@ -355,8 +367,7 @@ void generateVPLs( void )
 	
 	glBindTexture(GL_TEXTURE_1D, 0);
 
-	updateVPLs = false;
-
+	updateVPLs = false;	
 }
 
 void init( void ){
@@ -438,231 +449,233 @@ void display(void){
 	if(updateVPLs)
 		generateVPLs();
 
-	GLfloat modelViewMatrix[16];
-	GLfloat projectionMatrix[16];
-	GLfloat textureMatrix[numINDshadows][16];
-
-	//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
-	const GLfloat biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
-										0.0, 0.5, 0.0, 0.0,
-										0.0, 0.0, 0.5, 0.0,
-										0.5, 0.5, 0.5, 1.0};
-
-	/*
-		Begin Shadow Map Creation
-	*/
-	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f,0.0f,0.0f,1.0f);
-
-	glEnable(GL_CULL_FACE);
 	
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
+	//Update image if scene is modified
+	if(updateShadowMaps){	
+		//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
+		const GLfloat biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
+											0.0, 0.5, 0.0, 0.0,
+											0.0, 0.0, 0.5, 0.0,
+											0.5, 0.5, 0.5, 1.0};		
 
-	//Use fixed function pipline to render shadow map
-	glUseProgramObjectARB(0);
+		/*
+			Begin Shadow Map Creation
+		*/
+		glEnable(GL_DEPTH_TEST);
+		glClearColor(0.0f,0.0f,0.0f,1.0f);
 
-	glViewport(0,0,shadowMapWidth,shadowMapHeight);
+		glEnable(GL_CULL_FACE);
+		
+		glHint(GL_PERSPECTIVE_CORRECTION_HINT,GL_NICEST);
 
-	//i =0 Direct Shadow Map, i=1+ Indirect Lights
-	for(int i = 0; i <numINDshadows+1; i++) 
-	{
+		//Use fixed function pipline to render shadow map
+		glUseProgramObjectARB(0);
 
-		//Render scene with camera at lightPosition and store depth into the FBO
-		glBindFramebuffer(GL_FRAMEBUFFER,dirFBOid);	
+		glViewport(0,0,shadowMapWidth,shadowMapHeight);
 
-		glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, dirSMtex, 0, i);
+		//i =0 Direct Shadow Map, i=1+ Indirect Lights
+		for(int i = 0; i <numINDshadows+1; i++) 
+		{
 
-		glClear(GL_DEPTH_BUFFER_BIT);
+			//Render scene with camera at lightPosition and store depth into the FBO
+			glBindFramebuffer(GL_FRAMEBUFFER,dirFBOid);	
 
-		//Disable color writing to the frame buffer 
-		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+			glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, dirSMtex, 0, i);
 
+			glClear(GL_DEPTH_BUFFER_BIT);
+
+			//Disable color writing to the frame buffer 
+			glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+
+
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+
+			if(i==0)
+			{
+				glMatrixMode(GL_MODELVIEW);
+				glLoadIdentity();
+				//Using Light's position, lookAt, up vector
+				gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
+								lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+			}
+			else
+			{
+				glMatrixMode(GL_MODELVIEW);
+				glLoadIdentity();
+
+				float VPLpositionX,VPLpositionY,VPLpositionZ;
+				float VPLnormalX,VPLnormalY,VPLnormalZ;
+
+				VPLpositionX = (vplDataPos[3*randomNumber[i-1]]-0.5)*maxDistance*4;
+				VPLpositionY = (vplDataPos[3*randomNumber[i-1]+1]-0.5)*maxDistance*4;
+				VPLpositionZ = (vplDataPos[3*randomNumber[i-1]+2]-0.5)*maxDistance*4;
+
+				VPLnormalX = (vplDataNor[4*randomNumber[i-1]]-0.5)*maxDistance*4;
+				VPLnormalY = (vplDataNor[4*randomNumber[i-1]+1]-0.5)*maxDistance*4;
+				VPLnormalZ = (vplDataNor[4*randomNumber[i-1]+2]-0.5)*maxDistance*4;
+
+				float yAxis[3] = {0.0,1.0,0.0};
+				float normal[3] = {VPLnormalX,VPLnormalY,VPLnormalZ};
+				float rightVector[3];
+				float upVector[3];
+				crossProduct(normal,yAxis,rightVector);
+				crossProduct(rightVector,normal,upVector);
+
+
+				//Using Light's position, lookAt, up vector
+				gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,upVector[0],upVector[1],upVector[2],
+								lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+			}
+
+			//Avoid self-shadow
+			glCullFace(GL_FRONT);
+
+			//Draw the scene
+			drawScene(object1Position, object2Position, box);
+
+			//Store modelview and projection matrices for shadows
+			glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
+			glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
+
+			glMatrixMode(GL_TEXTURE);
+			if(i==0)
+				glActiveTexture(GL_TEXTURE7);
+			else
+				glActiveTexture(GL_TEXTURE6);
+
+			//Multiply all 3 matrices into texture7
+			glLoadIdentity();	
+			glLoadMatrixf(biasMatrix);
+			glMultMatrixf(projectionMatrix);
+			glMultMatrixf(modelViewMatrix);
+
+			if(i!=0)
+				glGetFloatv(GL_TEXTURE_MATRIX, textureMatrix[i-1]);
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+		}
+	
+		/*
+		Intializing Texture 5 to be used to pass in primary light properties
+		*/
+
+		//Light Position, Light Normal, light_wave properties, Camera Position
+		const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
+											lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
+											lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
+											lightPosition[3], 0.0, 0.0, 0.0};
+
+		//Use texture5 matrix
+		glMatrixMode(GL_TEXTURE);	
+		glActiveTexture(GL_TEXTURE5);
+
+		//Multiply light_matrix into texture5
+		glLoadIdentity();	
+		glLoadMatrixf(light_Matrix);
+		
+
+		glViewport(0,0,screenWidth,screenHeight);
+
+		//Enable color writing to the frame buffer
+		glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+
+		//Clear frame buffer
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		if(!showVPLs)
+		{
+			#ifdef __APPLE__
+				glUseProgramObjectARB((void*)gProgram->_object);
+			#else
+				glUseProgramObjectARB((GLhandleARB)gProgram->_object);		
+			#endif
+		}
+
+		//Using our shaders and shadow map
+
+		glUniformMatrix4fv(lightMatrix, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
+
+		glUniform1i(vpl_pos_shaderID,1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
+
+		glUniform1i(vpl_nor_shaderID,2);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
+
+		glUniform1i(dirUniID,7);
+		glActiveTexture(GL_TEXTURE7);
+		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
+
+		glShadeModel(GL_SMOOTH);
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
+
 		gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		//Using Camera's position, lookAt, up vector
+		gluLookAt (camPosition[0], camPosition[1], camPosition[2], 
+				   camLookAt[0], camLookAt[1], camLookAt[2],
+				   camUpVector[0], camUpVector[1], camUpVector[2]);
 
-		if(i==0)
+		glCullFace(GL_BACK);
+		glRotatef(worldRotate,0,1,0);
+		
+
+		drawScene(object1Position, object2Position, box);
+
+		/*
+			VPL Debug Section - Display cube at each VPL to test distribution
+		*/
+
+		GLfloat VPL_vertices[] = {	-0.05,0.05,-0.05,-0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05,-0.05,
+									-0.05,-0.05,-0.05,0.05,-0.05,-0.05,0.05,-0.05,0.05,-0.05,-0.05,0.05,
+									0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05,0.05,0.05,-0.05,0.05,
+									0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,-0.05,-0.05,0.05,-0.05,
+									-0.05,-0.05,0.05,-0.05,0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,
+									0.05,0.05,-0.05,0.05,0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05};
+
+		GLfloat VPL_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
+									0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+									0,0,1,0,0,1,0,0,1,0,0,1,
+									0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+									-1,0,0,-1,0,0,-1,0,0,-1,0,0,
+									1,0,0,1,0,0,1,0,0,1,0,0};
+				
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_NORMAL_ARRAY);
+
+		glNormalPointer(GL_FLOAT, 0, VPL_normals);
+		glVertexPointer(3, GL_FLOAT, 0, VPL_vertices);
+		
+		if(showVPLs)
 		{
-			glMatrixMode(GL_MODELVIEW);
-			glLoadIdentity();
-			//Using Light's position, lookAt, up vector
-			gluLookAt(lightPosition[0],lightPosition[1],lightPosition[2],lightLookAt[0],lightLookAt[1],lightLookAt[2],
-							lightUpVector[0],lightUpVector[1],lightUpVector[2]);
-		}
-		else
-		{
-			glMatrixMode(GL_MODELVIEW);
-			glLoadIdentity();
-
-			float VPLpositionX,VPLpositionY,VPLpositionZ;
-			float VPLnormalX,VPLnormalY,VPLnormalZ;
-
-			VPLpositionX = (vplDataPos[3*randomNumber[i-1]]-0.5)*maxDistance*4;
-			VPLpositionY = (vplDataPos[3*randomNumber[i-1]+1]-0.5)*maxDistance*4;
-			VPLpositionZ = (vplDataPos[3*randomNumber[i-1]+2]-0.5)*maxDistance*4;
-
-			VPLnormalX = (vplDataNor[4*randomNumber[i-1]]-0.5)*maxDistance*4;
-			VPLnormalY = (vplDataNor[4*randomNumber[i-1]+1]-0.5)*maxDistance*4;
-			VPLnormalZ = (vplDataNor[4*randomNumber[i-1]+2]-0.5)*maxDistance*4;
-
-			float yAxis[3] = {0.0,1.0,0.0};
-			float normal[3] = {VPLnormalX,VPLnormalY,VPLnormalZ};
-			float rightVector[3];
-			float upVector[3];
-			crossProduct(normal,yAxis,rightVector);
-			crossProduct(rightVector,normal,upVector);
-
-
-			//Using Light's position, lookAt, up vector
-			gluLookAt(VPLpositionX,VPLpositionY,VPLpositionZ,upVector[0],upVector[1],upVector[2],
-							lightUpVector[0],lightUpVector[1],lightUpVector[2]);
+			for(int i =0; i<numLights; i++)
+			{
+				glPushMatrix();
+					glColor3f(1.0f,0.0f,0.0f);
+					glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
+					glDrawArrays(GL_QUADS,0,24);			
+				glPopMatrix();
+			}
 		}
 
-		//Avoid self-shadow
-		glCullFace(GL_FRONT);
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_NORMAL_ARRAY);
 
-		//Draw the scene
-		drawScene(object1Position, object2Position);
 
-		//Store modelview and projection matrices for shadows
-		glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
-		glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
-
-		glMatrixMode(GL_TEXTURE);
-		if(i==0)
-			glActiveTexture(GL_TEXTURE7);
-		else
-			glActiveTexture(GL_TEXTURE6);
-
-		//Multiply all 3 matrices into texture7
-		glLoadIdentity();	
-		glLoadMatrixf(biasMatrix);
-		glMultMatrixf(projectionMatrix);
-		glMultMatrixf(modelViewMatrix);
-
-		if(i!=0)
-			glGetFloatv(GL_TEXTURE_MATRIX, textureMatrix[i-1]);
-
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
+		updateShadowMaps = false;
+		glFlush ();
+		glutSwapBuffers();
 	}
-	/*
-	Intializing Texture 5 to be used to pass in primary light properties
-	*/
-
-	//Light Position, Light Normal, light_wave properties, Camera Position
-	const GLfloat light_Matrix[16] = {	lightPosition[0], lightNormalVector[0], lightsAngle, camPosition[0], 
-										lightPosition[1], lightNormalVector[1], lightsPerRay, camPosition[1],
-										lightPosition[2], lightNormalVector[2], numLights, camPosition[2],
-										lightPosition[3], 0.0, 0.0, 0.0};
-
-	//Use texture5 matrix
-	glMatrixMode(GL_TEXTURE);	
-	glActiveTexture(GL_TEXTURE5);
-
-	//Multiply light_matrix into texture5
-	glLoadIdentity();	
-	glLoadMatrixf(light_Matrix);
-	
-
-	glViewport(0,0,screenWidth,screenHeight);
-
-	//Enable color writing to the frame buffer
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-
-	//Clear frame buffer
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	if(!showVPLs)
-	{
-		#ifdef __APPLE__
-			glUseProgramObjectARB((void*)gProgram->_object);
-		#else
-			glUseProgramObjectARB((GLhandleARB)gProgram->_object);		
-		#endif
-	}
-
-	//Using our shaders and shadow map
-
-	glUniformMatrix4fv(lightMatrix, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
-
-	glUniform1i(vpl_pos_shaderID,1);
-	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
-
-	glUniform1i(vpl_nor_shaderID,2);
-	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
-
-	glUniform1i(dirUniID,7);
-	glActiveTexture(GL_TEXTURE7);
-	glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
-
-	glShadeModel(GL_SMOOTH);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	gluPerspective(125,(GLfloat) screenWidth/(GLfloat) screenHeight,0.1,20.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	//Using Camera's position, lookAt, up vector
-	gluLookAt (camPosition[0], camPosition[1], camPosition[2], 
-			   camLookAt[0], camLookAt[1], camLookAt[2],
-			   camUpVector[0], camUpVector[1], camUpVector[2]);
-
-	glCullFace(GL_BACK);
-	glRotatef(worldRotate,0,1,0);
-	
-
-	drawScene(object1Position, object2Position);
-
-	/*
-		VPL Debug Section - Display cube at each VPL to test distribution
-	*/
-
-	GLfloat VPL_vertices[] = {	-0.05,0.05,-0.05,-0.05,0.05,0.05,0.05,0.05,0.05,0.05,0.05,-0.05,
-								-0.05,-0.05,-0.05,0.05,-0.05,-0.05,0.05,-0.05,0.05,-0.05,-0.05,0.05,
-								0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05,0.05,0.05,-0.05,0.05,
-								0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,-0.05,-0.05,0.05,-0.05,
-								-0.05,-0.05,0.05,-0.05,0.05,0.05,-0.05,0.05,-0.05,-0.05,-0.05,-0.05,
-								0.05,0.05,-0.05,0.05,0.05,0.05,0.05,-0.05,0.05,0.05,-0.05,-0.05};
-
-	GLfloat VPL_normals[] = {	0,1,0,0,1,0,0,1,0,0,1,0,
-								0,-1,0,0,-1,0,0,-1,0,0,-1,0,
-								0,0,1,0,0,1,0,0,1,0,0,1,
-								0,0,-1,0,0,-1,0,0,-1,0,0,-1,
-								-1,0,0,-1,0,0,-1,0,0,-1,0,0,
-								1,0,0,1,0,0,1,0,0,1,0,0};
-			
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_NORMAL_ARRAY);
-
-	glNormalPointer(GL_FLOAT, 0, VPL_normals);
-	glVertexPointer(3, GL_FLOAT, 0, VPL_vertices);
-	
-	if(showVPLs)
-	{
-		for(int i =0; i<numLights; i++)
-		{
-			glPushMatrix();
-				glColor3f(1.0f,0.0f,0.0f);
-				glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
-				glDrawArrays(GL_QUADS,0,24);			
-			glPopMatrix();
-		}
-	}
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
-
-	displayFPS();
 
 	if( g_recording == 1) g_frameSaver.DumpPPM(screenWidth,screenHeight);
-
-	glFlush ();
-	glutSwapBuffers();
+	displayFPS();
 	glutPostRedisplay();
 }
 
@@ -678,6 +691,7 @@ void reshape (int w, int h)
    gluPerspective(125, (GLfloat) w/(GLfloat) h, 0.1, 20.0);
    glMatrixMode(GL_MODELVIEW);
    glLoadIdentity();
+   updateShadowMaps = true;
 }
 
 void mouse(int button, int state, int x, int y){
@@ -699,6 +713,7 @@ void keyboard(unsigned char key, int x, int y){
 						{
 							camPosition[1]+=0.1;
 							camLookAt[1]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 1:
@@ -706,6 +721,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object1Position[1] < 4.0)
 						{
 							object1Position[1]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -713,6 +729,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[1] < 4.0)
 						{
 							object2Position[1]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -727,6 +744,7 @@ void keyboard(unsigned char key, int x, int y){
 						{
 							camPosition[1]+=-0.1;
 							camLookAt[1]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 1:
@@ -734,6 +752,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object1Position[1] > -4.0)
 						{
 							object1Position[1]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -741,6 +760,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[1] > -4.0)
 						{
 							object2Position[1]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -801,11 +821,14 @@ void keyboard(unsigned char key, int x, int y){
 			   {
 				   showVPLs = false;
 				   updateVPLs = true;
+				   updateShadowMaps = true;
+
 			   }
 			   else 
 			   {
 				   showVPLs = true;
 				   updateVPLs = true;
+				   updateShadowMaps = true;
 			   }
 		   break;
 		   case 'W':
@@ -819,6 +842,7 @@ void keyboard(unsigned char key, int x, int y){
 						{
 							camPosition[2]+=-0.1;
 							camLookAt[2]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 1:
@@ -826,6 +850,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object1Position[2] >-4.0)
 						{
 							object1Position[2]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -833,6 +858,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[2] >-4.0)
 						{
 							object2Position[2]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -847,6 +873,7 @@ void keyboard(unsigned char key, int x, int y){
 						{
 							camPosition[2]+=0.1;
 							camLookAt[2]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 1:
@@ -854,6 +881,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object1Position[2] < 4.0)
 						{
 							object1Position[2]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -861,6 +889,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[2] < 4.0)
 						{
 							object2Position[2]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -872,12 +901,14 @@ void keyboard(unsigned char key, int x, int y){
 					case 0:
 						//Rotate scene to the left
 					   worldRotate+=-1.0;
+					   updateShadowMaps = true;
 					break;
 					case 1:
 						//Move Object 1 left
 						if(object1Position[0] >-4.0)
 						{
 							object1Position[0]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -885,6 +916,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[0] >-4.0)
 						{
 							object2Position[0]+=-0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -896,12 +928,14 @@ void keyboard(unsigned char key, int x, int y){
 					case 0:
 						//Rotate scene to the right
 						worldRotate+=1.0;
+						updateShadowMaps = true;
 					break;
 					case 1:
 						//Move Object 1 right
 						if(object1Position[0] < 4.0)
 						{
 							object1Position[0]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 					case 2:
@@ -909,6 +943,7 @@ void keyboard(unsigned char key, int x, int y){
 						if(object2Position[0] < 4.0)
 						{
 							object2Position[0]+=0.1;
+							updateShadowMaps = true;
 						}
 					break;
 			   }
@@ -924,6 +959,7 @@ void keyboard(unsigned char key, int x, int y){
 			   camPosition[0] = defcamPosition[0];
 			   camPosition[1] = defcamPosition[1];
 			   camPosition[2] = defcamPosition[2];
+			   updateShadowMaps = true;
 		   break;
 		   case 'T':
 		   case 't':
@@ -934,6 +970,7 @@ void keyboard(unsigned char key, int x, int y){
 			   object2Position[0] = defobject2Position[0];
 			   object2Position[1] = defobject2Position[1];
 			   object2Position[2] = defobject2Position[2];
+			   updateShadowMaps = true;
 		   break;
 		   case 'M':
 		   case 'm':
@@ -966,6 +1003,7 @@ void special( int key, int px, int py ){
 				lightPosition[2] += -0.1;	  
 				lightLookAt[2] += -0.1;	 
 				updateVPLs = true;
+				updateShadowMaps = true;
 			}
 	   break;	
 	   case GLUT_KEY_DOWN:
@@ -974,6 +1012,7 @@ void special( int key, int px, int py ){
 				lightPosition[2] += 0.1;	
 				lightLookAt[2] += 0.1;	
 				updateVPLs = true;
+				updateShadowMaps = true;
 			}
 	   break;	
 	   case GLUT_KEY_LEFT:
@@ -982,6 +1021,7 @@ void special( int key, int px, int py ){
 				lightPosition[0] += -0.1;		  
 				lightLookAt[0] += -0.1;	
 				updateVPLs = true;
+				updateShadowMaps = true;
 			}
 	   break;
 	   case GLUT_KEY_RIGHT:
@@ -990,6 +1030,7 @@ void special( int key, int px, int py ){
 				lightPosition[0] += 0.1;	  
 				lightLookAt[0] += 0.1;	
 				updateVPLs = true;
+				updateShadowMaps = true;
 			}
 	   break;
 	}
