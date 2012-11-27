@@ -84,7 +84,7 @@ const GLfloat defobject2Position[3] = {-2.0,-3.0,-2.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
-const GLfloat deflightPosition[4] = { 0.0, 4.0, 3.0, 0.0 };
+const GLfloat deflightPosition[4] = { 0.0, 4.0, 0.0, 0.0 };
 const GLfloat deflightLookAt[3] = {deflightPosition[0], deflightPosition[1]-0.1, deflightPosition[2]};
 const GLfloat deflightUpVector[3] = {0.0, 0.0, -1.0};
 const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
@@ -134,13 +134,19 @@ GLuint dirUniID;
 GLuint lightMatrix;
 
 //Must Change in vertex shader and fragment shader as well
-const int numINDshadows = 20;
+const int numINDshadows = 5;
 int randomNumber[numINDshadows];
 
 GLfloat modelViewMatrix[16];
 GLfloat projectionMatrix[16];
 GLfloat textureMatrix[numINDshadows][16];
 
+//Constants used in shaders
+const int lightsAngle = 30;
+const int lightsPerRay = 5;
+const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
+const float pi = 3.14159265359;
+float maxDistance = 4.0;
 
 /*
 	FOR VPL's
@@ -156,15 +162,6 @@ GLuint vpl_nor_TexID;
 GLuint vpl_nor_shaderID;
 GLfloat *vplDataNor;
 
-//Constants used in shaders
-const int lightsAngle = 5;
-const int lightsPerRay = 5;
-const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
-const float pi = 3.14159265359;
-float maxDistance = 4.0;
-
-
-
 //Set to true when the light source is moved:
 bool updateVPLs = true;
 
@@ -176,6 +173,9 @@ bool showVPLs = false;
 
 //Show boxes or teapot?
 bool box = true;
+
+//First Display?
+bool initial = true;
 
 
 void shaderInit( const char *vsFile, const char *fsFile ){
@@ -231,8 +231,11 @@ void generateVPLs( void )
 	* NOTE: DOES NOT INCLUDE PRIMARY DIRECTIONAL LIGHT (INDIRECT ONES ONLY)
 	**************************************************************************************/
 
-	vplDataPos = new GLfloat[3*numLights];
-	vplDataNor = new GLfloat[4*numLights];
+	if(initial){
+		vplDataPos = new GLfloat[3*numLights];
+		vplDataNor = new GLfloat[4*numLights];
+		initial = false;
+	}
 
 	// First Ray (<0,-1,0> ray
 	for(int i = 0; i <lightsPerRay; i++) {
@@ -251,6 +254,8 @@ void generateVPLs( void )
 		// VPL - Attenuating 5%, 10%, 20%, 40%, 80%
 		vplDataNor[i*4+3] = 0.05*pow(2.0,i);
 	}
+	randomNumber[0] = 0;
+	int randomNumberCounter = 1;
 
 	int i = lightsPerRay;
 
@@ -258,6 +263,11 @@ void generateVPLs( void )
 	{
 		for(int angleZ = lightsAngle; angleZ <= 90; angleZ = angleZ+lightsAngle)
 		{
+			if((angleY%90 ==0)&& (angleZ==30))
+			{
+				randomNumber[randomNumberCounter] = i;
+				randomNumberCounter++;
+			}
 			
 			float normal[3] = {deflightNormalVector[0],deflightNormalVector[1],deflightNormalVector[2]};
 			float temp0=normal[0];
@@ -308,6 +318,14 @@ void generateVPLs( void )
 		{
 			vplDataNor[i] = (vplDataNor[i]/(4*maxDistance))+0.5;
 		}
+	}
+
+	for(int i=0; i<3*numLights; i++)
+	{
+		if(vplDataPos[i]<-3.9)
+			vplDataPos[i]=-3.9;
+		else if(vplDataPos[i] >3.9)
+			vplDataPos[i]=3.9;
 	}
 	
 	////Simulate Clamping process of the texture --DEBUG
@@ -373,11 +391,12 @@ void generateVPLs( void )
 void init( void ){
 
 	//Initialize VPLs
-	generateVPLs();
+	generateVPLs();	
 
+	cout << "Chosen VPLS for Indirect Shadows:" <<endl;
 	for(int x = 0; x < numINDshadows; x++)
 	{
-		randomNumber[x] = rand() % numLights;
+		cout << randomNumber[x] << endl;
 	}
 
 	/*
@@ -656,10 +675,15 @@ void display(void){
 		if(showVPLs)
 		{
 			for(int i =0; i<numLights; i++)
-			{
+			{							
 				glPushMatrix();
-					glColor3f(1.0f,0.0f,0.0f);
+					glColor3f(0.0f,0.0f,1.0f);					
 					glTranslatef(vplDataPos[i*3+0],vplDataPos[i*3+1],vplDataPos[i*3+2]);
+					glDrawArrays(GL_QUADS,0,24);			
+				glPopMatrix();
+				glPushMatrix();
+					glColor3f(0.0f,0.0f,0.0f);
+					glTranslatef(vplDataNor[i*4+0],vplDataNor[i*4+1],vplDataNor[i*4+2]);					
 					glDrawArrays(GL_QUADS,0,24);			
 				glPopMatrix();
 			}
@@ -676,7 +700,7 @@ void display(void){
 
 	if( g_recording == 1) g_frameSaver.DumpPPM(screenWidth,screenHeight);
 	displayFPS();
-	glutPostRedisplay();
+	//glutPostRedisplay();
 }
 
 void reshape (int w, int h)
@@ -998,7 +1022,7 @@ void keyboard(unsigned char key, int x, int y){
 void special( int key, int px, int py ){
 	switch (key) {
 	   case GLUT_KEY_UP:
-			if(lightPosition[2] >-3.0)
+			if(lightPosition[2] >-2.9)
 			{
 				lightPosition[2] += -0.1;	  
 				lightLookAt[2] += -0.1;	 
@@ -1007,7 +1031,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_DOWN:
-			if(lightPosition[2] <3.0)
+			if(lightPosition[2] <2.9)
 			{
 				lightPosition[2] += 0.1;	
 				lightLookAt[2] += 0.1;	
@@ -1016,7 +1040,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_LEFT:
-			if(lightPosition[0] >-3.0)
+			if(lightPosition[0] >-2.9)
 			{
 				lightPosition[0] += -0.1;		  
 				lightLookAt[0] += -0.1;	
@@ -1025,7 +1049,7 @@ void special( int key, int px, int py ){
 			}
 	   break;
 	   case GLUT_KEY_RIGHT:
-			if(lightPosition[0] <3.0)
+			if(lightPosition[0] <2.9)
 			{
 				lightPosition[0] += 0.1;	  
 				lightLookAt[0] += 0.1;	
