@@ -6,10 +6,10 @@ uniform sampler1D vplNorTex;
 varying vec3 lightDir, lightDirRef, camDir, normal;
 
 varying vec4 ShadowCoord;
-varying vec4 INDShadowCoord[20];
+varying vec4 INDShadowCoord[5];
 varying vec4 indirect_color;
 
-uniform mat4x4 LightTexture[20];
+uniform mat4x4 LightTexture[5];
 
 void main( ){
     
@@ -103,7 +103,7 @@ void main( ){
    
    
    //Shadow Map Coordinate Calculations
-   for(int i = 0; i < 20; i++) 
+   for(int i = 0; i < 5; i++) 
    {
 	  INDShadowCoord[i] = LightTexture[i] * gl_Vertex;
    }
