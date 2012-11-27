@@ -46,12 +46,10 @@ void main( ){
 	
 	//DIRECT Shadow Mapping
 	float shadow = 0.0;
-	shadow += shadow2DArray(ShadowMap, vec4(ShadowCoord.xy / ShadowCoord.w, 0, ShadowCoord.z / ShadowCoord.w)).r;
-
+	//Adding 0.0005 removes the bright artifacts on the edges of the object before the shadows
+	shadow += shadow2DArray(ShadowMap, vec4(ShadowCoord.xy / ShadowCoord.w, 0, (ShadowCoord.z + 0.0005)/ ShadowCoord.w)).r;
 	
-	//INDshadow += shadow2DArray(ShadowMap, vec4(INDShadowCoord[2].xy / INDShadowCoord[2].w, 2+1, INDShadowCoord[2].z / INDShadowCoord[2].w)).r;
-	
-
+	//INDIRECT SHADOW MAPPING
 	float INDshadow = 0.0;
 	
 	INDshadow += calcINDshadow(0,1);
@@ -65,7 +63,7 @@ void main( ){
 	INDshadow += calcINDshadow(2,4);
 	INDshadow += calcINDshadow(3,4);
 	
-	INDshadow /= ((numSteps+2)*5.0);	
+	INDshadow /= ((numSteps+2)*10.0);	
 	
 /*
  *	Primary Lighting Calculations
@@ -76,8 +74,10 @@ void main( ){
 	
 	//SPECULAR
 	float SpecularTerm = 0.0;
-	SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0), 32.0);
-	
+	//Get rid of the specular highlights in the shadows (should be obscured)
+	if(shadow > 0.1){
+	  SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0), 32.0);
+	}
 	
 	vec4 direct_color = vec4(vec3(gl_Color) * (DiffuseTerm * 0.75 + SpecularTerm), 1.0);
 	
@@ -89,6 +89,6 @@ void main( ){
 	//gl_FragColor = (indirect_color*INDshadow);
 	//gl_FragColor =	 (direct_color*shadow) + (indirect_color);
     //gl_FragColor =	 (direct_color*shadow) + (indirect_color*INDshadow);
-    gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) +(1.0*indirect_color*INDshadow);
+    gl_FragColor =	 (direct_color*0.5*shadow) + (direct_color*0.5) +(indirect_color*INDshadow);
 }
 

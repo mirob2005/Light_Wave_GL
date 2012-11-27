@@ -122,7 +122,7 @@ void drawScene(GLfloat *object1Position, GLfloat *object2Position, bool box)
 		
 		if(!box){
 			glPushMatrix();
-				glTranslatef(object1Position[0]-2.0,object1Position[1],object1Position[2]);
+				glTranslatef(object1Position[0]-2.0,object1Position[1]-1.0,object1Position[2]);
 				glMatrixMode(GL_TEXTURE);
 				glActiveTexture(GL_TEXTURE7);
 				glPushMatrix();

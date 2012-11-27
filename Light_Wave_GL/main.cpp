@@ -137,12 +137,8 @@ GLuint lightMatrix;
 const int numINDshadows = 5;
 int randomNumber[numINDshadows];
 
-GLfloat modelViewMatrix[16];
-GLfloat projectionMatrix[16];
-GLfloat textureMatrix[numINDshadows][16];
-
 //Constants used in shaders
-const int lightsAngle = 30;
+const int lightsAngle = 5;
 const int lightsPerRay = 5;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
@@ -470,7 +466,12 @@ void display(void){
 
 	
 	//Update image if scene is modified
-	if(updateShadowMaps){	
+	if(updateShadowMaps){
+
+		GLfloat modelViewMatrix[16];
+		GLfloat projectionMatrix[16];
+		GLfloat textureMatrix[numINDshadows][16];
+
 		//Matrix to map [-1, 1] to [0, 1] for each of X, Y and Z coordinates
 		const GLfloat biasMatrix[16] = {	0.5, 0.0, 0.0, 0.0, 
 											0.0, 0.5, 0.0, 0.0,
@@ -699,8 +700,7 @@ void display(void){
 	}
 
 	if( g_recording == 1) g_frameSaver.DumpPPM(screenWidth,screenHeight);
-	displayFPS();
-	//glutPostRedisplay();
+	displayFPS();	
 }
 
 void reshape (int w, int h)
@@ -709,8 +709,6 @@ void reshape (int w, int h)
    glMatrixMode (GL_PROJECTION);
    screenWidth = w;
    screenHeight = h;
-   shadowMapWidth = w*shadowRatio;
-   shadowMapHeight = h*shadowRatio;
    glLoadIdentity();
    gluPerspective(125, (GLfloat) w/(GLfloat) h, 0.1, 20.0);
    glMatrixMode(GL_MODELVIEW);
@@ -996,6 +994,12 @@ void keyboard(unsigned char key, int x, int y){
 			   object2Position[2] = defobject2Position[2];
 			   updateShadowMaps = true;
 		   break;
+		   case 'P':
+		   case 'p':
+			   if(box) box = false;
+			   else box = true;
+			   updateShadowMaps = true;
+		   break;
 		   case 'M':
 		   case 'm':
 				if( g_recording == 1 )
@@ -1009,7 +1013,7 @@ void keyboard(unsigned char key, int x, int y){
 					g_recording = 1  ;
 				}
 				g_frameSaver.Toggle();
-		   break ;
+		   break;
 		   case 'I':
 		   case 'i':
 				g_frameSaver.DumpPPM(screenWidth,screenHeight) ;
