@@ -76,10 +76,8 @@ void main( ){
 	
 	//SPECULAR
 	float SpecularTerm = 0.0;
-	if(INDshadow <0.2)
-	{
-	  SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0), 32.0);
-	}
+	SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0), 32.0);
+	
 	
 	vec4 direct_color = vec4(vec3(gl_Color) * (DiffuseTerm * 0.75 + SpecularTerm), 1.0);
 	
