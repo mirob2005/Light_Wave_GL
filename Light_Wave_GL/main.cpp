@@ -1133,7 +1133,8 @@ int main(int argc, char** argv){
 	glutMouseFunc(mouse);
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
-	glutIdleFunc(display);
+	//Comment Out to preserve CPU while not updating the screen
+	//glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }
