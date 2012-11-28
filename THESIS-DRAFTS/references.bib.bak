@@ -585,6 +585,7 @@
   address = {London, UK, UK},
   publisher = {Springer-Verlag},
   acmid = {275461},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\photon_mapping.pdf:PDF},
   isbn = {3-211-82883-4},
   keywords = {Monte Carlo, global illumination, photon maps, ray tracing},
   location = {Porto, Portugal},

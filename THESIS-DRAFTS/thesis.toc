@@ -55,23 +55,65 @@
 \contentsline {paragraph}{}{29}
 \contentsline {chapter}{\numberline {3}IMPLEMENTATION}{31}
 \contentsline {section}{\numberline {3.1}IMPLEMENTATION GOALS}{31}
+\contentsline {paragraph}{}{31}
 \contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{32}
+\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{33}
+\contentsline {paragraph}{}{33}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}
 \contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{35}
-\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{39}
-\contentsline {subsection}{\numberline {3.3.2}OPENGL}{40}
-\contentsline {subsection}{\numberline {3.3.3}GLSL}{40}
-\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{40}
-\contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{42}
-\contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{42}
-\contentsline {section}{\numberline {4.2}VERTEX SHADER CODE}{46}
-\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{49}
-\contentsline {chapter}{\numberline {5}RESULTS}{52}
-\contentsline {section}{\numberline {5.1}RESULTS}{52}
-\contentsline {subsection}{\numberline {5.1.1}IMPACT OF PARAMETER CHOICES ON FPS}{52}
-\contentsline {subsection}{\numberline {5.1.2}IMPACT OF PARAMETER CHOICES ON QUALITY}{55}
-\contentsline {subsection}{\numberline {5.1.3}ALTERNATIVES}{60}
-\contentsline {subsection}{\numberline {5.1.4}FINAL ANALYSIS}{62}
-\contentsline {section}{\numberline {5.2}IMAGES}{63}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{72}
-\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{72}
-\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{73}
+\contentsline {paragraph}{}{35}
+\contentsline {paragraph}{}{35}
+\contentsline {paragraph}{}{36}
+\contentsline {paragraph}{}{36}
+\contentsline {paragraph}{}{36}
+\contentsline {paragraph}{}{37}
+\contentsline {paragraph}{}{38}
+\contentsline {paragraph}{}{39}
+\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{40}
+\contentsline {paragraph}{}{40}
+\contentsline {paragraph}{}{40}
+\contentsline {subsection}{\numberline {3.3.2}OPENGL}{41}
+\contentsline {paragraph}{}{41}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{41}
+\contentsline {paragraph}{}{41}
+\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{42}
+\contentsline {paragraph}{}{42}
+\contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{44}
+\contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{44}
+\contentsline {paragraph}{}{44}
+\contentsline {paragraph}{}{44}
+\contentsline {paragraph}{}{45}
+\contentsline {paragraph}{}{46}
+\contentsline {paragraph}{}{46}
+\contentsline {paragraph}{}{46}
+\contentsline {paragraph}{}{47}
+\contentsline {paragraph}{}{47}
+\contentsline {paragraph}{}{48}
+\contentsline {paragraph}{}{49}
+\contentsline {section}{\numberline {4.2}VERTEX SHADER CODE}{49}
+\contentsline {paragraph}{}{49}
+\contentsline {paragraph}{}{49}
+\contentsline {paragraph}{}{50}
+\contentsline {paragraph}{}{50}
+\contentsline {paragraph}{}{51}
+\contentsline {paragraph}{}{51}
+\contentsline {paragraph}{}{51}
+\contentsline {paragraph}{}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {paragraph}{}{53}
+\contentsline {chapter}{\numberline {5}RESULTS}{55}
+\contentsline {section}{\numberline {5.1}RESULTS}{55}
+\contentsline {subsection}{\numberline {5.1.1}IMPACT OF PARAMETER CHOICES ON FPS}{55}
+\contentsline {subsection}{\numberline {5.1.2}IMPACT OF PARAMETER CHOICES ON QUALITY}{58}
+\contentsline {subsection}{\numberline {5.1.3}ALTERNATIVES}{63}
+\contentsline {subsection}{\numberline {5.1.4}FINAL ANALYSIS}{65}
+\contentsline {section}{\numberline {5.2}IMAGES}{66}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{75}
+\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{75}
+\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{76}

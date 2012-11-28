@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  27 NOV 2012 22:37
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  28 NOV 2012 01:40
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -871,6 +871,7 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
+ [32]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -883,29 +884,29 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
- [32] [33] [34] <Figure31.jpg, id=161, 460.34167pt x 416.00798pt>
+ [33] [34] <Figure31.jpg, id=161, 460.34167pt x 416.00798pt>
 File: Figure31.jpg Graphic file (type jpg)
 
 <use Figure31.jpg>
-Package pdftex.def Info: Figure31.jpg used on input line 23.
+Package pdftex.def Info: Figure31.jpg used on input line 29.
 (pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
- [35 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>] <Figure32.jpg,
- id=165, 276.32648pt x 277.54109pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure32.jpg, id=162, 276.32648pt x 277.54109pt>
 File: Figure32.jpg Graphic file (type jpg)
  <use Figure32.jpg>
-Package pdftex.def Info: Figure32.jpg used on input line 34.
+Package pdftex.def Info: Figure32.jpg used on input line 40.
 (pdftex.def)             Requested size: 215.00313pt x 215.95604pt.
+ [35]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 <Figure33.jpg, id=166, 320.05286pt x 296.36774pt>
 File: Figure33.jpg Graphic file (type jpg)
  <use Figure33.jpg>
-Package pdftex.def Info: Figure33.jpg used on input line 43.
+Package pdftex.def Info: Figure33.jpg used on input line 49.
 (pdftex.def)             Requested size: 215.00313pt x 199.09444pt.
 
 
@@ -914,7 +915,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Figure34.jpg, id=167, 367.42311pt x 268.43143pt>
 File: Figure34.jpg Graphic file (type jpg)
  <use Figure34.jpg>
-Package pdftex.def Info: Figure34.jpg used on input line 53.
+Package pdftex.def Info: Figure34.jpg used on input line 60.
 (pdftex.def)             Requested size: 215.00313pt x 157.07475pt.
 
 
@@ -923,7 +924,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Figure35.jpg, id=168, 250.2121pt x 60.7311pt>
 File: Figure35.jpg Graphic file (type jpg)
  <use Figure35.jpg>
-Package pdftex.def Info: Figure35.jpg used on input line 63.
+Package pdftex.def Info: Figure35.jpg used on input line 71.
 (pdftex.def)             Requested size: 215.00313pt x 52.18692pt.
 
 
@@ -935,54 +936,53 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
-[36 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>] [37 <D:/_Progra
-mming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg>]
+[36 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>] [37 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
 <Figure36.jpg, id=176, 268.43143pt x 185.22983pt>
 File: Figure36.jpg Graphic file (type jpg)
  <use Figure36.jpg>
-Package pdftex.def Info: Figure36.jpg used on input line 75.
+Package pdftex.def Info: Figure36.jpg used on input line 85.
 (pdftex.def)             Requested size: 215.00313pt x 148.36493pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[38 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure34.jpg> <D:/_Programming
-/Light_Wave_GL/THESIS-DRAFTS/Figure35.jpg>] [39 <D:/_Programming/Light_Wave_GL/
-THESIS-DRAFTS/Figure36.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 103.
+<vplNormals.jpg, id=177, 236.885pt x 153.57375pt>
+File: vplNormals.jpg Graphic file (type jpg)
+ <use vplNormals.jpg>
+Package pdftex.def Info: vplNormals.jpg used on input line 96.
+(pdftex.def)             Requested size: 215.00313pt x 139.39143pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[38 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg>] [39 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure34.jpg> <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/Figure35.jpg>] [40 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/F
+igure36.jpg>] [41 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/vplNormals.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
- [40]) [41]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
+ [42]) [43]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
 CHAPTER 4.
-
-Overfull \hbox (17.11081pt too wide) detected at line 11
-\OML/cmm/m/it/12 vpl\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\OT1/cmr/m/n/12 ] 
-= \OML/cmm/m/it/12 lightPosition\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\OT1/c
-mr/m/n/12 ] + \OML/cmm/m/it/12 normal\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x; y; z\
-OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12  \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 maxDistan
-ce \OMS/cmsy/m/n/12   \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 maxDistance=\OT1/cmr/m/
-n/12 2[]))[]
- []
-
-[42
+[44
 
 
 
-] [43] [44]
-Overfull \hbox (10.18831pt too wide) in paragraph at lines 55--56
+] [45] [46]
+Overfull \hbox (10.18831pt too wide) in paragraph at lines 71--72
 [][][][][][][][][][][][][][] 
  []
 
-[45]
+[47]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
- [46] [47] [48] [49]) [50] [51]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+ [48] [49] [50] [51] [52]) [53] [54]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
 
@@ -997,11 +997,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[52
+[55
 
 
 
-] [53] [54] [55] [56]
+] [56] [57] [58] [59]
 Overfull \hbox (5.97621pt too wide) in paragraph at lines 119--128
  [] 
  []
@@ -1027,16 +1027,16 @@ Overfull \hbox (5.97621pt too wide) in paragraph at lines 169--179
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[57] [58] [59]
+[60] [61] [62]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[60] [61] [62]
+[63] [64] [65]
 Overfull \hbox (23.88976pt too wide) in paragraph at lines 235--254
  [] 
  []
 
-<sample1.jpg, id=258, 1284.8pt x 722.7pt>
+<sample1.jpg, id=268, 1284.8pt x 722.7pt>
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
 Package pdftex.def Info: sample1.jpg used on input line 272.
@@ -1045,25 +1045,25 @@ Package pdftex.def Info: sample1.jpg used on input line 272.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<sample2.jpg, id=259, 1284.8pt x 722.7pt>
+<sample2.jpg, id=269, 1284.8pt x 722.7pt>
 File: sample2.jpg Graphic file (type jpg)
  <use sample2.jpg>
 Package pdftex.def Info: sample2.jpg used on input line 282.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample3.jpg, id=260, 1284.8pt x 722.7pt>
+<sample3.jpg, id=270, 1284.8pt x 722.7pt>
 File: sample3.jpg Graphic file (type jpg)
  <use sample3.jpg>
 Package pdftex.def Info: sample3.jpg used on input line 288.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample4.jpg, id=261, 1284.8pt x 722.7pt>
+<sample4.jpg, id=271, 1284.8pt x 722.7pt>
 File: sample4.jpg Graphic file (type jpg)
  <use sample4.jpg>
 Package pdftex.def Info: sample4.jpg used on input line 294.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample5.jpg, id=262, 1284.8pt x 722.7pt>
+<sample5.jpg, id=272, 1284.8pt x 722.7pt>
 File: sample5.jpg Graphic file (type jpg)
  <use sample5.jpg>
 Package pdftex.def Info: sample5.jpg used on input line 300.
@@ -1072,7 +1072,7 @@ Package pdftex.def Info: sample5.jpg used on input line 300.
 
 LaTeX Warning: Float too large for page by 36.39482pt on input line 306.
 
-<direct_only.jpg, id=263, 1284.8pt x 722.7pt>
+<direct_only.jpg, id=273, 1284.8pt x 722.7pt>
 File: direct_only.jpg Graphic file (type jpg)
  <use direct_only.jpg>
 Package pdftex.def Info: direct_only.jpg used on input line 311.
@@ -1081,31 +1081,31 @@ Package pdftex.def Info: direct_only.jpg used on input line 311.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<indirect_only.jpg, id=264, 1284.8pt x 722.7pt>
+<indirect_only.jpg, id=274, 1284.8pt x 722.7pt>
 File: indirect_only.jpg Graphic file (type jpg)
  <use indirect_only.jpg>
 Package pdftex.def Info: indirect_only.jpg used on input line 321.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<indirect_only_shadows.jpg, id=265, 1284.8pt x 722.7pt>
+<indirect_only_shadows.jpg, id=275, 1284.8pt x 722.7pt>
 File: indirect_only_shadows.jpg Graphic file (type jpg)
 
 <use indirect_only_shadows.jpg>
 Package pdftex.def Info: indirect_only_shadows.jpg used on input line 327.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
- <23.jpg, id=266, 1284.8pt x 722.7pt>
+ <23.jpg, id=276, 1284.8pt x 722.7pt>
 File: 23.jpg Graphic file (type jpg)
 
 <use 23.jpg>
 Package pdftex.def Info: 23.jpg used on input line 339.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
- <19.jpg, id=267, 1284.8pt x 722.7pt>
+ <19.jpg, id=277, 1284.8pt x 722.7pt>
 File: 19.jpg Graphic file (type jpg)
  <use 19.jpg>
 Package pdftex.def Info: 19.jpg used on input line 345.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
 
-<20.jpg, id=268, 1284.8pt x 722.7pt>
+<20.jpg, id=278, 1284.8pt x 722.7pt>
 File: 20.jpg Graphic file (type jpg)
  <use 20.jpg>
 Package pdftex.def Info: 20.jpg used on input line 351.
@@ -1114,7 +1114,7 @@ Package pdftex.def Info: 20.jpg used on input line 351.
 
 LaTeX Warning: Float too large for page by 62.64757pt on input line 357.
 
-<direct_only_fake_1_3.jpg, id=269, 1284.8pt x 722.7pt>
+<direct_only_fake_1_3.jpg, id=279, 1284.8pt x 722.7pt>
 File: direct_only_fake_1_3.jpg Graphic file (type jpg)
 
 <use direct_only_fake_1_3.jpg>
@@ -1124,13 +1124,13 @@ Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 362.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<3.jpg, id=270, 1284.8pt x 722.7pt>
+<3.jpg, id=280, 1284.8pt x 722.7pt>
 File: 3.jpg Graphic file (type jpg)
  <use 3.jpg>
 Package pdftex.def Info: 3.jpg used on input line 372.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<7.jpg, id=271, 1284.8pt x 722.7pt>
+<7.jpg, id=281, 1284.8pt x 722.7pt>
 File: 7.jpg Graphic file (type jpg)
  <use 7.jpg>
 Package pdftex.def Info: 7.jpg used on input line 378.
@@ -1140,38 +1140,38 @@ File: sample1.jpg Graphic file (type jpg)
 Package pdftex.def Info: sample1.jpg used on input line 390.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<17_resize.jpg, id=272, 1284.8pt x 722.7pt>
+<17_resize.jpg, id=282, 1284.8pt x 722.7pt>
 File: 17_resize.jpg Graphic file (type jpg)
  <use 17_resize.jpg>
 Package pdftex.def Info: 17_resize.jpg used on input line 396.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
-) [63] [64 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [65 <D:/_
+) [66] [67 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [68 <D:/_
 Programming/Light_Wave_GL/THESIS-DRAFTS/sample2.jpg> <D:/_Programming/Light_Wav
 e_GL/THESIS-DRAFTS/sample3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sa
-mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [66 <D:/_
-Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [67 <D:/_Programming/
+mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [69 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [70 <D:/_Programming/
 Light_Wave_GL/THESIS-DRAFTS/indirect_only.jpg> <D:/_Programming/Light_Wave_GL/T
-HESIS-DRAFTS/indirect_only_shadows.jpg>] [68 <D:/_Programming/Light_Wave_GL/THE
+HESIS-DRAFTS/indirect_only_shadows.jpg>] [71 <D:/_Programming/Light_Wave_GL/THE
 SIS-DRAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg> <D:/_Pr
-ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [69 <D:/_Programming/Light_Wave_
-GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [70 <D:/_Programming/Light_Wave_GL/
-THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>] [71 <
+ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [72 <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [73 <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>] [74 <
 D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[72
-
-
-
-] [73]) [74] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
 [75
 
 
-] [76] [77]
+
+] [76]) [77] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
+[78
+
+
+] [79] [80]
 Missing character: There is no Û in font cmr12!
 Missing character: There is no · in font cmr12!
 Missing character: There is no í in font cmr12!
- [78]) [79]
+ [81]) [82]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -1181,13 +1181,13 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 10069 strings out of 494049
- 157964 string characters out of 3146068
+ 10076 strings out of 494049
+ 158089 string characters out of 3146068
  253765 words of memory out of 3000000
- 13146 multiletter control sequences out of 15000+200000
+ 13152 multiletter control sequences out of 15000+200000
  8545 words of font info for 30 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,13n,58p,2377b,1079s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,13n,58p,2377b,1527s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
@@ -1200,9 +1200,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (86 pages, 1600550 bytes).
+Output written on thesis.pdf (89 pages, 1607770 bytes).
 PDF statistics:
- 365 PDF objects out of 1000 (max. 8388607)
+ 375 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 211 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
