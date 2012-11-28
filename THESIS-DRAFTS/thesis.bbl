@@ -188,6 +188,14 @@ Szirmay-kalos, L., B.~Aszódi, I.~Lazányi, and M.~Premecz (2005).
 \newblock Approximate ray-tracing on the gpu with distance impostors. computer
   graphics forum (eurographics ’05.
 
+\bibitem[\protect\citeauthoryear{Wald, Benthin, and Slusallek}{Wald
+  et~al.}{2003}]{Wald2003}
+Wald, I., C.~Benthin, and P.~Slusallek (2003).
+\newblock Distributed interactive ray tracing of dynamic scenes.
+\newblock In {\em Proceedings of the 2003 IEEE Symposium on Parallel and
+  Large-Data Visualization and Graphics}, PVG '03, Washington, DC, USA, pp.\
+  11--. IEEE Computer Society.
+
 \bibitem[\protect\citeauthoryear{Wald, Kollig, Benthin, Keller, and
   Slusallek}{Wald et~al.}{2002}]{Wald2002}
 Wald, I., T.~Kollig, C.~Benthin, A.~Keller, and P.~Slusallek (2002).

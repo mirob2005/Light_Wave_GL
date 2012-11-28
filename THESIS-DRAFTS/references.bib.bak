@@ -1263,7 +1263,7 @@
   url = {http://doi.acm.org/10.1145/122718.122739}
 }
 
-@INPROCEEDINGS{Sloan:2007:IPA:1338439.1338558,
+@INPROCEEDINGS{Sloan2007,
   author = {Sloan, Peter-Pike and Govindaraju, Naga K. and Nowrouzezahrai, Derek
 	and Snyder, John},
   title = {Image-Based Proxy Accumulation for Real-Time Soft Global Illumination},
