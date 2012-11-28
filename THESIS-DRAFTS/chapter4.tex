@@ -1,45 +1,61 @@
 \chapter{SAMPLE CODE AND EXPLANATION}
 
 \section{MAIN PROGRAM (C++ CODE)}
+\paragraph{}
+The main program is written in C++ using OpenGL and is run exclusively on the CPU.  It's responsibilities include setting up the window, initializing the shaders, and initializing and updating the textures and variables passed to the shaders.  After setting up the window, the first major step for the program is to generate the VPL's.  As discussed in section \ref{sec:impdetails} and in the associated figures, the default step up will include the use of 6485 VPL's.  The VPL's will be structured outward in hemispheres from the primary light source in the direction of the primary light source.  Assuming that the direction of the primary light source is pointing downward (negative y-axis), there will be a VPL at every 5 degrees around the y-axis for a total of 72 VPL's (360/5).  Then VPL's will be at every 5 degrees around the the z-axis resulting in 18 VPL's per 90 degree angle.  With this, our hemisphere is almost complete except for the VPL on the y-axis which is not included in the previous calculations. Therefore, we will have 1297 VPL's per hemisphere and 1297 outward rays.  Next, we will chose to have 5 stacked hemispheres flowing outward from the primary light source resulting in 6485 VPL's total.  
 
-The main program is written in C++ using OpenGL and is run exclusively on the CPU.  It's responsibilities include setting up the window, initializing the shaders, and initializing and updating the textures and variables passed to the shaders.  After setting up the window, the first major step for the program is to generate the VPL's.  As discussed in section \ref{sec:impdetails} and in the associated figures, the default step up will include the use of 6485 VPL's.  The VPL's will be structured outward in hemispheres from the primary light source in the direction of the primary light source.  Assuming that the direct of the primary light source is pointing downward (negative y-axis), there will be a VPL at every 5 degrees around the y-axis for a total of 72 VPL's (360/5).  Then VPL's will be at every 5 degrees around the the z-axis resulting in 18 VPL's per 90 degree angle.  With this, our hemisphere is almost complete except for the VPL on the y-axis which is not included in the previous calculations. Therefore, we will have 1297 VPL's per hemisphere and 1297 outward rays.  Next, we will chose to have 5 stacked hemispheres flowing outward from the primary light source resulting in 6485 VPL's total.  
+\paragraph{}
+The locations of these VPL's will be calculated on start-up based on the location of the primary light source and the direction it is looking at.  The VPL's will only be updated whenever the primary light source is moved and at no other times reducing overhead.  The VPL's are calculated with an equation similar to below:
 
-The locations of these VPL's will be calculated on start-up based off of the location of the primary light source and the direction it is looking at.  The VPL's will only be updated whenever the primary light source is moved and at no other times reducing overhead.  The VPL's are calculated with an equation similar to below:
+\begin{dmath}
+vpl[x,y,z] = lightPosition[x,y,z] + normal[x,y,z]
+	*(maxDistance - (maxDistance/2^i)) \label{eqn:vplPosition}
+\end{dmath}
+
+\paragraph{}
+Equation \ref{eqn:vplPosition} calculates the position of the VPL by taking the position of the primary light source and moving in the direction of the primary light source by a particular distance and then rotating based on the angles required to fill the space in the hemisphere we are forming.  These angles are consolidated into the normal variable in equation \ref{eqn:vplPosition}.  The distance is calculated by using the maximum distance allowable (varies based off the dimensions of the scene) and the distances between each VPL on each outward ray is logarithmic which is achieved using $2^i$ where $i$ ranges from 1 to the number of hemispheres or 5 as is default with 1 being the innermost hemisphere and 5 being the outermost hemisphere.  Similarly, we get the VPL direction from rotating the primary light source direction to the direction of the corresponding VPL equal to the normal variable of equation \ref{eqn:vplPosition} as calculated by:
+
+\begin{dmath}
+normal[x,y,z] = primaryLightSourceNormal[x,y,z]\\
+normal[x] = cos(angleZ*pi/180)*normal[x]-sin(angleZ*pi/180)*normal[y]\\
+normal[y] = sin(angleZ*pi/180)*normal[x]+cos(angleZ*pi/180)*normal[y]\\
+normal[x] = cos(angleY*pi/180)*normal[x]+sin(angleY*pi/180)*normal[z]\\
+normal[z] =-sin(angleY*pi/180)*normal[x]+cos(angleY*pi/180)*normal[z]
+\end{dmath}
+
+
+Lastly, we get the attenuation from this exponential equation:
 
 \begin{equation}
-vpl[x,y,z] = lightPosition[x,y,z] + normal[x,y,z]*(maxDistance - (maxDistance/2^i)) \label{eqn:vplPosition}
+vplAttenuation = 0.05*pow(2.0,i)\label{eqn:vplAttenuation}
 \end{equation}
 
-Equation \ref{eqn:vplPosition} calculates the position of the VPL by taking the position of the primary light source and moving in the direction of the primary light source by a particular distance.  This distance is calculated by using the maximum distance allowable (varies based off the dimensions of the scene) and the distances between each VPL on each outward ray is logarithmic which is achieved using $2^i$ where $i$ ranges from 1 to the number of hemispheres or 5 as is default with 1 being the innermost hemisphere and 5 being the outermost hemisphere.  Similarly, we get the VPL direction from the primary light source direction and we get the attenuation from this exponential equation:
+\paragraph{}
+Equation \ref{eqn:vplAttenuation} results in us getting the following attenuation levels for a VPL in each of the 5 hemispheres: $5\%, 10\%, 20\%, 40\%, 80\%$.  
 
-\begin{equation}
-vplAttenuation = 0.05*pow(2.0,i)\label{eqn:vplNormal}
-\end{equation}
-
-Equation \ref{eqn:vplNormal} results in us getting the following attenuation levels for a VPL in each of the 5 hemispheres: $5\%, 10\%, 20\%, 40\%, 80\%$.  
-
-Next, in order for the GPU to have access to the VPL data we have generated above, we store them somehow.  This is done by using 2 1D textures.  The VPL position data and normal data each receive their own texture.  The VPl position data texture is a RGB texture which stores float values of each of the xyz position values.  This is done in C++ with OpenGL by the following statement:
-
+\paragraph{}
+Next, in order for the GPU to have access to the VPL data we have generated above, we store them somehow.  This is done by using 2 1D textures.  The VPL position data and normal data each receive their own texture.  The VPL position data texture is a RGB texture which stores float values of each of the xyz position values.  This is done in C++ with OpenGL by the following statement:
 
 \begin{lstlisting}
 glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, numLights, 0, GL_RGB, 
 	GL_FLOAT, &vplDataPos[0]);
 \end{lstlisting}
 
-where numLights will be 6485 in this case and vplDataPos is the address for the VPL position data.  Similarly with the normal data we use a 1D texture but this time with RGBA since we will also store the attenuation on top of the xyz values.
-
+where numLights will be 6485 in this case and vplDataPos is the address for the VPL position data.  Similarly with the normal data we use a 1D texture but this time with RGBA since we will also store the attenuation in addition to the xyz normal values.
 
 \begin{lstlisting}
 glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA, numLights, 0, GL_RGBA, 
 	GL_FLOAT, &vplDataNor[0]);
 \end{lstlisting}
 
+\paragraph{}
 One problem arises in that the texture will clamp the values stored between 0 and 1.  This is a problem because our VPL data may be negative and will likely be larger than 1 (depending on the dimensions of our scene).  Therefore, prior to storing our data, we must encode our data such that all values will be between 0 and 1 and we can then knowingly decode the data once the texture is in the shaders so our original values are preserved.  This can be done by the following equation:
 
 \begin{equation}
 vpl[data] = (vpl[data]/(4*maxDistance))+0.5 \label{eqn:vplEncode}
 \end{equation}
 
+\paragraph{}
 Equation \ref{eqn:vplEncode} normalizes the data to be between -0.5 and 0.5 and then adds 0.5 to it to reach the required 0 to 1 range.  The normalization is primarily important to the VPL position data since the VPL normals are already between -1 and 1 and the attenuation is already between 0 and 1. Then once in the shader we can decode the data with the following:
 
 \begin{equation}
@@ -48,42 +64,40 @@ vpl[data] = (vpl[data]-0.5)*maxDistance*4.0; \label{eqn:vplDecode}
 
 Once again, the above steps will only be done at initialization and whenever the primary light source is moved.
 
+\paragraph{}
 The next step is to generate our shadow maps.  As discussed in section \ref{sec:prevwork}, shadow maps are generated by viewing the scene from the perspective of the light source in question.  Then we calculate the distance to the first surface in each pixel to find the depths of the scene.  Using this depth, we can compare the value with the depth of other surfaces and determine whether a point lies in shadow.  In the default set-up, we use 21 shadow maps. One for the primary light source for direct shadows and 20 for the randomly chosen VPL's for the indirect shadows.  In order to do this, we use a single 2D texture array which consists of 21 layers.  This is done in OpenGL by using the following line of code:
-
 
 \begin{lstlisting}
 glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, SMWidth, 
 SMHeight, numShadowMaps, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 \end{lstlisting}
 
-The above line of code uses the depth component since we are only interested in the depth value at each pixel and nothing else with shadow maps.  Next, we need the width and height of the shadow map and we declare that we will be storing floats.  Next, in order to capture the depth values of the scene we use OpenGL's frame buffer capabilities.  We render the scene 21 times from the perspective of each light in question to generate the shadow maps and then use these to determine which points lie in shadow from each light's perspective for the final rendering which the user sees.  While generating the shadow maps we are using the fixed function pipeline to perform the rendering from each perspective.  Each time we render the scene, we attach the frame buffer to our shadow map texture using the following:
-
+\paragraph{}
+The above line of code uses the depth component since we are only interested in the depth value at each pixel and nothing else with shadow maps.  Next, we need the width and height of the shadow map and we declare that we will be storing floats.  Next, in order to capture the depth values of the scene we use OpenGL's frame buffer capabilities.  We render the scene 21 times from the perspective of each light in question to generate the shadow maps and then use these to determine which points lie in shadow from each light's perspective for the final rendering which is the only rendering that the user sees.  While generating the shadow maps we are using the fixed function pipeline to perform the rendering from each perspective meaning that it is rendered entirely on the CPU using no modified shaders.  Each time we render the scene, we attach the frame buffer to our shadow map texture using the following:
 
 \begin{lstlisting}
 glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, 
 	shadowMapTexture, 0, i);
 \end{lstlisting}
 
-where $i$ corresponds to which layer of the texture to attach it.  Next, in order for this shadow map to be useful we need a way to transform any given vertex to a coordinate in the shadow map.  We do this by storing the associated modelview and projection matrices used to render the scene each time in a uniform matrix variable that is pass over to the shaders.  This way we will be able to take any vertex, transform it using our transformation matrix and find the correct coordinate in the shadow map to compare it's depth.  This can be done in OpenGL by:
-
+where $i$ corresponds to which layer of the texture to attach it.  Next, in order for this shadow map to be useful we need a way to transform any given vertex to a coordinate in the shadow map.  We do this by storing the associated modelview and projection matrices used to render the scene each time in a uniform matrix variable that is passed over to the shaders on the GPU.  This way we will be able to take any vertex, transform it using our transformation matrix and find the correct coordinate in the shadow map to compare it's depth.  This can be done in OpenGL by:
 
 \begin{lstlisting}
 glUniformMatrix4fv(lightMatrix, numShadowMaps, GL_FALSE, 
 	(GLfloat*)textureMatrix);
 \end{lstlisting}
 
-where lightMatrix corresponds to a OpenGL variable that stores the location of the variable, GL\_FALSE tells OpenGL to not transpose the matrix, and textureMatrix is where we are storing our modelview and projection matrices for each shadow map.
+where lightMatrix corresponds to a OpenGL variable that stores the location of the matrix for the shaders, GL\_FALSE tells OpenGL to not transpose the matrix, and textureMatrix is where we are storing our modelview and projection matrices for each shadow map.  These shadow maps will be generated at initialization and for every frame thereafter.  
 
-These shadow maps will be generated at initialization and for every frame thereafter.  
-
-Next, the main thing left for the main program to perform is to render the final scene with the assistance of the shaders, which will be discussed in the following sections.
+\paragraph{}
+Next, the main thing left for the main program to perform is to render the final scene with the assistance of the shaders on the GPU, which will be discussed in the following sections.
 
 \section{VERTEX SHADER CODE}
+\paragraph{}
+The vertex shader is run exclusively on the GPU and is programmed using GLSL or OpenGL Shading Language, which is very similar to C.  The vertex shader is ran for each individual vertex from our scene.  The primary tasks performed in the vertex shader for our program is transforming the input vertices, reading some of the textures and all of the uniform variables passed in from the CPU, calculating the per-vertex variables for direct lighting, calculating the VPL color contributions to indirect illumination, and calculating the corresponding shadow map coordinates.
 
-The vertex shader is run exclusively on the GPU and is programmed using GLSL or OpenGL Shading Language, which is very similar to C.  The vertex shader is ran for each individual vertex from our scene.  The primary tasks performed in the vertex shader for our program is transforming the input vertices, reading some of the textures and all of the uniform variables from the CPU, calculating the per-vertex variables for direct lighting, calculating the VPL color contributions to indirect illumination, and calculating the corresponding shadow map coordinates.
-
+\paragraph{}
 Transforming each input vertex is an easy one-line statement:
-
 
 \begin{equation}
 gl\_Position = gl\_ModelViewProjectionMatrix * gl\_Vertex;
@@ -91,8 +105,8 @@ gl\_Position = gl\_ModelViewProjectionMatrix * gl\_Vertex;
 
 Each of the above variables used in the line above are preallocated variables used in GLSL.
 
+\paragraph{}
 Next, we calculate the per-vertex variables for the direct lighting.  For our diffuse shading, we need the light direction which can be calculated using the following line:
-
 
 \begin{equation}
 lightDir = vec3(masterLightPosition) - gl\_Vertex.xyz;
@@ -100,11 +114,9 @@ lightDir = vec3(masterLightPosition) - gl\_Vertex.xyz;
 
 For the specular lighting used in our direct illumination, we need the direction of the light reflected as well as the viewing direction of our camera.
 
-
 \begin{equation}
 lightDirRef = reflect(-lightDir, gl\_Normal);
 \end{equation}
-
 
 \begin{equation}
 camDir = vec3(cameraPosition) - gl\_Vertex.xyz;
@@ -112,8 +124,8 @@ camDir = vec3(cameraPosition) - gl\_Vertex.xyz;
 
 The reflect function is a built-in function that is part of the GLSL language.  
 
+\paragraph{}
 The next task is to calculate the VPL indirect lighting contributions.  For all 6485 VPL's, we first access our VPL data from our 2 textures using the following lines of code:
-
 
 \begin{lstlisting}
 vec3 vplPosition = texture1D(vplPosTex,texCoord).rgb;
@@ -123,17 +135,17 @@ float vplAttenuation = texture1D(vplNorTex,texCoord).a;
 
 where vplPosTex and vplNorTex are our vpl position and normal/attenuation textures and texCoord is the location in that texture we need to access.  We have to calculate texCoord by using the line:
 
-
 \begin{lstlisting}
 float texCoord = (float(i)/numLights);
 \end{lstlisting}
 
 where i ranges from 1 to 6485 and numLights is 6485.  Once we have our data, we must decode as discussed earlier using equation \ref{eqn:vplDecode}.  
 
+\paragraph{}
 Now that we have our original VPL data, we must calculate the vector from our vertex to each VPL similar to lightDir above.  Next, we calculate the diffuse terms of the object reflection and of the directional light.  This is done by taking the dot product between the normal of the vertex and the vector from the vertex to the VPL and then taking the dot product between the normal of the VPL and the vector from the light to the vertex.  All of these vectors must be normalized prior to these calculations.
 
+\paragraph{}
 Next, as discussed in section \ref{sec:impdetails} and shown in figure \ref{fig:3.6}, we will widen the viewable angle of the VPL from 180 degrees to 240 degrees.  We do this by taking our diffuse term from directional light and normalize it to allow for a wider contributing angle by the following lines of code:
-
 
 \begin{equation}
 DiffuseTermLight = (DiffuseTermLight + 0.5)/1.5;
@@ -145,10 +157,11 @@ DiffuseTermLight = clamp(DiffuseTermLight, 0.0, 1.0);
 
 This allows the dot product result to contribute to the color by mapping the range $[-0.5, 1.0]$ to the range $[0.0, 1.0]$ thus widening our VPL viewable contributions from 180 degrees to 240 degrees.
 
+\paragraph{}
 We then calculate the specular contributions of each VPL using the reflection ray from the normal of the vertex and the vector from the light to the vertex which is dotted with the view direction of the camera.
 
+\paragraph{}
 Lastly, we accumulate all of the VPL contributions to the color of that vertex by the following line:
-
 
 \begin{dmath}
 indirect\_color += gl\_Color*DiffuseTermObj*DiffuseTermLight
@@ -157,16 +170,18 @@ indirect\_color += gl\_Color*DiffuseTermObj*DiffuseTermLight
 
 where gl\_Color is the color of the input vertex.  We then divide this by the number of VPL's to get our final indirect color for that vertex.
 
+\paragraph{}
 Lastly, the vertex shader must compute the corresponding coordinate for the vertex in each of the shadow maps.  This is done by multiplying our vertex by the input modelview and projection matrices for each of the rendered views corresponding to each of our 21 shadow maps.
 
+\paragraph{}
 The vertex shader then passes control on to the fragment shader.  It also must pass variables calculated over by using varying variables.  These variables include: light direction, light direction reflected ray, camera direction, and vertex normal for direct lighting, as well as our indirect color contributions per-vertex and the corresponding coordinates for the vertex in each of our 21 shadow maps.
 
 \section{FRAGMENT SHADER CODE}
-
+\paragraph{}
 The fragment shader is similar to the vertex shader in operation except that it perform operations on fragments of our primitives rather than vertices.  The fragment shader will perform these operations using the varying variables passed in from the vertex shader as well as our 2D texture array shadow map.
 
+\paragraph{}
 The first task the fragment shader has is to calculate whether our fragment is in shadow.  We do this with the line:
-
 
 \begin{lstlisting}
 float shadow = shadow2DArray(ShadowMap, 
@@ -174,15 +189,15 @@ float shadow = shadow2DArray(ShadowMap,
 	ShadowCoord.z / ShadowCoord.w)).r;
 \end{lstlisting}
 
-where we take our shadow map and index using our coordinates calculated in the vertex shader that is divided by the 4 component of the vector know as perspective divide.  This is necessary in order to index into our shadow map, because our texture is in the range $[0.0, 1.0]$ and our coordinates are not.  The i corresponds to the layer of the shadow map to index into.  Our direct shadow map then will have $i=0$ and our indirect shadow maps will range from 1 to 20.  We do this for all 21 shadow maps.  From this we get a float value that will range from 0 to 1 and will correspond to percentage of shadow with 0 meaning not lighting whatsoever and 1 meaning no shadows whatsoever for that particular fragment.  This resulting value from the direct shadow map is then multiplied with our direct lighting and the resulting 20 values from our indirect shadow maps are normalized and multiplied with our indirect lighting.
+where we take our shadow map and index using our coordinates calculated in the vertex shader which is then divided by the 4th component of the vector known as perspective divide.  This is necessary in order to index into our shadow map, because our texture is in the range $[0.0, 1.0]$ and our coordinates are not.  The i corresponds to the layer of the shadow map to index into.  Our direct shadow map then will have $i=0$ and our indirect shadow maps will range from 1 to 20.  We do this for all 21 shadow maps.  From this we get a float value that will range from 0 to 1 and will correspond to the percentage of shadowing with 0 meaning no lighting whatsoever and 1 meaning no shadowing whatsoever for that particular fragment.  This resulting value from the direct shadow map is then multiplied with our direct lighting and the resulting 20 values from our indirect shadow maps are normalized and multiplied with our indirect lighting.
 
+\paragraph{}
 Next, we finish our direct lighting calculations by calculating the diffuse and specular terms similar to our indirect lighting in the vertex shader and add them for our direct lighting contributions.
 
 Lastly, we set the color of the fragment using the line:
 
-
 \begin{equation}
-gl\_FragColor = (direct\_color*shadow) + (indirect\_color*INDshadow);
+gl\_FragColor = (direct\_color*shadow) + (indirect\_color*INDshadow); \label{eqn:fragColor}
 \end{equation}
 
-where shadow and INDshadow are the float values we calculated above from our shadow maps, direct color is our direct lighting we have just calculated and indirect color is the VPL contributions we calculated in our vertex shader.  From this we now have the rendered scene with an estimated global illumination using our VPL's.
+where shadow and INDshadow are the float values we calculated above from our shadow maps, direct color is our direct lighting we have just calculated and indirect color is the VPL contributions we calculated in our vertex shader.  After performing equation \ref{eqn:fragColor}, we have our scene rendered with approximated global illumination by using our VPL's.
