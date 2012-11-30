@@ -109,11 +109,47 @@
 \contentsline {paragraph}{}{53}
 \contentsline {chapter}{\numberline {5}RESULTS}{55}
 \contentsline {section}{\numberline {5.1}RESULTS}{55}
+\contentsline {paragraph}{}{55}
 \contentsline {subsection}{\numberline {5.1.1}IMPACT OF PARAMETER CHOICES ON FPS}{55}
+\contentsline {paragraph}{}{55}
+\contentsline {paragraph}{}{56}
+\contentsline {paragraph}{}{57}
+\contentsline {paragraph}{}{57}
+\contentsline {paragraph}{}{58}
+\contentsline {paragraph}{}{58}
 \contentsline {subsection}{\numberline {5.1.2}IMPACT OF PARAMETER CHOICES ON QUALITY}{58}
-\contentsline {subsection}{\numberline {5.1.3}ALTERNATIVES}{63}
-\contentsline {subsection}{\numberline {5.1.4}FINAL ANALYSIS}{65}
-\contentsline {section}{\numberline {5.2}IMAGES}{66}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{75}
-\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{75}
-\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{76}
+\contentsline {paragraph}{}{58}
+\contentsline {paragraph}{}{59}
+\contentsline {paragraph}{}{59}
+\contentsline {paragraph}{}{60}
+\contentsline {paragraph}{}{62}
+\contentsline {paragraph}{}{62}
+\contentsline {paragraph}{}{62}
+\contentsline {paragraph}{}{63}
+\contentsline {subsection}{\numberline {5.1.3}DIFFERENT SHADING APPROACH}{63}
+\contentsline {paragraph}{}{63}
+\contentsline {subsection}{\numberline {5.1.4}ALTERNATIVES ANALYSIS}{64}
+\contentsline {paragraph}{}{64}
+\contentsline {paragraph}{}{64}
+\contentsline {paragraph}{}{65}
+\contentsline {subsection}{\numberline {5.1.5}FINAL ANALYSIS}{65}
+\contentsline {paragraph}{}{65}
+\contentsline {paragraph}{}{66}
+\contentsline {section}{\numberline {5.2}SCENE COMPLEXITY}{67}
+\contentsline {paragraph}{}{67}
+\contentsline {paragraph}{}{67}
+\contentsline {section}{\numberline {5.3}IMAGES}{67}
+\contentsline {paragraph}{}{67}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{78}
+\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{78}
+\contentsline {paragraph}{}{78}
+\contentsline {paragraph}{}{78}
+\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{78}
+\contentsline {paragraph}{}{78}
+\contentsline {paragraph}{}{79}
+\contentsline {paragraph}{}{79}
+\contentsline {paragraph}{}{80}
+\contentsline {section}{\numberline {6.3}LIMITATIONS}{80}
+\contentsline {paragraph}{}{80}
+\contentsline {section}{\numberline {6.4}IMPROVEMENTS}{80}
+\contentsline {paragraph}{}{80}
