@@ -138,7 +138,7 @@ const int numINDshadows = 5;
 int randomNumber[numINDshadows];
 
 //Constants used in shaders
-const int lightsAngle = 5;
+const int lightsAngle = 30;
 const int lightsPerRay = 5;
 const int numLights = lightsPerRay*((90/lightsAngle)*(360/lightsAngle)+1);
 const float pi = 3.14159265359;
@@ -168,7 +168,7 @@ bool updateShadowMaps = true;
 bool showVPLs = false;
 
 //Show boxes or teapot?
-bool box = true;
+bool box = false;
 
 //First Display?
 bool initial = true;
@@ -694,7 +694,7 @@ void display(void){
 		glDisableClientState(GL_NORMAL_ARRAY);
 
 
-		updateShadowMaps = false;
+		updateShadowMaps = true;
 		glFlush ();
 		glutSwapBuffers();
 	}
@@ -1134,7 +1134,7 @@ int main(int argc, char** argv){
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
 	//Comment Out to preserve CPU while not updating the screen
-	//glutIdleFunc(display);
+	glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }

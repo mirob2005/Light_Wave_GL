@@ -120,16 +120,51 @@ void drawScene(GLfloat *object1Position, GLfloat *object2Position, bool box)
 		glDisableClientState(GL_COLOR_ARRAY);
 		glDisableClientState(GL_NORMAL_ARRAY);
 		
+		////10 Teapots
+		//if(!box){
+		//	for(int i=0; i<5; i++){
+		//		glPushMatrix();
+		//		glScalef(.2,.2,.2);			
+		//			glPushMatrix();
+		//				glTranslatef(object1Position[0]-15.0+(i*5),object1Position[1],object1Position[2]);
+		//				glMatrixMode(GL_TEXTURE);
+		//				glActiveTexture(GL_TEXTURE7);
+		//				glPushMatrix();
+		//					glTranslatef(object1Position[0]-15.0+(i*5),object1Position[1],object1Position[2]);
+		//					drawTeapot();
+		//				glPopMatrix();
+		//				glMatrixMode(GL_MODELVIEW);
+		//			glPopMatrix();							
+		//		glPopMatrix();
+		//	}
+		//	for(int i=0; i<5; i++){
+		//		glPushMatrix();
+		//		glScalef(.2,.2,.2);			
+		//			glPushMatrix();
+		//				glTranslatef(object1Position[0]-15.0+(i*5),object1Position[1]-5.0,object1Position[2]+5.0);
+		//				glMatrixMode(GL_TEXTURE);
+		//				glActiveTexture(GL_TEXTURE7);
+		//				glPushMatrix();
+		//					glTranslatef(object1Position[0]-15.0+(i*5),object1Position[1]-5.0,object1Position[2]+5.0);
+		//					drawTeapot();
+		//				glPopMatrix();
+		//				glMatrixMode(GL_MODELVIEW);
+		//			glPopMatrix();						
+		//		glPopMatrix();
+		//	}
+		//}
+
+		//1 Teapot
 		if(!box){
 			glPushMatrix();
 				glTranslatef(object1Position[0]-2.0,object1Position[1]-1.0,object1Position[2]);
 				glMatrixMode(GL_TEXTURE);
 				glActiveTexture(GL_TEXTURE7);
 				glPushMatrix();
-					glTranslatef(object1Position[0]-2.0,object1Position[1],object1Position[2]);
+					glTranslatef(object1Position[0]-2.0,object1Position[1]-1.0,object1Position[2]);
 					drawTeapot();
 				glPopMatrix();
 				glMatrixMode(GL_MODELVIEW);
 			glPopMatrix();
-		}				
+		}
 }

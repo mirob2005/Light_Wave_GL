@@ -10,7 +10,7 @@ varying vec4 ShadowCoord;
 varying vec4 INDShadowCoord[5];
 varying vec4 indirect_color;
 
-int numSteps = 10;
+int numSteps = 2;
 
 //INDIRECT Shadow Mapping
 float calcINDshadow(int vpl1, int vpl2){
