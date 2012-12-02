@@ -1,6 +1,6 @@
 \chapter{RESULTS}
 
-\section{RESULTS}
+\section{RESULTS OF FIRST SHADING TECHNIQUE}
 \paragraph{}
 In order to give a detailed display of the flexibility of this method, we wanted to show the results of the method when changing many of the adjustable parameters.  These include varying the resolution of the screen, increasing the angle between VPL rays, decreasing the number of VPL's per ray, and decreasing the number of indirect shadow maps used. Modifying these parameters impact performance by increasing or decreasing the number of frames rendered per second as well as the quality of the rendering.  Therefore, section \ref{sec:fps} will detail the performance impact of varying the parameters based off the change in frame rate and section \ref{sec:quality} will detail the impact of varying the parameters on the overall quality of the images rendered by calculating the percentage difference per pixel against the default parameter set-up.  As a reminder, the default method which is featured first on each table uses a resolution size of 1280 by 720, an angle of 5 degrees between VPL rays, 5 VPL's per ray, and 20 indirect shadow maps.
 
@@ -205,10 +205,6 @@ Table \ref{table:5.8} shows the impact of reducing the number of shadow maps use
 \paragraph{}
 It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of section \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on the idea of the amount of indirect illumination will be discussed in section \ref{sec:alternatives}.
 
-\subsection{DIFFERENT SHADING APPROACH} \label{sec:newApproach}
-\paragraph{}
-...
-
 \subsection{ALTERNATIVES ANALYSIS} \label{sec:alternatives}
 \paragraph{}
 The aim of this section is to determine any additional sacrifices that could be made in order to improve performance.  As shown in table \ref{table:5.8} and discussed above, indirect shadows are the most computationally expensive scene component that has the least influence of the overall scene.  This may lead one to consider whether or not ignoring indirect lighting could be possible.  However, as shown in table \ref{table:5.9}, we compared our default method with a direct lighting only method.  Using our similarity calculation, we see the lowest similarity of 84.4\%, but the highest performance with 681 FPS.  On a machine that is able to run any of the above parameter choices with at least 30 FPS, it is not necessary to sacrifice this much quality for performance, but for the slowest machines, this may be a necessary choice.
@@ -281,54 +277,163 @@ Table \ref{table:5.10} tells us a few things:
 \item We can experiment with multipliers and get decent faked indirect lighting if nothing else.
 \end{itemize}
 
-\section{SCENE COMPLEXITY}
+\section{SECOND SHADING APPROACH} \label{sec:newApproach}
+\subsection{GOALS}
 \paragraph{}
-So far all of the scenes have been rendered using 36 triangles and 24 vertices, hardly a complicated scene.  This section aims at examining the effect of scene complexity on performance.  In order to do this, we first use a scene with 6565 triangles and 3249 vertices as well as a scene with 65542 triangles and 32418 instead to determine the performance impact.  Using the parameter choices and alternatives from \ref{table:5.10}, we apply them to our more complicated scenes resulting in table \ref{table:5.11}.
+After having completed gathering results from the first shading technique, it was found that although the technique was scalable in that we could get increased performance by adjusting parameters such as decreasing VPL numbers by increasing the angle between rays, decreasing resolution, or decreasing or removing indirect shadows altogether, computers with lower-end GPU's would likely not be able to display smooth indirect shadows.  This was due in large part to GPU memory limitations on the maximum supported number of shadow maps more so than performance capabilities.  Therefore, this second shading approach takes a different stance on calculating the indirect shadows.  Instead of only doing accurate visibility indirect shadows which would require one shadow map per indirect shadow, this approach minimizes GPU memory by limiting the number of indirect shadow maps to 5 instead of 20 and then integrates between them in order to get many more indirect shadows while using less GPU memory.
+
+\subsection{MEMORY ANALYSIS}
+\paragraph{}
+As mentioned earlier, our shadow maps were going to be three times larger than our screen size.  So for rendering a 1280x720 screen, we would be using shadow maps of size 3840x2160.  Knowing this, we can calculate the total amount of GPU memory required when rendering a specific number of shadow maps.  Assuming that we were going to be using 21 shadow maps (1 for direct and 20 for indirect shadows) and knowing that each value in the shadow maps were going to be 4 byte floats, we can calculate the total amount of GPU memory required:
+
+\begin{equation}
+(3840*2160*21*4)/(1024*1024) = 664.45 MB
+\end{equation}
+
+OR
+
+\begin{equation}
+(3840*2160*4)/(1024*1024) = 31.64 MB
+\end{equation}
+
+per shadow map used.  The GPU that was used during all of the results gathering had 1GB of GPU memory, so this factor was not a problem.  However, some cards have less memory than this.  Older cards may still have 256MB or 512MB of GPU memory.  With this in mind, our second shading approach attempts to allow these older cards to also be able to render indirect shadows.  Therefore, this second approach uses only 5 indirect shadow maps meaning 6 total shadow maps requiring:
+
+\begin{equation}
+(3840*2160*6*4)/(1024*1024) = 189.84 MB
+\end{equation}
+
+which would be low enough to run on these older cards.  However, 5 indirect shadows by themselves would not look very realistic and would look segregated as seen in table \ref{table:5.8}.  Therefore, we integrate between each of these 5 shadow maps as discussed in section \ref{sec:fragShader} in order to get even more possible shadows than the previous technique while using less memory.
+
+\subsection{RESULTS}
+\paragraph{}
+Keeping table \ref{table:5.10} in mind, we gathered results from this second shading technique by making the most efficient adjustments such as decreasing the resolution and increasing the VPL ray angles as seen in tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3}.  Also, when using this technique rather than adjusting the number of indirect shadow maps, we now just adjust the number of integration steps between shadow maps.
 
 \begin{table}[h!]
-	\caption{Scene Complexity}
+	\caption{1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
-	    Scene & Method & FPS & Figure\\ \hline
-	    6565/3249 & Default Method & - & None\\ \hline
-	    6565/3249 & Faked Indirect Lighting (1.3x) & - & None\\ \hline
-	    6565/3249 & Indirect Lighting w/out indirect shadows & - & None\\ \hline
-	    6565/3249 & Indirect Lighting w/ 15 indirect shadows & - & None\\ \hline
-	    6565/3249 & Indirect Lighting w/ 10 indirect shadows & - & None\\ \hline
-	    6565/3249 & Direct Lighting ONLY & - & None\\ \hline
-	    6565/3249 & 30 Degree Angle Between VPL Rays & - & None\\ \hline
-	    6565/3249 & Reduction down to 1 VPL Per Ray & - & None\\ \hline
-	    6565/3249 & Resolution Reduction 640x360 & - & None\\ \hline
-	    \hline
-	    \hline
-	    65542/32418 & Default Method & - & None\\ \hline
-	    65542/32418 & Faked Indirect Lighting (1.3x) & - & None\\ \hline
-	    65542/32418 & Indirect Lighting w/out indirect shadows & - & None\\ \hline
-	    65542/32418 & Indirect Lighting w/ 15 indirect shadows & - & None\\ \hline
-	    65542/32418 & Indirect Lighting w/ 10 indirect shadows & - & None\\ \hline
-	    65542/32418 & Direct Lighting ONLY & - & None\\ \hline
-	    65542/32418 & 30 Degree Angle Between VPL Rays & - & None\\ \hline
-	    65542/32418 & Reduction down to 1 VPL Per Ray & - & None\\ \hline
-	    65542/32418 & Resolution Reduction 640x360 & - & None\\ \hline
+	    NumSteps & FPS & Number of Shadows\\ \hline
+	    2 & 81 & 40\\ \hline
+	    4 & 60 & 60\\ \hline
+	    6 & 48 & 80\\ \hline
+	    10 & 34 & 120\\ \hline
 	    \end{tabular}
 	\end{center}
-	\label{table:5.11}
+	\label{table:secondAppResults1}
+\end{table}
+
+\begin{table}[h!]
+	\caption{640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    NumSteps & FPS\\ \hline
+	    2 & 137\\ \hline
+	    6 & 107\\ \hline
+	    10 & 89\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:secondAppResults2}
+\end{table}
+
+\begin{table}[h!]
+	\caption{1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    NumSteps & FPS\\ \hline
+	    2 & 150\\ \hline
+	    6 & 65\\ \hline
+	    10 & 42\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:secondAppResults3}
 \end{table}
 
 \paragraph{}
-Table \ref{table:5.11} shows that...
+By looking at table \ref{table:secondAppResults1}, we see that by using this technique and using parameters such as 1280x720 and 6485 VPL's, we can render 60 indirect shadows using 4 steps in between each of our 5 indirect shadow maps and get 60 FPS while in our first technique we get 20 indirect shadows using 20 shadow maps and get 55FPS.  By using these integrated shadows, we get smoother shadows, better performance, and with less GPU memory required.  The main difference is that the majority of the 60 indirect shadows are using adjusted and possibly inaccurate visibility.  Naturally, tables \ref{table:secondAppResults2} and \ref{table:secondAppResults3} show improved performance using reduced resolution and less VPL's.  This second technique shows better scalability so far, but a true test is to see how both shading techniques perform when scene complexity is increased.
 
+\section{SCENE COMPLEXITY}
+\paragraph{}
+So far all of the scenes have been rendered using 36 triangles and 24 vertices, hardly a complicated scene.  This section aims at examining the effect of scene complexity on performance.  In order to do this, we first use a scene with 6565 triangles and 3249 vertices as well as a scene with 65542 triangles and 32418 vertices instead to determine the performance impact.  Using the parameter choices and alternatives from \ref{table:5.10} for the first shading technique as well as our parameter choices from tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3} for the second shading technique, we apply them to our more complicated scenes resulting in tables \ref{table:tech1Complex} and \ref{table:tech2Complex}.
+
+\begin{table}[h!]
+	\caption{Scene Complexity Performance - First Technique}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    Scene & Method & FPS\\ \hline
+	    6565/3249 & Default Method & 15\\ \hline
+	    6565/3249 & Indirect Lighting w/out indirect shadows & 43\\ \hline
+	    6565/3249 & Indirect Lighting w/ 15 indirect shadows & 20\\ \hline
+	    6565/3249 & Indirect Lighting w/ 10 indirect shadows & 25\\ \hline
+	    6565/3249 & Direct Lighting ONLY & 502\\ \hline
+	    6565/3249 & 30 Degree Angle Between VPL Rays & 70\\ \hline
+	    6565/3249 & Reduction down to 1 VPL Per Ray & 44\\ \hline
+	    6565/3249 & Resolution Reduction 640x360 & 18\\ \hline
+	    \hline
+	    \hline
+	    65542/32418 & Default Method & 1\\ \hline
+	    65542/32418 & Indirect Lighting w/out indirect shadows & 5\\ \hline
+	    65542/32418 & Indirect Lighting w/ 15 indirect shadows & 2\\ \hline
+	    65542/32418 & Indirect Lighting w/ 10 indirect shadows & 3\\ \hline
+	    65542/32418 & Direct Lighting ONLY & 173\\ \hline
+	    65542/32418 & 30 Degree Angle Between VPL Rays & 26\\ \hline
+	    65542/32418 & Reduction down to 1 VPL Per Ray & 8\\ \hline
+	    65542/32418 & Resolution Reduction 640x360 & 1\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:tech1Complex}
+\end{table}
+
+\paragraph{}
+Table \ref{table:tech1Complex} shows that for the first technique the default method FPS dropped to 15 and 1 from 55 with the increased scene complexity making it not scale well with increased scene complexity.  The best method appears to be using a 30 degree VPL ray angle to reduce the VPL count.  With this method, the performance dropped from 84 to 70 and 26 with the increased scene complexity meaning that it achieved acceptable FPS with a scene consisting of 65542 triangles while maintaining full indirect shadows.  This good performance is due to the fact that with those 65542 triangles come 32418 vertices.  By reducing our VPL count, it means that for each of the 32418 vertices we perform 185 VPL indirect lighting calculations rather than 6485 calculations reducing the overall calculations performed in the vertex shader by a significant amount.
+
+\begin{table}[h!]
+	\caption{Scene Complexity Performance - Second Technique}
+	\begin{center}
+	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \hline
+	    Scene & NumSteps & Resolution & NumVPL's & FPS\\ \hline
+	    6565/3249 & 2 & 1280x720 & 6485 & 28\\ \hline
+	    6565/3249 & 6 & 1280x720 & 6485 & 23\\ \hline
+	    6565/3249 & 10 & 1280x720 & 6485 & 20\\ \hline
+	    6565/3249 & 2 & 1280x720 & 185 & 137\\ \hline
+	    6565/3249 & 6 & 1280x720 & 185 & 63\\ \hline
+	    6565/3249 & 10 & 1280x720 & 185 & 42\\ \hline
+	    6565/3249 & 2 & 640x360 & 6485 & 31\\ \hline
+	    6565/3249 & 6 & 640x360 & 6485 & 30\\ \hline
+	    6565/3249 & 10 & 640x360 & 6485 & 29\\ \hline
+	    \hline
+	    \hline
+	    65542/32418 & 2 & 1280x720 & 6485 & 3\\ \hline
+	    65542/32418 & 6 & 1280x720 & 6485 & 3\\ \hline
+	    65542/32418 & 10 & 1280x720 & 6485 & 3\\ \hline
+	    65542/32418 & 2 & 1280x720 & 185 & 58\\ \hline
+	    65542/32418 & 6 & 1280x720 & 185 & 39\\ \hline
+	    65542/32418 & 10 & 1280x720 & 185 & 30\\ \hline
+	    65542/32418 & 2 & 640x360 & 6485 & 3\\ \hline
+	    65542/32418 & 6 & 640x360 & 6485 & 3\\ \hline
+	    65542/32418 & 10 & 640x360 & 6485 & 3\\ \hline
+	    \end{tabular}
+	\end{center}
+	\label{table:tech2Complex}
+\end{table}
+
+\paragraph{}
+Table \ref{table:tech2Complex} shows overall better numbers while maintaining indirect shadows than table \ref{table:tech1Complex}.  Once again, as the scene complexity rises to 65542 triangles, reducing the VPL count by increasing the ray angle maintains great performance.  With this technique, we can render 40, 80, and 120 indirect shadows at 58, 39, and 30 FPS respectively with 65542 triangles as opposed to 20 indirect shadows at 26 FPS.  Reducing the VPL count through increasing the VPL ray angle allows us to keep good coverage of the scene while quickly reducing the VPL count and thus maintaining good performance when scene complexity rises.
+
+\section{CONCLUSION}
+\paragraph{}
+With the goal of scalability in mind in terms of portability to different kinds of machines with drastically different computing capabilities, Light Wave was born to allow the user to increase performance with minimal impact to quality using adjustable parameters.  However, the first shading technique required a GPU of at least 664.45MB to run full indirect shadows. Even using half the indirect shadows would require 348MB of memory.  Therefore, the second shading technique was developed with GPU memory in mind and limited it to 189.84MB, which would run on any computer worth running it on.  By doing this and including integrated shadows as opposed to accurate visibility shadows, this second technique can render many more shadows at comparable or even better FPS than the first technique.  It also maintains better performance when scene complexity rise getting a respectable 30 FPS with 120 indirect shadows for a scene with 65542 triangles.
 
 \section{IMAGES}
-\paragraph{}
-This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen.
-
+This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen. Figures \ref{fig:defaultimage} through \ref{fig:artifacts} are rendered using first shading technique, the rest are rendered using the second shading technique.
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{sample1.jpg}
-%    \includegraphics[width=1.0\textwidth]{sample1_gray.jpg}
   \caption{Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.}
 	\label{fig:defaultimage}
 \end{figure}
@@ -459,18 +564,60 @@ This section will be used to show images captured from the real-time rendering p
         \caption{Comparison of default resolution and a smaller resolution stretched.}\label{fig:artifacts}
 \end{figure}
 
-
-\begin{figure}[h!]
-  \centering
-    \includegraphics[width=1.0\textwidth]{lightTree.jpg}
-  \caption{1 Teapot. Scene totals: 6565 triangles and 3249 vertices}
-	\label{fig:teapot}
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/oldmethod.jpg}
+                \caption{First Shading Technique - 52FPS}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/10numSteps30Angle.jpg}
+                \caption{Second Shading Technique - Smoother Shadows - 47FPS (10numSteps,30DegreeAngle)}
+        \end{subfigure}
+        \caption{Comparison of the two different shading techniques}
 \end{figure}
 
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/1teapotOLD.jpg}
+                \caption{First Shading Technique}
+        \end{subfigure}
+        \centering
+        \begin{subfigure}[b]{1.0\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/1Teapot.jpg}
+                \caption{Second Shading Technique - Smoother Shadows}
+        \end{subfigure}
+        \caption{1 Teapot. Scene totals: 6565 triangles and 3249 vertices}\label{fig:teapotCompare}
+\end{figure}
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/teapotFL.jpg}
+                \caption{Light is at the far upper left corner of the scene.}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/teapotFR.jpg}
+                \caption{Light is at the far upper right corner of the scene.}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/teapotNR.jpg}
+                \caption{Light is at the near upper right corner of the scene.}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\textwidth]{AltResults/teapotC.jpg}
+                \caption{Light is in the upper center of the scene.}
+        \end{subfigure}
+        \caption{Teapots rendered using second shading technique.}
+\end{figure}
+
+
 \begin{figure}[h!]
   \centering
-    \includegraphics[width=1.0\textwidth]{lightTree.jpg}
-  \caption{10 Teapots. Scene totals: 65542 triangles and 32418 vertices}
+    \includegraphics[width=1.0\textwidth]{AltResults/10teapots.jpg}
+  \caption{10 Teapots rendered using second shading technique. Scene totals: 65542 triangles and 32418 vertices}
 	\label{fig:teapots}
 \end{figure}
 

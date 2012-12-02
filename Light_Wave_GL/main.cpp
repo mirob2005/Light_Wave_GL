@@ -168,7 +168,7 @@ bool updateShadowMaps = true;
 bool showVPLs = false;
 
 //Show boxes or teapot?
-bool box = false;
+bool box = true;
 
 //First Display?
 bool initial = true;

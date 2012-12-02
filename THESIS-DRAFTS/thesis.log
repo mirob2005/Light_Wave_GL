@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  30 NOV 2012 00:31
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  1 DEC 2012 23:06
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -974,18 +974,40 @@ CHAPTER 4.
 
 
 
-] [45] [46]
+]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 20.
+
+Overfull \hbox (23.32845pt too wide) in paragraph at lines 20--21
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (23.32845pt too wide) in paragraph at lines 21--22
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (23.32845pt too wide) in paragraph at lines 22--23
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (23.32845pt too wide) in paragraph at lines 23--24
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[45] [46]
 Overfull \hbox (10.18831pt too wide) in paragraph at lines 71--72
 [][][][][][][][][][][][][][] 
  []
 
-[47]
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
- [48] [49] [50] [51] [52]) [53] [54]
+[47] [48] [49] [50] [51] [52] [53] [54]) [55]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-[55
+[56
 
 
 
@@ -996,7 +1018,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[56] [57] [58] [59]
+[57] [58] [59] [60]
 Overfull \hbox (5.97621pt too wide) in paragraph at lines 129--138
  [] 
  []
@@ -1022,168 +1044,238 @@ Overfull \hbox (5.97621pt too wide) in paragraph at lines 179--189
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[60] [61] [62] [63] [64] [65]
-Overfull \hbox (23.88976pt too wide) in paragraph at lines 259--272
+[61] [62] [63] [64] [65] [66]
+Overfull \hbox (23.88976pt too wide) in paragraph at lines 255--268
  [] 
  []
 
-[66]
+[67] [68] [69]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<sample1.jpg, id=272, 1284.8pt x 722.7pt>
+[70]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[71]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[72] [73] <sample1.jpg, id=294, 1284.8pt x 722.7pt>
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
-Package pdftex.def Info: sample1.jpg used on input line 330.
+Package pdftex.def Info: sample1.jpg used on input line 436.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<sample2.jpg, id=273, 1284.8pt x 722.7pt>
+<sample2.jpg, id=295, 1284.8pt x 722.7pt>
 File: sample2.jpg Graphic file (type jpg)
  <use sample2.jpg>
-Package pdftex.def Info: sample2.jpg used on input line 340.
+Package pdftex.def Info: sample2.jpg used on input line 445.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample3.jpg, id=274, 1284.8pt x 722.7pt>
+<sample3.jpg, id=296, 1284.8pt x 722.7pt>
 File: sample3.jpg Graphic file (type jpg)
  <use sample3.jpg>
-Package pdftex.def Info: sample3.jpg used on input line 346.
+Package pdftex.def Info: sample3.jpg used on input line 451.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample4.jpg, id=275, 1284.8pt x 722.7pt>
+<sample4.jpg, id=297, 1284.8pt x 722.7pt>
 File: sample4.jpg Graphic file (type jpg)
  <use sample4.jpg>
-Package pdftex.def Info: sample4.jpg used on input line 352.
+Package pdftex.def Info: sample4.jpg used on input line 457.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample5.jpg, id=276, 1284.8pt x 722.7pt>
+<sample5.jpg, id=298, 1284.8pt x 722.7pt>
 File: sample5.jpg Graphic file (type jpg)
  <use sample5.jpg>
-Package pdftex.def Info: sample5.jpg used on input line 358.
+Package pdftex.def Info: sample5.jpg used on input line 463.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
 
-LaTeX Warning: Float too large for page by 36.39482pt on input line 364.
+LaTeX Warning: Float too large for page by 36.39482pt on input line 469.
 
-<direct_only.jpg, id=277, 1284.8pt x 722.7pt>
+<direct_only.jpg, id=299, 1284.8pt x 722.7pt>
 File: direct_only.jpg Graphic file (type jpg)
  <use direct_only.jpg>
-Package pdftex.def Info: direct_only.jpg used on input line 369.
+Package pdftex.def Info: direct_only.jpg used on input line 474.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<indirect_only.jpg, id=278, 1284.8pt x 722.7pt>
+<indirect_only.jpg, id=300, 1284.8pt x 722.7pt>
 File: indirect_only.jpg Graphic file (type jpg)
  <use indirect_only.jpg>
-Package pdftex.def Info: indirect_only.jpg used on input line 379.
+Package pdftex.def Info: indirect_only.jpg used on input line 484.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<indirect_only_shadows.jpg, id=279, 1284.8pt x 722.7pt>
+<indirect_only_shadows.jpg, id=301, 1284.8pt x 722.7pt>
 File: indirect_only_shadows.jpg Graphic file (type jpg)
 
 <use indirect_only_shadows.jpg>
-Package pdftex.def Info: indirect_only_shadows.jpg used on input line 385.
+Package pdftex.def Info: indirect_only_shadows.jpg used on input line 490.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
- <23.jpg, id=280, 1284.8pt x 722.7pt>
+ <23.jpg, id=302, 1284.8pt x 722.7pt>
 File: 23.jpg Graphic file (type jpg)
 
 <use 23.jpg>
-Package pdftex.def Info: 23.jpg used on input line 397.
+Package pdftex.def Info: 23.jpg used on input line 502.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
- <19.jpg, id=281, 1284.8pt x 722.7pt>
+ <19.jpg, id=303, 1284.8pt x 722.7pt>
 File: 19.jpg Graphic file (type jpg)
  <use 19.jpg>
-Package pdftex.def Info: 19.jpg used on input line 403.
+Package pdftex.def Info: 19.jpg used on input line 508.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
 
-<20.jpg, id=282, 1284.8pt x 722.7pt>
+<20.jpg, id=304, 1284.8pt x 722.7pt>
 File: 20.jpg Graphic file (type jpg)
  <use 20.jpg>
-Package pdftex.def Info: 20.jpg used on input line 409.
+Package pdftex.def Info: 20.jpg used on input line 514.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
 
 
-LaTeX Warning: Float too large for page by 62.64757pt on input line 415.
+LaTeX Warning: Float too large for page by 62.64757pt on input line 520.
 
-<direct_only_fake_1_3.jpg, id=283, 1284.8pt x 722.7pt>
+<direct_only_fake_1_3.jpg, id=305, 1284.8pt x 722.7pt>
 File: direct_only_fake_1_3.jpg Graphic file (type jpg)
 
 <use direct_only_fake_1_3.jpg>
-Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 420.
+Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 525.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<3.jpg, id=284, 1284.8pt x 722.7pt>
+<3.jpg, id=306, 1284.8pt x 722.7pt>
 File: 3.jpg Graphic file (type jpg)
  <use 3.jpg>
-Package pdftex.def Info: 3.jpg used on input line 430.
+Package pdftex.def Info: 3.jpg used on input line 535.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<7.jpg, id=285, 1284.8pt x 722.7pt>
+<7.jpg, id=307, 1284.8pt x 722.7pt>
 File: 7.jpg Graphic file (type jpg)
  <use 7.jpg>
-Package pdftex.def Info: 7.jpg used on input line 436.
+Package pdftex.def Info: 7.jpg used on input line 541.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
-Package pdftex.def Info: sample1.jpg used on input line 448.
+Package pdftex.def Info: sample1.jpg used on input line 553.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<17_resize.jpg, id=286, 1284.8pt x 722.7pt>
+<17_resize.jpg, id=308, 1284.8pt x 722.7pt>
 File: 17_resize.jpg Graphic file (type jpg)
  <use 17_resize.jpg>
-Package pdftex.def Info: 17_resize.jpg used on input line 454.
+Package pdftex.def Info: 17_resize.jpg used on input line 559.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
-File: lightTree.jpg Graphic file (type jpg)
 
-<use lightTree.jpg>
-Package pdftex.def Info: lightTree.jpg used on input line 465.
-(pdftex.def)             Requested size: 430.00627pt x 125.84122pt.
+<AltResults/oldmethod.jpg, id=309, 1284.8pt x 722.7pt>
+File: AltResults/oldmethod.jpg Graphic file (type jpg)
+
+<use AltResults/oldmethod.jpg>
+Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 570.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/10numSteps30Angle.jpg, id=310, 1284.8pt x 722.7pt>
+File: AltResults/10numSteps30Angle.jpg Graphic file (type jpg)
+
+<use AltResults/10numSteps30Angle.jpg>
+Package pdftex.def Info: AltResults/10numSteps30Angle.jpg used on input line 57
+5.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/1teapotOLD.jpg, id=311, 1284.8pt x 722.7pt>
+File: AltResults/1teapotOLD.jpg Graphic file (type jpg)
+
+<use AltResults/1teapotOLD.jpg>
+Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 584.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/1Teapot.jpg, id=312, 1284.8pt x 722.7pt>
+File: AltResults/1Teapot.jpg Graphic file (type jpg)
+
+<use AltResults/1Teapot.jpg>
+Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 589.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/teapotFL.jpg, id=313, 1284.8pt x 722.7pt>
+File: AltResults/teapotFL.jpg Graphic file (type jpg)
+
+<use AltResults/teapotFL.jpg>
+Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 598.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotFR.jpg, id=314, 1284.8pt x 722.7pt>
+File: AltResults/teapotFR.jpg Graphic file (type jpg)
+
+<use AltResults/teapotFR.jpg>
+Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 602.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotNR.jpg, id=315, 1284.8pt x 722.7pt>
+File: AltResults/teapotNR.jpg Graphic file (type jpg)
+
+<use AltResults/teapotNR.jpg>
+Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 606.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotC.jpg, id=316, 1284.8pt x 722.7pt>
+File: AltResults/teapotC.jpg Graphic file (type jpg)
+
+<use AltResults/teapotC.jpg>
+Package pdftex.def Info: AltResults/teapotC.jpg used on input line 610.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 614.
+
+<AltResults/10teapots.jpg, id=317, 1284.8pt x 722.7pt>
+File: AltResults/10teapots.jpg Graphic file (type jpg)
+
+<use AltResults/10teapots.jpg>
+Package pdftex.def Info: AltResults/10teapots.jpg used on input line 619.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-File: lightTree.jpg Graphic file (type jpg)
-<use lightTree.jpg>
-Package pdftex.def Info: lightTree.jpg used on input line 472.
-(pdftex.def)             Requested size: 430.00627pt x 125.84122pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [67] [68] [69 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>]
-[70 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample2.jpg> <D:/_Programming/
-Light_Wave_GL/THESIS-DRAFTS/sample3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-
-DRAFTS/sample4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>]
-[71 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [72 <D:/_Pro
-gramming/Light_Wave_GL/THESIS-DRAFTS/indirect_only.jpg> <D:/_Programming/Light_
-Wave_GL/THESIS-DRAFTS/indirect_only_shadows.jpg>] [73 <D:/_Programming/Light_Wa
-ve_GL/THESIS-DRAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg
-> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [74 <D:/_Programming/Li
-ght_Wave_GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [75 <D:/_Programming/Light
-_Wave_GL/THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jp
-g>] [76 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>] [77]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+) [74] [75 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [76 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/sample2.jpg> <D:/_Programming/Light_Wav
+e_GL/THESIS-DRAFTS/sample3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sa
+mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [77 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [78 <D:/_Programming/
+Light_Wave_GL/THESIS-DRAFTS/indirect_only.jpg> <D:/_Programming/Light_Wave_GL/T
+HESIS-DRAFTS/indirect_only_shadows.jpg>] [79 <D:/_Programming/Light_Wave_GL/THE
+SIS-DRAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg> <D:/_Pr
+ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [80 <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [81 <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>]
+[82 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>] [83 <D:/_Progr
+amming/Light_Wave_GL/THESIS-DRAFTS/AltResults/oldmethod.jpg> <D:/_Programming/L
+ight_Wave_GL/THESIS-DRAFTS/AltResults/10numSteps30Angle.jpg>] [84 <D:/_Programm
+ing/Light_Wave_GL/THESIS-DRAFTS/AltResults/1teapotOLD.jpg> <D:/_Programming/Lig
+ht_Wave_GL/THESIS-DRAFTS/AltResults/1Teapot.jpg>] [85 <D:/_Programming/Light_Wa
+ve_GL/THESIS-DRAFTS/AltResults/teapotFL.jpg> <D:/_Programming/Light_Wave_GL/THE
+SIS-DRAFTS/AltResults/teapotFR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFT
+S/AltResults/teapotNR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResu
+lts/teapotC.jpg>] [86 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1
+0teapots.jpg>] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[78
+[87
 
 
 
-] [79]) [80] [81] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
-[82
+] [88]) [89] [90] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
+[91
 
 
-] [83] [84]
+] [92] [93]
 Missing character: There is no ó in font cmr12!
 Missing character: There is no á in font cmr12!
 Missing character: There is no ’ in font cmr12!
- [85]) [86]
+ [94]) [95]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -1193,13 +1285,13 @@ Missing character: There is no ’ in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 10080 strings out of 494049
- 158143 string characters out of 3146068
+ 10154 strings out of 494049
+ 159725 string characters out of 3146068
  253765 words of memory out of 3000000
- 13156 multiletter control sequences out of 15000+200000
- 8545 words of font info for 30 fonts, out of 3000000 for 9000
+ 13220 multiletter control sequences out of 15000+200000
+ 8904 words of font info for 31 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,13n,58p,2377b,1527s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,13n,58p,2377b,1127s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
@@ -1212,9 +1304,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (93 pages, 1613283 bytes).
+Output written on thesis.pdf (102 pages, 1976741 bytes).
 PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
+ 425 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

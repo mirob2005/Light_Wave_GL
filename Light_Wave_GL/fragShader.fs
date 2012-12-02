@@ -10,7 +10,7 @@ varying vec4 ShadowCoord;
 varying vec4 INDShadowCoord[5];
 varying vec4 indirect_color;
 
-int numSteps = 2;
+int numSteps = 10;
 
 //INDIRECT Shadow Mapping
 float calcINDshadow(int vpl1, int vpl2){
@@ -47,7 +47,7 @@ void main( ){
 	//DIRECT Shadow Mapping
 	float shadow = 0.0;
 	//Adding 0.0005 removes the bright artifacts on the edges of the object before the shadows
-	shadow += shadow2DArray(ShadowMap, vec4(ShadowCoord.xy / ShadowCoord.w, 0, (ShadowCoord.z + 0.0005)/ ShadowCoord.w)).r;
+	shadow += shadow2DArray(ShadowMap, vec4(ShadowCoord.xy / ShadowCoord.w, 0, (ShadowCoord.z)/ ShadowCoord.w)).r;
 	
 	//INDIRECT SHADOW MAPPING
 	float INDshadow = 0.0;
