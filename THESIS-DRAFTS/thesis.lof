@@ -24,13 +24,15 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Showing the logarithmic distances between the VPL's on each ray. The first box on the left is the first VPL on the ray with successive VPL's going towards the right. Distance shown to scale. (Light source is not shown)\relax }}{39}
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Showing the wave-like radiance contribution of a VPL. We add an additional 30 degrees of viewable range on the top and bottom limiting the blind spot of the VPL to 120 degrees rather than 180. The arrow signifies the VPL's direction/normal.\relax }}{40}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Showing the normals of every VPL. Naturally, the resulting shape is a hemisphere since all the VPL's point outward from the primary light source in their respective directions.\relax }}{41}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.\relax }}{69}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{70}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Scene rendered with only direct lighting.\relax }}{71}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Images showing the contributions from the VPL's to indirect lighting. (Direct lighting is ignored)\relax }}{72}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments\relax }}{73}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Faked Indirect Lighting with a 1.3x Multiplier.\relax }}{74}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Adjusting VPL parameters\relax }}{75}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of default resolution and a smaller resolution stretched.\relax }}{76}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{77}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces 10 Teapots. Scene totals: 65542 triangles and 32418 vertices\relax }}{77}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.\relax }}{75}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{76}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Scene rendered with only direct lighting.\relax }}{77}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Images showing the contributions from the VPL's to indirect lighting. (Direct lighting is ignored)\relax }}{78}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments\relax }}{79}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Faked Indirect Lighting with a 1.3x Multiplier.\relax }}{80}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Adjusting VPL parameters\relax }}{81}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of default resolution and a smaller resolution stretched.\relax }}{82}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of the two different shading techniques\relax }}{83}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{84}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Teapots rendered using second shading technique.\relax }}{85}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces 10 Teapots rendered using second shading technique. Scene totals: 65542 triangles and 32418 vertices\relax }}{86}
