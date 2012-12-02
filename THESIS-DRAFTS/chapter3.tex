@@ -94,12 +94,26 @@ Each VPL normal is calculated using the angles required to rotate the primary li
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.5\textwidth]{vplNormals.jpg}
-  	\caption{Showing the normals of every VPL. Naturally, the resulting shape is a hemisphere since all the VPL's point outward from the primary light source in their respective directions.}
+  	\caption{Showing the normals of every VPL. Using ray angle of 30 degrees to simplify the graphic.}
 	\label{fig:vplNormals}
 \end{figure}
 
 \paragraph{}
-Lastly, occlusion will be handled with a shadow map as in \cite{Williams1978} and \cite{Reeves1987} to render shadows for the direct illumination based solely off of the primary light source.  This method is very cheap and provides sufficient shadows for the purposes of this implementation.  This implementation will try two different techniques of rendering indirect shadows.  The first technique will handle indirect occlusion through the use of regular shadow maps on 20 randomly sampled VPL's and will render shadows solely on the information gathered in the 20 shadow maps meaning that we will have 1 direct shadow and 20 indirect shadows.  The second technique will handle indirect occlusion through the use of regular shadow maps rendered using 5 specific VPL's and will render shadows by integrating between each of the 5 shadow maps.  By doing this, we will require less shadow maps but will render more indirect shadows.  The specific implementation details for both techniques will be discussed in chapter 4 with code excerpts present.
+Lastly, occlusion will be handled with a shadow map as in \cite{Williams1978} and \cite{Reeves1987} to render shadows for the direct illumination based solely off of the primary light source.  This method is very cheap and provides sufficient shadows for the purposes of this implementation.  This implementation will try two different techniques of rendering indirect shadows.  The first technique will handle indirect occlusion through the use of regular shadow maps on 20 randomly sampled VPL's and will render shadows solely on the information gathered in the 20 shadow maps meaning that we will have 1 direct shadow and 20 indirect shadows.  See figure \ref{fig:20randomVPLs}.  The second technique will handle indirect occlusion through the use of regular shadow maps rendered using 5 specific VPL's and will render shadows by integrating between each of the 5 shadow maps.  The VPL's are equal distant from one another and provide maximum coverage of the scene.  See figure \ref{fig:5specificVPLs}.  By doing this, we will require less shadow maps but will render more indirect shadows.  The specific implementation details for both techniques will be discussed in chapter 4 with code excerpts present.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{20randomVPLs.jpg}
+  	\caption{Showing 20 randomly sampled VPL's with the primary light source at the top center of the image.}
+	\label{fig:20randomVPLs}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{5specificVPLs.jpg}
+  	\caption{Showing 5 specifically chosen VPL's with the primary light source at the top center of the image.}
+	\label{fig:5specificVPLs}
+\end{figure}
 
 \subsection{GPU AND CPU FUNCTIONS}
 \paragraph{}
