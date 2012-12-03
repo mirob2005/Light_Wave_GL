@@ -1,6 +1,6 @@
 \chapter{RESULTS}
 
-\section{RESULTS OF FIRST SHADING TECHNIQUE}
+\section{ACCURATE SHADOWS APPROACH}
 \paragraph{}
 In order to give a detailed display of the flexibility of this method, we wanted to show the results of the method when changing many of the adjustable parameters.  These include varying the resolution of the screen, increasing the angle between VPL rays, decreasing the number of VPL's per ray, and decreasing the number of indirect shadow maps used. Modifying these parameters impact performance by increasing or decreasing the number of frames rendered per second as well as the quality of the rendering.  Therefore, section \ref{sec:fps} will detail the performance impact of varying the parameters based off the change in frame rate and section \ref{sec:quality} will detail the impact of varying the parameters on the overall quality of the images rendered by calculating the percentage difference per pixel against the default parameter set-up.  As a reminder, the default method which is featured first on each table uses a resolution size of 1280 by 720, an angle of 5 degrees between VPL rays, 5 VPL's per ray, and 20 indirect shadow maps.
 
@@ -99,7 +99,7 @@ In summary, when choosing parameters of the method to be run on slower machines,
 \paragraph{}
 Just as important as performance is the quality of the images rendered.  Therefore, this section will detail the quality impact of parameter choice using the default set-up as the reference image.  By detailing this information, it will reveal the ultimate flexibility of the method and whether we can use this method on slower machines with limited quality impact.  We will use the same parameter choices as the tables for section \ref{sec:fps}, but we will be interested in the percentage difference between the chosen parameters and the default parameters.  The percentage difference will be computed using a Python script which takes in two rendered images as input and compares them on a pixel by pixel basis.  This comparison is done as follows:
 
-
+\vspace{10 mm}
 \begin{algorithm}[H]
  \SetAlgoLined
  similar = 0.0\;
@@ -121,7 +121,6 @@ Algorithm \ref{alg:difference} adds 1 to the 2 pixel components in order to avoi
 
 \paragraph{}
 The purpose of doing such a calculation is simply due to the fact that quantifying the quality of an image or  the similarity with another image is rather subjective.  This way we can assign an objective value to the comparison.  This way we can objectively order the images rendered using different parameters by similarity to the default parameter set-up and declare certain parameter changes as more efficient in preserving quality than others.  By efficient, we mean that the parameter changes increase performance with limited quality reductions.  Tables \ref{table:5.5}, \ref{table:5.6}, \ref{table:5.7}, and \ref{table:5.8} show the calculated similarity percentages.  The higher percentage the image, the closer to the reference image it is with 100\% meaning that it is the same image.
-
 
 \begin{table}[h!]
 	\caption{Varying the Angle Between VPL Rays (Impact on Quality)}
@@ -155,7 +154,6 @@ The purpose of doing such a calculation is simply due to the fact that quantifyi
 	\end{center}
 	\label{table:5.6}
 \end{table}
-
 \begin{table}[h!]
 	\caption{Varying the Resolution Size. (Impact on Quality)}
 	\begin{center}
@@ -197,7 +195,7 @@ Comparing tables \ref{table:5.5} and \ref{table:5.6} reveals that although the n
 When looking at table \ref{table:5.7}, we see high values of similarity to the reference, however, these can be misleading.  These values were calculated after rendering the image at the chosen resolution size and then stretching it to the reference image resolution size.  This brings into question the idea of global similarity and local similarity as well as notion of visually pleasing as discussed in section \ref{sec:study}.  Although these images are very similar to the reference in an overall pixel by pixel basis, there are some things that this number does not show us.  It requires looking at the stretched image to realize the effect this has on the image quality.  These images show worsening cases of 'jaggies' or artifacts near the edges of boundaries such as the edges of the boxes as the rendered image's resolution gets smaller.  So these reduced resolution images are similar to the reference, but when stretched they also show localized differences that can be distracting to the eye.  When comparing the reference to the stretched 640x360 images on a local scale such as on the edges of a box, we get a similarity of 97.4\% which is slightly less than the 99.5\%, however, a even more localized comparison such as a few pixels on either side of the boundary line would show even more difference.
 
 \paragraph{}
-Regardless of the calculations, a localized difference such as artifacts detract from the overall realism of the image which is not preferred.  A slight global difference, however, such as a slightly lighter or darker overall image would result in a large difference value but more similar overall to the human eye.  These facts need to be taken into consideration when choosing the method or parameters.  This idea will be covered more in section \ref{sec:alternatives}.
+Regardless of the calculations, a localized difference such as artifacts detract from the overall realism of the image which is not preferred.  A slight global difference, however, such as a slightly lighter or darker overall image would result in a larger difference value but more similar overall to the human eye.  These facts need to be taken into consideration when choosing the method or parameters.  This idea will be covered more in section \ref{sec:alternatives}.
 
 \paragraph{}
 Table \ref{table:5.8} shows the impact of reducing the number of shadow maps used for indirect shadows.  An interesting note is that when using 10 shadow maps for indirect shadows and when completely ignoring indirect shadows we get near identical similarity measurements to our reference.  This reinforces the notion that indirect shadows are possibly an unnecessary computational burden that can be ignored especially on slower machines.  Recall table \ref{table:5.4} and the comparison of FPS between the two parameter choices.  When choosing to use 10 indirect shadow maps we get 106 FPS, however, when we ignore indirect shadows we get 161 FPS.  For nearly identical global similarity values, we can gain 55 FPS by ignoring indirect shadows.  This is a major parameter choice to consider when wanting to increase performance.
@@ -227,7 +225,6 @@ The aim of this section is to determine any additional sacrifices that could be 
 	\end{center}
 	\label{table:5.9}
 \end{table}
-
 \paragraph{}
 Also in table \ref{table:5.9}, we include our indirect lighting without indirect shadows method for comparison with it's respectable 161 FPS and 98.5\% similarity.  This was the best performing parameter choice from tables \ref{table:5.1} through \ref{table:5.4}.  Should a compromise between direct lighting only and indirect lighting with no indirect shadows be needed, we included a few alternative approaches in addition to the previous two in table \ref{table:5.9}.  These approaches attempt to fake indirect lighting while achieving the direct only performance.  This is done through the use of scaling the color and shadow contributions in the fragment shader.  As reminded above and discovered in section \ref{sec:study}, the amount of indirect light can contribute to the perceived realism of the scene.  As such, 5 different scaling approaches are included in table \ref{table:5.9} to compare against our reference image.  The multiplier in parenthesis in each table entry shows the amount of scaling done to the direct lighting of the scene.  For example, for the entry with a 1.1 multiplier this means that the final color is calculated as below:
 
@@ -238,9 +235,9 @@ color = (direct\_color*0.5*shadow)+(direct\_color*0.6)
 \paragraph{}
 For the next entry the 0.6 would be 0.7 and so on.  This way the direct shadows are only half as dark as before and is not purely black and increase the overall brightness of the scene.  As seen in the table, this approach of faking indirect light leads to better similarity numbers than using just the direct lighting approach peaking at the multiplier of 1.3 with a value of 91.8\% in this particular case.  Therefore, should indirect lighting without indirect shadows approach be too much for a particular machine, a faked version of indirect lighting would be a respectable compromise.
 
-\subsection{FINAL ANALYSIS} \label{sec:finalAnalysis}
+\subsection{FINAL ANALYSIS ON ACCURATE SHADOWS} \label{sec:finalAnalysis}
 \paragraph{}
-Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene.  The benefits of calculating similarities is that it leads to a way of quantifying quality in comparison to our reference image and thus rank parameter choices based off a combination of performance gains and limited quality impact.  It is important to note that changing the resolution size and stretching netted the best similarity results, but due to the introduction of artifacts, those parameter choices will be listed last.  It is also important to note that should a smaller resolution size be applicable without the need to stretch to our larger default resolution, this should be the very first choice in increasing performance, because the artifacts are only introduced during the stretching process due to naive sampling.
+Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene when using accurate shadows.  The benefits of calculating similarities is that it leads to a way of quantifying quality in comparison to our reference image and thus rank parameter choices based off a combination of performance gains and limited quality impact.  It is important to note that changing the resolution size and stretching netted the best similarity results, but due to the introduction of artifacts, those parameter choices will be listed last.  It is also important to note that should a smaller resolution size be applicable without the need to stretch to our larger default resolution, this should be the very first choice in increasing performance, because the artifacts are only introduced during the stretching process due to naive sampling.
 
 \paragraph{}
 Table \ref{table:5.10} will use the similarity values calculated along with the FPS gain in order to rank the parameter choices.  This will be done using a simple equation:
@@ -269,18 +266,18 @@ rankValue = fpsGain / (1-calculatedSimilarity)
 	\label{table:5.10}
 \end{table}
 
-Table \ref{table:5.10} tells us a few things:
+Table \ref{table:5.10} tells us a few things about using accurate shadows:
 \begin{itemize}
 \item If a smaller resolution size can be used and not stretched, use it.
-\item Indirect Shadows are nice, but is the next thing to be sacrificed if better performance is needed.
+\item Accurate indirect shadows are nice, but is the next thing to be sacrificed if better performance is needed.
 \item If we chose to reduce VPL's, do so by increasing the ray angles, not by reducing hemispheres.
 \item We can experiment with multipliers and get decent faked indirect lighting if nothing else.
 \end{itemize}
 
-\section{SECOND SHADING APPROACH} \label{sec:newApproach}
+\section{INTEGRATED SHADOWS APPROACH} \label{sec:newApproach}
 \subsection{GOALS}
 \paragraph{}
-After having completed gathering results from the first shading technique, it was found that although the technique was scalable in that we could get increased performance by adjusting parameters such as decreasing VPL numbers by increasing the angle between rays, decreasing resolution, or decreasing or removing indirect shadows altogether, computers with lower-end GPU's would likely not be able to display smooth indirect shadows.  This was due in large part to GPU memory limitations on the maximum supported number of shadow maps more so than performance capabilities.  Therefore, this second shading approach takes a different stance on calculating the indirect shadows.  Instead of only doing accurate visibility indirect shadows which would require one shadow map per indirect shadow, this approach minimizes GPU memory by limiting the number of indirect shadow maps to 5 instead of 20 and then integrates between them in order to get many more indirect shadows while using less GPU memory.
+After having completed gathering results from the accurate shadows technique, it was found that although the technique was scalable in that we could get increased performance by adjusting parameters such as decreasing VPL numbers by increasing the angle between rays, decreasing resolution, or decreasing or removing indirect shadows altogether, computers with lower-end GPU's would likely not be able to display smooth indirect shadows.  This was due in large part to GPU memory limitations on the maximum supported number of shadow maps more so than performance capabilities.  Therefore, this integrated shadows approach takes a different stance on calculating the indirect shadows.  Instead of only doing accurate visibility indirect shadows which would require one shadow map per indirect shadow, this approach minimizes GPU memory by limiting the number of indirect shadow maps to 5 instead of 20 and then integrates between them in order to get many more indirect shadows while using less GPU memory.
 
 \subsection{MEMORY ANALYSIS}
 \paragraph{}
@@ -296,7 +293,7 @@ OR
 (3840*2160*4)/(1024*1024) = 31.64 MB
 \end{equation}
 
-per shadow map used.  The GPU that was used during all of the results gathering had 1GB of GPU memory, so this factor was not a problem.  However, some cards have less memory than this.  Older cards may still have 256MB or 512MB of GPU memory.  With this in mind, our second shading approach attempts to allow these older cards to also be able to render indirect shadows.  Therefore, this second approach uses only 5 indirect shadow maps meaning 6 total shadow maps requiring:
+per shadow map used.  The GPU that was used during all of the results gathering had 1GB of GPU memory, so this factor was not a problem.  However, some cards have less memory than this.  Older cards may still have 256MB or 512MB of GPU memory.  With this in mind, this integrated shadows approach attempts to allow these older cards to also be able to render indirect shadows.  Therefore, this second approach uses only 5 indirect shadow maps meaning 6 total shadow maps requiring:
 
 \begin{equation}
 (3840*2160*6*4)/(1024*1024) = 189.84 MB
@@ -306,7 +303,7 @@ which would be low enough to run on these older cards.  However, 5 indirect shad
 
 \subsection{RESULTS}
 \paragraph{}
-Keeping table \ref{table:5.10} in mind, we gathered results from this second shading technique by making the most efficient adjustments such as decreasing the resolution and increasing the VPL ray angles as seen in tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3}.  Also, when using this technique rather than adjusting the number of indirect shadow maps, we now just adjust the number of integration steps between shadow maps.
+Keeping table \ref{table:5.10} in mind, we gathered results from this shadowing technique by making the most efficient adjustments such as decreasing the resolution and increasing the VPL ray angles as seen in tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3}.  Also, when using this technique rather than adjusting the number of indirect shadow maps, we now just adjust the number of integration steps between shadow maps.
 
 \begin{table}[h!]
 	\caption{1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps}
@@ -352,14 +349,14 @@ Keeping table \ref{table:5.10} in mind, we gathered results from this second sha
 \end{table}
 
 \paragraph{}
-By looking at table \ref{table:secondAppResults1}, we see that by using this technique and using parameters such as 1280x720 and 6485 VPL's, we can render 60 indirect shadows using 4 steps in between each of our 5 indirect shadow maps and get 60 FPS while in our first technique we get 20 indirect shadows using 20 shadow maps and get 55FPS.  By using these integrated shadows, we get smoother shadows, better performance, and with less GPU memory required.  The main difference is that the majority of the 60 indirect shadows are using adjusted and possibly inaccurate visibility.  Naturally, tables \ref{table:secondAppResults2} and \ref{table:secondAppResults3} show improved performance using reduced resolution and less VPL's.  This second technique shows better scalability so far, but a true test is to see how both shading techniques perform when scene complexity is increased.
+By looking at table \ref{table:secondAppResults1}, we see that by using this technique and using parameters such as 1280x720 and 6485 VPL's, we can render 60 indirect shadows using 4 steps in between each of our 5 indirect shadow maps and get 60 FPS while in our first technique we get 20 indirect shadows using 20 shadow maps and get 55FPS.  By using these integrated shadows, we get smoother shadows, better performance, and with less GPU memory required.  The main difference is that the majority of the 60 indirect shadows are using adjusted and possibly inaccurate visibility.  Naturally, tables \ref{table:secondAppResults2} and \ref{table:secondAppResults3} show improved performance using reduced resolution and less VPL's.  This integrated shadows technique shows better scalability so far, but a true test is to see how both shadowing techniques perform when scene complexity is increased.
 
 \section{SCENE COMPLEXITY}
 \paragraph{}
-So far all of the scenes have been rendered using 36 triangles and 24 vertices, hardly a complicated scene.  This section aims at examining the effect of scene complexity on performance.  In order to do this, we first use a scene with 6565 triangles and 3249 vertices as well as a scene with 65542 triangles and 32418 vertices instead to determine the performance impact.  Using the parameter choices and alternatives from \ref{table:5.10} for the first shading technique as well as our parameter choices from tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3} for the second shading technique, we apply them to our more complicated scenes resulting in tables \ref{table:tech1Complex} and \ref{table:tech2Complex}.
+So far all of the scenes have been rendered using 36 triangles and 24 vertices, hardly a complicated scene.  This section aims at examining the effect of scene complexity on performance.  In order to do this, we first use a scene with 6565 triangles and 3249 vertices as well as a scene with 65542 triangles and 32418 vertices instead to determine the performance impact.  Using the parameter choices and alternatives from \ref{table:5.10} for the accurate shadows technique as well as our parameter choices from tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3} for the integrated shadows technique, we apply them to our more complicated scenes resulting in tables \ref{table:tech1Complex} and \ref{table:tech2Complex}.
 
 \begin{table}[h!]
-	\caption{Scene Complexity Performance - First Technique}
+	\caption{Scene Complexity Performance - Accurate Shadows}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -388,10 +385,10 @@ So far all of the scenes have been rendered using 36 triangles and 24 vertices, 
 \end{table}
 
 \paragraph{}
-Table \ref{table:tech1Complex} shows that for the first technique the default method FPS dropped to 15 and 1 from 55 with the increased scene complexity making it not scale well with increased scene complexity.  The best method appears to be using a 30 degree VPL ray angle to reduce the VPL count.  With this method, the performance dropped from 84 to 70 and 26 with the increased scene complexity meaning that it achieved acceptable FPS with a scene consisting of 65542 triangles while maintaining full indirect shadows.  This good performance is due to the fact that with those 65542 triangles come 32418 vertices.  By reducing our VPL count, it means that for each of the 32418 vertices we perform 185 VPL indirect lighting calculations rather than 6485 calculations reducing the overall calculations performed in the vertex shader by a significant amount.
+Table \ref{table:tech1Complex} shows that for the accurate shadows technique the default method FPS dropped to 15 and 1 from 55 with the increased scene complexity making it not scale well with increased scene complexity.  The best method appears to be using a 30 degree VPL ray angle to reduce the VPL count.  With this method, the performance dropped from 84 to 70 and 26 with the increased scene complexity meaning that it achieved acceptable FPS with a scene consisting of 65542 triangles while maintaining full indirect shadows.  This good performance is due to the fact that with those 65542 triangles come 32418 vertices.  By reducing our VPL count, it means that for each of the 32418 vertices we perform 185 VPL indirect lighting calculations rather than 6485 calculations reducing the overall calculations performed in the vertex shader by a significant amount.
 
 \begin{table}[h!]
-	\caption{Scene Complexity Performance - Second Technique}
+	\caption{Scene Complexity Performance - Integrated Shadows}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -426,10 +423,10 @@ Table \ref{table:tech2Complex} shows overall better numbers while maintaining in
 
 \section{CONCLUSION}
 \paragraph{}
-With the goal of scalability in mind in terms of portability to different kinds of machines with drastically different computing capabilities, Light Wave was born to allow the user to increase performance with minimal impact to quality using adjustable parameters.  However, the first shading technique required a GPU of at least 664.45MB to run full indirect shadows. Even using half the indirect shadows would require 348MB of memory.  Therefore, the second shading technique was developed with GPU memory in mind and limited it to 189.84MB, which would run on any computer worth running it on.  By doing this and including integrated shadows as opposed to accurate visibility shadows, this second technique can render many more shadows at comparable or even better FPS than the first technique.  It also maintains better performance when scene complexity rise getting a respectable 30 FPS with 120 indirect shadows for a scene with 65542 triangles.
+With the goal of scalability in mind in terms of portability to different kinds of machines with drastically different computing capabilities, Light Wave was born to allow the user to increase performance with minimal impact to quality using adjustable parameters.  However, using accurate shadows required a GPU with memory of at least 664.45MB to run full indirect shadows. Even using half the indirect shadows would require 348MB of memory.  Therefore, integrated shadows were used with GPU memory in mind and limited it to 189.84MB, which would run on any computer worth running it on.  By doing this and including integrated shadows as opposed to accurate visibility shadows, this technique can render many more shadows at comparable or even better FPS than the first technique.  It also maintains better performance when scene complexity rises getting a respectable 30 FPS with 120 indirect shadows for a scene with 65542 triangles.
 
 \section{IMAGES}
-This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen. Figures \ref{fig:defaultimage} through \ref{fig:artifacts} are rendered using first shading technique, the rest are rendered using the second shading technique.
+This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen. Figures \ref{fig:defaultimage} through \ref{fig:artifacts} are rendered using accurate shadows, the rest are rendered using integrated shadows.
 
 \begin{figure}[h!]
   \centering
@@ -568,26 +565,26 @@ This section will be used to show images captured from the real-time rendering p
         \centering
         \begin{subfigure}[b]{1.0\textwidth}
                 \includegraphics[width=\textwidth]{AltResults/oldmethod.jpg}
-                \caption{First Shading Technique - 52FPS}
+                \caption{Accurate Shadows - 52FPS}
         \end{subfigure}
         \centering
         \begin{subfigure}[b]{1.0\textwidth}
                 \includegraphics[width=\textwidth]{AltResults/10numSteps30Angle.jpg}
-                \caption{Second Shading Technique - Smoother Shadows - 47FPS (10numSteps,30DegreeAngle)}
+                \caption{Integrated Shadows - Smoother Shadows - 47FPS (10numSteps,30DegreeAngle)}
         \end{subfigure}
-        \caption{Comparison of the two different shading techniques}
+        \caption{Comparison of the two different shadowing techniques}
 \end{figure}
 
 \begin{figure}
         \centering
         \begin{subfigure}[b]{1.0\textwidth}
                 \includegraphics[width=\textwidth]{AltResults/1teapotOLD.jpg}
-                \caption{First Shading Technique}
+                \caption{Accurate Shadows}
         \end{subfigure}
         \centering
         \begin{subfigure}[b]{1.0\textwidth}
                 \includegraphics[width=\textwidth]{AltResults/1Teapot.jpg}
-                \caption{Second Shading Technique - Smoother Shadows}
+                \caption{Integrated Shadows - Smoother Shadows}
         \end{subfigure}
         \caption{1 Teapot. Scene totals: 6565 triangles and 3249 vertices}\label{fig:teapotCompare}
 \end{figure}
@@ -610,14 +607,14 @@ This section will be used to show images captured from the real-time rendering p
                 \includegraphics[width=\textwidth]{AltResults/teapotC.jpg}
                 \caption{Light is in the upper center of the scene.}
         \end{subfigure}
-        \caption{Teapots rendered using second shading technique.}
+        \caption{Teapots rendered using integrated shadows.}
 \end{figure}
 
 
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{AltResults/10teapots.jpg}
-  \caption{10 Teapots rendered using second shading technique. Scene totals: 65542 triangles and 32418 vertices}
+  \caption{10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices}
 	\label{fig:teapots}
 \end{figure}
 

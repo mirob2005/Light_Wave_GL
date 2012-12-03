@@ -39,7 +39,7 @@ Goral, C.~M., K.~E. Torrance, D.~P. Greenberg, and B.~Battaile (1984).
   et~al.}{2007}]{Havsan2007}
 Ha\v{s}an, M., F.~Pellacini, and K.~Bala (2007, July).
 \newblock Matrix row-column sampling for the many-light problem.
-\newblock {\em ACM Trans. Graph.\/}~{\em 26\/}(3).
+\newblock {\em ACM Trans. Graph.\/}~{\em 26\/}(3), 26:1--26:10.
 
 \bibitem[\protect\citeauthoryear{Immel, Cohen, and Greenberg}{Immel
   et~al.}{1986}]{Immel1986}
@@ -163,7 +163,7 @@ Ritschel, T., T.~Grosch, and H.-P. Seidel (2009).
   Jewett}{2004}]{Serway2004}
 Serway, R.~A. and J.~W. Jewett (2004).
 \newblock {\em Physics for Scientists and Engineers}, Volume~2.
-\newblock Brooks Cole.
+\newblock Salt Lake City, UT 84109-3250: Brooks Cole.
 
 \bibitem[\protect\citeauthoryear{Sloan, Govindaraju, Nowrouzezahrai, and
   Snyder}{Sloan et~al.}{2007}]{Sloan2007}
@@ -182,11 +182,13 @@ Stokes, W.~A., J.~A. Ferwerda, B.~Walter, and D.~P. Greenberg (2004).
 \newblock In {\em ACM SIGGRAPH 2004 Papers}, SIGGRAPH '04, New York, NY, USA,
   pp.\  742--749. ACM.
 
-\bibitem[\protect\citeauthoryear{Szirmay-kalos, Aszódi, Lazányi, and
+\bibitem[\protect\citeauthoryear{Szirmay-kalos, Aszodi, Lazanyi, and
   Premecz}{Szirmay-kalos et~al.}{2005}]{Kalos2005}
-Szirmay-kalos, L., B.~Aszódi, I.~Lazányi, and M.~Premecz (2005).
-\newblock Approximate ray-tracing on the gpu with distance impostors. computer
-  graphics forum (eurographics ’05.
+Szirmay-kalos, L., B.~Aszodi, I.~Lazanyi, and M.~Premecz (2005).
+\newblock Approximate ray-tracing on the gpu with distance impostors.
+\newblock In {\em Proceedings of the 16th Eurographics Workshop on Rendering},
+  EGRW '05, Aire-la-Ville, Switzerland, Switzerland, pp.\  1--10. Eurographics
+  Association.
 
 \bibitem[\protect\citeauthoryear{Wald, Benthin, and Slusallek}{Wald
   et~al.}{2003}]{Wald2003}
@@ -212,12 +214,11 @@ Walter, B., A.~Arbree, K.~Bala, and D.~P. Greenberg (2006).
   pp.\  1081--1088. ACM.
 
 \bibitem[\protect\citeauthoryear{Walter, Fernandez, Arbree, Bala, Donikian, and
-  Greenberg}{Walter et~al.}{2005}]{Walter2005}
+  Greenberg}{Walter et~al.}{2005}]{Walter2005a}
 Walter, B., S.~Fernandez, A.~Arbree, K.~Bala, M.~Donikian, and D.~P. Greenberg
-  (2005).
-\newblock Implementing lightcuts.
-\newblock In {\em ACM SIGGRAPH 2005 Sketches}, SIGGRAPH '05, New York, NY, USA.
-  ACM.
+  (2005, July).
+\newblock Lightcuts: a scalable approach to illumination.
+\newblock {\em ACM Trans. Graph.\/}~{\em 24\/}(3), 1098--1107.
 
 \bibitem[\protect\citeauthoryear{Walter, Khungurn, and Bala}{Walter
   et~al.}{2012}]{Walter2012}
