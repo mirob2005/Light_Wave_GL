@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  2 DEC 2012 12:54
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  2 DEC 2012 18:08
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -46,313 +46,71 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 Using Chicago Manual of Style bibliography: 31 August 1992
 \bibhang=\skip43
 \bibindent=\dimen103
-) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\breqn.sty"
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\expl3.sty"
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3names.sty"
-Package: l3names 2011/01/08 v2122 L3 Experimental Naming Scheme for TeX Primiti
-ves
-)
-Package: expl3 2011/04/09 v2222 L3 Experimental code bundle wrapper
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip44
 
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\etex.sty"
-Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count91
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3basics.sty"
-Package: l3basics 2011/04/23 v2246 L3 Experimental basic definitions
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3expan.sty"
-Package: l3expan 2011/04/09 v2223 L3 Experimental Argument Expansion module
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3tl.sty"
-Package: l3tl 2011/04/09 v2223 L3 Experimental Token Lists
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3int.sty"
-Package: l3int 2011/04/11 v2229 L3 Experimental Integer module
-\l_tmpa_int=\count92
-\l_tmpb_int=\count93
-\l_tmpc_int=\count94
-\g_tmpa_int=\count95
-\g_tmpb_int=\count96
-\c_max_int=\count97
-\g_tl_inline_level_int=\count98
-\g_prg_inline_level_int=\count99
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3quark.sty"
-Package: l3quark 2011/04/14 v2234 L3 Experimental Quark Commands
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3seq.sty"
-Package: l3seq 2011/04/21 v2245 The LaTeX3 kernel: sequences and stacks
-\g_seq_nesting_depth_int=\count100
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3toks.sty"
-Package: l3toks 2011/04/09 v2223 L3 Experimental Token Registers
-\l_tmpb_toks=\toks14
-\l_tmpc_toks=\toks15
-\g_tmpa_toks=\toks16
-\g_tmpb_toks=\toks17
-\g_tmpc_toks=\toks18
-\c_empty_toks=\toks19
-\l_tl_replace_toks=\toks20
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3prg.sty"
-Package: l3prg 2011/04/09 v2223 L3 Experimental control structures
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3clist.sty"
-Package: l3clist 2011/04/09 v2223 L3 Experimental comma separated lists
-\g_clist_map_inline_int=\count101
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3token.sty"
-Package: l3token 2011/04/09 v2223 L3 Experimental token investigation and manip
-ulation
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3prop.sty"
-Package: l3prop 2011/04/09 v2223 L3 Experimental Property Lists
-\g_prop_inline_level_int=\count102
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3msg.sty"
-Package: l3msg 2010/10/02 v2052 L3 Experimental LaTeX Messages module
-\l_msg_redirect_classes_prop=\toks21
-\l_msg_redirect_names_prop=\toks22
-\l_msg_redirect_fatal_prop=\toks23
-\l_msg_redirect_error_prop=\toks24
-\l_msg_redirect_warning_prop=\toks25
-\l_msg_redirect_info_prop=\toks26
-\l_msg_redirect_log_prop=\toks27
-\l_msg_redirect_trace_prop=\toks28
-\l_msg_redirect_none_prop=\toks29
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3io.sty"
-Package: l3io 2010/10/03 v2063 L3 Experimental i/o module
-\g_iow_streams_prop=\toks30
-\g_ior_streams_prop=\toks31
-\l_iow_stream_int=\count103
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3skip.sty"
-Package: l3skip 2011/02/15 v2149 L3 Experimental skip registers
-\l_tmpa_skip=\skip44
-\l_tmpb_skip=\skip45
-\l_tmpc_skip=\skip46
-\g_tmpa_skip=\skip47
-\g_tmpb_skip=\skip48
-\l_tmpa_dim=\dimen104
-\l_tmpb_dim=\dimen105
-\l_tmpc_dim=\dimen106
-\l_tmpd_dim=\dimen107
-\g_tmpa_dim=\dimen108
-\g_tmpb_dim=\dimen109
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3box.sty"
-Package: l3box 2011/04/09 v2223 L3 Experimental Box module
-\l_tmpb_box=\box29
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3keyval.sty"
-Package: l3keyval 2011/04/09 v2223 L3 Experimental keyval processing
-\l_KV_level_int=\count104
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3keys.sty"
-Package: l3keys 2010/11/11 v2082 L3 Experimental key-value support
-\l_keys_choice_int=\count105
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3precom.sty"
-Package: l3precom 2011/04/09 v2223 L3 Experimental precompilation module
-\g_gen_sym_int=\count106
-\g_ggen_sym_int=\count107
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3xref.sty"
-Package: l3xref 2011/04/09 v2223 L3 Experimental cross referencing
-\g_xref_all_curr_immediate_fields_prop=\toks32
-\g_xref_all_curr_deferred_fields_prop=\toks33
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3file.sty"
-Package: l3file 2011/04/21 v2242 The LaTeX3 kernel: file operations
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3fp.sty"
-Package: l3fp 2011/03/19 v2201 L3 Experimental floating-point operations
-\c_one_million=\count108
-\c_one_hundred_million=\count109
-\c_five_hundred_million=\count110
-\c_one_thousand_million=\count111
-\c_fp_pi_by_four_decimal_int=\count112
-\c_fp_pi_by_four_extended_int=\count113
-\c_fp_pi_decimal_int=\count114
-\c_fp_pi_extended_int=\count115
-\c_fp_two_pi_decimal_int=\count116
-\c_fp_two_pi_extended_int=\count117
-\l_fp_count_int=\count118
-\l_fp_div_offset_int=\count119
-\l_fp_exp_integer_int=\count120
-\l_fp_exp_decimal_int=\count121
-\l_fp_exp_extended_int=\count122
-\l_fp_exp_exponent_int=\count123
-\l_fp_input_a_sign_int=\count124
-\l_fp_input_a_integer_int=\count125
-\l_fp_input_a_decimal_int=\count126
-\l_fp_input_a_exponent_int=\count127
-\l_fp_input_b_sign_int=\count128
-\l_fp_input_b_integer_int=\count129
-\l_fp_input_b_decimal_int=\count130
-\l_fp_input_b_exponent_int=\count131
-\l_fp_input_a_extended_int=\count132
-\l_fp_input_b_extended_int=\count133
-\l_fp_mul_a_i_int=\count134
-\l_fp_mul_a_ii_int=\count135
-\l_fp_mul_a_iii_int=\count136
-\l_fp_mul_a_iv_int=\count137
-\l_fp_mul_a_v_int=\count138
-\l_fp_mul_a_vi_int=\count139
-\l_fp_mul_b_i_int=\count140
-\l_fp_mul_b_ii_int=\count141
-\l_fp_mul_b_iii_int=\count142
-\l_fp_mul_b_iv_int=\count143
-\l_fp_mul_b_v_int=\count144
-\l_fp_mul_b_vi_int=\count145
-\l_fp_mul_output_int=\count146
-\l_fp_output_sign_int=\count147
-\l_fp_output_integer_int=\count148
-\l_fp_output_decimal_int=\count149
-\l_fp_output_exponent_int=\count150
-\l_fp_output_extended_int=\count151
-\l_fp_round_position_int=\count152
-\l_fp_round_target_int=\count153
-\l_fp_split_sign_int=\count154
-\l_fp_tmp_int=\count155
-\l_fp_trig_octant_int=\count156
-\l_fp_trig_sign_int=\count157
-\l_fp_trig_decimal_int=\count158
-\l_fp_trig_extended_int=\count159
-\l_fp_tmp_dim=\dimen110
-\l_fp_tmp_skip=\skip49
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\expl3\l3luatex.sty"
-Package: l3luatex 2010/07/18 v1985 L3 Experimental LuaTeX functions
-\g_cctab_allocate_int=\count160
-\g_cctab_stack_int=\count161
-)
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count162
-\calc@Bcount=\count163
-\calc@Adimen=\dimen111
-\calc@Bdimen=\dimen112
-\calc@Askip=\skip50
-\calc@Bskip=\skip51
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count164
-\calc@Cskip=\skip52
+For additional information on amsmath, use the `?' option.
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen104
 ))
-Package: breqn 2009/08/07 v0.98a Breaking equations
-
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\flexisym.sty"
-Package: flexisym 2010/09/17 v0.97b Make math characters macros
-LaTeX Info: Redefining \textprime on input line 296.
-LaTeX Info: Redefining \not on input line 354.
-
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\cmbase.sym"
-File: cmbase.sym 2007/12/19 v0.92
-LaTeX Info: Redefining \hbar on input line 323.
-LaTeX Info: Redefining \surd on input line 325.
-LaTeX Info: Redefining \angle on input line 333.
-LaTeX Info: Redefining \neq on input line 334.
-LaTeX Info: Redefining \mapsto on input line 335.
-LaTeX Info: Redefining \cong on input line 336.
-LaTeX Info: Redefining \notin on input line 339.
-LaTeX Info: Redefining \rightleftharpoons on input line 340.
-LaTeX Info: Redefining \doteq on input line 341.
-LaTeX Info: Redefining \hookrightarrow on input line 342.
-LaTeX Info: Redefining \hookleftarrow on input line 343.
-LaTeX Info: Redefining \bowtie on input line 344.
-LaTeX Info: Redefining \models on input line 345.
-LaTeX Info: Redefining \Longrightarrow on input line 346.
-LaTeX Info: Redefining \longrightarrow on input line 347.
-LaTeX Info: Redefining \Longleftarrow on input line 348.
-LaTeX Info: Redefining \longleftarrow on input line 349.
-LaTeX Info: Redefining \longmapsto on input line 350.
-LaTeX Info: Redefining \longleftrightarrow on input line 351.
-LaTeX Info: Redefining \Longleftrightarrow on input line 352.
-LaTeX Info: Redefining \cdots on input line 356.
-LaTeX Info: Redefining \vdots on input line 359.
-LaTeX Info: Redefining \ddots on input line 364.
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen105
 )
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\mh\mathstyle.sty"
-Package: mathstyle 2010/11/17 v0.89
-LaTeX Info: Redefining \displaystyle on input line 77.
-LaTeX Info: Redefining \textstyle on input line 79.
-LaTeX Info: Redefining \scriptstyle on input line 81.
-LaTeX Info: Redefining \scriptscriptstyle on input line 83.
-))
-("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks34
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
 )
-\@emptytoks=\toks35
-\inf@bad=\count165
-\maxint=\count166
-\listwidth=\dimen113
-\eqnumsep=\dimen114
-\eqmargin=\dimen115
-\eqlinespacing=\skip53
-\eqlineskip=\skip54
-\eqlineskiplimit=\dimen116
-\eqbinoffset=\muskip10
-\eqdelimoffset=\muskip11
-\eqindentstep=\dimen117
-\eqstyle=\toks36
-\eqbreakdepth=\count167
-\eqinterlinepenalty=\count168
-\intereqpenalty=\count169
-\intereqskip=\skip55
-\prerelpenalty=\count170
-\prebinoppenalty=\count171
-\Dmedmuskip=\muskip12
-\Dthickmuskip=\muskip13
-\eqleftskip=\skip56
-\eqrightskip=\skip57
-\eq@vspan=\skip58
-\eq@binoffset=\muskip14
-\EQ@box=\box30
-\EQ@copy=\box31
-\EQ@numbox=\box32
-\eq@wdNum=\dimen118
-\GRP@numbox=\box33
-\grp@wdNum=\dimen119
-\eq@lines=\count172
-\eq@curline=\count173
-\eq@badness=\count174
-\EQ@vims=\count175
-\eq@dp=\dimen120
-\eq@wdL=\dimen121
-\eq@wdT=\dimen122
-\eq@wdMin=\dimen123
-\grp@wdL=\dimen124
-\grp@wdR=\dimen125
-\grp@wdT=\dimen126
-\eq@wdRmax=\dimen127
-\eq@firstht=\dimen128
-\eq@wdCond=\dimen129
-\eq@indentstep=\dimen130
-\eq@linewidth=\dimen131
-\grp@linewidth=\dimen132
-\eq@hshift=\dimen133
-\eq@given@sidespace=\dimen134
-\mathindent=\dimen135
-\eq@final@linecount=\count176
-\eq@wdR=\dimen136
-\EQ@continue=\toks37
-\lr@level=\count177
-\GRP@queue=\toks38
-\c@parentequation=\count178
-\GRP@box=\box34
-\GRP@wholebox=\box35
-\darraycolsep=\skip59
-\cur@row=\count179
-\cur@col=\count180
-\conditionsep=\skip60
+\inf@bad=\count91
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count92
+\leftroot@=\count93
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count94
+\DOTSCASE@=\count95
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box29
+\strutbox@=\box30
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
+\dotsspace@=\muskip10
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
+\tag@help=\toks15
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
+\andhelp@=\toks16
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks17
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
@@ -373,22 +131,22 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count181
+\Gread@gobject=\count103
 ))
-\Gin@req@height=\dimen137
-\Gin@req@width=\dimen138
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2010/01/09 v3.1m Customizing captions (AR)
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
-\captionmargin=\dimen139
-\captionmargin@=\dimen140
-\captionwidth=\dimen141
-\caption@indent=\dimen142
-\caption@parindent=\dimen143
-\caption@hangindent=\dimen144
+\captionmargin=\dimen115
+\captionmargin@=\dimen116
+\captionwidth=\dimen117
+\caption@indent=\dimen118
+\caption@parindent=\dimen119
+\caption@hangindent=\dimen120
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used on input line 1084.
 )
@@ -400,15 +158,15 @@ See the caption package documentation for explanation.
 Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
 tempboxa \hbox {{\bf #1} #2} \ifdim \wd \@tempboxa >\hsize #1 #2\par \else \hbo
 x to\hsize {\hfil \box \@tempboxa \hfil } \fi .
-\c@ContinuedFloat=\count182
+\c@ContinuedFloat=\count104
 ) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
 Package: subcaption 2008/08/31 v1.0b Adding subcaptions (AR)
-\c@subfigure=\count183
-\c@subtable=\count184
+\c@subfigure=\count105
+\c@subtable=\count106
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
 Package: algorithm2e 2008/00/00 v3.10 algorithms environments
-\c@AlgoLine=\count185
+\c@AlgoLine=\count107
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -426,55 +184,55 @@ Package `algorithm2e' Release 4.01 -- december 14 2009 --
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 - Author: Christophe Fiorio (fiorio@lirmm.fr)
 ********************************************************
-\skiptotal=\skip61
-\skiplinenumber=\skip62
-\skiprule=\skip63
-\skiphlne=\skip64
-\skiptext=\skip65
-\skiplength=\skip66
-\algomargin=\skip67
-\skipalgocfslide=\skip68
-\algowidth=\dimen145
-\inoutsize=\dimen146
-\inoutline=\dimen147
-\interspacetitleruled=\dimen148
-\interspacealgoruled=\dimen149
-\interspacetitleboxruled=\dimen150
-\algocf@inoutbox=\box36
-\algocf@inputbox=\box37
-\AlCapSkip=\skip69
-\AlCapHSkip=\skip70
-\algocf@nlbox=\box38
-\algocf@hangingbox=\box39
-\algocf@capbox=\box40
-\algoheightruledefault=\skip71
-\algoheightrule=\skip72
-\algotitleheightruledefault=\skip73
-\algotitleheightrule=\skip74
-\c@algocfline=\count186
-\c@algocfproc=\count187
-\c@algocf=\count188
-\algocf@algoframe=\box41
-\algocf@algobox=\box42
+\skiptotal=\skip47
+\skiplinenumber=\skip48
+\skiprule=\skip49
+\skiphlne=\skip50
+\skiptext=\skip51
+\skiplength=\skip52
+\algomargin=\skip53
+\skipalgocfslide=\skip54
+\algowidth=\dimen121
+\inoutsize=\dimen122
+\inoutline=\dimen123
+\interspacetitleruled=\dimen124
+\interspacealgoruled=\dimen125
+\interspacetitleboxruled=\dimen126
+\algocf@inoutbox=\box31
+\algocf@inputbox=\box32
+\AlCapSkip=\skip55
+\AlCapHSkip=\skip56
+\algocf@nlbox=\box33
+\algocf@hangingbox=\box34
+\algocf@capbox=\box35
+\algoheightruledefault=\skip57
+\algoheightrule=\skip58
+\algotitleheightruledefault=\skip59
+\algotitleheightrule=\skip60
+\c@algocfline=\count108
+\c@algocfproc=\count109
+\c@algocf=\count110
+\algocf@algoframe=\box36
+\algocf@algobox=\box37
 ) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count189
-\lst@gtempboxa=\box43
-\lst@token=\toks39
-\lst@length=\count190
-\lst@currlwidth=\dimen151
-\lst@column=\count191
-\lst@pos=\count192
-\lst@lostspace=\dimen152
-\lst@width=\dimen153
-\lst@newlines=\count193
-\lst@lineno=\count194
-\lst@maxwidth=\dimen154
+\lst@mode=\count111
+\lst@gtempboxa=\box38
+\lst@token=\toks20
+\lst@length=\count112
+\lst@currlwidth=\dimen127
+\lst@column=\count113
+\lst@pos=\count114
+\lst@lostspace=\dimen128
+\lst@width=\dimen129
+\lst@newlines=\count115
+\lst@lineno=\count116
+\lst@maxwidth=\dimen130
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count195
-\lst@skipnumbers=\count196
-\lst@framebox=\box44
+\c@lstnumber=\count117
+\lst@skipnumbers=\count118
+\lst@framebox=\box39
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2007/02/22 1.4 listings configuration
@@ -493,14 +251,14 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
 This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read1
-\epsfframemargin=\dimen155
-\epsfframethickness=\dimen156
-\epsfrsize=\dimen157
-\epsftmp=\dimen158
-\epsftsize=\dimen159
-\epsfxsize=\dimen160
-\epsfysize=\dimen161
-\pspoints=\dimen162
+\epsfframemargin=\dimen131
+\epsfframethickness=\dimen132
+\epsfrsize=\dimen133
+\epsftmp=\dimen134
+\epsftsize=\dimen135
+\epsfxsize=\dimen136
+\epsfysize=\dimen137
+\pspoints=\dimen138
 ) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
@@ -524,28 +282,21 @@ LaTeX Font Info:    ... okay on input line 80.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count197
-\scratchdimen=\dimen163
-\scratchbox=\box45
-\nofMPsegments=\count198
-\nofMParguments=\count199
-\everyMPshowfont=\toks40
-\MPscratchCnt=\count200
-\MPscratchDim=\dimen164
-\MPnumerator=\count201
-\everyMPtoPDFconversion=\toks41
+\scratchcounter=\count119
+\scratchdimen=\dimen139
+\scratchbox=\box40
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen140
+\MPnumerator=\count123
+\everyMPtoPDFconversion=\toks22
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Normal \count register pool exhausted, switching to extended pool.
-\c@lstlisting=\count277
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 84.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 84.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 84.
+\c@lstlisting=\count124
 
 Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
 [][] 
@@ -755,14 +506,14 @@ Missing character: There is no ù in font cmr12!
 <lightTree.jpg, id=92, 723.70375pt x 211.79124pt>
 File: lightTree.jpg Graphic file (type jpg)
  <use lightTree.jpg>
-Package pdftex.def Info: lightTree.jpg used on input line 201.
+Package pdftex.def Info: lightTree.jpg used on input line 204.
 (pdftex.def)             Requested size: 430.00627pt x 125.84122pt.
  [17 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/lightTree.jpg>]
 <matrixSampling.jpg, id=96, 1580.90625pt x 454.69875pt>
 File: matrixSampling.jpg Graphic file (type jpg)
 
 <use matrixSampling.jpg>
-Package pdftex.def Info: matrixSampling.jpg used on input line 212.
+Package pdftex.def Info: matrixSampling.jpg used on input line 215.
 (pdftex.def)             Requested size: 430.00627pt x 123.67918pt.
 
 
@@ -771,61 +522,65 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [18] <shadowMap1.jpg, id=101, 297.11pt x 294.09875pt>
 File: shadowMap1.jpg Graphic file (type jpg)
  <use shadowMap1.jpg>
-Package pdftex.def Info: shadowMap1.jpg used on input line 223.
+Package pdftex.def Info: shadowMap1.jpg used on input line 226.
 (pdftex.def)             Requested size: 215.00313pt x 212.83243pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 <shadowMap2.jpg, id=102, 284.06125pt x 295.1025pt>
 File: shadowMap2.jpg Graphic file (type jpg)
  <use shadowMap2.jpg>
-Package pdftex.def Info: shadowMap2.jpg used on input line 230.
+Package pdftex.def Info: shadowMap2.jpg used on input line 233.
 (pdftex.def)             Requested size: 215.00313pt x 223.37062pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/matrixSampling.jpg> <D:/_Progr
-amming/Light_Wave_GL/THESIS-DRAFTS/shadowMap1.jpg>] [20 <D:/_Programming/Light_
-Wave_GL/THESIS-DRAFTS/shadowMap2.jpg>]
-<singularity.jpg, id=109, 663.47874pt x 661.47125pt>
+[19 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/matrixSampling.jpg>]
+<singularity.jpg, id=106, 663.47874pt x 661.47125pt>
 File: singularity.jpg Graphic file (type jpg)
  <use singularity.jpg>
-Package pdftex.def Info: singularity.jpg used on input line 241.
+Package pdftex.def Info: singularity.jpg used on input line 244.
 (pdftex.def)             Requested size: 215.00313pt x 214.34982pt.
 
-<vrl.jpg, id=110, 785.93625pt x 492.84125pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<vrl.jpg, id=107, 785.93625pt x 492.84125pt>
 File: vrl.jpg Graphic file (type jpg)
  <use vrl.jpg>
-Package pdftex.def Info: vrl.jpg used on input line 248.
+Package pdftex.def Info: vrl.jpg used on input line 251.
 (pdftex.def)             Requested size: 430.00627pt x 269.64972pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Missing character: There is no Û in font cmr12!
-Missing character: There is no · in font cmr12!
-[21 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/singularity.jpg>] [22 <D:/_Pro
-gramming/Light_Wave_GL/THESIS-DRAFTS/vrl.jpg>] [23]
+[20 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/shadowMap1.jpg>] [21 <D:/_Prog
+ramming/Light_Wave_GL/THESIS-DRAFTS/shadowMap2.jpg>] [22 <D:/_Programming/Light
+_Wave_GL/THESIS-DRAFTS/singularity.jpg>] [23 <D:/_Programming/Light_Wave_GL/THE
+SIS-DRAFTS/vrl.jpg>]
 File: shadowMap1.jpg Graphic file (type jpg)
  <use shadowMap1.jpg>
-Package pdftex.def Info: shadowMap1.jpg used on input line 276.
+Package pdftex.def Info: shadowMap1.jpg used on input line 279.
 (pdftex.def)             Requested size: 171.99988pt x 170.26326pt.
 
 <RSM1.jpg, id=120, 293.095pt x 288.07625pt>
 File: RSM1.jpg Graphic file (type jpg)
  <use RSM1.jpg>
-Package pdftex.def Info: RSM1.jpg used on input line 282.
+Package pdftex.def Info: RSM1.jpg used on input line 285.
 (pdftex.def)             Requested size: 171.99988pt x 169.05359pt.
 
 <RSM2.jpg, id=121, 289.08pt x 292.09125pt>
 File: RSM2.jpg Graphic file (type jpg)
  <use RSM2.jpg>
-Package pdftex.def Info: RSM2.jpg used on input line 288.
+Package pdftex.def Info: RSM2.jpg used on input line 291.
 (pdftex.def)             Requested size: 171.99988pt x 173.78975pt.
 
 <RSM3.jpg, id=122, 291.0875pt x 293.095pt>
 File: RSM3.jpg Graphic file (type jpg)
  <use RSM3.jpg>
-Package pdftex.def Info: RSM3.jpg used on input line 294.
+Package pdftex.def Info: RSM3.jpg used on input line 297.
 (pdftex.def)             Requested size: 171.99988pt x 173.1884pt.
  [24] [25 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/RSM1.jpg> <D:/_Programmi
 ng/Light_Wave_GL/THESIS-DRAFTS/RSM2.jpg> <D:/_Programming/Light_Wave_GL/THESIS-
@@ -833,58 +588,22 @@ DRAFTS/RSM3.jpg>]
 <RSMcalc.jpg, id=131, 757.83125pt x 320.19624pt>
 File: RSMcalc.jpg Graphic file (type jpg)
  <use RSMcalc.jpg>
-Package pdftex.def Info: RSMcalc.jpg used on input line 314.
+Package pdftex.def Info: RSMcalc.jpg used on input line 317.
 (pdftex.def)             Requested size: 430.00627pt x 181.68805pt.
- [26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/RSMcalc.jpg>]
-<ISMcompare.jpg, id=135, 744.7825pt x 319.1925pt>
+ [26 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/RSMcalc.jpg>] [27]
+<ISMcompare.jpg, id=138, 744.7825pt x 319.1925pt>
 File: ISMcompare.jpg Graphic file (type jpg)
  <use ISMcompare.jpg>
-Package pdftex.def Info: ISMcompare.jpg used on input line 330.
+Package pdftex.def Info: ISMcompare.jpg used on input line 333.
 (pdftex.def)             Requested size: 430.00627pt x 184.29405pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[27] [28 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/ISMcompare.jpg>])
-[29] [30] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
+ [28 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/ISMcompare.jpg>]) [29] [30]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
 [31
 
 
 
-]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
- [32]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
- [33] [34] <Figure31.jpg, id=161, 460.34167pt x 416.00798pt>
+] [32] [33] [34] <Figure31.jpg, id=161, 460.34167pt x 416.00798pt>
 File: Figure31.jpg Graphic file (type jpg)
 
 <use Figure31.jpg>
@@ -930,12 +649,6 @@ Package pdftex.def Info: Figure35.jpg used on input line 71.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ú in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ù in font cmr12!
 [36 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>] [37 <D:/_Progra
 mming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
 <Figure36.jpg, id=176, 268.43143pt x 185.22983pt>
@@ -998,38 +711,11 @@ CHAPTER 4.
 
 ]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 20.
-
-Overfull \hbox (23.32845pt too wide) in paragraph at lines 20--21
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (23.32845pt too wide) in paragraph at lines 21--22
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (23.32845pt too wide) in paragraph at lines 22--23
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (23.32845pt too wide) in paragraph at lines 23--24
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[46] [47]
-Overfull \hbox (10.18831pt too wide) in paragraph at lines 71--72
-[][][][][][][][][][][][][][] 
- []
-
-[48] [49] [50] [51] [52] [53] [54] [55]) [56]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 22.
+ [46] [47] [48] [49] [50] [51] [52] [53] [54] [55]) [56] [57]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
 CHAPTER 5.
-[57
+[58
 
 
 
@@ -1040,42 +726,38 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[58] [59] [60] [61]
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 129--138
+[59] [60] [61] [62]
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 128--137
  [] 
  []
 
 
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 145--155
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 144--154
  [] 
  []
 
 
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 162--172
- [] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 179--189
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 160--170
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[62] [63] [64] [65] [66] [67]
-Overfull \hbox (23.88976pt too wide) in paragraph at lines 255--268
+
+Overfull \hbox (5.97621pt too wide) in paragraph at lines 177--187
  [] 
  []
 
-[68] [69] [70]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[71]
+[63] [64] [65] [66] [67] [68]
+Overfull \hbox (23.88976pt too wide) in paragraph at lines 252--265
+ [] 
+ []
+
+[69] [70] [71]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1083,222 +765,222 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[73] [74] <sample1.jpg, id=299, 1284.8pt x 722.7pt>
+[73]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[74] [75] <sample1.jpg, id=302, 1284.8pt x 722.7pt>
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
-Package pdftex.def Info: sample1.jpg used on input line 436.
+Package pdftex.def Info: sample1.jpg used on input line 433.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<sample2.jpg, id=300, 1284.8pt x 722.7pt>
+<sample2.jpg, id=303, 1284.8pt x 722.7pt>
 File: sample2.jpg Graphic file (type jpg)
  <use sample2.jpg>
-Package pdftex.def Info: sample2.jpg used on input line 445.
+Package pdftex.def Info: sample2.jpg used on input line 442.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample3.jpg, id=301, 1284.8pt x 722.7pt>
+<sample3.jpg, id=304, 1284.8pt x 722.7pt>
 File: sample3.jpg Graphic file (type jpg)
  <use sample3.jpg>
-Package pdftex.def Info: sample3.jpg used on input line 451.
+Package pdftex.def Info: sample3.jpg used on input line 448.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample4.jpg, id=302, 1284.8pt x 722.7pt>
+<sample4.jpg, id=305, 1284.8pt x 722.7pt>
 File: sample4.jpg Graphic file (type jpg)
  <use sample4.jpg>
-Package pdftex.def Info: sample4.jpg used on input line 457.
+Package pdftex.def Info: sample4.jpg used on input line 454.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<sample5.jpg, id=303, 1284.8pt x 722.7pt>
+<sample5.jpg, id=306, 1284.8pt x 722.7pt>
 File: sample5.jpg Graphic file (type jpg)
  <use sample5.jpg>
-Package pdftex.def Info: sample5.jpg used on input line 463.
+Package pdftex.def Info: sample5.jpg used on input line 460.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
 
-LaTeX Warning: Float too large for page by 36.39482pt on input line 469.
+LaTeX Warning: Float too large for page by 36.39482pt on input line 466.
 
-<direct_only.jpg, id=304, 1284.8pt x 722.7pt>
+<direct_only.jpg, id=307, 1284.8pt x 722.7pt>
 File: direct_only.jpg Graphic file (type jpg)
  <use direct_only.jpg>
-Package pdftex.def Info: direct_only.jpg used on input line 474.
+Package pdftex.def Info: direct_only.jpg used on input line 471.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<indirect_only.jpg, id=305, 1284.8pt x 722.7pt>
+<indirect_only.jpg, id=308, 1284.8pt x 722.7pt>
 File: indirect_only.jpg Graphic file (type jpg)
  <use indirect_only.jpg>
-Package pdftex.def Info: indirect_only.jpg used on input line 484.
+Package pdftex.def Info: indirect_only.jpg used on input line 481.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<indirect_only_shadows.jpg, id=306, 1284.8pt x 722.7pt>
+<indirect_only_shadows.jpg, id=309, 1284.8pt x 722.7pt>
 File: indirect_only_shadows.jpg Graphic file (type jpg)
 
 <use indirect_only_shadows.jpg>
-Package pdftex.def Info: indirect_only_shadows.jpg used on input line 490.
+Package pdftex.def Info: indirect_only_shadows.jpg used on input line 487.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
- <23.jpg, id=307, 1284.8pt x 722.7pt>
+ <23.jpg, id=310, 1284.8pt x 722.7pt>
 File: 23.jpg Graphic file (type jpg)
 
 <use 23.jpg>
-Package pdftex.def Info: 23.jpg used on input line 502.
+Package pdftex.def Info: 23.jpg used on input line 499.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
- <19.jpg, id=308, 1284.8pt x 722.7pt>
+ <19.jpg, id=311, 1284.8pt x 722.7pt>
 File: 19.jpg Graphic file (type jpg)
  <use 19.jpg>
-Package pdftex.def Info: 19.jpg used on input line 508.
+Package pdftex.def Info: 19.jpg used on input line 505.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
 
-<20.jpg, id=309, 1284.8pt x 722.7pt>
+<20.jpg, id=312, 1284.8pt x 722.7pt>
 File: 20.jpg Graphic file (type jpg)
  <use 20.jpg>
-Package pdftex.def Info: 20.jpg used on input line 514.
+Package pdftex.def Info: 20.jpg used on input line 511.
 (pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
 
 
-LaTeX Warning: Float too large for page by 62.64757pt on input line 520.
+LaTeX Warning: Float too large for page by 62.64757pt on input line 517.
 
-<direct_only_fake_1_3.jpg, id=310, 1284.8pt x 722.7pt>
+<direct_only_fake_1_3.jpg, id=313, 1284.8pt x 722.7pt>
 File: direct_only_fake_1_3.jpg Graphic file (type jpg)
 
 <use direct_only_fake_1_3.jpg>
-Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 525.
+Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 522.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<3.jpg, id=311, 1284.8pt x 722.7pt>
+<3.jpg, id=314, 1284.8pt x 722.7pt>
 File: 3.jpg Graphic file (type jpg)
  <use 3.jpg>
-Package pdftex.def Info: 3.jpg used on input line 535.
+Package pdftex.def Info: 3.jpg used on input line 532.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<7.jpg, id=312, 1284.8pt x 722.7pt>
+<7.jpg, id=315, 1284.8pt x 722.7pt>
 File: 7.jpg Graphic file (type jpg)
  <use 7.jpg>
-Package pdftex.def Info: 7.jpg used on input line 541.
+Package pdftex.def Info: 7.jpg used on input line 538.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
-Package pdftex.def Info: sample1.jpg used on input line 553.
+Package pdftex.def Info: sample1.jpg used on input line 550.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<17_resize.jpg, id=313, 1284.8pt x 722.7pt>
+<17_resize.jpg, id=316, 1284.8pt x 722.7pt>
 File: 17_resize.jpg Graphic file (type jpg)
  <use 17_resize.jpg>
-Package pdftex.def Info: 17_resize.jpg used on input line 559.
+Package pdftex.def Info: 17_resize.jpg used on input line 556.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/oldmethod.jpg, id=314, 1284.8pt x 722.7pt>
+<AltResults/oldmethod.jpg, id=317, 1284.8pt x 722.7pt>
 File: AltResults/oldmethod.jpg Graphic file (type jpg)
 
 <use AltResults/oldmethod.jpg>
-Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 570.
+Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 567.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/10numSteps30Angle.jpg, id=315, 1284.8pt x 722.7pt>
+<AltResults/10numSteps30Angle.jpg, id=318, 1284.8pt x 722.7pt>
 File: AltResults/10numSteps30Angle.jpg Graphic file (type jpg)
 
 <use AltResults/10numSteps30Angle.jpg>
 Package pdftex.def Info: AltResults/10numSteps30Angle.jpg used on input line 57
-5.
+2.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/1teapotOLD.jpg, id=316, 1284.8pt x 722.7pt>
+<AltResults/1teapotOLD.jpg, id=319, 1284.8pt x 722.7pt>
 File: AltResults/1teapotOLD.jpg Graphic file (type jpg)
 
 <use AltResults/1teapotOLD.jpg>
-Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 584.
+Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 581.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/1Teapot.jpg, id=317, 1284.8pt x 722.7pt>
+<AltResults/1Teapot.jpg, id=320, 1284.8pt x 722.7pt>
 File: AltResults/1Teapot.jpg Graphic file (type jpg)
 
 <use AltResults/1Teapot.jpg>
-Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 589.
+Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 586.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/teapotFL.jpg, id=318, 1284.8pt x 722.7pt>
+<AltResults/teapotFL.jpg, id=321, 1284.8pt x 722.7pt>
 File: AltResults/teapotFL.jpg Graphic file (type jpg)
 
 <use AltResults/teapotFL.jpg>
-Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 598.
+Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 595.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotFR.jpg, id=319, 1284.8pt x 722.7pt>
+<AltResults/teapotFR.jpg, id=322, 1284.8pt x 722.7pt>
 File: AltResults/teapotFR.jpg Graphic file (type jpg)
 
 <use AltResults/teapotFR.jpg>
-Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 602.
+Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 599.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotNR.jpg, id=320, 1284.8pt x 722.7pt>
+<AltResults/teapotNR.jpg, id=323, 1284.8pt x 722.7pt>
 File: AltResults/teapotNR.jpg Graphic file (type jpg)
 
 <use AltResults/teapotNR.jpg>
-Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 606.
+Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 603.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotC.jpg, id=321, 1284.8pt x 722.7pt>
+<AltResults/teapotC.jpg, id=324, 1284.8pt x 722.7pt>
 File: AltResults/teapotC.jpg Graphic file (type jpg)
 
 <use AltResults/teapotC.jpg>
-Package pdftex.def Info: AltResults/teapotC.jpg used on input line 610.
+Package pdftex.def Info: AltResults/teapotC.jpg used on input line 607.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
 
-LaTeX Warning: Float too large for page by 36.39482pt on input line 614.
+LaTeX Warning: Float too large for page by 36.39482pt on input line 611.
 
-<AltResults/10teapots.jpg, id=322, 1284.8pt x 722.7pt>
+<AltResults/10teapots.jpg, id=325, 1284.8pt x 722.7pt>
 File: AltResults/10teapots.jpg Graphic file (type jpg)
 
 <use AltResults/10teapots.jpg>
-Package pdftex.def Info: AltResults/10teapots.jpg used on input line 619.
+Package pdftex.def Info: AltResults/10teapots.jpg used on input line 616.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [75] [76 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [77 <D:/_
+) [76] [77 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [78 <D:/_
 Programming/Light_Wave_GL/THESIS-DRAFTS/sample2.jpg> <D:/_Programming/Light_Wav
 e_GL/THESIS-DRAFTS/sample3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sa
-mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [78 <D:/_
-Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [79 <D:/_Programming/
+mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [79 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [80 <D:/_Programming/
 Light_Wave_GL/THESIS-DRAFTS/indirect_only.jpg> <D:/_Programming/Light_Wave_GL/T
-HESIS-DRAFTS/indirect_only_shadows.jpg>] [80 <D:/_Programming/Light_Wave_GL/THE
+HESIS-DRAFTS/indirect_only_shadows.jpg>] [81 <D:/_Programming/Light_Wave_GL/THE
 SIS-DRAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg> <D:/_Pr
-ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [81 <D:/_Programming/Light_Wave_
-GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [82 <D:/_Programming/Light_Wave_GL/
+ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [82 <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [83 <D:/_Programming/Light_Wave_GL/
 THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>]
-[83 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>] [84 <D:/_Progr
+[84 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>] [85 <D:/_Progr
 amming/Light_Wave_GL/THESIS-DRAFTS/AltResults/oldmethod.jpg> <D:/_Programming/L
-ight_Wave_GL/THESIS-DRAFTS/AltResults/10numSteps30Angle.jpg>] [85 <D:/_Programm
+ight_Wave_GL/THESIS-DRAFTS/AltResults/10numSteps30Angle.jpg>] [86 <D:/_Programm
 ing/Light_Wave_GL/THESIS-DRAFTS/AltResults/1teapotOLD.jpg> <D:/_Programming/Lig
-ht_Wave_GL/THESIS-DRAFTS/AltResults/1Teapot.jpg>] [86 <D:/_Programming/Light_Wa
+ht_Wave_GL/THESIS-DRAFTS/AltResults/1Teapot.jpg>] [87 <D:/_Programming/Light_Wa
 ve_GL/THESIS-DRAFTS/AltResults/teapotFL.jpg> <D:/_Programming/Light_Wave_GL/THE
 SIS-DRAFTS/AltResults/teapotFR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFT
 S/AltResults/teapotNR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResu
-lts/teapotC.jpg>] [87 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1
+lts/teapotC.jpg>] [88 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1
 0teapots.jpg>] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[88
+[89
 
 
 
-] [89]) [90] [91] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl
-[92
+] [90] [91]) [92] [93]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [94
 
 
-] [93] [94]
-Missing character: There is no Û in font cmr12!
-Missing character: There is no · in font cmr12!
-Missing character: There is no í in font cmr12!
- [95]) [96]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+] [95] [96] [97])
+[98] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -1307,13 +989,13 @@ Missing character: There is no í in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 10166 strings out of 494049
- 159965 string characters out of 3146068
- 253765 words of memory out of 3000000
- 13230 multiletter control sequences out of 15000+200000
- 8904 words of font info for 31 fonts, out of 3000000 for 9000
+ 6053 strings out of 494049
+ 89632 string characters out of 3146068
+ 199858 words of memory out of 3000000
+ 9193 multiletter control sequences out of 15000+200000
+ 9802 words of font info for 35 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 37i,13n,58p,2377b,1127s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,58p,2377b,1052s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x86
@@ -1326,9 +1008,9 @@ fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (103 pages, 2000294 bytes).
+Output written on thesis.pdf (105 pages, 2002399 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
+ 437 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,12 +1,16 @@
 % This file was created with JabRef 2.7.2.
 % Encoding: Cp1252
 
-@MISC{Kalos2005,
-  author = {László Szirmay-kalos and Barnabás Aszódi and István Lazányi and Mátyás
+@ARTICLE{Kalos2005,
+  author = {Laszlo Szirmay-kalos and Barnabas Aszodi and Istvan Lazanyi and Matyas
 	Premecz},
-  title = {Approximate ray-tracing on the GPU with distance impostors. Computer
-	Graphics Forum (Eurographics ’05},
+  title = {Approximate Ray-tracing on the GPU with Distance Impostors. Computer
+	Graphics Forum},
+  journal = {Eurographics},
   year = {2005},
+  volume = {24},
+  pages = {1-10},
+  number = {3},
   abstract = {This paper presents a fast approximation method to obtain the point
 	hit by a reflection or refraction ray. The calculation is based on
 	the distance values stored in environment map texels. This approximation
@@ -439,6 +443,7 @@
   journal = {ACM Trans. Graph.},
   year = {2007},
   volume = {26},
+  pages = {26:1--26:10},
   number = {3},
   month = jul,
   acmid = {1276410},
@@ -1227,6 +1232,7 @@
   editor = {Michelle Julet},
   author = {Serway, Raymond A. and Jewett, John W.},
   volume = {2},
+  address = {Salt Lake City, UT 84109-3250},
   owner = {Mike},
   timestamp = {2012.09.07}
 }
@@ -1277,6 +1283,7 @@
   publisher = {IEEE Computer Society},
   acmid = {1338558},
   doi = {10.1109/PG.2007.35},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\ProxyPG.pdf:PDF},
   isbn = {0-7695-3009-5},
   numpages = {9},
   url = {http://dx.doi.org/10.1109/PG.2007.35}
@@ -1520,6 +1527,7 @@
   booktitle = {ACM SIGGRAPH 2005 Sketches},
   year = {2005},
   series = {SIGGRAPH '05},
+  pages = {1},
   address = {New York, NY, USA},
   publisher = {ACM},
   acmid = {1187177},

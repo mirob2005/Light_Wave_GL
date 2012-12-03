@@ -8,12 +8,12 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Image rendered using photon maps. Source: \cite {Jensen1996}\relax }}{13}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Process of casting photons into the scene. Source: \cite {Jensen1996}\relax }}{14}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Example of caustics. Source: \cite {Jensen1996}\relax }}{14}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Example of a light tree. Source: \cite {Walter2005}\relax }}{17}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Example of a light tree. Source: \cite {Walter2005a}\relax }}{17}
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Overview of matrix sampling algorithm. Source: \cite {Havsan2007}\relax }}{19}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Image of a shadow map. Scene is from the view of the light source. Source: \cite {Dachsbacher2005}\relax }}{19}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Resulting image using the shadow map from 2.13\hbox {}. Source: \cite {Dachsbacher2005}\relax }}{20}
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Common locations where singularities exist. Source: \cite {Dachsbacher2005}\relax }}{21}
-\contentsline {figure}{\numberline {2.16}{\ignorespaces VRL versus VPL. Source: \cite {Novak2012}\relax }}{22}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Image of a shadow map. Scene is from the view of the light source. Source: \cite {Dachsbacher2005}\relax }}{20}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Resulting image using the shadow map from 2.13\hbox {}. Source: \cite {Dachsbacher2005}\relax }}{21}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Common locations where singularities exist. Source: \cite {Dachsbacher2005}\relax }}{22}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces VRL versus VPL. Source: \cite {Novak2012}\relax }}{23}
 \contentsline {figure}{\numberline {2.17}{\ignorespaces Data stored in the RSM. Source: \cite {Dachsbacher2005}\relax }}{25}
 \contentsline {figure}{\numberline {2.18}{\ignorespaces Illustration of equations 2.12\hbox {} and 2.13\hbox {}. Source: \cite {Dachsbacher2005}\relax }}{26}
 \contentsline {figure}{\numberline {2.19}{\ignorespaces Comparison of normal shadow maps and ISM's. Source: \cite {Ritschel2008}\relax }}{28}
@@ -26,15 +26,15 @@
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Showing the normals of every VPL. Using ray angle of 30 degrees to simplify the graphic.\relax }}{41}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Showing 20 randomly sampled VPL's with the primary light source at the top center of the image.\relax }}{41}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Showing 5 specifically chosen VPL's with the primary light source at the top center of the image.\relax }}{42}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.\relax }}{76}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{77}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Scene rendered with only direct lighting.\relax }}{78}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Images showing the contributions from the VPL's to indirect lighting. (Direct lighting is ignored)\relax }}{79}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments\relax }}{80}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Faked Indirect Lighting with a 1.3x Multiplier.\relax }}{81}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Adjusting VPL parameters\relax }}{82}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of default resolution and a smaller resolution stretched.\relax }}{83}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of the two different shading techniques\relax }}{84}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{85}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Teapots rendered using second shading technique.\relax }}{86}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces 10 Teapots rendered using second shading technique. Scene totals: 65542 triangles and 32418 vertices\relax }}{87}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.\relax }}{77}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{78}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Scene rendered with only direct lighting.\relax }}{79}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Images showing the contributions from the VPL's to indirect lighting. (Direct lighting is ignored)\relax }}{80}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments\relax }}{81}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Faked Indirect Lighting with a 1.3x Multiplier.\relax }}{82}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Adjusting VPL parameters\relax }}{83}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of default resolution and a smaller resolution stretched.\relax }}{84}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of the two different shadowing techniques\relax }}{85}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{86}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Teapots rendered using integrated shadows.\relax }}{87}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces 10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices\relax }}{88}
