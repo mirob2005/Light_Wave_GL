@@ -42,7 +42,7 @@
 \contentsline {paragraph}{}{21}
 \contentsline {subsection}{\numberline {2.4.2}ADAPTATIONS OF \textit {INSTANT RADIOSITY}}{23}
 \contentsline {paragraph}{}{23}
-\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{23}
+\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{24}
 \contentsline {paragraph}{}{24}
 \contentsline {paragraph}{}{24}
 \contentsline {paragraph}{}{26}
