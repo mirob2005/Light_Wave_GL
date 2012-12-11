@@ -3,7 +3,7 @@ mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
 Thesis Implementation using OpenGL and GLSL
 Start Date: 5/31/12
-Updated: 10/24/12
+Updated: 12/11/12
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -24,8 +24,11 @@ TODO:
 3) (DONE) Add Light_Wave logic
 4) (DONE) Add Specular
 5) (DONE) Add Indirect Shadows
-6) Code changes?
-7) Thesis Writing
+6) (DONE) Code changes
+7) (DONE) Thesis Writing
+
+Integrated Shadows method is in Light_Wave_GL\
+Accurate Shadows method is in old_Light_Wave_GL\
 
 COMMAND LINE (currently):
 
@@ -53,6 +56,7 @@ shift+S - move object down
 R - reset camera
 T - reset spheres
 G - Alternate between shaders on and shaders off with VPLs visible
+P - change scenes between Cornell box and teapot
 
 I - Take SnapShot
 M - Take continuous snapshots
