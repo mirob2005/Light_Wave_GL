@@ -6,7 +6,6 @@ The main program is written in C++ using OpenGL and is run exclusively on the CP
 
 \paragraph{}
 The locations of these VPL's will be calculated on start-up based on the location of the primary light source and the direction it is looking at.  The VPL's will only be updated whenever the primary light source is moved and at no other times reducing overhead.  The VPL's are calculated with an equation similar to below:
-
 \begin{align}
   &\begin{aligned} \label{eqn:vplPosition}
     vpl[x,y,z] &= lightPosition[x,y,z] + normal[x,y,z]\\
@@ -26,7 +25,6 @@ normal[z] =-sin(angleY)*normal[x]+cos(angleY)*normal[z]
 \end{lstlisting}
 
 Lastly, we get the attenuation from this exponential equation:
-
 \begin{equation}
 vplAttenuation = 0.05*pow(2.0,i)\label{eqn:vplAttenuation}
 \end{equation}
@@ -48,17 +46,14 @@ where numLights will be 6485 in this case and vplDataPos is the address for the 
 glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA, numLights, 0, GL_RGBA, 
 	GL_FLOAT, &vplDataNor[0]);
 \end{lstlisting}
-
 \paragraph{}
 One problem arises in that the texture will clamp the values stored between 0 and 1.  This is a problem because our VPL data may be negative and will likely be larger than 1 (depending on the dimensions of our scene).  Therefore, prior to storing our data, we must encode our data such that all values will be between 0 and 1 and we can then knowingly decode the data once the texture is in the shaders so our original values are preserved.  This can be done by the following equation:
-
 \begin{equation}
 vpl[data] = (vpl[data]/(4*maxDistance))+0.5 \label{eqn:vplEncode}
 \end{equation}
 
 \paragraph{}
 Equation \ref{eqn:vplEncode} normalizes the data to be between -0.5 and 0.5 and then adds 0.5 to it to reach the required 0 to 1 range.  The normalization is primarily important to the VPL position data since the VPL normals are already between -1 and 1 and the attenuation is already between 0 and 1. Then once in the shader we can decode the data with the following:
-
 \begin{equation}
 vpl[data] = (vpl[data]-0.5)*maxDistance*4.0 \label{eqn:vplDecode}
 \end{equation}
@@ -72,7 +67,6 @@ The next step is to generate our shadow maps.  As discussed in section \ref{sec:
 glTexImage3D(GL_TEXTURE_2D_ARRAY, 0, GL_DEPTH_COMPONENT32, width, 
 height, numShadowMaps, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 \end{lstlisting}
-
 \paragraph{}
 The above line of code uses the depth component since we are only interested in the depth value at each pixel and nothing else with shadow maps.  Next, we need the width and height of the shadow map and we declare that we will be storing floats.  The width and height of the shadow maps should be a ratio of the screen size.  Ideally, it should be a multiple larger.  In our case, we will have the shadow maps be three times larger than the screen size.  We want it to be larger in order to minimize any jaggies that would be clearly visible should the shadow maps be the same size or even smaller than the screen size.  We do have limitations on how large we want our shadow maps to be because of the amount of memory available on the GPU to store them.  Memory considerations and analysis will be discussed in chapter 5.  
 
@@ -166,7 +160,6 @@ We then calculate the specular contributions of each VPL using the reflection ra
 
 \paragraph{}
 Lastly, we accumulate all of the VPL contributions to the color of that vertex using equation \ref{eqn:indirectColor}:
-
 \begin{align}
   &\begin{aligned} \label{eqn:indirectColor}
     indirect\_color &+= gl\_Color*DiffuseTermObj*DiffuseTermLight\\
@@ -198,7 +191,7 @@ float shadow = shadow2DArray(ShadowMap,
 where we take our shadow map and index using our coordinates calculated in the vertex shader which is then divided by the 4th component of the vector known as perspective divide.  This is necessary in order to index into our shadow map, because our texture is in the range $[0.0, 1.0]$ and our coordinates are not.  The $i$ corresponds to the layer of the shadow map to index into.  Our direct shadow map then will have $i=0$ and our indirect shadow maps will range from 1 to 20.  We do this for all 21 shadow maps.  From this we get a float value for our direct shadows that will range from 0 to 1.  We will also get a float value for our indirect shadows that after we divide by 20 to normalize the shadowing will also range from 0 to 1.  This float value corresponds to the percentage of shadowing with 0 meaning no lighting whatsoever and 1 meaning no shadowing whatsoever for that particular fragment.  This resulting value from the direct shadow map is then multiplied with our direct lighting and the resulting normalized value from our indirect shadow maps is multiplied with our indirect lighting.
 
 \paragraph{}
-For the integrate shadows technique, we use the same line above for our direct shadows ($i=0$) and for each of our 5 indirect shadow maps.  However, the only difference in this technique is that we then integrate between each of these 5 indirect shadow maps in order to render additional shadows.  This is done by creating a vector that goes from the coordinate of one shadow map to the other.  We then divide this vector by the number of between steps we want to take.  We will show results based off using 2, 4, 6, and 10 as the number of steps. Then we step across this vector using the chosen number of steps to calculate the in-between coordinate which then contributes an additional indirect shadow.  We use the above line along with our in-between coordinate as the ShadowCoord to get our float value.  For the value of $i$ in the above equation, we round to the closest shadow map. So for example, if we are integrating between $i=1$ and $i=2$ and using 10 steps, the first 5 coordinates will be using $i=1$ and the last 5 coordinates will be using $i=2$.
+For the integrated shadows technique, we use the same line above for our direct shadows ($i=0$) and for each of our 5 indirect shadow maps.  However, the only difference in this technique is that we then integrate between each of these 5 indirect shadow maps in order to render additional shadows.  This is done by creating a vector that goes from the coordinate of one shadow map to the other.  We then divide this vector by the number of between steps we want to take.  We will show results based off using 2, 4, 6, and 10 as the number of steps. Then we step across this vector using the chosen number of steps to calculate the in-between coordinate which then contributes an additional indirect shadow.  We use the above line along with our in-between coordinate as the ShadowCoord to get our float value.  For the value of $i$ in the above equation, we round to the closest shadow map. So for example, if we are integrating between $i=1$ and $i=2$ and using 10 steps, the first 5 coordinates will be using $i=1$ and the last 5 coordinates will be using $i=2$.
 
 \paragraph{}
 We then do this for all combinations of the indirect shadow maps.  By combinations, we mean the act of selecting a subset of $k$ distinct elements in a set $S$ which can be calculated by using the binomial coefficient (equation \ref{eqn:binomial}).
@@ -224,7 +217,6 @@ Here $n$ is the number of elements in set $S$ which in our case will be 5 for th
 \end{equation}
 
 Therefore, we create 10 vectors between our 5 indirect shadow maps (1-2, 1-3, 1-4, 1-5, 2-3, 2-4, 2-5, 3-4, 3-5, 4-5).  Then we add all of the resulting shadowing values and divide by the number of shadows to normalize, which depends on the number of steps we take:
-
 \begin{equation}
 numShadows = (numSteps+2)*10\label{eqn:numIndShadows}
 \end{equation}
@@ -235,7 +227,6 @@ where 10 comes from equation \ref{eqn:binomialSolved}.  So for 2 steps, we get 4
 Next, we finish our direct lighting calculations by calculating the diffuse and specular terms similar to our indirect lighting in the vertex shader and add them for our direct lighting contributions.
 
 Lastly, we set the color of the fragment using equation \ref{eqn:fragColor}:
-
 \begin{equation}
 gl\_FragColor = (direct\_color*shadow) + (indirect\_color*INDshadow); \label{eqn:fragColor}
 \end{equation}

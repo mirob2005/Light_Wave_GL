@@ -14,7 +14,6 @@ I(x,x') = g(x,x')[\epsilon(x,x')+\int_{S} \rho(x,x',x'')I(x',x'')dx''] \label{eq
 
 \paragraph{}
 The rendering equation is broken down into 4 parts.  First, $I(x,x')$ is the intensity of light or energy of radiation passing from point $x'$ to point $x$ measured in energy of radiation per unit time per unit area.  Second, the geometry term, $g(x,x')$, indicates the occlusion of objects by other objects.  This term is either $0$, if $x$ and $x'$ are not visible from one another, or $1/r^2$ where $r$ is the distance between $x$ and $x'$ if $x$ and $x'$ are visible from one another.  Third, the emittance term, $\epsilon(x,x')$, measures the energy emitted from point $x'$ that reaches point $x$.  Lastly, the scattering term, $\rho(x,x',x'')$, is the intensity of energy scattered by a surface point $x'$ that originated from point $x''$ and then ends at point $x$.  As mentioned in the previous section, illumination can be calculated using the Neumann series.  A Neumann series is a mathematical series of the form:
-
 \begin{equation}
 \sum_{k=0}^{\infty}T^k \label{eqn:neumann}
 \end{equation}
@@ -23,29 +22,21 @@ where $T$ is an operator and therefore $T^k$ is a notation for $k$ consecutive o
 
 \paragraph{}
 Furthermore, the rendering equation can also be approximated using the Neumann series.  This is done by rewriting the rendering equation above (\ref{eqn:render}) as:
-
 \begin{equation}
 I = g\epsilon +gMI \label{eqn:render2}
 \end{equation}
-
 where $M$ is the linear operator given by the integral in the rendering equation.  Next, we rewrite equation \ref{eqn:render2} as:
-
 \begin{equation}
 (1-gM)I = g\epsilon \label{eqn:render3}
 \end{equation}
-
 so that we can invert it to get:
-
 \begin{equation}
 I = g\epsilon + gMg\epsilon + gMgMg\epsilon +g(Mg)^3\epsilon + ... \label{eqn:render4}
 \end{equation}
-
 Equation \ref{eqn:render4} is a Neumann series of the form:
-
 \begin{equation}
 I = g\epsilon\sum_{k=0}^{\infty}(Mg)^k \label{eqn:render5}
 \end{equation}
-
 Equation \ref{eqn:render5} indicates that the rendering equation (equation \ref{eqn:render}) is the final intensity of radiation transfer as a sum of a direct term, a once scattered term, a twice scattered term, and so on.  Therefore, as mentioned in the previous section, indirect illumination can be calculated by summing light incident on a surface due to the reflection of light $n$-times all the way up to infinity.  The more scattered terms we include in the calculation, the better the approximation will be but with worse performance.  Therefore, in real-time applications, this needs to be avoided.  
 
 \paragraph{}
@@ -96,7 +87,6 @@ Ray tracing is able to recreate ultra-realistic scenes such as figure \ref{fig:r
 
 \paragraph{}
 Ray tracing can also be related to the rendering equation.  \cite{Whitted1980} describes a new approximation for ray tracing by rewriting the Phong illumination model in order to improve the quality of specular reflections.  The Phong illumination model is a way of calculating lighting on a surface through the combination of three components: ambient, diffuse, and specular.  Diffuse is the reflection of light from rough surfaces, specular is the reflection of light on shiny surfaces, and the ambient component accounts for the amount of light that is scattered throughout the scene.  The ambient term is most similar to indirect lighting, but is a user-specified constant amount distributed uniformly throughout the scene to avoid any actual calculations.  The improved model from \cite{Whitted1980} is written:
-
 \begin{equation}
 I = I_{a} + k_{d}\sum_{j=1}^{j=ls}(\bar{N}\cdot\bar{L}_{j})+k_{s}S + k_{t}T \label{eqn:raytrace1}
 \end{equation}
@@ -117,7 +107,6 @@ Radiosity is a type of rendering technique that was adapted for use in computer 
 
 \paragraph{}
 Radiosity is a natural extension from the rendering equation (equation \ref{eqn:render}) since its focus is on balancing the flow of energy.  The only difference is that radiosity makes assumptions about the reflectance characteristics of the surface material.  The radiosity in the scene is found by taking the hemispherical integral of the energy leaving the surface called flux which can be found using the following equation from \cite{Goral1984}:
-
 \begin{equation}
 B_{j} = E_{j} + \rho_{j}H_{j} \label{eqn:radiosity1}
 \end{equation}
@@ -140,7 +129,6 @@ where $B_{j}$ is the rate of energy leaving the surface $j$ measured in energy p
 
 \paragraph{}
 Equation \ref{eqn:radiosity1} can be derived using our rendering equation (equation \ref{eqn:render}) \cite{Kajiya1986} by integrating over all surfaces in the scene to calculate the hemispherical quantities, calculating the contribution of the emittance and reflectance terms by checking for occlusions, and by using those calculations the rendering equation becomes:
-
 \begin{equation}
 dB(x') = \pi[\epsilon_{0} + \rho_{0}H(x')]dx' \label{eqn:radiosity2}
 \end{equation}
@@ -175,13 +163,11 @@ Photon maps originally introduced in \cite{Jensen1996} is a two pass global illu
 
 \paragraph{}
 Photon maps are an extension to the rendering equation (equation \ref{eqn:render}) as well.  During the second pass of the method, the scene is rendered by calculating the radiance by tracing a ray from the eye through the pixel and into the scene using ray tracing, and the radiance is computed at the first surface that the ray hits.  The surface radiance leaving the point of intersection $x$ in some direction is computed using the equation from \cite{Jensen1996}:
-
 \begin{equation}
 L_{s}(x,\psi_{r} = L_{e}(x,\psi_{r} + \int_{\Omega}(f_{r}(x,\psi_{i};\psi_{r})L_{i}(x,\psi_{i})\cos(\theta_{i})d\omega_{i}) \label{eqn:photon1}
 \end{equation}
 
 where $L_{e}$ is the radiance emitted by the surface, $L_{i}$ is the incoming radiance in the direction $\psi_{i}$, and $f_{r}$ is the BRDF or bidirectional reflectance distribution function, which is a four-dimensional function that describes how light is reflected at a surface point.  Lastly, $\Omega$ is the sphere of incoming directions.  This can be broken down into a sum of four components:
-
 \begin{align}
   &\begin{aligned} \label{eqn:photon2}
     L_{r} &=  \int_{\Omega} (f_{r}L_{i,l}\cos(\theta_{i})d\omega_{i}) + \int_{\Omega}(f_{r,s}(L_{i,c}+L_{i,d})\cos(\theta_{i})d\omega_{i})\\
@@ -216,25 +202,21 @@ Another adaption of the VPL method in offline rendering techniques is with the u
   \caption{Overview of matrix sampling algorithm. Source: \protect\cite{Havsan2007}}
 	\label{fig:matrixSampling}
 \end{figure}
-
 \subsubsection{SHADOW MAPS}: 
 \paragraph{}
-Shadow maps is a technique typically used to render shadows, but as shown in the real-time rendering techniques section, they have additional uses.  They are created in a render pass where the view of the scene is computed from the light source's point of view and the distances from the light to the nearest surface for each pixel is stored in a texture or buffer to be used for comparisons when rendering the scene from the camera's point of view to determine whether a surface point is in shadow \cite{Williams1978}, \cite{Reeves1987}.  Further discussion on shadow maps will be done in the real-time rendering techniques section as well as in the implementation section.
-
+Shadow maps is a technique typically used to render shadows, but as shown in the real-time rendering techniques section, they have additional uses.  They are created in a render pass where the view of the scene is computed from the light source's point of view and the distances from the light to the nearest surface for each pixel is stored in a texture or buffer to be used for comparisons when rendering the scene from the camera's point of view to determine whether a surface point is in shadow \cite{Williams1978}, \cite{Reeves1987}.  See figure \ref{fig:shadowMap1} for an image of a shadow map and figure \ref{fig:shadowMap2} for the resulting final image.  Further discussion on shadow maps will be done in the real-time rendering techniques section as well as in the implementation section.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.5\textwidth]{shadowMap1.jpg}
   \caption{Image of a shadow map. Scene is from the view of the light source. Source: \protect\cite{Dachsbacher2005}}
 	\label{fig:shadowMap1}
 \end{figure}
-
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.5\textwidth]{shadowMap2.jpg}
   \caption{Resulting image using the shadow map from \ref{fig:shadowMap1}. Source: \protect\cite{Dachsbacher2005}}
 	\label{fig:shadowMap2}
 \end{figure}
-
 \subsubsection{VIRTUAL RAY LIGHTS}: 
 \paragraph{}
 Lastly, \cite{Novak2012} describes a technique to render scenes with single/multiple light scattering in participating media in \textit{Virtual Ray Lights for Rendering Scenes with Participating Media}.  The technique modifies the idea of using VPL's by instead using virtual ray lights or VRL's inside the participating media.  So instead of evaluating each VPL at discrete locations, we calculate the contribution of each VRL with an efficient Monte Carlo sampling technique.  Monte Carlo sampling involves the use of randomly selecting a point based off a probability distribution and is often used for sampling in a wide variety of techniques.  The reason for using VRL's over VPL's is that VPL's can be negatively affected by singularities in the scene.  A singularity is when a given value or location is undefined in our equation.  For example, the equation $1/x$ is undefined for $x=0$.  Singularities are common along boundaries of walls.  See figure \ref{fig:singularity}.  These singularities can cause artifacts in the scene such as spikes of high intensity which can be eliminated through the use of clamping or blurring.  But by using a VRL, we compute the contribution of the light by distributing the energy over a line segment reducing singularities.  In this case, instead of having spikes of high intensity, we have a uniform noise distributed evenly over the image which would be more pleasing to the eye.  See figure \ref{fig:vrl}.
@@ -261,18 +243,22 @@ With the advancement of technology and the expanded use of the GPU, many offline
 \paragraph{}
 As discussed in prior sections, \textit{Instant Radiosity} introduces the technique of rendering indirect illumination approximated with the use of virtual points lights where each individual light acts independently as a producer of indirect illumination and behaves like a normal point light source.  In the original technique, these VPL's are generated using a quasi-random walk technique created at the hit points of the photons as they are traced into the scene from the primary light source.  The contributions of these VPL's are then summed through the use of multiple rendering passes.  See figure \ref{fig:vrl}. This implementation had a few limitations such as requiring many rendering passes to support dynamic objects or lights as well as being limited to simple environments due to the high cost of computing shadows for each of the VPL's.  These shadows had to be computed by using shadow volumes or shadow maps and were the bottleneck of the technique.  There were also issues with low sampling rates which would result in weak singularities when the VPL got increasingly close to the illuminated surface point and each VPL has a high influence or contribution on the overall color of the image.  Also, temporal flickering can be seen if there are not enough VPL's being used.  Despite these issues, real-time performance was attainable in 1997 through the use of this technique.
 
-\vspace{10 mm}
 \subsection{ADAPTATIONS OF \textit{INSTANT RADIOSITY}}
 \paragraph{}
 In addition to the techniques already mentioned in section \ref{sec:otheroffline} which adapted the idea of using VPL's for the offline rendering of multiple types of lighting phenomena, many real-time techniques also adapted the use of VPL's.
 
-\vspace{10 mm}
 \subsubsection{SHADOW MAP ALTERATIONS}: 
 \paragraph{}
 As teased in section \ref{sec:otheroffline}, in many real-time rendering techniques shadow maps have been expanded for use beyond just creating shadows.  In \textit{Translucent Shadow Maps} \cite{Dachsbacher2003} extended the binary shadow map look-up to a shadow map filter to assist in the implementation of real-time sub-surface scattering.  Translucent Shadow Maps extend shadow maps by having additional information stored such as depth and incident light information.  Therefore, each pixel in the Translucent Shadow Map stores the 3D position of the surface sample, the irradiance entering the object at that sample, and the surface normal.  Although this implementation was for sub-surface scattering, it would lead to a development in rendering indirect illumination as well.
 
 \paragraph{}
 From this idea of extending shadow maps came further developments in \textit{Reflective Shadow Maps} or RSM \cite{Dachsbacher2005}.  This technique extended a shadow map such that each pixel in the shadow map would be thought of as an indirect light source.  The reflective shadow map then stored information such as depth value, world space position, normal, and reflected radiant flux.  See figure \ref{fig:RSM}.  With all this information available, we can then approximately calculate the indirect irradiance at a surface point by summing the illumination due to all pixel lights as seen in equations \ref{eqn:RSM1} and \ref{eqn:RSM2}.
+\begin{equation}
+E_{p} (x,n) = \Phi_{p} {max(0, n_{p} \cdot (x-x_{p})) max(0, n_{p} \cdot (x_{p} - x))  } \div {\| x-x_{p} \|^{4} } \label{eqn:RSM1}
+\end{equation}
+\begin{equation}
+E(x,n) = \sum_{pixels p} E_{p}(x,n) \label{eqn:RSM2}
+\end{equation}
 
 \begin{figure}
 		\centering
@@ -302,15 +288,6 @@ From this idea of extending shadow maps came further developments in \textit{Ref
         \end{subfigure}
         \caption{Data stored in the RSM. Source: \protect\cite{Dachsbacher2005}}\label{fig:RSM}
 \end{figure}
-
-
-\begin{equation}
-E_{p} (x,n) = \Phi_{p} {max(0, n_{p} \cdot (x-x_{p})) max(0, n_{p} \cdot (x_{p} - x))  } \div {\| x-x_{p} \|^{4} } \label{eqn:RSM1}
-\end{equation}
-
-\begin{equation}
-E(x,n) = \sum_{pixels p} E_{p}(x,n) \label{eqn:RSM2}
-\end{equation}
 
 where $x$ is the surface point, $n$ is the normal at $x$, $n_{p}$ and $x_{p}$ is the pixel light normal and position, and $\Phi_{p}$ is the reflected radiant flux of the visible surface point.  See figure \ref{fig:RSMcalc}.  This technique had the same singularity issue near the boundary of two adjoining walls.  See figure \ref{fig:singularity}.  Other limitations includes ignoring occlusion and visibility for the indirect light sources as well as having to restrict the number of VPL's to around 400 meaning that sampling had to be done to chose the 400 best VPL's.  Also, screen-space interpolation had to be performed by computing the indirect illumination using a low-resolution shadow map and interpolating using multiple low-res samples.  With these restrictions in play, this technique renders approximate indirect illumination for dynamic scenes.  
 
