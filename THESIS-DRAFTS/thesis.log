@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  11 DEC 2012 16:11
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  14 DEC 2012 12:54
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -852,82 +852,113 @@ File: 7.jpg Graphic file (type jpg)
  <use 7.jpg>
 Package pdftex.def Info: 7.jpg used on input line 531.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
-File: sample1.jpg Graphic file (type jpg)
- <use sample1.jpg>
-Package pdftex.def Info: sample1.jpg used on input line 543.
+
+<AltResults/05SM.jpg, id=312, 1284.8pt x 722.7pt>
+File: AltResults/05SM.jpg Graphic file (type jpg)
+ <use AltResults/05SM.jpg>
+Package pdftex.def Info: AltResults/05SM.jpg used on input line 543.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/1SM.jpg, id=313, 1284.8pt x 722.7pt>
+File: AltResults/1SM.jpg Graphic file (type jpg)
+ <use AltResults/1SM.jpg>
+Package pdftex.def Info: AltResults/1SM.jpg used on input line 548.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/2SM.jpg, id=314, 1284.8pt x 722.7pt>
+File: AltResults/2SM.jpg Graphic file (type jpg)
+ <use AltResults/2SM.jpg>
+Package pdftex.def Info: AltResults/2SM.jpg used on input line 553.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/3SM.jpg, id=315, 1284.8pt x 722.7pt>
+File: AltResults/3SM.jpg Graphic file (type jpg)
+ <use AltResults/3SM.jpg>
+Package pdftex.def Info: AltResults/3SM.jpg used on input line 558.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 562.
+
+<AltResults/noIntegration.jpg, id=316, 1284.8pt x 722.7pt>
+File: AltResults/noIntegration.jpg Graphic file (type jpg)
+
+<use AltResults/noIntegration.jpg>
+Package pdftex.def Info: AltResults/noIntegration.jpg used on input line 567.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<17_resize.jpg, id=312, 1284.8pt x 722.7pt>
-File: 17_resize.jpg Graphic file (type jpg)
- <use 17_resize.jpg>
-Package pdftex.def Info: 17_resize.jpg used on input line 549.
+<AltResults/integration.jpg, id=317, 1284.8pt x 722.7pt>
+File: AltResults/integration.jpg Graphic file (type jpg)
+
+<use AltResults/integration.jpg>
+Package pdftex.def Info: AltResults/integration.jpg used on input line 572.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/oldmethod.jpg, id=313, 1284.8pt x 722.7pt>
+<AltResults/oldmethod.jpg, id=318, 1284.8pt x 722.7pt>
 File: AltResults/oldmethod.jpg Graphic file (type jpg)
 
 <use AltResults/oldmethod.jpg>
-Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 560.
+Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 581.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/10numSteps30Angle.jpg, id=314, 1284.8pt x 722.7pt>
+<AltResults/10numSteps30Angle.jpg, id=319, 1284.8pt x 722.7pt>
 File: AltResults/10numSteps30Angle.jpg Graphic file (type jpg)
 
 <use AltResults/10numSteps30Angle.jpg>
-Package pdftex.def Info: AltResults/10numSteps30Angle.jpg used on input line 56
-5.
+Package pdftex.def Info: AltResults/10numSteps30Angle.jpg used on input line 58
+6.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/1teapotOLD.jpg, id=315, 1284.8pt x 722.7pt>
+<AltResults/1teapotOLD.jpg, id=320, 1284.8pt x 722.7pt>
 File: AltResults/1teapotOLD.jpg Graphic file (type jpg)
 
 <use AltResults/1teapotOLD.jpg>
-Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 574.
+Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 595.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/1Teapot.jpg, id=316, 1284.8pt x 722.7pt>
+<AltResults/1Teapot.jpg, id=321, 1284.8pt x 722.7pt>
 File: AltResults/1Teapot.jpg Graphic file (type jpg)
 
 <use AltResults/1Teapot.jpg>
-Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 579.
+Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 600.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
-<AltResults/teapotFL.jpg, id=317, 1284.8pt x 722.7pt>
+<AltResults/teapotFL.jpg, id=322, 1284.8pt x 722.7pt>
 File: AltResults/teapotFL.jpg Graphic file (type jpg)
 
 <use AltResults/teapotFL.jpg>
-Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 588.
+Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 609.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotFR.jpg, id=318, 1284.8pt x 722.7pt>
+<AltResults/teapotFR.jpg, id=323, 1284.8pt x 722.7pt>
 File: AltResults/teapotFR.jpg Graphic file (type jpg)
 
 <use AltResults/teapotFR.jpg>
-Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 592.
+Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 613.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotNR.jpg, id=319, 1284.8pt x 722.7pt>
+<AltResults/teapotNR.jpg, id=324, 1284.8pt x 722.7pt>
 File: AltResults/teapotNR.jpg Graphic file (type jpg)
 
 <use AltResults/teapotNR.jpg>
-Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 596.
+Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 617.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
-<AltResults/teapotC.jpg, id=320, 1284.8pt x 722.7pt>
+<AltResults/teapotC.jpg, id=325, 1284.8pt x 722.7pt>
 File: AltResults/teapotC.jpg Graphic file (type jpg)
 
 <use AltResults/teapotC.jpg>
-Package pdftex.def Info: AltResults/teapotC.jpg used on input line 600.
+Package pdftex.def Info: AltResults/teapotC.jpg used on input line 621.
 (pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
 
 
-LaTeX Warning: Float too large for page by 36.39482pt on input line 604.
+LaTeX Warning: Float too large for page by 36.39482pt on input line 625.
 
-<AltResults/10teapots.jpg, id=321, 1284.8pt x 722.7pt>
+<AltResults/10teapots.jpg, id=326, 1284.8pt x 722.7pt>
 File: AltResults/10teapots.jpg Graphic file (type jpg)
 
 <use AltResults/10teapots.jpg>
-Package pdftex.def Info: AltResults/10teapots.jpg used on input line 609.
+Package pdftex.def Info: AltResults/10teapots.jpg used on input line 630.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
 
 
@@ -944,27 +975,32 @@ RAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg> <D:/_Program
 ming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [79 <D:/_Programming/Light_Wave_GL/TH
 ESIS-DRAFTS/direct_only_fake_1_3.jpg>] [80 <D:/_Programming/Light_Wave_GL/THESI
 S-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>] [81 <D:/_P
-rogramming/Light_Wave_GL/THESIS-DRAFTS/17_resize.jpg>] [82 <D:/_Programming/Lig
-ht_Wave_GL/THESIS-DRAFTS/AltResults/oldmethod.jpg> <D:/_Programming/Light_Wave_
-GL/THESIS-DRAFTS/AltResults/10numSteps30Angle.jpg>] [83 <D:/_Programming/Light_
-Wave_GL/THESIS-DRAFTS/AltResults/1teapotOLD.jpg> <D:/_Programming/Light_Wave_GL
-/THESIS-DRAFTS/AltResults/1Teapot.jpg>] [84 <D:/_Programming/Light_Wave_GL/THES
-IS-DRAFTS/AltResults/teapotFL.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS
-/AltResults/teapotFR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResul
-ts/teapotNR.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapot
-C.jpg>] [85 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/10teapots.j
-pg>] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+rogramming/Light_Wave_GL/THESIS-DRAFTS/AltResults/05SM.jpg> <D:/_Programming/Li
+ght_Wave_GL/THESIS-DRAFTS/AltResults/1SM.jpg> <D:/_Programming/Light_Wave_GL/TH
+ESIS-DRAFTS/AltResults/2SM.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Al
+tResults/3SM.jpg>] [82 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/
+noIntegration.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/inte
+gration.jpg>] [83 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/oldme
+thod.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/10numSteps30A
+ngle.jpg>] [84 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1teapotO
+LD.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1Teapot.jpg>]
+[85 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotFL.jpg> <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotFR.jpg> <D:/_Programmi
+ng/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotNR.jpg> <D:/_Programming/Light_
+Wave_GL/THESIS-DRAFTS/AltResults/teapotC.jpg>] [86 <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/AltResults/10teapots.jpg>]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
 CHAPTER 6.
-[86
+[87
 
 
 
-] [87] [88]) [89] [90]
-(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [91
+] [88] [89]) [90] [91]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [92
 
 
-] [92] [93] [94]
-[95]) [96] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+] [93] [94] [95]
+[96]) [97] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
@@ -973,13 +1009,13 @@ CHAPTER 6.
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 5753 strings out of 494049
- 85363 string characters out of 3146068
- 175984 words of memory out of 3000000
- 8902 multiletter control sequences out of 15000+200000
+ 5776 strings out of 494049
+ 85895 string characters out of 3146068
+ 175965 words of memory out of 3000000
+ 8920 multiletter control sequences out of 15000+200000
  9494 words of font info for 34 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,17n,38p,2377b,1432s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,2176b,1432s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
@@ -991,9 +1027,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
 nts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (104 pages, 1993875 bytes).
+Output written on thesis.pdf (105 pages, 2166886 bytes).
 PDF statistics:
- 430 PDF objects out of 1000 (max. 8388607)
+ 438 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 271 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -40,12 +40,8 @@ glTexImage1D( GL_TEXTURE_1D, 0, GL_RGB, numLights, 0, GL_RGB,
 	GL_FLOAT, &vplDataPos[0]);
 \end{lstlisting}
 
-where numLights will be 6485 in this case and vplDataPos is the address for the VPL position data.  Similarly with the normal data we use a 1D texture but this time with RGBA since we will also store the attenuation in addition to the xyz normal values.
+where numLights will be 6485 in this case and vplDataPos is the address for the VPL position data.  We use the same statement for the normal data but this time we replace each RGB with RGBA since we will also store the attenuation in addition to the xyz normal values.  We also replace the address vplDataPos with vplDataNor.
 
-\begin{lstlisting}
-glTexImage1D( GL_TEXTURE_1D, 0, GL_RGBA, numLights, 0, GL_RGBA, 
-	GL_FLOAT, &vplDataNor[0]);
-\end{lstlisting}
 \paragraph{}
 One problem arises in that the texture will clamp the values stored between 0 and 1.  This is a problem because our VPL data may be negative and will likely be larger than 1 (depending on the dimensions of our scene).  Therefore, prior to storing our data, we must encode our data such that all values will be between 0 and 1 and we can then knowingly decode the data once the texture is in the shaders so our original values are preserved.  This can be done by the following equation:
 \begin{equation}

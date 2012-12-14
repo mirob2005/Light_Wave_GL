@@ -33,8 +33,9 @@
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments\relax }}{78}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Faked Indirect Lighting with a 1.3x Multiplier.\relax }}{79}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Adjusting VPL parameters\relax }}{80}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of default resolution and a smaller resolution stretched.\relax }}{81}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of the two different shadowing techniques\relax }}{82}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{83}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Teapots rendered using integrated shadows.\relax }}{84}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces 10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices\relax }}{85}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Comparison of shadow map resolutions.\relax }}{81}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Comparison of using 5 shadow maps with integration and no integration.\relax }}{82}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Comparison of the two different shadowing techniques\relax }}{83}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces 1 Teapot. Scene totals: 6565 triangles and 3249 vertices\relax }}{84}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Teapots rendered using integrated shadows.\relax }}{85}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces 10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices\relax }}{86}
