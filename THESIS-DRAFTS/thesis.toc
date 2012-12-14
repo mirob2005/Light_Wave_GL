@@ -143,25 +143,25 @@
 \contentsline {paragraph}{}{68}
 \contentsline {subsection}{\numberline {5.2.3}RESULTS}{69}
 \contentsline {paragraph}{}{69}
-\contentsline {paragraph}{}{69}
-\contentsline {section}{\numberline {5.3}SCENE COMPLEXITY}{70}
 \contentsline {paragraph}{}{70}
+\contentsline {section}{\numberline {5.3}SCENE COMPLEXITY}{71}
+\contentsline {paragraph}{}{71}
 \contentsline {paragraph}{}{71}
 \contentsline {paragraph}{}{72}
 \contentsline {section}{\numberline {5.4}CONCLUSION}{73}
 \contentsline {paragraph}{}{73}
 \contentsline {section}{\numberline {5.5}IMAGES}{74}
 \contentsline {paragraph}{}{74}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{86}
-\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{86}
-\contentsline {paragraph}{}{86}
-\contentsline {paragraph}{}{86}
-\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{87}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{87}
+\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{87}
 \contentsline {paragraph}{}{87}
 \contentsline {paragraph}{}{87}
+\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{88}
 \contentsline {paragraph}{}{88}
 \contentsline {paragraph}{}{88}
-\contentsline {section}{\numberline {6.3}LIMITATIONS}{89}
 \contentsline {paragraph}{}{89}
-\contentsline {section}{\numberline {6.4}IMPROVEMENTS}{89}
 \contentsline {paragraph}{}{89}
+\contentsline {section}{\numberline {6.3}LIMITATIONS}{90}
+\contentsline {paragraph}{}{90}
+\contentsline {section}{\numberline {6.4}IMPROVEMENTS}{90}
+\contentsline {paragraph}{}{90}
