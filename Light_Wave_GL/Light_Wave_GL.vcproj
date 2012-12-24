@@ -174,6 +174,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PPMImage.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\scene.cpp"
 				>
 			</File>
@@ -196,6 +200,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Pixel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PPMImage.h"
+				>
+			</File>
+			<File
 				RelativePath=".\scene.h"
 				>
 			</File>
@@ -214,15 +226,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\simple.fs"
-				>
-			</File>
-			<File
-				RelativePath=".\simple.vs"
+				RelativePath=".\fragShader2.fs"
 				>
 			</File>
 			<File
 				RelativePath=".\vertexShader.vs"
+				>
+			</File>
+			<File
+				RelativePath=".\vertexShader2.vs"
 				>
 			</File>
 		</Filter>
