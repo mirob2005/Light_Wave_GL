@@ -76,9 +76,7 @@ int fps = 0;
 FrameSaver g_frameSaver;
 int g_recording = 0;
 
-char* gTextureName = "granite.ppm";
-char* gTextureName2 = "wood.ppm";
-GLSLProgram *gShader[3];
+
 
 //Chose which object to move... camera, objects in scene
 GLuint option = 0;
@@ -89,7 +87,7 @@ const GLfloat defobject2Position[3] = {-2.0,-2.0,-2.0};
 const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
-const GLfloat deflightPosition[4] = { 0.0, 4.0, 0.0, 0.0 };
+const GLfloat deflightPosition[4] = { 0.0, 6.0, 0.0, 0.0 };
 const GLfloat deflightLookAt[3] = {deflightPosition[0], deflightPosition[1]-0.1, deflightPosition[2]};
 const GLfloat deflightUpVector[3] = {0.0, 0.0, -1.0};
 const GLfloat deflightNormalVector[3] = {deflightLookAt[0] - deflightPosition[0], 
@@ -134,13 +132,9 @@ double worldRotate = defworldRotate;
 */
 GLuint dirSMtex;
 GLuint dirFBOid;
-GLuint dirUniID;
-GLuint dirUniID2;
-GLuint dirUniID3;
+GLuint dirUniID[3];
 
-GLuint lightMatrix;
-GLuint lightMatrix2;
-GLuint lightMatrix3;
+GLuint lightMatrix[3];
 
 //Must Change in vertex shader and fragment shader as well
 const int numINDshadows = 5;
@@ -159,16 +153,12 @@ float maxDistance = 4.0;
 
 // For VPL Position Texture
 GLuint vpl_pos_TexID;
-GLuint vpl_pos_shaderID;
-GLuint vpl_pos_shaderID2;
-GLuint vpl_pos_shaderID3;
+GLuint vpl_pos_shaderID[3];
 GLfloat *vplDataPos;
 
 // For VPL Normal Texture
 GLuint vpl_nor_TexID;
-GLuint vpl_nor_shaderID;
-GLuint vpl_nor_shaderID2;
-GLuint vpl_nor_shaderID3;
+GLuint vpl_nor_shaderID[3];
 GLfloat *vplDataNor;
 
 //Set to true when the light source is moved:
@@ -187,16 +177,17 @@ bool box = false;
 bool initial = true;
 
 
+char* gTextureName[2];
+GLSLProgram *gShader[3];
+
 //Textures
 #define	checkImageWidth 64
 #define	checkImageHeight 64
-static GLubyte textureImage[checkImageHeight][checkImageWidth][4];
-static GLubyte textureImage2[checkImageHeight][checkImageWidth][4];
+static GLubyte textureImage[2][checkImageHeight][checkImageWidth][4];
 
 PPMImage *img[2];
 static GLuint texName[2];
-GLuint texture1;
-GLuint texture2;
+GLuint texture[2];
 
 void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
   unsigned int i, j;
@@ -254,24 +245,21 @@ void shaderInit(){
 
 		gShader[i]->isHardwareAccelerated( );
 	}
-	dirUniID = glGetUniformLocation(gShader[0]->_object, "ShadowMap");
-	vpl_pos_shaderID = glGetUniformLocation(gShader[0]->_object, "vplPosTex");
-	vpl_nor_shaderID = glGetUniformLocation(gShader[0]->_object, "vplNorTex");
-	lightMatrix = glGetUniformLocation(gShader[0]->_object, "LightTexture");
 
-	dirUniID2 = glGetUniformLocation(gShader[1]->_object, "ShadowMap");
-	vpl_pos_shaderID2 = glGetUniformLocation(gShader[1]->_object, "vplPosTex");
-	vpl_nor_shaderID2 = glGetUniformLocation(gShader[1]->_object, "vplNorTex");
-	lightMatrix2 = glGetUniformLocation(gShader[1]->_object, "LightTexture");
 	
-	texture1 = glGetUniformLocation(gShader[1]->_object, "tex");
+	dirUniID[0] = glGetUniformLocation(gShader[0]->_object, "ShadowMap");
+	vpl_pos_shaderID[0] = glGetUniformLocation(gShader[0]->_object, "vplPosTex");
+	vpl_nor_shaderID[0] = glGetUniformLocation(gShader[0]->_object, "vplNorTex");
+	lightMatrix[0] = glGetUniformLocation(gShader[0]->_object, "LightTexture");
 
-	dirUniID3 = glGetUniformLocation(gShader[2]->_object, "ShadowMap");
-	vpl_pos_shaderID3 = glGetUniformLocation(gShader[2]->_object, "vplPosTex");
-	vpl_nor_shaderID3 = glGetUniformLocation(gShader[2]->_object, "vplNorTex");
-	lightMatrix3 = glGetUniformLocation(gShader[2]->_object, "LightTexture");
-
-	texture2 = glGetUniformLocation(gShader[2]->_object, "tex");
+	for(int i=1; i<3; i++){
+		dirUniID[i] = glGetUniformLocation(gShader[i]->_object, "ShadowMap");
+		vpl_pos_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplPosTex");
+		vpl_nor_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplNorTex");
+		lightMatrix[i] = glGetUniformLocation(gShader[i]->_object, "LightTexture");
+		
+		texture[i-1] = glGetUniformLocation(gShader[i]->_object, "tex");
+	}
 }
 
 
@@ -503,43 +491,28 @@ void init( void ){
 		cout << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER" << endl;
 
 
-	img[0] = new PPMImage( gTextureName );
-	ppmimageToBytes( img[0], textureImage );
+	gTextureName[0] = "granite.ppm";
+	gTextureName[1] = "wood.ppm";
 
-	img[1] = new PPMImage( gTextureName2 );
-	ppmimageToBytes( img[1], textureImage2 );
 
 	glGenTextures(2, texName);
-	//glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texName[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
-				 GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 
-				 GL_NEAREST);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, checkImageWidth,
-			  checkImageHeight, 1, GL_RGBA, GL_UNSIGNED_BYTE,
-			  textureImage);
-	glBindTexture(GL_TEXTURE_2D, 0);
 
-	//glActiveTexture(GL_TEXTURE3);
-	glBindTexture(GL_TEXTURE_2D, texName[1]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
-				 GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 
-				 GL_NEAREST);
+	for(int i=0; i<2; i++){
+		img[i] = new PPMImage( gTextureName[i] );
+		ppmimageToBytes( img[i], textureImage[i] );
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, checkImageWidth,
-			  checkImageHeight, 1, GL_RGBA, GL_UNSIGNED_BYTE,
-			  textureImage2);
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-//	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	
-	
+		glBindTexture(GL_TEXTURE_2D, texName[i]);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, 
+					 GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, 
+					 GL_NEAREST);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, checkImageWidth,
+				  checkImageHeight, 1, GL_RGBA, GL_UNSIGNED_BYTE,
+				  textureImage[i]);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 }
 
 
@@ -724,17 +697,17 @@ void display(void){
 
 		//Using our shaders and shadow map
 
-		glUniformMatrix4fv(lightMatrix, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
+		glUniformMatrix4fv(lightMatrix[0], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
 
-		glUniform1i(vpl_pos_shaderID,1);
+		glUniform1i(vpl_pos_shaderID[0],1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
 
-		glUniform1i(vpl_nor_shaderID,2);
+		glUniform1i(vpl_nor_shaderID[0],2);
 		glActiveTexture(GL_TEXTURE2);
 		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
 
-		glUniform1i(dirUniID,7);
+		glUniform1i(dirUniID[0],7);
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
 
@@ -760,21 +733,21 @@ void display(void){
 		{
 			glUseProgramObjectARB((GLhandleARB)gShader[1]->_object);
 		}
-		glUniformMatrix4fv(lightMatrix2, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
+		glUniformMatrix4fv(lightMatrix[1], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
 
-		glUniform1i(vpl_pos_shaderID2,1);
+		glUniform1i(vpl_pos_shaderID[1],1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
 
-		glUniform1i(vpl_nor_shaderID2,2);
+		glUniform1i(vpl_nor_shaderID[1],2);
 		glActiveTexture(GL_TEXTURE2);
 		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
 
-		glUniform1i(dirUniID2,7);
+		glUniform1i(dirUniID[1],7);
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
 
-		glUniform1i(texture1,0);
+		glUniform1i(texture[0],0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D,texName[0]);		
 		drawFloor();
@@ -784,21 +757,21 @@ void display(void){
 		{
 			glUseProgramObjectARB((GLhandleARB)gShader[2]->_object);
 		}
-		glUniformMatrix4fv(lightMatrix3, numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
+		glUniformMatrix4fv(lightMatrix[2], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
 
-		glUniform1i(vpl_pos_shaderID3,1);
+		glUniform1i(vpl_pos_shaderID[2],1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
 
-		glUniform1i(vpl_nor_shaderID3,2);
+		glUniform1i(vpl_nor_shaderID[2],2);
 		glActiveTexture(GL_TEXTURE2);
 		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
 
-		glUniform1i(dirUniID3,7);
+		glUniform1i(dirUniID[2],7);
 		glActiveTexture(GL_TEXTURE7);
 		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
 
-		glUniform1i(texture2,3);
+		glUniform1i(texture[1],3);
 		glActiveTexture(GL_TEXTURE3);
 		glBindTexture(GL_TEXTURE_2D,texName[1]);		
 		drawTableAndChairs();
@@ -885,12 +858,12 @@ void keyboard(unsigned char key, int x, int y){
 				{
 					case 0:
 						//Move Camera/focus pt up
-						if(camPosition[1] < 3.5)
-						{
+						//if(camPosition[1] < 3.5)
+						//{
 							camPosition[1]+=0.1;
 							camLookAt[1]+=0.1;
 							updateShadowMaps = true;
-						}
+						//}
 					break;
 					case 1:
 						//Move Object 1 up
@@ -1045,7 +1018,7 @@ void keyboard(unsigned char key, int x, int y){
 				{
 					case 0:
 					   //Move Camera/focus pt backward
-						if(camPosition[2] < 3.9)
+						//if(camPosition[2] < 3.9)
 						{
 							camPosition[2]+=0.1;
 							camLookAt[2]+=0.1;
@@ -1180,7 +1153,7 @@ void keyboard(unsigned char key, int x, int y){
 void special( int key, int px, int py ){
 	switch (key) {
 	   case GLUT_KEY_UP:
-			if(lightPosition[2] >-2.9)
+			//if(lightPosition[2] >-2.9)
 			{
 				lightPosition[2] += -0.1;	  
 				lightLookAt[2] += -0.1;	 
@@ -1189,7 +1162,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_DOWN:
-			if(lightPosition[2] <2.9)
+			//if(lightPosition[2] <2.9)
 			{
 				lightPosition[2] += 0.1;	
 				lightLookAt[2] += 0.1;	
@@ -1198,7 +1171,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_LEFT:
-			if(lightPosition[0] >-2.9)
+			//if(lightPosition[0] >-2.9)
 			{
 				lightPosition[0] += -0.1;		  
 				lightLookAt[0] += -0.1;	
@@ -1207,7 +1180,7 @@ void special( int key, int px, int py ){
 			}
 	   break;
 	   case GLUT_KEY_RIGHT:
-			if(lightPosition[0] <2.9)
+			//if(lightPosition[0] <2.9)
 			{
 				lightPosition[0] += 0.1;	  
 				lightLookAt[0] += 0.1;	

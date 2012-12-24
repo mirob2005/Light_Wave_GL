@@ -23,6 +23,8 @@ void drawTable();
 void drawChairR();
 void drawChairL();
 void drawLight();
+void drawAwning();
+
 void drawTableAndChairs(){
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
@@ -40,7 +42,7 @@ void drawFloor()
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 
-	GLfloat floor_vertices[] = {-6,-4,-4,-6,-4,4,6,-4,4,6,-4,-4};
+	GLfloat floor_vertices[] = {-6,-4,-8,-6,-4,8,10,-4,8,10,-4,-8};
 	GLfloat floor_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1};
 	GLfloat floor_normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
 
@@ -155,26 +157,29 @@ void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box) {
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 
-	GLfloat room_vertices[] = {-6,4,-4,6,4,-4,6,4,4,-6,4,4,
-						  -6,-4,-4,6,-4,-4,6,4,-4,-6,4,-4,
-						  -6,-4,4,-6,4,4,6,4,4,6,-4,4,
-						  -6,-4,-4,-6,4,-4,-6,4,4,-6,-4,4,
-						  6,-4,-4,6,-4,4,6,4,4,6,4,-4};
-	GLfloat room_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1,
-						1,1,1,1,1,1,1,1,1,1,1,1,
-						1,1,1,1,1,1,1,1,1,1,1,1,
+	GLfloat room_vertices[] = {
+						  //-6,-4,-4,6,-4,-4,6,4,-4,-6,4,-4,
+						  //-6,-4,4,-6,4,4,6,4,4,6,-4,4,
+						  -6,-4,-8,-6,4,-8,-6,4,8,-6,-4,8,
+						  //6,-4,-4,6,-4,4,6,4,4,6,4,-4
+							};
+	GLfloat room_colors[] = {
+						//1,1,1,1,1,1,1,1,1,1,1,1,
+						//1,1,1,1,1,1,1,1,1,1,1,1,
 						1,0,0,1,0,0,1,0,0,1,0,0,
-						0,1,0,0,1,0,0,1,0,0,1,0};
+						//0,1,0,0,1,0,0,1,0,0,1,0
+						};
 	//GLfloat room_colors[] = {0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,
 	//					0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,
 	//					0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,
 	//					0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,
 	//					0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098};
-	GLfloat room_normals[] = {0,-1,0,0,-1,0,0,-1,0,0,-1,0,
-						0,0,1,0,0,1,0,0,1,0,0,1,
-						0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+	GLfloat room_normals[] = {
+						//0,0,1,0,0,1,0,0,1,0,0,1,
+						//0,0,-1,0,0,-1,0,0,-1,0,0,-1,
 						1,0,0,1,0,0,1,0,0,1,0,0,
-						-1,0,0,-1,0,0,-1,0,0,-1,0,0};
+						//-1,0,0,-1,0,0,-1,0,0,-1,0,0
+						};
 
 
 	glPushMatrix();
@@ -184,10 +189,12 @@ void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box) {
 			glNormalPointer(GL_FLOAT, 0, room_normals);
 			glColorPointer(3, GL_FLOAT, 0, room_colors);
 			glVertexPointer(3, GL_FLOAT, 0, room_vertices);
-			glDrawArrays(GL_QUADS,0,20);
+			glDrawArrays(GL_QUADS,0,4);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
+
+	drawAwning();
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -307,43 +314,105 @@ void drawChairL() {
 	}
 }
 void drawChairR() {
+	
+	GLfloat color[] = {0.6,0.43,0.03};
+	//Seat
 	{
-		GLfloat color[] = {0.6,0.43,0.03};
-		//Seat
-		{
-		GLfloat scale[] = {0.75,0.1,0.75};
-		GLfloat translate[] = {2.5,-3,0};
-		drawBox(scale, translate, color);
-		}	
-		//Back
-		{
-		GLfloat scale[] = {0.1,0.75,0.75};
-		GLfloat translate[] = {3.15,-2.2,0};
-		drawBox(scale, translate, color);
-		}		
-		//Legs
-		{
-		GLfloat scale[] = {0.1,0.5,0.1};
-		GLfloat translate[] = {2,-3.5,-0.5};		
-		drawBox(scale, translate, color);
-		}
-		{
-		GLfloat scale[] = {0.1,0.5,0.1};
-		GLfloat translate[] = {3,-3.5,-0.5};		
-		drawBox(scale, translate, color);
-		}
-		{
-		GLfloat scale[] = {0.1,0.5,0.1};
-		GLfloat translate[] = {2,-3.5,0.5};		
-		drawBox(scale, translate, color);
-		}
-		{
-		GLfloat scale[] = {0.1,0.5,0.1};
-		GLfloat translate[] = {3,-3.5,0.5};		
-		drawBox(scale, translate, color);
-		}
+	GLfloat scale[] = {0.75,0.1,0.75};
+	GLfloat translate[] = {2.5,-3,0};
+	drawBox(scale, translate, color);
+	}	
+	//Back
+	{
+	GLfloat scale[] = {0.1,0.75,0.75};
+	GLfloat translate[] = {3.15,-2.2,0};
+	drawBox(scale, translate, color);
+	}		
+	//Legs
+	{
+	GLfloat scale[] = {0.1,0.5,0.1};
+	GLfloat translate[] = {2,-3.5,-0.5};		
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.1,0.5,0.1};
+	GLfloat translate[] = {3,-3.5,-0.5};		
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.1,0.5,0.1};
+	GLfloat translate[] = {2,-3.5,0.5};		
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.1,0.5,0.1};
+	GLfloat translate[] = {3,-3.5,0.5};		
+	drawBox(scale, translate, color);
+	}		
+}
+void drawAwning() {
+	
+	GLfloat color[] = {1,1,1};
+	//Z-axis
+	{
+	GLfloat scale[] = {0.25,0.25,5.0};
+	GLfloat translate[] = {2,4,0};
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.25,0.25,5.0};
+	GLfloat translate[] = {0,4,0};
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.25,0.25,5.0};
+	GLfloat translate[] = {-2,4,0};
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {0.25,0.25,5.0};
+	GLfloat translate[] = {-4,4,0};
+	drawBox(scale, translate, color);
+	}
+	//X-axis
+	{
+	GLfloat scale[] = {5.0,0.25,0.25};
+	GLfloat translate[] = {-1,4,0};
+	drawBox(scale, translate, color);
+	}	
+	{
+	GLfloat scale[] = {5.0,0.25,0.25};
+	GLfloat translate[] = {-1,4,-2};
+	drawBox(scale, translate, color);
+	}	
+	{
+	GLfloat scale[] = {5.0,0.25,0.25};
+	GLfloat translate[] = {-1,4,2};
+	drawBox(scale, translate, color);
+	}
+	{
+	GLfloat scale[] = {5.0,0.25,0.25};
+	GLfloat translate[] = {-1,4,-4};
+	drawBox(scale, translate, color);
+	}	
+	{
+	GLfloat scale[] = {5.0,0.25,0.25};
+	GLfloat translate[] = {-1,4,4};
+	drawBox(scale, translate, color);
+	}
+	//Y-Axis
+	{
+	GLfloat scale[] = {0.25,4.0,0.25};
+	GLfloat translate[] = {2,0,4};
+	drawBox(scale, translate, color);
+	}	
+	{
+	GLfloat scale[] = {0.25,4.0,0.25};
+	GLfloat translate[] = {2,0,-4};
+	drawBox(scale, translate, color);
 	}
 }
+
 void drawLight() { 
 	float R = 1.0; // Radius of hemisphere.
 	int p = 10; // Number of longitudinal slices.
