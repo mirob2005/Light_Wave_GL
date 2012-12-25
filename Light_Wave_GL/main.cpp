@@ -132,9 +132,9 @@ double worldRotate = defworldRotate;
 */
 GLuint dirSMtex;
 GLuint dirFBOid;
-GLuint dirUniID[3];
+GLuint dirUniID[5];
 
-GLuint lightMatrix[3];
+GLuint lightMatrix[5];
 
 //Must Change in vertex shader and fragment shader as well
 const int numINDshadows = 5;
@@ -153,12 +153,12 @@ float maxDistance = 4.0;
 
 // For VPL Position Texture
 GLuint vpl_pos_TexID;
-GLuint vpl_pos_shaderID[3];
+GLuint vpl_pos_shaderID[5];
 GLfloat *vplDataPos;
 
 // For VPL Normal Texture
 GLuint vpl_nor_TexID;
-GLuint vpl_nor_shaderID[3];
+GLuint vpl_nor_shaderID[5];
 GLfloat *vplDataNor;
 
 //Set to true when the light source is moved:
@@ -177,17 +177,17 @@ bool box = false;
 bool initial = true;
 
 
-char* gTextureName[2];
-GLSLProgram *gShader[3];
+char* gTextureName[4];
+GLSLProgram *gShader[5];
 
 //Textures
 #define	checkImageWidth 64
 #define	checkImageHeight 64
-static GLubyte textureImage[2][checkImageHeight][checkImageWidth][4];
+static GLubyte textureImage[4][checkImageHeight][checkImageWidth][4];
 
-PPMImage *img[2];
-static GLuint texName[2];
-GLuint texture[2];
+PPMImage *img[4];
+static GLuint texName[4];
+GLuint texture[4];
 
 void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
   unsigned int i, j;
@@ -206,13 +206,11 @@ void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
 void shaderInit(){
 
 	VertexShader vertexShader( "vertexShader.vs");
-	VertexShader vertexShader2( "vertexShader2.vs" );
-	//VertexShader vertexShader3( "vertexShader3.vs" );
+	VertexShader vertexShader2( "vertexShader2.vs" );	
 	FragmentShader fragmentShader( "fragShader.fs" );
-	FragmentShader fragmentShader2( "fragShader2.fs" );
-	//FragmentShader fragmentShader3( "fragShader3.fs" );
+	FragmentShader fragmentShader2( "fragShader2.fs" );	
 
-	for(int i=0; i<3; i++){  
+	for(int i=0; i<5; i++){  
 		gShader[i] = new GLSLProgram( );
 	}
 
@@ -222,19 +220,16 @@ void shaderInit(){
 	if( !(gShader[0]->attach( fragmentShader )) ){
 		fprintf( stderr, "Couldn't attach the fragment shader to the program\n" );
 	}
-	if( !(gShader[1]->attach( vertexShader2 )) ){
-		fprintf( stderr, "Couldn't attach the 2nd vertex shader to the program\n" );
+
+	for(int i =1; i<5; i++){
+		if( !(gShader[i]->attach( vertexShader2 )) ){
+			fprintf( stderr, "Couldn't attach the vertex shader to the program\n" );
+		}
+		if( !(gShader[i]->attach( fragmentShader2 )) ){
+			fprintf( stderr, "Couldn't attach the fragment shader to the program\n" );
+		}
 	}
-	if( !(gShader[1]->attach( fragmentShader2 )) ){
-		fprintf( stderr, "Couldn't attach the 2nd fragment shader to the program\n" );
-	}
-	if( !(gShader[2]->attach( vertexShader2 )) ){
-		fprintf( stderr, "Couldn't attach the 3rd vertex shader to the program\n" );
-	}
-	if( !(gShader[2]->attach( fragmentShader2 )) ){
-		fprintf( stderr, "Couldn't attach the 3rd fragment shader to the program\n" );
-	}
-	for(int i=0; i<3; i++){
+	for(int i=0; i<5; i++){
 		if( !(gShader[i]->link( )) ){
 			fprintf( stderr, "Couldn't link the shader.\n" );
 		}
@@ -252,7 +247,7 @@ void shaderInit(){
 	vpl_nor_shaderID[0] = glGetUniformLocation(gShader[0]->_object, "vplNorTex");
 	lightMatrix[0] = glGetUniformLocation(gShader[0]->_object, "LightTexture");
 
-	for(int i=1; i<3; i++){
+	for(int i=1; i<5; i++){
 		dirUniID[i] = glGetUniformLocation(gShader[i]->_object, "ShadowMap");
 		vpl_pos_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplPosTex");
 		vpl_nor_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplNorTex");
@@ -493,11 +488,13 @@ void init( void ){
 
 	gTextureName[0] = "granite.ppm";
 	gTextureName[1] = "wood.ppm";
+	gTextureName[2] = "wall.ppm";
+	gTextureName[3] = "awning.ppm";
 
 
-	glGenTextures(2, texName);
+	glGenTextures(4, texName);
 
-	for(int i=0; i<2; i++){
+	for(int i=0; i<4; i++){
 		img[i] = new PPMImage( gTextureName[i] );
 		ppmimageToBytes( img[i], textureImage[i] );
 
@@ -727,54 +724,39 @@ void display(void){
 		glCullFace(GL_BACK);
 		glRotatef(worldRotate,0,1,0);
 		
+		drawTeapot(object1Position, object2Position, box);
+		//drawRoom(object1Position, object2Position, box);
+
+
+		for(int i = 1; i <5; i++){
+			if(!showVPLs)
+			{
+				glUseProgramObjectARB((GLhandleARB)gShader[i]->_object);
+			}
+			glUniformMatrix4fv(lightMatrix[i], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
+
+			glUniform1i(vpl_pos_shaderID[i],1);
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
+
+			glUniform1i(vpl_nor_shaderID[i],2);
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
+
+			glUniform1i(dirUniID[i],7);
+			glActiveTexture(GL_TEXTURE7);
+			glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
+
+			glUniform1i(texture[i-1],0);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D,texName[i-1]);		
+			if(i==1)drawFloor();
+			if(i==2)drawTableAndChairs();
+			if(i==3)drawRoom();
+			if(i==4)drawAwning();
+		}
+	
 		
-		drawRoom(object1Position, object2Position, box);
-		if(!showVPLs)
-		{
-			glUseProgramObjectARB((GLhandleARB)gShader[1]->_object);
-		}
-		glUniformMatrix4fv(lightMatrix[1], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
-
-		glUniform1i(vpl_pos_shaderID[1],1);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
-
-		glUniform1i(vpl_nor_shaderID[1],2);
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
-
-		glUniform1i(dirUniID[1],7);
-		glActiveTexture(GL_TEXTURE7);
-		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
-
-		glUniform1i(texture[0],0);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D,texName[0]);		
-		drawFloor();
-
-
-		if(!showVPLs)
-		{
-			glUseProgramObjectARB((GLhandleARB)gShader[2]->_object);
-		}
-		glUniformMatrix4fv(lightMatrix[2], numINDshadows, GL_FALSE, (GLfloat*)textureMatrix);
-
-		glUniform1i(vpl_pos_shaderID[2],1);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_1D,vpl_pos_TexID);
-
-		glUniform1i(vpl_nor_shaderID[2],2);
-		glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_1D,vpl_nor_TexID);
-
-		glUniform1i(dirUniID[2],7);
-		glActiveTexture(GL_TEXTURE7);
-		glBindTexture(GL_TEXTURE_2D_ARRAY,dirSMtex);
-
-		glUniform1i(texture[1],3);
-		glActiveTexture(GL_TEXTURE3);
-		glBindTexture(GL_TEXTURE_2D,texName[1]);		
-		drawTableAndChairs();
 
 		/*
 			VPL Debug Section - Display cube at each VPL to test distribution

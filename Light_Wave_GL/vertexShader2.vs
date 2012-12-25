@@ -112,7 +112,7 @@ void main( ){
    
    ShadowCoord= gl_TextureMatrix[7] * gl_Vertex;	
    
-   vec4 xequalzero = vec4(1.0,0.0,0.0,0.0);
+   vec4 xequalzero = vec4(0.0,0.0,1.0,0.0);
    vec4 slanted = vec4(1.0,1.0,1.0,0.0);
    
    TexCoord.x = gl_Vertex.x * xequalzero.x + gl_Vertex.y * xequalzero.y + gl_Vertex.z * xequalzero.z;
