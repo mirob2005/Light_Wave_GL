@@ -76,7 +76,7 @@ void main( ){
 	float SpecularTerm = 0.0;
 	//Get rid of the specular highlights in the shadows (should be obscured)
 	//if(shadow > 0.1){
-	  SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0),1.0);
+	 // SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0),1.0);
 	//}
 	
 	vec4 direct_color = vec4(vec3(gl_Color) * (DiffuseTerm * 0.75) + (SpecularTerm*0.25), 1.0);

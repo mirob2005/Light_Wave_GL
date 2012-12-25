@@ -18,7 +18,8 @@
 #define PI 3.14159265
 
 void drawBox(GLfloat *scale, GLfloat *translate, GLfloat *color);
-void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box);
+void drawRoom();
+void drawTeapot(GLfloat *object1Position, GLfloat *object2Position, bool box);
 void drawTable();
 void drawChairR();
 void drawChairL();
@@ -65,9 +66,11 @@ void drawFloor()
 }
 void drawScene(GLfloat *object1Position, GLfloat *object2Position, bool box)
 {
-		drawRoom(object1Position, object2Position, box);
+		drawRoom();
 		drawFloor();
 		drawTableAndChairs();
+		drawAwning();
+		drawTeapot(object1Position, object2Position, box);
 
 		////Cornell Box Scene
 		//if(box){
@@ -151,8 +154,7 @@ void drawTeapot(GLfloat *object1Position, GLfloat *object2Position, bool box){
 		glPopMatrix();
 	}
 }
-void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box) {
-	drawTeapot(object1Position, object2Position, box);
+void drawRoom() {	
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
@@ -165,8 +167,8 @@ void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box) {
 							};
 	GLfloat room_colors[] = {
 						//1,1,1,1,1,1,1,1,1,1,1,1,
-						//1,1,1,1,1,1,1,1,1,1,1,1,
-						1,0,0,1,0,0,1,0,0,1,0,0,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						//1,0,0,1,0,0,1,0,0,1,0,0,
 						//0,1,0,0,1,0,0,1,0,0,1,0
 						};
 	//GLfloat room_colors[] = {0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,0.6078,0.5804,0.5098,
@@ -192,9 +194,7 @@ void drawRoom(GLfloat *object1Position, GLfloat *object2Position, bool box) {
 			glDrawArrays(GL_QUADS,0,4);
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
-	drawAwning();
+	glPopMatrix();	
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -351,7 +351,10 @@ void drawChairR() {
 	}		
 }
 void drawAwning() {
-	
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);	
+
 	GLfloat color[] = {1,1,1};
 	//Z-axis
 	{
@@ -411,6 +414,9 @@ void drawAwning() {
 	GLfloat translate[] = {2,0,-4};
 	drawBox(scale, translate, color);
 	}
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 }
 
 void drawLight() { 
