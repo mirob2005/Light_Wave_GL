@@ -178,6 +178,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\readObjData.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\scene.cpp"
 				>
 			</File>
@@ -200,11 +204,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ObjData.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Pixel.h"
 				>
 			</File>
 			<File
 				RelativePath=".\PPMImage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\readObjData.h"
 				>
 			</File>
 			<File
