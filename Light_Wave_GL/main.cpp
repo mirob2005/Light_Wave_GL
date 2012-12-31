@@ -15,6 +15,8 @@
 #include "GLSLShader.h"
 #include "scene.h"
 #include "FrameSaver.h"
+#include "ObjData.h"
+#include "readObjData.h"
 
 #ifdef __APPLE__
 #include <OpenGL/gl3.h>
@@ -64,7 +66,7 @@ using namespace msgfx;
 //Define Resolutions
 int screenWidth = 1280;
 int screenHeight = 720;
-int shadowRatio = 3;
+int shadowRatio = 6;
 int shadowMapWidth = screenWidth*shadowRatio;
 int shadowMapHeight = screenHeight*shadowRatio;
 
@@ -84,7 +86,7 @@ GLuint option = 0;
 /***************DEFAULTS***************/
 const GLfloat defobject1Position[3] = {2.0,-3.0,0.0};
 const GLfloat defobject2Position[3] = {-2.0,-2.0,-2.0};
-const GLfloat defcamPosition[3] = {0.0, 0.0, 4.0};
+const GLfloat defcamPosition[3] = {0.0, 2.0, 3.5};
 const GLfloat defcamLookAt[3] = {0.0, 0.0, 0.0};
 const GLfloat defcamUpVector[3] = {0.0, 1.0, 0.0};
 const GLfloat deflightPosition[4] = { 0.0, 6.0, 0.0, 0.0 };
@@ -171,11 +173,13 @@ bool updateShadowMaps = true;
 bool showVPLs = false;
 
 //Show boxes or teapot?
-bool box = false;
+bool box = true;
 
 //First Display?
 bool initial = true;
 
+//Obj Object
+ObjData *obj;
 
 char* gTextureName[4];
 GLSLProgram *gShader[5];
@@ -367,13 +371,14 @@ void generateVPLs( void )
 			vplDataNor[i] = (vplDataNor[i]/(4*maxDistance))+0.5;
 		}
 	}
-
-	for(int i=0; i<3*numLights; i++)
-	{
-		if(vplDataPos[i]<-3.9)
-			vplDataPos[i]=-3.9;
-		else if(vplDataPos[i] >3.9)
-			vplDataPos[i]=3.9;
+	if(box){
+		for(int i=0; i<3*numLights; i++)
+		{
+			if(vplDataPos[i]<-3.9)
+				vplDataPos[i]=-3.9;
+			else if(vplDataPos[i] >3.9)
+				vplDataPos[i]=3.9;
+		}
 	}
 	
 	////Simulate Clamping process of the texture --DEBUG
@@ -560,7 +565,7 @@ void display(void){
 			Begin Shadow Map Creation
 		*/
 		glEnable(GL_DEPTH_TEST);
-		glClearColor(0.0f,0.0f,0.0f,1.0f);
+		glClearColor(0.6118f,0.6902f,0.8196f,1.0f);
 
 		glEnable(GL_CULL_FACE);
 		
@@ -631,7 +636,8 @@ void display(void){
 			glCullFace(GL_FRONT);
 
 			//Draw the scene
-			drawScene(object1Position, object2Position, box);
+			if(!box)drawScene(object1Position, object2Position, box);
+			if(box)drawObj();
 
 			//Store modelview and projection matrices for shadows
 			glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
@@ -724,9 +730,14 @@ void display(void){
 		glCullFace(GL_BACK);
 		glRotatef(worldRotate,0,1,0);
 		
-		drawTeapot(object1Position, object2Position, box);
-		//drawRoom(object1Position, object2Position, box);
-
+		
+		if(box){
+			drawCase();
+		}
+		//if(box)drawBoard();
+		if(!box){
+			drawTeapot(object1Position, object2Position, box);
+		}
 
 		for(int i = 1; i <5; i++){
 			if(!showVPLs)
@@ -750,11 +761,15 @@ void display(void){
 			glUniform1i(texture[i-1],0);
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D,texName[i-1]);		
-			if(i==1)drawFloor();
-			if(i==2)drawTableAndChairs();
-			if(i==3)drawRoom();
-			if(i==4)drawAwning();
+			if(i==1&&!box)drawFloor();
+			if(i==1&&box)drawWhtPieces();
+			if(i==2&&!box)drawTableAndChairs();
+			if(i==2&&box)drawBlkPieces();
+			if(i==3&&!box)drawRoom();			
+			if(i==4&&!box)drawAwning();
+			if(i==3&&box)drawBoard();
 		}
+		
 	
 		
 
@@ -803,7 +818,7 @@ void display(void){
 		glDisableClientState(GL_NORMAL_ARRAY);
 
 
-		updateShadowMaps = true;
+		updateShadowMaps = false;
 		glFlush ();
 		glutSwapBuffers();
 	}
@@ -1135,7 +1150,7 @@ void keyboard(unsigned char key, int x, int y){
 void special( int key, int px, int py ){
 	switch (key) {
 	   case GLUT_KEY_UP:
-			//if(lightPosition[2] >-2.9)
+			//if(box&&lightPosition[2] >-2.9||!box)
 			{
 				lightPosition[2] += -0.1;	  
 				lightLookAt[2] += -0.1;	 
@@ -1144,7 +1159,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_DOWN:
-			//if(lightPosition[2] <2.9)
+			//if(box&&lightPosition[2] <2.9||!box)
 			{
 				lightPosition[2] += 0.1;	
 				lightLookAt[2] += 0.1;	
@@ -1153,7 +1168,7 @@ void special( int key, int px, int py ){
 			}
 	   break;	
 	   case GLUT_KEY_LEFT:
-			//if(lightPosition[0] >-2.9)
+			//if(box&&lightPosition[0] >-2.9||!box)
 			{
 				lightPosition[0] += -0.1;		  
 				lightLookAt[0] += -0.1;	
@@ -1162,7 +1177,7 @@ void special( int key, int px, int py ){
 			}
 	   break;
 	   case GLUT_KEY_RIGHT:
-			//if(lightPosition[0] <2.9)
+			//if(box&&lightPosition[0] <2.9 ||!box)
 			{
 				lightPosition[0] += 0.1;	  
 				lightLookAt[0] += 0.1;	
@@ -1213,8 +1228,54 @@ int main(int argc, char** argv){
 		glFramebufferTextureLayer = (PFNGLFRAMEBUFFERTEXTURELAYERPROC)wglGetProcAddress("glFramebufferTextureLayer");
 	#endif
 
+    //char *in = "grass_patch.obj";
+    //char *in = "short.obj";
+    char *in = "chess_board.obj";
+	//char *in = "cube.obj";
 
+    obj = NULL;
+	
+    if( in != NULL ){
+        obj = readObjData( in );
+		sceneInit(obj);
+    }else{
+        cerr << "Input file is mandatory.";
+    }
+    if(obj != NULL){
+        cout << "Object Data Created!"<< endl;
+    }
 
+    ////DEBUGGING PURPOSES - Output all arrays
+    //cout << "Vertex Data:\n";
+    //for(unsigned int i = 0; i < obj->vertexCount(); i++){
+    //    for(unsigned int j = 0; j < 3; j++){
+    //        cout << obj->vertices[i][j] << ", ";
+    //    }
+    //    cout << endl;
+    //}
+    //cout << "Vertex Normal Data:\n";
+    //for(unsigned int i = 0; i < obj->vertexNormalCount(); i++){
+    //    for(unsigned int j = 0; j < 3; j++){
+    //        cout << obj->normals[i][j] << ", ";
+    //    }
+    //    cout << endl;
+    //}
+    //cout << "Texture Vertex Data:\n";
+    //for(unsigned int i = 0; i < obj->textureVertexCount(); i++){
+    //    for(unsigned int j = 0; j < 3; j++){
+    //        cout << obj->textureVertices[i][j] << ", ";
+    //    }
+    //    cout << endl;
+    //}
+    //cout << "Face Data:\n";
+    //for(unsigned int i = 0; i < obj->faceCount(); i++){
+    //    for(unsigned int j = 0; j < 3; j++){
+    //        for(unsigned int k = 0; k < 3; k++){
+    //            cout << obj->faces[i][j][k] << ", ";
+    //        }
+    //    }
+    //    cout << endl;
+    //}
 
 	init( );
 
@@ -1243,7 +1304,7 @@ int main(int argc, char** argv){
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
 	//Comment Out to preserve CPU while not updating the screen
-	glutIdleFunc(display);
+	//glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }

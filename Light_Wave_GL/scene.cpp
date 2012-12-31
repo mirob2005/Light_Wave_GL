@@ -1,5 +1,6 @@
 #include "GLee/GLee.h"
 #include "teapot.h"
+#include "scene.h"
 #include <cmath>
 
 #ifdef __APPLE__
@@ -17,52 +18,206 @@
 
 #define PI 3.14159265
 
-void drawBox(GLfloat *scale, GLfloat *translate, GLfloat *color);
-void drawRoom();
-void drawTeapot(GLfloat *object1Position, GLfloat *object2Position, bool box);
-void drawTable();
-void drawChairR();
-void drawChairL();
-void drawLight();
-void drawAwning();
+GLfloat *vertices;
+GLfloat *normals;
+GLfloat *colors;
+unsigned int faces;
 
-void drawTableAndChairs(){
+void sceneInit(ObjData *obj){
+	faces = obj->faceCount();
+
+	vertices = new GLfloat[faces*9];
+	normals = new GLfloat[faces*9];
+	colors = new GLfloat[faces*9];
+
+	for(unsigned int i=0; i<faces; i++){
+		vertices[i*9+0] = obj->vertices[obj->faces[i][0][0]-1][0];
+		vertices[i*9+1] = obj->vertices[obj->faces[i][0][0]-1][1];
+		vertices[i*9+2] = obj->vertices[obj->faces[i][0][0]-1][2];
+		vertices[i*9+3] = obj->vertices[obj->faces[i][1][0]-1][0];
+		vertices[i*9+4] = obj->vertices[obj->faces[i][1][0]-1][1];
+		vertices[i*9+5] = obj->vertices[obj->faces[i][1][0]-1][2];
+		vertices[i*9+6] = obj->vertices[obj->faces[i][2][0]-1][0];
+		vertices[i*9+7] = obj->vertices[obj->faces[i][2][0]-1][1];
+		vertices[i*9+8] = obj->vertices[obj->faces[i][2][0]-1][2];
+	
+		normals[i*9+0] = obj->normals[obj->faces[i][0][2]-1][0];
+		normals[i*9+1] = obj->normals[obj->faces[i][0][2]-1][1];
+		normals[i*9+2] = obj->normals[obj->faces[i][0][2]-1][2];
+		normals[i*9+3] = obj->normals[obj->faces[i][1][2]-1][0];
+		normals[i*9+4] = obj->normals[obj->faces[i][1][2]-1][1];
+		normals[i*9+5] = obj->normals[obj->faces[i][1][2]-1][2];
+		normals[i*9+6] = obj->normals[obj->faces[i][2][2]-1][0];
+		normals[i*9+7] = obj->normals[obj->faces[i][2][2]-1][1];
+		normals[i*9+8] = obj->normals[obj->faces[i][2][2]-1][2];
+
+		colors[i*9+0] = 1.0;
+		colors[i*9+1] = 1.0;
+		colors[i*9+2] = 1.0;
+		colors[i*9+3] = 1.0;
+		colors[i*9+4] = 1.0;
+		colors[i*9+5] = 1.0;
+		colors[i*9+6] = 1.0;
+		colors[i*9+7] = 1.0;
+		colors[i*9+8] = 1.0;
+	}
+
+	cout << "SCENE INITIALIZED" << endl << endl;
+	cout << "Faces: " << faces << endl;
+}
+void drawWhtSquare(){
+	GLfloat vertices[] = {0,0,0.62,0.62,0,0.62,0.62,0,0,0,0,0};
+	GLfloat colors[] = {1,1,1,1,1,1,1,1,1,1,1,1};
+	GLfloat normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
+
+	glNormalPointer(GL_FLOAT, 0,normals);
+	glColorPointer(3, GL_FLOAT, 0, colors);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_QUADS,0,4);
+}
+void drawBlkSquare(){
+	GLfloat vertices[] = {0,0,0.62,0.62,0,0.62,0.62,0,0,0,0,0};
+	GLfloat colors[] = {0,0,0,0,0,0,0,0,0,0,0,0};
+	GLfloat normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
+
+	glNormalPointer(GL_FLOAT, 0,normals);
+	glColorPointer(3, GL_FLOAT, 0, colors);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_QUADS,0,4);
+}
+void drawBoard(){
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
-	drawTable();
-	drawChairL();
-	drawChairR();
+
+	GLfloat vertices[] = {-3,-0.01,3.5,3,-0.01,3.5,3,-0.01,-2.5,-3,-0.01,-2.5};
+	GLfloat colors[] = {0.3922,0.1765,0.0706,0.3922,0.1765,0.0706,0.3922,0.1765,0.0706,0.3922,0.1765,0.0706};
+	GLfloat normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
+
+	glNormalPointer(GL_FLOAT, 0,normals);
+	glColorPointer(3, GL_FLOAT, 0, colors);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_QUADS,0,4);
+
+
+
+	for(unsigned int j=0; j<8;j++){
+		for(unsigned int i=0; i<8;i++){
+			glPushMatrix();
+				glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+				glMatrixMode(GL_TEXTURE);
+				glActiveTexture(GL_TEXTURE7);
+				glPushMatrix();		
+					glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+					if(j%2==0){
+						if(i%2==1)drawBlkSquare();
+						else drawWhtSquare();
+					}
+					else{
+						if(i%2==0)drawBlkSquare();
+						else drawWhtSquare();
+					}
+				glPopMatrix();
+				glMatrixMode(GL_MODELVIEW);
+			glPopMatrix();	
+		}
+	}
+
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 }
-void drawFloor()
-{
+void drawWhtPieces(){
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
 
-	GLfloat floor_vertices[] = {-6,-4,-8,-6,-4,8,10,-4,8,10,-4,-8};
-	GLfloat floor_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1};
-	GLfloat floor_normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
-
-
 	glPushMatrix();
-	glMatrixMode(GL_TEXTURE);
-	glActiveTexture(GL_TEXTURE7);
-		glPushMatrix();			
-			glNormalPointer(GL_FLOAT, 0, floor_normals);
-			glColorPointer(3, GL_FLOAT, 0, floor_colors);
-			glVertexPointer(3, GL_FLOAT, 0, floor_vertices);
-			glDrawArrays(GL_QUADS,0,4);
+		glScalef(0.05,0.05,0.05);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTexture(GL_TEXTURE7);
+		glPushMatrix();		
+			glScalef(0.05,0.05,0.05);
+			glNormalPointer(GL_FLOAT, 0, normals);
+			glColorPointer(3, GL_FLOAT, 0, colors);
+			glVertexPointer(3, GL_FLOAT, 0, vertices);
+			glDrawArrays(GL_TRIANGLES,0,61560*3);		
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
+	glPopMatrix();	
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
+}
+void drawBlkPieces(){
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glPushMatrix();
+		glScalef(0.05,0.05,0.05);
+		glMatrixMode(GL_TEXTURE);
+		glActiveTexture(GL_TEXTURE7);
+		glPushMatrix();		
+			glScalef(0.05,0.05,0.05);
+			glNormalPointer(GL_FLOAT, 0, normals);
+			glColorPointer(3, GL_FLOAT, 0, colors);
+			glVertexPointer(3, GL_FLOAT, 0, vertices);
+			glDrawArrays(GL_TRIANGLES,61560*3,61560*3);		
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();	
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+}
+void drawCase(){
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	GLfloat room_vertices[] = {//-4,-0.01,-4,-4,-0.01,4,4,-0.01,4,4,-0.01,-4,
+						  //-4,4,-4,4,4,-4,4,4,4,-4,4,4,
+						  3,-0.01,-2.5,3,1.0,-2.5,-3,1.0,-2.5,-3,-0.01,-2.5,
+						  -3,-0.01,3.5,-3,1.0,3.5,3,1.0,3.5,3,-0.01,3.5,
+						  -3,-0.01,-2.5,-3,1.0,-2.5,-3,1.0,3.5,-3,-0.01,3.5,
+						  3,-0.01,-2.5,3,-0.01,3.5,3,1.0,3.5,3,1.0,-2.5};
+	GLfloat room_colors[] = {//1,1,1,1,1,1,1,1,1,1,1,1,
+						//1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						1,1,1,1,1,1,1,1,1,1,1,1,
+						1,0,0,1,0,0,1,0,0,1,0,0,
+						0,1,0,0,1,0,0,1,0,0,1,0};
+	GLfloat room_normals[] = {//0,1,0,0,1,0,0,1,0,0,1,0,
+						//0,-1,0,0,-1,0,0,-1,0,0,-1,0,
+						0,0,1,0,0,1,0,0,1,0,0,1,
+						0,0,-1,0,0,-1,0,0,-1,0,0,-1,
+						1,0,0,1,0,0,1,0,0,1,0,0,
+						-1,0,0,-1,0,0,-1,0,0,-1,0,0};
+
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glPushMatrix();		
+		glNormalPointer(GL_FLOAT, 0, room_normals);
+		glColorPointer(3, GL_FLOAT, 0, room_colors);
+		glVertexPointer(3, GL_FLOAT, 0, room_vertices);
+		glDrawArrays(GL_QUADS,0,16);	
+	glPopMatrix();
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+
+
+
+}
+void drawObj(){
+	drawWhtPieces();
+	drawBlkPieces();
+	drawBoard();
+	drawCase();
 }
 void drawScene(GLfloat *object1Position, GLfloat *object2Position, bool box)
 {
@@ -195,6 +350,44 @@ void drawRoom() {
 		glPopMatrix();
 		glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();	
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+}
+void drawTableAndChairs(){
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	drawTable();
+	drawChairL();
+	drawChairR();
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+}
+void drawFloor()
+{
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	GLfloat floor_vertices[] = {-6,-4,-8,-6,-4,8,10,-4,8,10,-4,-8};
+	GLfloat floor_colors[] = {1,1,1,1,1,1,1,1,1,1,1,1};
+	GLfloat floor_normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
+
+
+	glPushMatrix();
+	glMatrixMode(GL_TEXTURE);
+	glActiveTexture(GL_TEXTURE7);
+		glPushMatrix();			
+			glNormalPointer(GL_FLOAT, 0, floor_normals);
+			glColorPointer(3, GL_FLOAT, 0, floor_colors);
+			glVertexPointer(3, GL_FLOAT, 0, floor_vertices);
+			glDrawArrays(GL_QUADS,0,4);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
