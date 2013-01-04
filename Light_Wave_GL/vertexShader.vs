@@ -96,7 +96,8 @@ void main( ){
 	   float SpecularTerm = pow(max(dot(normalize(INDlightDirRef), normalize(camDir)), 0.0), 32.0);
 
 	   // Calculating The VPL Contribution
-	   indirect_color += gl_Color*DiffuseTermObj*DiffuseTermLight*(1-vplAttenuation)+SpecularTerm;
+	   indirect_color += DiffuseTermObj*DiffuseTermLight*(1-vplAttenuation)+SpecularTerm;
+	   //indirect_color += gl_Color*DiffuseTermObj*DiffuseTermLight*(1-vplAttenuation)+SpecularTerm;
    }	
 
    indirect_color = vec4(indirect_color.r/numLights,indirect_color.g/numLights,indirect_color.b/numLights,1);  

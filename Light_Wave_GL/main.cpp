@@ -129,14 +129,17 @@ GLfloat lightNormalVector[3] = {deflightNormalVector[0],deflightNormalVector[1],
 double worldRotate = defworldRotate;
 /**************************************/
 
+const int numTextures = 5;
+const int numScenes = 3;
+
 /*
 	FOR SHADOW MAPPING
 */
 GLuint dirSMtex;
 GLuint dirFBOid;
-GLuint dirUniID[5];
+GLuint dirUniID[numTextures+1];
 
-GLuint lightMatrix[5];
+GLuint lightMatrix[numTextures+1];
 
 //Must Change in vertex shader and fragment shader as well
 const int numINDshadows = 5;
@@ -155,12 +158,12 @@ float maxDistance = 4.0;
 
 // For VPL Position Texture
 GLuint vpl_pos_TexID;
-GLuint vpl_pos_shaderID[5];
+GLuint vpl_pos_shaderID[numTextures+1];
 GLfloat *vplDataPos;
 
 // For VPL Normal Texture
 GLuint vpl_nor_TexID;
-GLuint vpl_nor_shaderID[5];
+GLuint vpl_nor_shaderID[numTextures+1];
 GLfloat *vplDataNor;
 
 //Set to true when the light source is moved:
@@ -172,8 +175,8 @@ bool updateShadowMaps = true;
 //Show VPL's
 bool showVPLs = false;
 
-//Show boxes or teapot?
-bool box = true;
+//Swap through available scenes
+int scene = 0;
 
 //First Display?
 bool initial = true;
@@ -181,17 +184,17 @@ bool initial = true;
 //Obj Object
 ObjData *obj;
 
-char* gTextureName[4];
-GLSLProgram *gShader[5];
+char* gTextureName[numTextures];
+GLSLProgram *gShader[numTextures+1];
 
 //Textures
 #define	checkImageWidth 64
 #define	checkImageHeight 64
-static GLubyte textureImage[4][checkImageHeight][checkImageWidth][4];
+static GLubyte textureImage[numTextures][checkImageHeight][checkImageWidth][4];
 
-PPMImage *img[4];
-static GLuint texName[4];
-GLuint texture[4];
+PPMImage *img[numTextures];
+static GLuint texName[numTextures];
+GLuint texture[numTextures];
 
 void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
   unsigned int i, j;
@@ -206,7 +209,27 @@ void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
    }
 }
 
+void initObjectFile(){
 
+	char *in = "chess_board.obj";
+	
+	if(scene==1)
+		in = "chess_board.obj";
+	else if(scene==0||scene==2)
+		in = "grass_patch.obj";	
+	
+	obj = NULL;
+	
+	if( in != NULL ){
+		obj = readObjData( in );
+		sceneInit(obj);
+	}else{
+		cerr << "Input file is mandatory.";
+	}
+	if(obj != NULL){
+		cout << "Object Data Created!"<< endl;
+	}
+}
 void shaderInit(){
 
 	VertexShader vertexShader( "vertexShader.vs");
@@ -214,7 +237,7 @@ void shaderInit(){
 	FragmentShader fragmentShader( "fragShader.fs" );
 	FragmentShader fragmentShader2( "fragShader2.fs" );	
 
-	for(int i=0; i<5; i++){  
+	for(int i=0; i<numTextures+1; i++){  
 		gShader[i] = new GLSLProgram( );
 	}
 
@@ -225,7 +248,7 @@ void shaderInit(){
 		fprintf( stderr, "Couldn't attach the fragment shader to the program\n" );
 	}
 
-	for(int i =1; i<5; i++){
+	for(int i =1; i<numTextures+1; i++){
 		if( !(gShader[i]->attach( vertexShader2 )) ){
 			fprintf( stderr, "Couldn't attach the vertex shader to the program\n" );
 		}
@@ -233,7 +256,7 @@ void shaderInit(){
 			fprintf( stderr, "Couldn't attach the fragment shader to the program\n" );
 		}
 	}
-	for(int i=0; i<5; i++){
+	for(int i=0; i<numTextures+1; i++){
 		if( !(gShader[i]->link( )) ){
 			fprintf( stderr, "Couldn't link the shader.\n" );
 		}
@@ -251,7 +274,7 @@ void shaderInit(){
 	vpl_nor_shaderID[0] = glGetUniformLocation(gShader[0]->_object, "vplNorTex");
 	lightMatrix[0] = glGetUniformLocation(gShader[0]->_object, "LightTexture");
 
-	for(int i=1; i<5; i++){
+	for(int i=1; i<numTextures+1; i++){
 		dirUniID[i] = glGetUniformLocation(gShader[i]->_object, "ShadowMap");
 		vpl_pos_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplPosTex");
 		vpl_nor_shaderID[i] = glGetUniformLocation(gShader[i]->_object, "vplNorTex");
@@ -371,15 +394,15 @@ void generateVPLs( void )
 			vplDataNor[i] = (vplDataNor[i]/(4*maxDistance))+0.5;
 		}
 	}
-	if(box){
-		for(int i=0; i<3*numLights; i++)
-		{
-			if(vplDataPos[i]<-3.9)
-				vplDataPos[i]=-3.9;
-			else if(vplDataPos[i] >3.9)
-				vplDataPos[i]=3.9;
-		}
-	}
+	//if(box){
+	//	for(int i=0; i<3*numLights; i++)
+	//	{
+	//		if(vplDataPos[i]<-3.9)
+	//			vplDataPos[i]=-3.9;
+	//		else if(vplDataPos[i] >3.9)
+	//			vplDataPos[i]=3.9;
+	//	}
+	//}
 	
 	////Simulate Clamping process of the texture --DEBUG
 	//for(int i=0; i<3*numLights; i++)
@@ -495,11 +518,12 @@ void init( void ){
 	gTextureName[1] = "wood.ppm";
 	gTextureName[2] = "wall.ppm";
 	gTextureName[3] = "awning.ppm";
+	gTextureName[4] = "grass.ppm";
 
 
-	glGenTextures(4, texName);
+	glGenTextures(numTextures, texName);
 
-	for(int i=0; i<4; i++){
+	for(int i=0; i<numTextures; i++){
 		img[i] = new PPMImage( gTextureName[i] );
 		ppmimageToBytes( img[i], textureImage[i] );
 
@@ -636,8 +660,10 @@ void display(void){
 			glCullFace(GL_FRONT);
 
 			//Draw the scene
-			if(!box)drawScene(object1Position, object2Position, box);
-			if(box)drawObj();
+			if(scene==0)drawScene(object1Position, object2Position);
+			else if(scene==1)drawChessScene();
+			else if(scene==2)drawGrassScene();
+			else drawChessScene();//Change for additions
 
 			//Store modelview and projection matrices for shadows
 			glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
@@ -730,16 +756,12 @@ void display(void){
 		glCullFace(GL_BACK);
 		glRotatef(worldRotate,0,1,0);
 		
-		
-		if(box){
-			drawCase();
-		}
-		//if(box)drawBoard();
-		if(!box){
-			drawTeapot(object1Position, object2Position, box);
+		//Use Shaders without a object texture
+		if(scene==0){
+			drawTeapot(object1Position, object2Position);
 		}
 
-		for(int i = 1; i <5; i++){
+		for(int i = 1; i <numTextures+1; i++){
 			if(!showVPLs)
 			{
 				glUseProgramObjectARB((GLhandleARB)gShader[i]->_object);
@@ -761,13 +783,18 @@ void display(void){
 			glUniform1i(texture[i-1],0);
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D,texName[i-1]);		
-			if(i==1&&!box)drawFloor();
-			if(i==1&&box)drawWhtPieces();
-			if(i==2&&!box)drawTableAndChairs();
-			if(i==2&&box)drawBlkPieces();
-			if(i==3&&!box)drawRoom();			
-			if(i==4&&!box)drawAwning();
-			if(i==3&&box)drawBoard();
+
+			//Object Texture Distribution
+			if(i==1&&scene==0)drawFloor();
+			if(i==1&&scene==1)drawWhtPieces();
+			if(i==2&&scene==0)drawTableAndChairs();
+			if(i==2&&scene==1)drawBlkPieces();
+			if(i==3&&scene==0)drawRoom();			
+			if(i==3&&scene==1)drawBoard();
+			if(i==4&&scene==0)drawAwning();
+			if(i==4&&scene==1)drawCase();
+			if(i==5&&scene==0)drawGrasses();
+			if(i==5&&scene==2)drawGrassScene();
 		}
 		
 	
@@ -886,7 +913,7 @@ void keyboard(unsigned char key, int x, int y){
 				{
 					case 0:
 					   //Move Camera/focus pt down
-						if(camPosition[1] >-3.5)
+						//if(camPosition[1] >-3.5)
 						{
 							camPosition[1]+=-0.1;
 							camLookAt[1]+=-0.1;
@@ -984,7 +1011,7 @@ void keyboard(unsigned char key, int x, int y){
 					case 0:
 					   //Move Camera/focus pt forward
 						//Account for Near viewing distance
-						if(camPosition[2] >-2.9)
+						//if(camPosition[2] >-2.9)
 						{
 							camPosition[2]+=-0.1;
 							camLookAt[2]+=-0.1;
@@ -1120,8 +1147,8 @@ void keyboard(unsigned char key, int x, int y){
 		   break;
 		   case 'P':
 		   case 'p':
-			   if(box) box = false;
-			   else box = true;
+			   scene = (scene+1)%numScenes;//change for additions
+			   initObjectFile();
 			   updateShadowMaps = true;
 		   break;
 		   case 'M':
@@ -1188,7 +1215,6 @@ void special( int key, int px, int py ){
 	}
   glutPostRedisplay( );
 }
-
 int main(int argc, char** argv){
 
 	glutInit(&argc, argv);
@@ -1228,22 +1254,8 @@ int main(int argc, char** argv){
 		glFramebufferTextureLayer = (PFNGLFRAMEBUFFERTEXTURELAYERPROC)wglGetProcAddress("glFramebufferTextureLayer");
 	#endif
 
-    //char *in = "grass_patch.obj";
-    //char *in = "short.obj";
-    char *in = "chess_board.obj";
-	//char *in = "cube.obj";
-
-    obj = NULL;
-	
-    if( in != NULL ){
-        obj = readObjData( in );
-		sceneInit(obj);
-    }else{
-        cerr << "Input file is mandatory.";
-    }
-    if(obj != NULL){
-        cout << "Object Data Created!"<< endl;
-    }
+	//Read in .obj file
+	initObjectFile();
 
     ////DEBUGGING PURPOSES - Output all arrays
     //cout << "Vertex Data:\n";
@@ -1304,7 +1316,7 @@ int main(int argc, char** argv){
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
 	//Comment Out to preserve CPU while not updating the screen
-	//glutIdleFunc(display);
+	glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }
