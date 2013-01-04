@@ -5,20 +5,27 @@
 #define SCENE_H
 
 void sceneInit(ObjData *Obj);
-void drawObj();
+//Chessboard Scene
+void drawChessScene();
 void drawWhtPieces();
 void drawBlkPieces();
 void drawBoard();
 void drawCase();
-void drawScene(GLfloat *object1Position, GLfloat *object2Position, bool box);
+//Patio Scene
+void drawScene(GLfloat *object1Position, GLfloat *object2Position);
 void drawFloor();
 void drawTableAndChairs();
 void drawTable();
 void drawChairR();
 void drawChairL();
-void drawBox(GLfloat *scale, GLfloat *translate, GLfloat *color);
 void drawRoom();
 void drawAwning();
-void drawTeapot(GLfloat *object1Position, GLfloat *object2Position, bool box);
+void drawTeapot(GLfloat *object1Position, GLfloat *object2Position);
+void drawGrasses();
+//Grass Scene
+void drawGrassScene();
+//Primitives
+void drawBox(GLfloat *scale, GLfloat *translate, GLfloat *color);
+void drawGrass(GLfloat *scale, GLfloat *translate);
 
 #endif

@@ -83,15 +83,14 @@ void main( ){
 	//}
 	
 	vec4 direct_color = vec4(vec3(texture2D(tex, TexCoord).rgb) * (DiffuseTerm * 0.75) + (SpecularTerm*0.25), 1.0);
-	
+	vec4 ind_color = vec4(vec3(texture2D(tex, TexCoord).rgb),1)*indirect_color;
  
 /////////////////////////////////////////////////////////////////
 	//gl_FragColor = direct_color;
 	//gl_FragColor =	 (direct_color*shadow);
-	//gl_FragColor = indirect_color;
-	//gl_FragColor = (indirect_color*INDshadow);
+	
+	//gl_FragColor = (direct_color*INDshadow);
 	//gl_FragColor =	 (direct_color*INDshadow) + (indirect_color);
-    //gl_FragColor =	 vec4(vec3(texture2D(tex, TexCoord).rgb*shadow*0.5) + vec3(texture2D(tex, TexCoord).rgb*0.5)+vec3(indirect_color*INDshadow),1);
-    gl_FragColor =	 vec4(vec3(direct_color*shadow*0.5) + vec3(direct_color*0.5)+vec3(indirect_color*INDshadow),1.0);
+    gl_FragColor =	 vec4(vec3(direct_color*shadow*0.5) + vec3(direct_color*0.5)+vec3(ind_color*INDshadow),1.0);
 }
 
