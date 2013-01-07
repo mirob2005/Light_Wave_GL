@@ -9,7 +9,7 @@ void sceneInit(ObjData *Obj);
 void drawChessScene();
 void drawWhtPieces();
 void drawBlkPieces();
-void drawBoard();
+void drawBoard(bool color);
 void drawCase();
 //Patio Scene
 void drawScene(GLfloat *object1Position, GLfloat *object2Position);

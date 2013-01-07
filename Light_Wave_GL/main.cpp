@@ -66,7 +66,7 @@ using namespace msgfx;
 //Define Resolutions
 int screenWidth = 1280;
 int screenHeight = 720;
-int shadowRatio = 6;
+int shadowRatio = 4;
 int shadowMapWidth = screenWidth*shadowRatio;
 int shadowMapHeight = screenHeight*shadowRatio;
 
@@ -211,23 +211,25 @@ void ppmimageToBytes( PPMImage* img, GLubyte buffer[64][64][4] ){
 
 void initObjectFile(){
 
-	char *in = "chess_board.obj";
-	
-	if(scene==1)
-		in = "chess_board.obj";
-	else if(scene==0||scene==2)
-		in = "grass_patch.obj";	
-	
-	obj = NULL;
-	
-	if( in != NULL ){
-		obj = readObjData( in );
-		sceneInit(obj);
-	}else{
-		cerr << "Input file is mandatory.";
-	}
-	if(obj != NULL){
-		cout << "Object Data Created!"<< endl;
+	if(scene!=0){
+		char *in = "chess_board.obj";
+		
+		if(scene==1)
+			in = "chess_board.obj";
+		else if(scene==2)
+			in = "grass_patch.obj";	
+		
+		obj = NULL;
+		
+		if( in != NULL ){
+			obj = readObjData( in );
+			sceneInit(obj);
+		}else{
+			cerr << "Input file is mandatory.";
+		}
+		if(obj != NULL){
+			cout << "Object Data Created!"<< endl;
+		}
 	}
 }
 void shaderInit(){
@@ -790,10 +792,11 @@ void display(void){
 			if(i==2&&scene==0)drawTableAndChairs();
 			if(i==2&&scene==1)drawBlkPieces();
 			if(i==3&&scene==0)drawRoom();			
-			if(i==3&&scene==1)drawBoard();
+			if(i==1&&scene==1)drawBoard(true);
+			if(i==2&&scene==1)drawBoard(false);
 			if(i==4&&scene==0)drawAwning();
-			if(i==4&&scene==1)drawCase();
-			if(i==5&&scene==0)drawGrasses();
+			//if(i==4&&scene==1)drawCase();
+			//if(i==5&&scene==0)drawGrasses();
 			if(i==5&&scene==2)drawGrassScene();
 		}
 		
@@ -884,8 +887,8 @@ void keyboard(unsigned char key, int x, int y){
 						//Move Camera/focus pt up
 						//if(camPosition[1] < 3.5)
 						//{
-							camPosition[1]+=0.1;
-							camLookAt[1]+=0.1;
+							camPosition[1]+=0.25;
+							camLookAt[1]+=0.25;
 							updateShadowMaps = true;
 						//}
 					break;
@@ -915,8 +918,8 @@ void keyboard(unsigned char key, int x, int y){
 					   //Move Camera/focus pt down
 						//if(camPosition[1] >-3.5)
 						{
-							camPosition[1]+=-0.1;
-							camLookAt[1]+=-0.1;
+							camPosition[1]+=-0.25;
+							camLookAt[1]+=-0.25;
 							updateShadowMaps = true;
 						}
 					break;
@@ -1013,8 +1016,8 @@ void keyboard(unsigned char key, int x, int y){
 						//Account for Near viewing distance
 						//if(camPosition[2] >-2.9)
 						{
-							camPosition[2]+=-0.1;
-							camLookAt[2]+=-0.1;
+							camPosition[2]+=-0.25;
+							camLookAt[2]+=-0.25;
 							updateShadowMaps = true;
 						}
 					break;
@@ -1044,8 +1047,8 @@ void keyboard(unsigned char key, int x, int y){
 					   //Move Camera/focus pt backward
 						//if(camPosition[2] < 3.9)
 						{
-							camPosition[2]+=0.1;
-							camLookAt[2]+=0.1;
+							camPosition[2]+=0.25;
+							camLookAt[2]+=0.25;
 							updateShadowMaps = true;
 						}
 					break;
@@ -1073,7 +1076,7 @@ void keyboard(unsigned char key, int x, int y){
 				{
 					case 0:
 						//Rotate scene to the left
-					   worldRotate+=-1.0;
+					   worldRotate+=-2.5;
 					   updateShadowMaps = true;
 					break;
 					case 1:
@@ -1100,7 +1103,7 @@ void keyboard(unsigned char key, int x, int y){
 				{
 					case 0:
 						//Rotate scene to the right
-						worldRotate+=1.0;
+						worldRotate+=2.5;
 						updateShadowMaps = true;
 					break;
 					case 1:
@@ -1316,7 +1319,7 @@ int main(int argc, char** argv){
 	glutSpecialFunc( special );
 	glutKeyboardFunc(keyboard);
 	//Comment Out to preserve CPU while not updating the screen
-	glutIdleFunc(display);
+	//glutIdleFunc(display);
 	glutMainLoop( );
 	return( 0 );
 }

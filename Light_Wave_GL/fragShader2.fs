@@ -2,18 +2,22 @@
 
 #extension GL_EXT_texture_array : enable
 
+//Number of indirect shadow maps
+const int indSMs = 5;
+//Number of interpolation steps between each indirect shadow map
+const int numSteps = 6;
+
 uniform sampler2DArrayShadow ShadowMap;
 
 varying vec3 lightDir, lightDirRef, camDir, normal;
+varying vec3 INDlightDir, INDlightDirRef;
+varying float INDatt;
 
 varying vec4 ShadowCoord;
-varying vec4 INDShadowCoord[5];
-varying vec4 indirect_color;
+varying vec4 INDShadowCoord[indSMs];
 
 uniform sampler2D tex;
-varying vec2  TexCoord;
-
-int numSteps = 6;
+varying vec2 TexCoord;
 
 //INDIRECT Shadow Mapping
 float calcINDshadow(int vpl1, int vpl2){
@@ -21,7 +25,6 @@ float calcINDshadow(int vpl1, int vpl2){
 	float INDshadow = 0.0;
 
 	vec4 tempCoord;
-	
 	
 	vec4 step = vec4(INDShadowCoord[vpl2]-INDShadowCoord[vpl1])/float(numSteps);
 	
@@ -55,18 +58,14 @@ void main( ){
 	//INDIRECT SHADOW MAPPING
 	float INDshadow = 0.0;
 	
-	INDshadow += calcINDshadow(0,1);
-	INDshadow += calcINDshadow(0,2);
-	INDshadow += calcINDshadow(0,3);
-	INDshadow += calcINDshadow(0,4);
-	INDshadow += calcINDshadow(1,2);
-	INDshadow += calcINDshadow(1,3);
-	INDshadow += calcINDshadow(1,4);
-	INDshadow += calcINDshadow(2,3);
-	INDshadow += calcINDshadow(2,4);
-	INDshadow += calcINDshadow(3,4);
-
-	INDshadow /= ((numSteps+2)*10.0);	
+	int combinations = 0;
+	for(int i = 0; i < indSMs; i++){
+	  for(int j = i+1; j<indSMs; j++){
+	    INDshadow += calcINDshadow(i,j);
+	    combinations++;
+	  }
+	}
+	INDshadow /= ((numSteps+2)*float(combinations));
 	
 /*
  *	Primary Lighting Calculations
@@ -78,19 +77,28 @@ void main( ){
 	//SPECULAR
 	float SpecularTerm = 0.0;
 	//Get rid of the specular highlights in the shadows (should be obscured)
-	//if(shadow > 0.1 || DiffuseTerm < 0.1){
-	  //SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0),1.0);
-	//}
+	if(shadow > 0.1 && DiffuseTerm > 0.1){
+	  SpecularTerm = pow(max(dot(normalize(lightDirRef), normalize(camDir)), 0.0), 32.0);
+	}
 	
 	vec4 direct_color = vec4(vec3(texture2D(tex, TexCoord).rgb) * (DiffuseTerm * 0.75) + (SpecularTerm*0.25), 1.0);
-	vec4 ind_color = vec4(vec3(texture2D(tex, TexCoord).rgb),1)*indirect_color;
- 
-/////////////////////////////////////////////////////////////////
-	//gl_FragColor = direct_color;
-	//gl_FragColor =	 (direct_color*shadow);
 	
-	//gl_FragColor = (direct_color*INDshadow);
-	//gl_FragColor =	 (direct_color*INDshadow) + (indirect_color);
-    gl_FragColor =	 vec4(vec3(direct_color*shadow*0.5) + vec3(direct_color*0.5)+vec3(ind_color*INDshadow),1.0);
-}
+	float INDDiffuseTerm = max(dot(normalize(INDlightDir), normal), 0.0);
+	float INDSpecularTerm = 0.0;
+	if(INDshadow > 0.1){
+	  INDSpecularTerm = pow(max(dot(normalize(INDlightDirRef), normalize(camDir)), 0.0), 32.0);
+	}
+	
+	vec4 INDCOLOR = vec4(vec3(texture2D(tex, TexCoord).rgb) * (INDDiffuseTerm + SpecularTerm), 1.0);
+	
+	if(INDlightDir.y < 0.0){
+	  INDshadow = 1.0;
+	}
+	
+	if(shadow <1.0){
+	  INDCOLOR = INDCOLOR*1.5;
+	  INDshadow = INDshadow+(1.0 - shadow);
+	}
 
+    gl_FragColor =	 (direct_color*shadow) +(INDCOLOR*INDshadow*INDatt);
+}

@@ -77,17 +77,7 @@ void sceneInit(ObjData *obj){
 	cout << "SCENE INITIALIZED" << endl << endl;
 	cout << "Faces: " << faces << endl;
 }
-void drawWhtSquare(){
-	GLfloat vertices[] = {0,0,0.62,0.62,0,0.62,0.62,0,0,0,0,0};
-	GLfloat colors[] = {1,1,1,1,1,1,1,1,1,1,1,1};
-	GLfloat normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
-
-	glNormalPointer(GL_FLOAT, 0,normals);
-	glColorPointer(3, GL_FLOAT, 0, colors);
-	glVertexPointer(3, GL_FLOAT, 0, vertices);
-	glDrawArrays(GL_QUADS,0,4);
-}
-void drawBlkSquare(){
+void drawSquare(){
 	GLfloat vertices[] = {0,0,0.62,0.62,0,0.62,0.62,0,0,0,0,0};
 	GLfloat colors[] = {0,0,0,0,0,0,0,0,0,0,0,0};
 	GLfloat normals[] = {0,1,0,0,1,0,0,1,0,0,1,0};
@@ -97,7 +87,49 @@ void drawBlkSquare(){
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 	glDrawArrays(GL_QUADS,0,4);
 }
-void drawBoard(){
+void drawWhtSquare(){
+	for(unsigned int j=0; j<8;j++){
+		for(unsigned int i=0; i<8;i++){
+			glPushMatrix();
+				glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+				glMatrixMode(GL_TEXTURE);
+				glActiveTexture(GL_TEXTURE7);
+				glPushMatrix();		
+					glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+					if(j%2==0){
+						if(i%2!=1)drawSquare();
+					}
+					else{
+						if(i%2!=0)drawSquare();
+					}
+				glPopMatrix();
+				glMatrixMode(GL_MODELVIEW);
+			glPopMatrix();	
+		}
+	}
+}
+void drawBlkSquare(){
+	for(unsigned int j=0; j<8;j++){
+		for(unsigned int i=0; i<8;i++){
+			glPushMatrix();
+				glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+				glMatrixMode(GL_TEXTURE);
+				glActiveTexture(GL_TEXTURE7);
+				glPushMatrix();		
+					glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
+					if(j%2==0){
+						if(i%2==1)drawSquare();
+					}
+					else{
+						if(i%2==0)drawSquare();
+					}
+				glPopMatrix();
+				glMatrixMode(GL_MODELVIEW);
+			glPopMatrix();	
+		}
+	}
+}
+void drawBoard(bool color){
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_NORMAL_ARRAY);
@@ -111,29 +143,10 @@ void drawBoard(){
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 	glDrawArrays(GL_QUADS,0,4);
 
+	if(color)drawWhtSquare();
+	else drawBlkSquare();
 
 
-	for(unsigned int j=0; j<8;j++){
-		for(unsigned int i=0; i<8;i++){
-			glPushMatrix();
-				glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
-				glMatrixMode(GL_TEXTURE);
-				glActiveTexture(GL_TEXTURE7);
-				glPushMatrix();		
-					glTranslatef(-2.17+0.62*j,0,-1.66+i*0.62);
-					if(j%2==0){
-						if(i%2==1)drawBlkSquare();
-						else drawWhtSquare();
-					}
-					else{
-						if(i%2==0)drawBlkSquare();
-						else drawWhtSquare();
-					}
-				glPopMatrix();
-				glMatrixMode(GL_MODELVIEW);
-			glPopMatrix();	
-		}
-	}
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
@@ -150,6 +163,8 @@ void drawWhtPieces(){
 		glActiveTexture(GL_TEXTURE7);
 		glPushMatrix();		
 			glScalef(0.05,0.05,0.05);
+			//Clean up self-shadow
+			//glTranslatef(50,0,0);
 			glNormalPointer(GL_FLOAT, 0, normals);
 			glColorPointer(3, GL_FLOAT, 0, colors);
 			glVertexPointer(3, GL_FLOAT, 0, vertices);
@@ -172,6 +187,8 @@ void drawBlkPieces(){
 		glActiveTexture(GL_TEXTURE7);
 		glPushMatrix();		
 			glScalef(0.05,0.05,0.05);
+			//Clean up self-shadow
+			//glTranslatef(50,0,0);
 			glNormalPointer(GL_FLOAT, 0, normals);
 			glColorPointer(3, GL_FLOAT, 0, colors);
 			glVertexPointer(3, GL_FLOAT, 0, vertices);
@@ -228,8 +245,9 @@ void drawCase(){
 void drawChessScene(){
 	drawWhtPieces();
 	drawBlkPieces();
-	drawBoard();
-	drawCase();
+	drawBoard(true);
+	drawBoard(false);
+	//drawCase();
 }
 void drawGrass(GLfloat *scale, GLfloat *translate){
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -285,7 +303,7 @@ void drawScene(GLfloat *object1Position, GLfloat *object2Position)
 		drawTableAndChairs();
 		drawAwning();
 		drawTeapot(object1Position, object2Position);
-		drawGrasses();
+		//drawGrasses();
 
 
 		////Cornell Box Scene
