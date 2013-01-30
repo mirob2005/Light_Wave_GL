@@ -63,19 +63,37 @@ void sceneInit(ObjData *obj){
 		textures[i*9+7] = obj->textureVertices[obj->faces[i][2][1]-1][1];
 		textures[i*9+8] = obj->textureVertices[obj->faces[i][2][1]-1][2];
 
-		colors[i*9+0] = 1.0;
-		colors[i*9+1] = 1.0;
-		colors[i*9+2] = 1.0;
-		colors[i*9+3] = 1.0;
-		colors[i*9+4] = 1.0;
-		colors[i*9+5] = 1.0;
-		colors[i*9+6] = 1.0;
-		colors[i*9+7] = 1.0;
-		colors[i*9+8] = 1.0;
+		colors[i*9+0] = 0.0;
+		colors[i*9+1] = 0.0;
+		colors[i*9+2] = 0.0;
+		colors[i*9+3] = 0.0;
+		colors[i*9+4] = 0.0;
+		colors[i*9+5] = 0.0;
+		colors[i*9+6] = 0.0;
+		colors[i*9+7] = 0.0;
+		colors[i*9+8] = 0.0;
 	}
 
 	cout << "SCENE INITIALIZED" << endl << endl;
 	cout << "Faces: " << faces << endl;
+}
+void drawObjectFile(){
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_NORMAL_ARRAY);
+
+	glPushMatrix();
+	glScalef(0.1,0.1,0.1);
+	glRotatef(270,1,0,0);
+	glNormalPointer(GL_FLOAT, 0,normals);
+	glColorPointer(3, GL_FLOAT, 0, colors);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glDrawArrays(GL_QUADS,0,faces*3);
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
 }
 void drawSquare(){
 	GLfloat vertices[] = {0,0,0.62,0.62,0,0.62,0.62,0,0,0,0,0};
