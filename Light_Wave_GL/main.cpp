@@ -130,7 +130,7 @@ double worldRotate = defworldRotate;
 /**************************************/
 
 const int numTextures = 5;
-const int numScenes = 3;
+const int numScenes = 4;
 
 /*
 	FOR SHADOW MAPPING
@@ -217,7 +217,9 @@ void initObjectFile(){
 		if(scene==1)
 			in = "chess_board.obj";
 		else if(scene==2)
-			in = "grass_patch.obj";	
+			in = "grass_patch.obj";
+		else if(scene==3)
+			in = "alfa147.obj";
 		
 		obj = NULL;
 		
@@ -665,6 +667,7 @@ void display(void){
 			if(scene==0)drawScene(object1Position, object2Position);
 			else if(scene==1)drawChessScene();
 			else if(scene==2)drawGrassScene();
+			else if(scene==3)drawObjectFile();
 			else drawChessScene();//Change for additions
 
 			//Store modelview and projection matrices for shadows
@@ -761,6 +764,9 @@ void display(void){
 		//Use Shaders without a object texture
 		if(scene==0){
 			drawTeapot(object1Position, object2Position);
+		}
+		if(scene==3){
+			drawObjectFile();
 		}
 
 		for(int i = 1; i <numTextures+1; i++){

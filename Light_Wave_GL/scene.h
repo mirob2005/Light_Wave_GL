@@ -5,6 +5,7 @@
 #define SCENE_H
 
 void sceneInit(ObjData *Obj);
+void drawObjectFile();
 //Chessboard Scene
 void drawChessScene();
 void drawWhtPieces();
