@@ -32,25 +32,25 @@
 \contentsline {paragraph}{}{15}
 \contentsline {subsubsection}{MATRIX SAMPLING}{16}
 \contentsline {paragraph}{}{16}
-\contentsline {subsubsection}{SHADOW MAPS}{18}
+\contentsline {subsubsection}{SHADOW MAPS}{17}
 \contentsline {paragraph}{}{18}
-\contentsline {subsubsection}{VIRTUAL RAY LIGHTS}{19}
-\contentsline {paragraph}{}{19}
+\contentsline {subsubsection}{VIRTUAL RAY LIGHTS}{18}
+\contentsline {paragraph}{}{18}
 \contentsline {section}{\numberline {2.4}REAL-TIME RENDERING TECHNIQUES}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {subsection}{\numberline {2.4.1}\textit {INSTANT RADIOSITY}}{21}
-\contentsline {paragraph}{}{21}
-\contentsline {subsection}{\numberline {2.4.2}ADAPTATIONS OF \textit {INSTANT RADIOSITY}}{23}
-\contentsline {paragraph}{}{23}
-\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{23}
-\contentsline {paragraph}{}{23}
+\contentsline {subsection}{\numberline {2.4.1}\textit {INSTANT RADIOSITY}}{20}
+\contentsline {paragraph}{}{20}
+\contentsline {subsection}{\numberline {2.4.2}ADAPTATIONS OF \textit {INSTANT RADIOSITY}}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{22}
+\contentsline {paragraph}{}{22}
 \contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{25}
+\contentsline {paragraph}{}{25}
 \contentsline {paragraph}{}{26}
+\contentsline {subsubsection}{SCREEN SPACE ALGORITHMS}{26}
 \contentsline {paragraph}{}{26}
-\contentsline {subsubsection}{SCREEN SPACE ALGORITHMS}{27}
 \contentsline {paragraph}{}{27}
-\contentsline {paragraph}{}{28}
 \contentsline {subsection}{\numberline {2.4.3}SPHERICAL HARMONICS AND LATTICE-BASED METHODS}{28}
 \contentsline {paragraph}{}{28}
 \contentsline {chapter}{\numberline {3}IMPLEMENTATION}{30}
@@ -58,7 +58,7 @@
 \contentsline {paragraph}{}{30}
 \contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{31}
 \contentsline {paragraph}{}{31}
-\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{31}
 \contentsline {paragraph}{}{32}
 \contentsline {paragraph}{}{33}
 \contentsline {paragraph}{}{33}
@@ -73,11 +73,11 @@
 \contentsline {paragraph}{}{38}
 \contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{39}
 \contentsline {paragraph}{}{39}
+\contentsline {paragraph}{}{40}
+\contentsline {subsection}{\numberline {3.3.2}OPENGL}{41}
 \contentsline {paragraph}{}{41}
-\contentsline {subsection}{\numberline {3.3.2}OPENGL}{42}
-\contentsline {paragraph}{}{42}
-\contentsline {subsection}{\numberline {3.3.3}GLSL}{42}
-\contentsline {paragraph}{}{42}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{41}
+\contentsline {paragraph}{}{41}
 \contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{42}
 \contentsline {paragraph}{}{42}
 \contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{44}
