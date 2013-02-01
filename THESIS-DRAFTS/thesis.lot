@@ -1,15 +1,15 @@
-\contentsline {table}{\numberline {5.1}{\ignorespaces Varying the Angle Between VPL Rays (Impact on FPS)\relax }}{59}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Varying the Number of VPL's Per Ray (Impact on FPS)\relax }}{60}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Varying the Resolution Size. (Impact on FPS)\relax }}{60}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Varying the Number of Indirect Shadow Maps (Impact on FPS)\relax }}{61}
-\contentsline {table}{\numberline {5.5}{\ignorespaces Varying the Angle Between VPL Rays (Impact on Quality).\relax }}{65}
-\contentsline {table}{\numberline {5.6}{\ignorespaces Varying the Number of VPL's Per Ray (Impact on Quality).\relax }}{65}
-\contentsline {table}{\numberline {5.7}{\ignorespaces Varying the Resolution Size. (Impact on Quality).\relax }}{66}
-\contentsline {table}{\numberline {5.8}{\ignorespaces Varying the Number of Indirect Shadow Maps (Impact on Quality).\relax }}{66}
-\contentsline {table}{\numberline {5.9}{\ignorespaces Alternative Reductions\relax }}{67}
-\contentsline {table}{\numberline {5.10}{\ignorespaces Final Comparisons\relax }}{69}
-\contentsline {table}{\numberline {5.11}{\ignorespaces 1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps.\relax }}{71}
-\contentsline {table}{\numberline {5.12}{\ignorespaces 640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps.\relax }}{72}
-\contentsline {table}{\numberline {5.13}{\ignorespaces 1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps.\relax }}{72}
-\contentsline {table}{\numberline {5.14}{\ignorespaces Scene Complexity Performance - Accurate Shadows.\relax }}{74}
-\contentsline {table}{\numberline {5.15}{\ignorespaces Scene Complexity Performance - Integrated Shadows.\relax }}{75}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Varying the Angle Between VPL Rays (Impact on FPS)\relax }}{58}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Varying the Number of VPL's Per Ray (Impact on FPS)\relax }}{59}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Varying the Resolution Size. (Impact on FPS)\relax }}{59}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Varying the Number of Indirect Shadow Maps (Impact on FPS)\relax }}{60}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Varying the Angle Between VPL Rays (Impact on Quality).\relax }}{64}
+\contentsline {table}{\numberline {5.6}{\ignorespaces Varying the Number of VPL's Per Ray (Impact on Quality).\relax }}{64}
+\contentsline {table}{\numberline {5.7}{\ignorespaces Varying the Resolution Size. (Impact on Quality).\relax }}{65}
+\contentsline {table}{\numberline {5.8}{\ignorespaces Varying the Number of Indirect Shadow Maps (Impact on Quality).\relax }}{65}
+\contentsline {table}{\numberline {5.9}{\ignorespaces Alternative Reductions\relax }}{66}
+\contentsline {table}{\numberline {5.10}{\ignorespaces Final Comparisons\relax }}{68}
+\contentsline {table}{\numberline {5.11}{\ignorespaces 1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps.\relax }}{70}
+\contentsline {table}{\numberline {5.12}{\ignorespaces 640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps.\relax }}{71}
+\contentsline {table}{\numberline {5.13}{\ignorespaces 1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps.\relax }}{71}
+\contentsline {table}{\numberline {5.14}{\ignorespaces Scene Complexity Performance - Accurate Shadows.\relax }}{73}
+\contentsline {table}{\numberline {5.15}{\ignorespaces Scene Complexity Performance - Integrated Shadows.\relax }}{74}
