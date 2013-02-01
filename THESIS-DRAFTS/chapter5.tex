@@ -1,10 +1,10 @@
 \chapter{RESULTS}
 
-\section{ACCURATE SHADOWS APPROACH}
+\section{Accurate Shadows Approach}
 \paragraph{}
 In order to give a detailed display of the flexibility of this method, we wanted to show the results of the method when changing many of the adjustable parameters.  These include varying the resolution of the screen, increasing the angle between VPL rays, decreasing the number of VPL's per ray, and decreasing the number of indirect shadow maps used. Modifying these parameters impact performance by increasing or decreasing the number of frames rendered per second as well as the quality of the rendering.  Therefore, section \ref{sec:fps} will detail the performance impact of varying the parameters based off the change in frame rate and section \ref{sec:quality} will detail the impact of varying the parameters on the overall quality of the images rendered by calculating the percentage difference per pixel against the default parameter set-up.  As a reminder, the default method which is featured first on each table uses a resolution size of 1280 by 720, an angle of 5 degrees between VPL rays, 5 VPL's per ray, and 20 indirect shadow maps.
 
-\subsection{IMPACT OF PARAMETER CHOICES ON FPS} \label{sec:fps}
+\subsection{Impact of Parameter Choices on FPS} \label{sec:fps}
 \paragraph{}
 The results will be given in frames per second (FPS).  Table \ref{table:5.1} will display the results of varying the angle between the VPL rays. Table \ref{table:5.2} will display the results of varying the number of VPL's used on each ray (the total number of hemispheres). Table \ref{table:5.3} will display the results of varying the resolution used.  Lastly, table \ref{table:5.4} will display the results of reducing the number of indirect shadow maps used.
 
@@ -27,8 +27,8 @@ Similarly, table \ref{table:5.4} shows the number of indirect shadow maps having
 
 \paragraph{}
 In summary, when choosing parameters of the method to be run on slower machines, a combination of reducing the resolution and reducing the number of indirect shadow maps would result in the most efficient performance gain in regards to FPS increase.  Next, we will similarly analyze the impact of these parameter changes to the quality of the image in order to see what changes would result in the most efficient reductions while maintaining quality.
-
-\begin{table}[h!]
+\vspace{10 mm}
+\begin{table}[h!]\centering
 	\caption{Varying the Angle Between VPL Rays (Impact on FPS)}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
@@ -44,7 +44,7 @@ In summary, when choosing parameters of the method to be run on slower machines,
 	\label{table:5.1}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[h!]\centering
 	\caption{Varying the Number of VPL's Per Ray (Impact on FPS)}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
@@ -61,7 +61,7 @@ In summary, when choosing parameters of the method to be run on slower machines,
 	\label{table:5.2}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[h!]\centering
 	\caption{Varying the Resolution Size. (Impact on FPS)}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
@@ -78,7 +78,7 @@ In summary, when choosing parameters of the method to be run on slower machines,
 	\label{table:5.3}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[h!]\centering
 	\caption{Varying the Number of Indirect Shadow Maps (Impact on FPS)}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
@@ -95,7 +95,7 @@ In summary, when choosing parameters of the method to be run on slower machines,
 	\label{table:5.4}
 \end{table}
 
-\subsection{IMPACT OF PARAMETER CHOICES ON QUALITY} \label{sec:quality}
+\subsection{Impact of Parameter Choices on Quality} \label{sec:quality}
 \paragraph{}
 Just as important as performance is the quality of the images rendered.  Therefore, this section will detail the quality impact of parameter choice using the default set-up as the reference image.  By detailing this information, it will reveal the ultimate flexibility of the method and whether we can use this method on slower machines with limited quality impact.  We will use the same parameter choices as the tables for section \ref{sec:fps}, but we will be interested in the percentage difference between the chosen parameters and the default parameters.  The percentage difference will be computed using a Python script which takes in two rendered images as input and compares them on a pixel by pixel basis.  This comparison is done as follows:
 
@@ -136,8 +136,9 @@ Table \ref{table:5.8} shows the impact of reducing the number of shadow maps use
 
 \paragraph{}
 It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of section \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on this idea will be discussed in section \ref{sec:alternatives}.
-\begin{table}[h!]
-	\caption{Varying the Angle Between VPL Rays (Impact on Quality)}
+\vspace{10 mm}
+\begin{table}[h!]\centering
+	\caption{Varying the Angle Between VPL Rays (Impact on Quality).}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -151,8 +152,8 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 	\end{center}
 	\label{table:5.5}
 \end{table}
-\begin{table}[h!]
-	\caption{Varying the Number of VPL's Per Ray (Impact on Quality)}
+\begin{table}[h!]\centering
+	\caption{Varying the Number of VPL's Per Ray (Impact on Quality).}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -167,8 +168,8 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 	\end{center}
 	\label{table:5.6}
 \end{table}
-\begin{table}[h!]
-	\caption{Varying the Resolution Size. (Impact on Quality)}
+\begin{table}[h!]\centering
+	\caption{Varying the Resolution Size. (Impact on Quality).}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -183,8 +184,8 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 	\end{center}
 	\label{table:5.7}
 \end{table}
-\begin{table}[h!]
-	\caption{Varying the Number of Indirect Shadow Maps (Impact on Quality)}
+\begin{table}[h!]\centering
+	\caption{Varying the Number of Indirect Shadow Maps (Impact on Quality).}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -199,7 +200,7 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 	\end{center}
 	\label{table:5.8}
 \end{table}
-\subsection{ALTERNATIVES ANALYSIS} \label{sec:alternatives}
+\subsection{Alternatives Analysis} \label{sec:alternatives}
 \paragraph{}
 The aim of this section is to determine any additional sacrifices that could be made in order to improve performance.  As shown in table \ref{table:5.8} and discussed above, indirect shadows are the most computationally expensive scene component that has the least influence on the overall scene.  This may lead one to consider whether or not ignoring indirect lighting could be possible.  However, as shown in table \ref{table:5.9}, we compared our default method with a direct lighting only method.  Using our similarity calculation, we see the lowest similarity of 84.4\%, but the highest performance with 681 FPS.  On a machine that is able to run any of the above parameter choices with at least 30 FPS, it is not necessary to sacrifice this much quality for performance, but for the slowest machines, this may be a necessary choice.
 
@@ -212,12 +213,12 @@ color = (direct\_color*0.5*shadow)+(direct\_color*0.6)
 \paragraph{}
 For the next entry the 0.6 would be 0.7 and so on.  This way the direct shadows are only half as dark as before and are not purely black and increase the overall brightness of the scene.  As seen in the table, this approach of faking indirect light leads to better similarity numbers than using just the direct lighting approach peaking at the multiplier of 1.3 with a value of 91.8\% in this particular case.  Therefore, should indirect lighting without indirect shadows approach be too much for a particular machine, a faked version of indirect lighting would be a respectable compromise.
 
-\begin{table}[h!]
+\begin{table}[h!]\centering
 	\caption{Alternative Reductions}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
-	    Method & FPS & \% Similarilty to Default\\ \hline
+	    Method & FPS & \% Similar\\ \hline
 	    Default Method & 55 & 100\\ \hline
 	    Direct Lighting ONLY & 681 & 84.426\\ \hline
 	    Indirect Lighting w/out indirect shadows & 161 & 98.563\\ \hline
@@ -231,7 +232,7 @@ For the next entry the 0.6 would be 0.7 and so on.  This way the direct shadows 
 	\label{table:5.9}
 \end{table}
 
-\subsection{FINAL ANALYSIS ON ACCURATE SHADOWS} \label{sec:finalAnalysis}
+\subsection{Final Analysis on Accurate Shadows Approach} \label{sec:finalAnalysis}
 \paragraph{}
 Lastly, we will consolidate all of the previous data and tables in order to determine the most efficient reductions and the most influencing factors on the believability of the rendered scene when using accurate shadows.  The benefits of calculating similarities is that it leads to a way of quantifying quality in comparison to our reference image and thus rank parameter choices based off a combination of performance gains and limited quality impact.  It is important to note that changing the resolution size and stretching netted the best similarity results, but due to the introduction of artifacts, those parameter choices will be listed last.  It is also important to note that should a smaller resolution size be applicable without the need to stretch to our larger default resolution, this should be the very first choice in increasing performance, because the artifacts are only introduced during the stretching process due to naive sampling.
 
@@ -249,12 +250,12 @@ Table \ref{table:5.10} tells us a few things about using accurate shadows:
 \item We can experiment with multipliers and get decent faked indirect lighting if nothing else.
 \end{itemize}
 
-\begin{table}[h!]
+\begin{table}[h!]\centering
 	\caption{Final Comparisons}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
-	    Method & FPS & \% Similarilty & Rank Value & Figure\\ \hline
+	    Method & FPS & \% Similar & Rank Value & Figure\\ \hline
 	    Default Method & 55 & 100 & -- & \ref{fig:defaultimage}\\ \hline
 	    Faked Indirect Lighting (1.3x) & 681 & 91.847 & 76.7816 & \ref{fig:fakedindirect}\\ \hline
 	    Indirect Lighting w/out indirect shadows & 161 & 98.563 & 73.7648 & \ref{fig:0indSM}\\ \hline
@@ -269,12 +270,12 @@ Table \ref{table:5.10} tells us a few things about using accurate shadows:
 	\label{table:5.10}
 \end{table}
 
-\section{INTEGRATED SHADOWS APPROACH} \label{sec:newApproach}
-\subsection{GOALS}
+\section{Integrated Shadows Approach} \label{sec:newApproach}
+\subsection{Goals}
 \paragraph{}
 After having gathered results from the accurate shadows technique, it was found that although the technique was scalable in that we could get increased performance by adjusting parameters such as decreasing VPL numbers by increasing the angle between rays, decreasing resolution, or decreasing or removing indirect shadows altogether, computers with lower-end GPU's would likely not be able to display smooth indirect shadows.  This was due in large part to GPU memory limitations on the maximum supported number of shadow maps more so than performance capabilities.  Therefore, this integrated shadows approach takes a different stance on calculating the indirect shadows.  Instead of only doing accurate visibility indirect shadows which would require one shadow map per indirect shadow, this approach minimizes GPU memory by limiting the number of indirect shadow maps to 5 instead of 20 and then integrates between them in order to get many more indirect shadows while using less GPU memory.
 
-\subsection{MEMORY ANALYSIS}
+\subsection{Memory Analysis}
 \paragraph{}
 As mentioned earlier, our shadow maps were going to be three times larger than our screen size.  This number was chosen due to the introduction of jaggies as seen in figure \ref{fig:SMsizes}.  So for rendering a 1280x720 screen, we would be using shadow maps of size 3840x2160.  Knowing this, we can calculate the total amount of GPU memory required when rendering a specific number of shadow maps.  Assuming that we were going to be using 21 shadow maps (1 for direct and 20 for indirect shadows) and knowing that each value in the shadow maps were going to be 4 byte floats, we can calculate the total amount of GPU memory required:
 \begin{equation}
@@ -293,15 +294,15 @@ per shadow map used.  The GPU that was used during all of the results gathering 
 
 which would be low enough to run on these older cards.  However, 5 indirect shadows by themselves would not look very realistic and would look segregated as seen in table \ref{table:5.8} and in figure \ref{fig:intCompare}.  Therefore, we integrate between each of these 5 shadow maps as discussed in section \ref{sec:fragShader} in order to get more indirect shadows than the previous technique while using less memory.
 
-\subsection{RESULTS}
+\subsection{Results}
 \paragraph{}
 Keeping table \ref{table:5.10} in mind, we gathered results from using this shadowing technique by making the most efficient adjustments such as decreasing the resolution and increasing the VPL ray angles as seen in tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3}.  Also, when using this technique rather than adjusting the number of indirect shadow maps, we now just adjust the number of integration steps between shadow maps.
 
 \paragraph{}
 By looking at table \ref{table:secondAppResults1}, we see that by using this technique and using parameters such as 1280x720 and 6485 VPL's, we can render 60 indirect shadows using 4 steps in between each of our 5 indirect shadow maps and get 60 FPS while in our first technique we get 20 indirect shadows using 20 shadow maps and get 55FPS.  By using these integrated shadows, we get smoother shadows, better performance, and use less GPU memory.  See figure \ref{fig:methodCompare} for a comparison of the two techniques.  The main difference is that the majority of the 60 indirect shadows are using adjusted and possibly inaccurate visibility.  Naturally, tables \ref{table:secondAppResults2} and \ref{table:secondAppResults3} show improved performance using reduced resolution and less VPL's.  This integrated shadows technique shows better scalability so far, but a true test is to see how both shadowing techniques perform when scene complexity is increased.
 
-\begin{table}[h!]
-	\caption{1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps}
+\begin{table}[h!]\centering
+	\caption{1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps.}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -315,8 +316,8 @@ By looking at table \ref{table:secondAppResults1}, we see that by using this tec
 	\label{table:secondAppResults1}
 \end{table}
 
-\begin{table}[h!]
-	\caption{640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps}
+\begin{table}[h!]\centering
+	\caption{640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps.}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -329,8 +330,8 @@ By looking at table \ref{table:secondAppResults1}, we see that by using this tec
 	\label{table:secondAppResults2}
 \end{table}
 
-\begin{table}[h!]
-	\caption{1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps}
+\begin{table}[h!]\centering
+	\caption{1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps.}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -343,7 +344,7 @@ By looking at table \ref{table:secondAppResults1}, we see that by using this tec
 	\label{table:secondAppResults3}
 \end{table}
 
-\section{SCENE COMPLEXITY}
+\section{Scene Complexity}
 \paragraph{}
 So far all of the scenes have been rendered using 36 triangles and 24 vertices, hardly a complicated scene.  This section aims at examining the effect of scene complexity on performance.  In order to do this, we use a scene with 6565 triangles and 3249 vertices as well as a scene with 65542 triangles and 32418 vertices instead to determine the performance impact.  Using the parameter choices and alternatives from table \ref{table:5.10} for the accurate shadows technique as well as our parameter choices from tables \ref{table:secondAppResults1} through \ref{table:secondAppResults3} for the integrated shadows technique, we apply them to our more complicated scenes resulting in tables \ref{table:tech1Complex} and \ref{table:tech2Complex}.
 
@@ -353,8 +354,8 @@ Table \ref{table:tech1Complex} shows that for the accurate shadows technique the
 \paragraph{}
 Table \ref{table:tech2Complex} shows overall better numbers while maintaining indirect shadows than table \ref{table:tech1Complex}.  Once again, as the scene complexity rises to 65542 triangles, reducing the VPL count by increasing the ray angle maintains great performance.  With this technique, we can render 40, 80, and 120 indirect shadows at 58, 39, and 30 FPS respectively with 65542 triangles as opposed to 20 indirect shadows at 26 FPS.  Reducing the VPL count through increasing the VPL ray angle allows us to keep good coverage of the scene while quickly reducing the VPL count and thus maintaining good performance when the scene complexity rises.
 
-\begin{table}[h!]
-	\caption{Scene Complexity Performance - Accurate Shadows}
+\begin{table}[h!]\centering
+	\caption{Scene Complexity Performance - Accurate Shadows.}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -382,8 +383,8 @@ Table \ref{table:tech2Complex} shows overall better numbers while maintaining in
 	\label{table:tech1Complex}
 \end{table}
 
-\begin{table}[h!]
-	\caption{Scene Complexity Performance - Integrated Shadows}
+\begin{table}[h!]\centering
+	\caption{Scene Complexity Performance - Integrated Shadows.}
 	\begin{center}
 	    \begin{tabular}{ | l | l | l | l | l | l |}
 	    \hline
@@ -413,11 +414,11 @@ Table \ref{table:tech2Complex} shows overall better numbers while maintaining in
 	\label{table:tech2Complex}
 \end{table}
 
-\section{CONCLUSION}
+\section{Conclusion}
 \paragraph{}
 With the goal of scalability in mind in terms of portability to different kinds of machines with drastically different computing capabilities, Light Wave was born to allow the user to increase performance with minimal impact to quality using adjustable parameters.  However, using accurate shadows required a GPU with memory of at least 664.45MB to run full indirect shadows. Even using half the indirect shadows would require 348MB of memory.  Therefore, integrated shadows were used with GPU memory in mind and limited it to 189.84MB, which would run on any computer worth running it on.  By doing this and including integrated shadows as opposed to accurate visibility shadows, this technique can render many more shadows at comparable or even better FPS.  It also maintains better performance when scene complexity rises getting a respectable 30 FPS with 120 indirect shadows for a scene with 65542 triangles.
 
-\section{IMAGES}
+\section{Images}
 \paragraph{}
 This section will be used to show images captured from the real-time rendering produced using this method and the accompanying parameters chosen. Figures \ref{fig:defaultimage} through \ref{fig:vplparameters} are rendered using accurate shadows, the rest are rendered using integrated shadows.
 
@@ -482,7 +483,7 @@ This section will be used to show images captured from the real-time rendering p
                 \caption{Indirect Lighting ONLY w/ Indirect Shadows}
                 \label{fig:indirectonlyshadows}
         \end{subfigure}
-        \caption{Images showing the contributions from the VPL's to indirect lighting. (Direct lighting is ignored)}\label{fig:indirect}
+        \caption{Images showing the contributions from the VPL's to indirect lighting (direct lighting is ignored).}\label{fig:indirect}
 \end{figure}
 
 
@@ -506,7 +507,7 @@ This section will be used to show images captured from the real-time rendering p
                 \caption{Scene Rendered with Indirect Lighting w/ 10 Indirect Shadow Maps.}
                 \label{fig:10indSM}
         \end{subfigure}
-        \caption{Varying Indirect Lighting Adjustments} \label{fig:indirectimages}
+        \caption{Varying Indirect Lighting Adjustments.} \label{fig:indirectimages}
 \end{figure}
 
 
@@ -533,7 +534,7 @@ This section will be used to show images captured from the real-time rendering p
                 \caption{Reduction down to 1 VPL Per Ray (1 Hemisphere)}
                 \label{fig:hemisphereReduction}
         \end{subfigure}
-        \caption{Adjusting VPL parameters}\label{fig:vplparameters}
+        \caption{Adjusting VPL parameters.}\label{fig:vplparameters}
 \end{figure}
 
 
@@ -586,7 +587,7 @@ This section will be used to show images captured from the real-time rendering p
                 \includegraphics[width=\textwidth]{AltResults/10numSteps30Angle.jpg}
                 \caption{Integrated Shadows - Smoother Shadows - 47FPS (10numSteps,30DegreeAngle)}
         \end{subfigure}
-        \caption{Comparison of the two different shadowing techniques}\label{fig:methodCompare}
+        \caption{Comparison of the two different shadowing techniques.}\label{fig:methodCompare}
 \end{figure}
 
 \begin{figure}
@@ -600,7 +601,7 @@ This section will be used to show images captured from the real-time rendering p
                 \includegraphics[width=\textwidth]{AltResults/1Teapot.jpg}
                 \caption{Integrated Shadows - Smoother Shadows}
         \end{subfigure}
-        \caption{1 Teapot. Scene totals: 6565 triangles and 3249 vertices}\label{fig:teapotCompare}
+        \caption{1 Teapot. Scene totals: 6565 triangles and 3249 vertices.}\label{fig:teapotCompare}
 \end{figure}
 
 \begin{figure}
@@ -628,7 +629,7 @@ This section will be used to show images captured from the real-time rendering p
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{AltResults/10teapots.jpg}
-  \caption{10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices}
+  \caption{10 Teapots rendered using integrated shadows. Scene totals: 65542 triangles and 32418 vertices.}
 	\label{fig:teapots}
 \end{figure}
 
