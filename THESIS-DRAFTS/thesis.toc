@@ -1,68 +1,56 @@
 \contentsline {paragraph}{}{iii}
 \contentsline {chapter}{\numberline {1}BACKGROUND}{1}
-\contentsline {section}{\numberline {1.1}LIGHT AS A PARTICLE AND A WAVE}{1}
+\contentsline {section}{\numberline {1.1}Light as a Particle and a Wave}{1}
 \contentsline {paragraph}{}{1}
-\contentsline {section}{\numberline {1.2}TERMINOLOGY}{2}
+\contentsline {section}{\numberline {1.2}Terminology}{2}
 \contentsline {paragraph}{}{2}
 \contentsline {chapter}{\numberline {2}PREVIOUS WORK}{4}
-\contentsline {section}{\numberline {2.1}REAL-TIME VERSUS OFFLINE RENDERING TECHNIQUES}{4}
+\contentsline {section}{\numberline {2.1}Real-Time Versus Offline Rendering Techniques}{4}
 \contentsline {paragraph}{}{4}
-\contentsline {section}{\numberline {2.2}THE RENDERING EQUATION}{5}
+\contentsline {section}{\numberline {2.2}The Rendering Equation}{5}
 \contentsline {paragraph}{}{5}
 \contentsline {paragraph}{}{5}
 \contentsline {paragraph}{}{6}
 \contentsline {paragraph}{}{7}
-\contentsline {section}{\numberline {2.3}OFFLINE RENDERING TECHNIQUES}{7}
+\contentsline {section}{\numberline {2.3}Offline Rendering Techniques}{7}
 \contentsline {paragraph}{}{7}
-\contentsline {subsection}{\numberline {2.3.1}RAY TRACING}{7}
+\contentsline {subsection}{\numberline {2.3.1}Ray Tracing}{7}
 \contentsline {paragraph}{}{7}
-\contentsline {paragraph}{}{8}
 \contentsline {paragraph}{}{8}
 \contentsline {paragraph}{}{9}
-\contentsline {subsection}{\numberline {2.3.2}RADIOSITY}{10}
+\contentsline {paragraph}{}{9}
+\contentsline {subsection}{\numberline {2.3.2}Radiosity}{10}
 \contentsline {paragraph}{}{10}
 \contentsline {paragraph}{}{11}
 \contentsline {paragraph}{}{11}
-\contentsline {subsection}{\numberline {2.3.3}PHOTON MAPS}{12}
+\contentsline {subsection}{\numberline {2.3.3}Photon Maps}{12}
 \contentsline {paragraph}{}{12}
 \contentsline {paragraph}{}{13}
-\contentsline {subsection}{\numberline {2.3.4}OTHER OFFLINE RENDERING TECHNIQUES}{15}
+\contentsline {subsection}{\numberline {2.3.4}Other Offline Rendering Techniques}{15}
 \contentsline {paragraph}{}{15}
-\contentsline {subsubsection}{VIRTUAL POINT LIGHTS}{15}
-\contentsline {paragraph}{}{15}
-\contentsline {subsubsection}{MATRIX SAMPLING}{16}
-\contentsline {paragraph}{}{16}
-\contentsline {subsubsection}{SHADOW MAPS}{17}
-\contentsline {paragraph}{}{18}
-\contentsline {subsubsection}{VIRTUAL RAY LIGHTS}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {section}{\numberline {2.4}REAL-TIME RENDERING TECHNIQUES}{20}
+\contentsline {section}{\numberline {2.4}Real-Time Rendering Techniques}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {subsection}{\numberline {2.4.1}\textit {INSTANT RADIOSITY}}{20}
-\contentsline {paragraph}{}{20}
-\contentsline {subsection}{\numberline {2.4.2}ADAPTATIONS OF \textit {INSTANT RADIOSITY}}{22}
-\contentsline {paragraph}{}{22}
-\contentsline {subsubsection}{SHADOW MAP ALTERATIONS}{22}
+\contentsline {subsection}{\numberline {2.4.1}\textit {Instant Radiosity}}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {subsection}{\numberline {2.4.2}Adaptations of \textit {Instant Radiosity}}{22}
 \contentsline {paragraph}{}{22}
 \contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{25}
-\contentsline {paragraph}{}{25}
 \contentsline {paragraph}{}{26}
-\contentsline {subsubsection}{SCREEN SPACE ALGORITHMS}{26}
 \contentsline {paragraph}{}{26}
 \contentsline {paragraph}{}{27}
-\contentsline {subsection}{\numberline {2.4.3}SPHERICAL HARMONICS AND LATTICE-BASED METHODS}{28}
+\contentsline {subsection}{\numberline {2.4.3}Spherical Harmonics and Lattice-Based Methods}{28}
 \contentsline {paragraph}{}{28}
 \contentsline {chapter}{\numberline {3}IMPLEMENTATION}{30}
-\contentsline {section}{\numberline {3.1}IMPLEMENTATION GOALS}{30}
+\contentsline {section}{\numberline {3.1}Implementation Goals}{30}
 \contentsline {paragraph}{}{30}
-\contentsline {section}{\numberline {3.2}SCIENTIFICALLY CORRECT VERSUS VISUALLY APPEALING}{31}
+\contentsline {section}{\numberline {3.2}Scientifically Correct Versus Visually Appealing}{31}
 \contentsline {paragraph}{}{31}
-\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{32}
 \contentsline {paragraph}{}{32}
 \contentsline {paragraph}{}{33}
 \contentsline {paragraph}{}{33}
-\contentsline {section}{\numberline {3.3}IMPLEMENTATION DETAILS}{34}
+\contentsline {section}{\numberline {3.3}Implementation Details}{34}
 \contentsline {paragraph}{}{34}
 \contentsline {paragraph}{}{34}
 \contentsline {paragraph}{}{35}
@@ -70,18 +58,18 @@
 \contentsline {paragraph}{}{35}
 \contentsline {paragraph}{}{36}
 \contentsline {paragraph}{}{37}
-\contentsline {paragraph}{}{38}
-\contentsline {subsection}{\numberline {3.3.1}GPU AND CPU FUNCTIONS}{39}
+\contentsline {paragraph}{}{37}
+\contentsline {subsection}{\numberline {3.3.1}GPU and CPU Functions}{39}
 \contentsline {paragraph}{}{39}
 \contentsline {paragraph}{}{40}
-\contentsline {subsection}{\numberline {3.3.2}OPENGL}{41}
+\contentsline {subsection}{\numberline {3.3.2}OpenGL}{41}
 \contentsline {paragraph}{}{41}
-\contentsline {subsection}{\numberline {3.3.3}GLSL}{41}
-\contentsline {paragraph}{}{41}
-\contentsline {subsection}{\numberline {3.3.4}WORKING ENVIRONMENT}{42}
+\contentsline {subsection}{\numberline {3.3.3}GLSL}{42}
+\contentsline {paragraph}{}{42}
+\contentsline {subsection}{\numberline {3.3.4}Working Environment}{42}
 \contentsline {paragraph}{}{42}
 \contentsline {chapter}{\numberline {4}SAMPLE CODE AND EXPLANATION}{44}
-\contentsline {section}{\numberline {4.1}MAIN PROGRAM (C++ CODE)}{44}
+\contentsline {section}{\numberline {4.1}Main Program (C++ Code)}{44}
 \contentsline {paragraph}{}{44}
 \contentsline {paragraph}{}{44}
 \contentsline {paragraph}{}{45}
@@ -93,75 +81,75 @@
 \contentsline {paragraph}{}{48}
 \contentsline {paragraph}{}{48}
 \contentsline {paragraph}{}{49}
-\contentsline {section}{\numberline {4.2}VERTEX SHADER CODE}{49}
+\contentsline {section}{\numberline {4.2}Vertex Shader Code}{49}
 \contentsline {paragraph}{}{49}
 \contentsline {paragraph}{}{50}
 \contentsline {paragraph}{}{50}
-\contentsline {paragraph}{}{50}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{52}
-\contentsline {paragraph}{}{52}
-\contentsline {paragraph}{}{52}
-\contentsline {section}{\numberline {4.3}FRAGMENT SHADER CODE}{52}
 \contentsline {paragraph}{}{52}
 \contentsline {paragraph}{}{52}
 \contentsline {paragraph}{}{53}
+\contentsline {section}{\numberline {4.3}Fragment Shader Code}{53}
+\contentsline {paragraph}{}{53}
+\contentsline {paragraph}{}{53}
+\contentsline {paragraph}{}{54}
 \contentsline {paragraph}{}{54}
 \contentsline {paragraph}{}{55}
-\contentsline {chapter}{\numberline {5}RESULTS}{56}
-\contentsline {section}{\numberline {5.1}ACCURATE SHADOWS APPROACH}{56}
-\contentsline {paragraph}{}{56}
-\contentsline {subsection}{\numberline {5.1.1}IMPACT OF PARAMETER CHOICES ON FPS}{56}
-\contentsline {paragraph}{}{56}
+\contentsline {chapter}{\numberline {5}RESULTS}{57}
+\contentsline {section}{\numberline {5.1}Accurate Shadows Approach}{57}
 \contentsline {paragraph}{}{57}
-\contentsline {paragraph}{}{57}
-\contentsline {paragraph}{}{57}
+\contentsline {subsection}{\numberline {5.1.1}Impact of Parameter Choices on FPS}{57}
 \contentsline {paragraph}{}{57}
 \contentsline {paragraph}{}{58}
-\contentsline {subsection}{\numberline {5.1.2}IMPACT OF PARAMETER CHOICES ON QUALITY}{59}
+\contentsline {paragraph}{}{58}
+\contentsline {paragraph}{}{58}
+\contentsline {paragraph}{}{58}
 \contentsline {paragraph}{}{59}
-\contentsline {paragraph}{}{60}
-\contentsline {paragraph}{}{60}
-\contentsline {paragraph}{}{61}
+\contentsline {subsection}{\numberline {5.1.2}Impact of Parameter Choices on Quality}{59}
+\contentsline {paragraph}{}{59}
 \contentsline {paragraph}{}{61}
 \contentsline {paragraph}{}{62}
 \contentsline {paragraph}{}{62}
 \contentsline {paragraph}{}{63}
-\contentsline {subsection}{\numberline {5.1.3}ALTERNATIVES ANALYSIS}{63}
+\contentsline {paragraph}{}{63}
 \contentsline {paragraph}{}{63}
 \contentsline {paragraph}{}{64}
+\contentsline {subsection}{\numberline {5.1.3}Alternatives Analysis}{64}
+\contentsline {paragraph}{}{64}
 \contentsline {paragraph}{}{65}
-\contentsline {subsection}{\numberline {5.1.4}FINAL ANALYSIS ON ACCURATE SHADOWS}{66}
-\contentsline {paragraph}{}{66}
 \contentsline {paragraph}{}{67}
-\contentsline {section}{\numberline {5.2}INTEGRATED SHADOWS APPROACH}{68}
-\contentsline {subsection}{\numberline {5.2.1}GOALS}{68}
+\contentsline {subsection}{\numberline {5.1.4}Final Analysis on Accurate Shadows Approach}{67}
+\contentsline {paragraph}{}{67}
 \contentsline {paragraph}{}{68}
-\contentsline {subsection}{\numberline {5.2.2}MEMORY ANALYSIS}{68}
-\contentsline {paragraph}{}{68}
-\contentsline {subsection}{\numberline {5.2.3}RESULTS}{69}
+\contentsline {section}{\numberline {5.2}Integrated Shadows Approach}{69}
+\contentsline {subsection}{\numberline {5.2.1}Goals}{69}
 \contentsline {paragraph}{}{69}
+\contentsline {subsection}{\numberline {5.2.2}Memory Analysis}{70}
 \contentsline {paragraph}{}{70}
-\contentsline {section}{\numberline {5.3}SCENE COMPLEXITY}{71}
+\contentsline {subsection}{\numberline {5.2.3}Results}{71}
 \contentsline {paragraph}{}{71}
 \contentsline {paragraph}{}{71}
+\contentsline {section}{\numberline {5.3}Scene Complexity}{72}
 \contentsline {paragraph}{}{72}
-\contentsline {section}{\numberline {5.4}CONCLUSION}{73}
+\contentsline {paragraph}{}{72}
 \contentsline {paragraph}{}{73}
-\contentsline {section}{\numberline {5.5}IMAGES}{74}
+\contentsline {section}{\numberline {5.4}Conclusion}{73}
+\contentsline {paragraph}{}{73}
+\contentsline {section}{\numberline {5.5}Images}{74}
 \contentsline {paragraph}{}{74}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{87}
-\contentsline {section}{\numberline {6.1}GENERAL OBSERVATIONS}{87}
-\contentsline {paragraph}{}{87}
-\contentsline {paragraph}{}{87}
-\contentsline {section}{\numberline {6.2}IMPLEMENTATION SPECIFIC FINAL THOUGHTS}{88}
-\contentsline {paragraph}{}{88}
-\contentsline {paragraph}{}{88}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{89}
+\contentsline {section}{\numberline {6.1}General Observations}{89}
 \contentsline {paragraph}{}{89}
 \contentsline {paragraph}{}{89}
-\contentsline {section}{\numberline {6.3}LIMITATIONS}{90}
+\contentsline {section}{\numberline {6.2}Implementation Specific Final Thoughts}{90}
 \contentsline {paragraph}{}{90}
-\contentsline {section}{\numberline {6.4}IMPROVEMENTS}{90}
 \contentsline {paragraph}{}{90}
+\contentsline {paragraph}{}{91}
+\contentsline {paragraph}{}{91}
+\contentsline {section}{\numberline {6.3}Limitations}{92}
+\contentsline {paragraph}{}{92}
+\contentsline {section}{\numberline {6.4}Improvements}{92}
+\contentsline {paragraph}{}{92}
