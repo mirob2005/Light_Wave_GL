@@ -28,16 +28,22 @@
 \contentsline {paragraph}{}{13}
 \contentsline {subsection}{\numberline {2.3.4}Other Offline Rendering Techniques}{15}
 \contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{}{19}
 \contentsline {section}{\numberline {2.4}Real-Time Rendering Techniques}{20}
 \contentsline {paragraph}{}{20}
 \contentsline {subsection}{\numberline {2.4.1}\textit {Instant Radiosity}}{21}
 \contentsline {paragraph}{}{21}
-\contentsline {subsection}{\numberline {2.4.2}Adaptations of \textit {Instant Radiosity}}{22}
-\contentsline {paragraph}{}{22}
+\contentsline {subsection}{\numberline {2.4.2}Adaptations of \textit {Instant Radiosity}}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{23}
 \contentsline {paragraph}{}{25}
 \contentsline {paragraph}{}{26}
 \contentsline {paragraph}{}{26}
+\contentsline {paragraph}{}{27}
 \contentsline {paragraph}{}{27}
 \contentsline {subsection}{\numberline {2.4.3}Spherical Harmonics and Lattice-Based Methods}{28}
 \contentsline {paragraph}{}{28}
@@ -85,71 +91,71 @@
 \contentsline {paragraph}{}{49}
 \contentsline {paragraph}{}{50}
 \contentsline {paragraph}{}{50}
+\contentsline {paragraph}{}{50}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{51}
 \contentsline {paragraph}{}{52}
 \contentsline {paragraph}{}{52}
 \contentsline {paragraph}{}{52}
+\contentsline {section}{\numberline {4.3}Fragment Shader Code}{52}
+\contentsline {paragraph}{}{52}
+\contentsline {paragraph}{}{52}
 \contentsline {paragraph}{}{53}
-\contentsline {section}{\numberline {4.3}Fragment Shader Code}{53}
-\contentsline {paragraph}{}{53}
-\contentsline {paragraph}{}{53}
-\contentsline {paragraph}{}{54}
 \contentsline {paragraph}{}{54}
 \contentsline {paragraph}{}{55}
-\contentsline {chapter}{\numberline {5}RESULTS}{57}
-\contentsline {section}{\numberline {5.1}Accurate Shadows Approach}{57}
+\contentsline {chapter}{\numberline {5}RESULTS}{56}
+\contentsline {section}{\numberline {5.1}Accurate Shadows Approach}{56}
+\contentsline {paragraph}{}{56}
+\contentsline {subsection}{\numberline {5.1.1}Impact of Parameter Choices on FPS}{56}
+\contentsline {paragraph}{}{56}
 \contentsline {paragraph}{}{57}
-\contentsline {subsection}{\numberline {5.1.1}Impact of Parameter Choices on FPS}{57}
+\contentsline {paragraph}{}{57}
+\contentsline {paragraph}{}{57}
 \contentsline {paragraph}{}{57}
 \contentsline {paragraph}{}{58}
+\contentsline {subsection}{\numberline {5.1.2}Impact of Parameter Choices on Quality}{58}
 \contentsline {paragraph}{}{58}
-\contentsline {paragraph}{}{58}
-\contentsline {paragraph}{}{58}
-\contentsline {paragraph}{}{59}
-\contentsline {subsection}{\numberline {5.1.2}Impact of Parameter Choices on Quality}{59}
-\contentsline {paragraph}{}{59}
+\contentsline {paragraph}{}{60}
+\contentsline {paragraph}{}{61}
 \contentsline {paragraph}{}{61}
 \contentsline {paragraph}{}{62}
 \contentsline {paragraph}{}{62}
+\contentsline {paragraph}{}{62}
 \contentsline {paragraph}{}{63}
-\contentsline {paragraph}{}{63}
+\contentsline {subsection}{\numberline {5.1.3}Alternatives Analysis}{63}
 \contentsline {paragraph}{}{63}
 \contentsline {paragraph}{}{64}
-\contentsline {subsection}{\numberline {5.1.3}Alternatives Analysis}{64}
-\contentsline {paragraph}{}{64}
-\contentsline {paragraph}{}{65}
+\contentsline {paragraph}{}{66}
+\contentsline {subsection}{\numberline {5.1.4}Final Analysis on Accurate Shadows Approach}{66}
+\contentsline {paragraph}{}{66}
 \contentsline {paragraph}{}{67}
-\contentsline {subsection}{\numberline {5.1.4}Final Analysis on Accurate Shadows Approach}{67}
-\contentsline {paragraph}{}{67}
+\contentsline {section}{\numberline {5.2}Integrated Shadows Approach}{68}
+\contentsline {subsection}{\numberline {5.2.1}Goals}{68}
 \contentsline {paragraph}{}{68}
-\contentsline {section}{\numberline {5.2}Integrated Shadows Approach}{69}
-\contentsline {subsection}{\numberline {5.2.1}Goals}{69}
+\contentsline {subsection}{\numberline {5.2.2}Memory Analysis}{69}
 \contentsline {paragraph}{}{69}
-\contentsline {subsection}{\numberline {5.2.2}Memory Analysis}{70}
+\contentsline {subsection}{\numberline {5.2.3}Results}{70}
 \contentsline {paragraph}{}{70}
-\contentsline {subsection}{\numberline {5.2.3}Results}{71}
+\contentsline {paragraph}{}{70}
+\contentsline {section}{\numberline {5.3}Scene Complexity}{71}
 \contentsline {paragraph}{}{71}
 \contentsline {paragraph}{}{71}
-\contentsline {section}{\numberline {5.3}Scene Complexity}{72}
 \contentsline {paragraph}{}{72}
+\contentsline {section}{\numberline {5.4}Conclusion}{72}
 \contentsline {paragraph}{}{72}
+\contentsline {section}{\numberline {5.5}Images}{73}
 \contentsline {paragraph}{}{73}
-\contentsline {section}{\numberline {5.4}Conclusion}{73}
-\contentsline {paragraph}{}{73}
-\contentsline {section}{\numberline {5.5}Images}{74}
-\contentsline {paragraph}{}{74}
-\contentsline {chapter}{\numberline {6}CONCLUSION}{89}
-\contentsline {section}{\numberline {6.1}General Observations}{89}
+\contentsline {chapter}{\numberline {6}CONCLUSION}{88}
+\contentsline {section}{\numberline {6.1}General Observations}{88}
+\contentsline {paragraph}{}{88}
+\contentsline {paragraph}{}{88}
+\contentsline {section}{\numberline {6.2}Implementation Specific Final Thoughts}{89}
 \contentsline {paragraph}{}{89}
 \contentsline {paragraph}{}{89}
-\contentsline {section}{\numberline {6.2}Implementation Specific Final Thoughts}{90}
 \contentsline {paragraph}{}{90}
 \contentsline {paragraph}{}{90}
+\contentsline {section}{\numberline {6.3}Limitations}{91}
 \contentsline {paragraph}{}{91}
+\contentsline {section}{\numberline {6.4}Improvements}{91}
 \contentsline {paragraph}{}{91}
-\contentsline {section}{\numberline {6.3}Limitations}{92}
-\contentsline {paragraph}{}{92}
-\contentsline {section}{\numberline {6.4}Improvements}{92}
-\contentsline {paragraph}{}{92}
