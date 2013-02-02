@@ -621,7 +621,8 @@ Approved by:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % References                                                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%\cleardoublepage
+%\renewcommand{\bibname}{BIBLIOGRAPHY}
 \def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
        {\string\bibcite{#1}{\the\value{\@listctr}}}\fi\ignorespaces
        \hskip -0.25in}
@@ -629,9 +630,9 @@ Approved by:
       {\def\protect##1{\string ##1\space}\immediate
        \write\@auxout{\string\bibcite{#2}{#1}}}\fi\ignorespaces
        \hskip -0.25in}
-\def\thebibliography#1{\chapter*{\vspace*{.43in} \centerline{\normalfont REFERENCES}
+\def\thebibliography#1{\chapter*{\vspace*{.43in} \centerline{\normalfont BIBLIOGRAPHY}
 %\addcontentsline{toc}{chapter}{\protect \numberline{REFERENCES}}
-\addcontentsline{toc}{chapter}{REFERENCES}
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
 \@mkboth{BIBLIOGRAPHY}{BIBLIOGRAPHY}}\list
 % {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
  {\arabic{enumi}.}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth

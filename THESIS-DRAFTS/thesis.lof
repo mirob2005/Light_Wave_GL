@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Example of a light tree.\relax }}{17}
 \contentsline {figure}{\numberline {2.12}{\ignorespaces Overview of matrix sampling algorithm.\relax }}{18}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces Image of a shadow map. Scene is from the view of the light source.\relax }}{19}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Resulting image using the shadow map from 2.13\hbox {}.\relax }}{20}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Resulting image using the shadow map from figure 2.13\hbox {}.\relax }}{20}
 \contentsline {figure}{\numberline {2.15}{\ignorespaces Common locations where singularities exist.\relax }}{21}
 \contentsline {figure}{\numberline {2.16}{\ignorespaces VRL versus VPL.\relax }}{22}
 \contentsline {figure}{\numberline {2.17}{\ignorespaces Data stored in the RSM.\relax }}{24}
