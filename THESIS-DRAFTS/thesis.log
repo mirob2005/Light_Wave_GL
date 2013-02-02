@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  1 FEB 2013 11:53
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  1 FEB 2013 16:27
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -214,24 +214,32 @@ subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 \c@algocf=\count110
 \algocf@algoframe=\box36
 \algocf@algobox=\box37
-) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
-\lst@mode=\count111
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\apacite\apacite.sty"
+Package: apacite 2009/03/01 v4.05 APA citation
+\c@BibCnt=\count111
+\bibleftmargin=\skip61
+\bibindent=\skip62
+\bibparsep=\skip63
+\bibitemsep=\skip64
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count112
 \lst@gtempboxa=\box38
 \lst@token=\toks20
-\lst@length=\count112
+\lst@length=\count113
 \lst@currlwidth=\dimen127
-\lst@column=\count113
-\lst@pos=\count114
+\lst@column=\count114
+\lst@pos=\count115
 \lst@lostspace=\dimen128
 \lst@width=\dimen129
-\lst@newlines=\count115
-\lst@lineno=\count116
+\lst@newlines=\count116
+\lst@lineno=\count117
 \lst@maxwidth=\dimen130
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count117
-\lst@skipnumbers=\count118
+\c@lstnumber=\count118
+\lst@skipnumbers=\count119
 \lst@framebox=\box39
 )
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
@@ -258,53 +266,60 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count119
+\scratchcounter=\count120
 \scratchdimen=\dimen139
 \scratchbox=\box40
-\nofMPsegments=\count120
-\nofMParguments=\count121
+\nofMPsegments=\count121
+\nofMParguments=\count122
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count122
+\MPscratchCnt=\count123
 \MPscratchDim=\dimen140
-\MPnumerator=\count123
+\MPnumerator=\count124
 \everyMPtoPDFconversion=\toks22
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count124
+ ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\apacite\english.apc"
+File: english.apc 2009/03/01 v4.05 apacite language file
+LaTeX Info: Redefining \BPBI on input line 119.
+LaTeX Info: Redefining \BHBI on input line 120.
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
+NOT AUSTRALIAN!!!
+)
+\c@lstlisting=\count125
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
 [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 84--84
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--84
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
 
  []
 
@@ -314,13 +329,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--84
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
 
 ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
  [2]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.tex) [3
 
@@ -343,7 +358,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.98 \listoftables
+l.99 \listoftables
                   
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
@@ -360,7 +375,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.103 \listoffigures
+l.104 \listoffigures
                     
 ? 
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof
@@ -506,12 +521,6 @@ Package pdftex.def Info: lightTree.jpg used on input line 189.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Missing character: There is no Å in font cmr12!
-Missing character: There is no ¡ in font cmr12!
-Missing character: There is no Å in font cmr12!
-Missing character: There is no ¡ in font cmr12!
-Missing character: There is no Å in font cmr12!
-Missing character: There is no ¡ in font cmr12!
 [16] [17 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/lightTree.jpg>]
 <matrixSampling.jpg, id=100, 1580.90625pt x 454.69875pt>
 File: matrixSampling.jpg Graphic file (type jpg)
@@ -538,10 +547,6 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¡ in font cmr12!
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¡ in font cmr12!
 [18 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/matrixSampling.jpg>] [19 <D:/_
 Programming/Light_Wave_GL/THESIS-DRAFTS/shadowMap1.jpg>]
 <singularity.jpg, id=109, 663.47874pt x 661.47125pt>
@@ -601,8 +606,6 @@ File: ISMcompare.jpg Graphic file (type jpg)
  <use ISMcompare.jpg>
 Package pdftex.def Info: ISMcompare.jpg used on input line 309.
 (pdftex.def)             Requested size: 430.00627pt x 184.29405pt.
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¡ in font cmr12!
  [27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/ISMcompare.jpg>]) [28] [29]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
 CHAPTER 3.
@@ -1035,13 +1038,13 @@ Missing character: There is no ¡ in font cmr12!
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
 Here is how much of TeX's memory you used:
- 5776 strings out of 494049
- 85895 string characters out of 3146068
- 178965 words of memory out of 3000000
- 8920 multiletter control sequences out of 15000+200000
+ 6154 strings out of 494049
+ 90532 string characters out of 3146068
+ 187856 words of memory out of 3000000
+ 9289 multiletter control sequences out of 15000+200000
  9494 words of font info for 34 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 36i,17n,38p,2272b,1432s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,17n,38p,2281b,1430s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files 
 (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
@@ -1053,7 +1056,7 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
 nts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (106 pages, 2182841 bytes).
+Output written on thesis.pdf (106 pages, 2183704 bytes).
 PDF statistics:
  441 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
