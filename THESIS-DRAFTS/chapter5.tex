@@ -27,14 +27,14 @@ Similarly, table \ref{table:5.4} shows the number of indirect shadow maps having
 
 \paragraph{}
 In summary, when choosing parameters of the method to be run on slower machines, a combination of reducing the resolution and reducing the number of indirect shadow maps would result in the most efficient performance gain in regards to FPS increase.  Next, we will similarly analyze the impact of these parameter changes to the quality of the image in order to see what changes would result in the most efficient reductions while maintaining quality.
-\vspace{10 mm}
-\begin{table}[h!]\centering
-	\caption{Varying the Angle Between VPL Rays (Impact on FPS)}
+\vspace{5mm}
+\begin{table}[h!]
+	\caption{Varying the Angle Between VPL Rays (Impact on FPS).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & FPS\\ \hline
-	    1280x720 & 5 & 5 & 6485 & 20 & 55\\ \hline
+	    1280x720 & 5 & 5 & 6485 & 20 & 55\\ \hline \centering
 	    1280x720 & 10 & 5 & 1625 & 20 & 65\\ \hline
 	    1280x720 & 30 & 5 & 185 & 20 & 84\\ \hline
 	    1280x720 & 45 & 5 & 85 & 20 & 95\\ \hline
@@ -45,9 +45,9 @@ In summary, when choosing parameters of the method to be run on slower machines,
 \end{table}
 
 \begin{table}[h!]\centering
-	\caption{Varying the Number of VPL's Per Ray (Impact on FPS)}
+	\caption{Varying the Number of VPL's Per Ray (Impact on FPS).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & FPS\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 20 & 55\\ \hline
@@ -62,9 +62,9 @@ In summary, when choosing parameters of the method to be run on slower machines,
 \end{table}
 
 \begin{table}[h!]\centering
-	\caption{Varying the Resolution Size. (Impact on FPS)}
+	\caption{Varying the Resolution Size. (Impact on FPS).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & FPS\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 20 & 55\\ \hline
@@ -79,9 +79,9 @@ In summary, when choosing parameters of the method to be run on slower machines,
 \end{table}
 
 \begin{table}[h!]\centering
-	\caption{Varying the Number of Indirect Shadow Maps (Impact on FPS)}
+	\caption{Varying the Number of Indirect Shadow Maps (Impact on FPS).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & FPS\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 20 & 55\\ \hline
@@ -99,9 +99,9 @@ In summary, when choosing parameters of the method to be run on slower machines,
 \paragraph{}
 Just as important as performance is the quality of the images rendered.  Therefore, this section will detail the quality impact of parameter choice using the default set-up as the reference image.  By detailing this information, it will reveal the ultimate flexibility of the method and whether we can use this method on slower machines with limited quality impact.  We will use the same parameter choices as the tables for section \ref{sec:fps}, but we will be interested in the percentage difference between the chosen parameters and the default parameters.  The percentage difference will be computed using a Python script which takes in two rendered images as input and compares them on a pixel by pixel basis.  This comparison is done as follows:
 
-\vspace{10 mm}
+\vspace{5 mm}
 \begin{algorithm}[H]
- \SetAlgoLined
+% \SetAlgoLined
  similar = 0.0\;
  \For{each pixelComponent (R,B,G) in image 1}{
   \eIf{pixelComponent\_image1 $>=$ pixelComponent\_image2 }{
@@ -136,14 +136,14 @@ Table \ref{table:5.8} shows the impact of reducing the number of shadow maps use
 
 \paragraph{}
 It is worth noting that if an image is not 100\%, this does not mean that it is not a quality or accurate image rendering.  It purely means that the image is in some way different to our reference image.  For example, the last entry of table \ref{table:5.6} says that it is 96.5\% similar to our reference.  However, due to the fact that this rendering indeed uses more VPL's than our reference, this image could be perceived as more accurate or of higher quality than our reference.  This calculation does take into account the findings of section \ref{sec:study} which stated that there was found to be a connection between the amount of indirect illumination and the perceived similarity to the reference.  More on this idea will be discussed in section \ref{sec:alternatives}.
-\vspace{10 mm}
+\vspace{5 mm}
 \begin{table}[h!]\centering
 	\caption{Varying the Angle Between VPL Rays (Impact on Quality).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & \% Similar\\ \hline
-	    1280x720 & 5 & 5 & 6485 & 20 & 100\\ \hline
+	    1280x720 & 5 & 5 & 6485 & 20 & 100.000\\ \hline
 	    1280x720 & 10 & 5 & 1625 & 20 & 97.945\\ \hline
 	    1280x720 & 30 & 5 & 185 & 20 & 97.956\\ \hline
 	    1280x720 & 45 & 5 & 85 & 20 & 95.440\\ \hline
@@ -155,10 +155,10 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 \begin{table}[h!]\centering
 	\caption{Varying the Number of VPL's Per Ray (Impact on Quality).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & \% Similar\\ \hline
-	    1280x720 & 5 & 5 & 6485 & 20 & 100\\ \hline
+	    1280x720 & 5 & 5 & 6485 & 20 & 100.000\\ \hline
 	    1280x720 & 5 & 4 & 5188 & 20 & 92.973\\ \hline
 	    1280x720 & 5 & 3 & 3891 & 20 & 93.458\\ \hline
 	    1280x720 & 5 & 2 & 2594 & 20 & 90.318\\ \hline
@@ -171,10 +171,10 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 \begin{table}[h!]\centering
 	\caption{Varying the Resolution Size. (Impact on Quality).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & \% Similar\\ \hline
-	    1280x720 & 5 & 5 & 6485 & 20 & 100\\ \hline
+	    1280x720 & 5 & 5 & 6485 & 20 & 100.000\\ \hline
 	    1120x630 & 5 & 5 & 6485 & 20 & 99.547\\ \hline
 	    960x540 & 5 & 5 & 6485 & 20 & 99.541\\ \hline
 	    800x450 & 5 & 5 & 6485 & 20 & 99.418\\ \hline
@@ -187,10 +187,10 @@ It is worth noting that if an image is not 100\%, this does not mean that it is 
 \begin{table}[h!]\centering
 	\caption{Varying the Number of Indirect Shadow Maps (Impact on Quality).}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Resolution & Angle & VPL's Per Ray & Total \#VPL's & \#Indirect SM's & \% Similar\\ \hline
-	    1280x720 & 5 & 5 & 6485 & 20 & 100\\ \hline
+	    1280x720 & 5 & 5 & 6485 & 20 & 100.000\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 15 & 99.475\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 10 & 98.853\\ \hline
 	    1280x720 & 5 & 5 & 6485 & 5 & 93.611\\ \hline
@@ -212,14 +212,14 @@ color = (direct\_color*0.5*shadow)+(direct\_color*0.6)
 
 \paragraph{}
 For the next entry the 0.6 would be 0.7 and so on.  This way the direct shadows are only half as dark as before and are not purely black and increase the overall brightness of the scene.  As seen in the table, this approach of faking indirect light leads to better similarity numbers than using just the direct lighting approach peaking at the multiplier of 1.3 with a value of 91.8\% in this particular case.  Therefore, should indirect lighting without indirect shadows approach be too much for a particular machine, a faked version of indirect lighting would be a respectable compromise.
-
+\vspace{5 mm}
 \begin{table}[h!]\centering
-	\caption{Alternative Reductions}
+	\caption{Alternative Reductions.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Method & FPS & \% Similar\\ \hline
-	    Default Method & 55 & 100\\ \hline
+	    Default Method & 55 & 100.000\\ \hline
 	    Direct Lighting ONLY & 681 & 84.426\\ \hline
 	    Indirect Lighting w/out indirect shadows & 161 & 98.563\\ \hline
 	    Faked Indirect Lighting (1.1x) & 681 & 88.217\\ \hline
@@ -251,12 +251,12 @@ Table \ref{table:5.10} tells us a few things about using accurate shadows:
 \end{itemize}
 
 \begin{table}[h!]\centering
-	\caption{Final Comparisons}
+	\caption{Final Comparisons.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Method & FPS & \% Similar & Rank Value & Figure\\ \hline
-	    Default Method & 55 & 100 & -- & \ref{fig:defaultimage}\\ \hline
+	    Default Method & 55 & 100.000 & -- & \ref{fig:defaultimage}\\ \hline
 	    Faked Indirect Lighting (1.3x) & 681 & 91.847 & 76.7816 & \ref{fig:fakedindirect}\\ \hline
 	    Indirect Lighting w/out indirect shadows & 161 & 98.563 & 73.7648 & \ref{fig:0indSM}\\ \hline
 	    Indirect Lighting w/ 15 indirect shadows & 87 & 99.475 & 60.9524 & \ref{fig:15indSM}\\ \hline
@@ -300,11 +300,11 @@ Keeping table \ref{table:5.10} in mind, we gathered results from using this shad
 
 \paragraph{}
 By looking at table \ref{table:secondAppResults1}, we see that by using this technique and using parameters such as 1280x720 and 6485 VPL's, we can render 60 indirect shadows using 4 steps in between each of our 5 indirect shadow maps and get 60 FPS while in our first technique we get 20 indirect shadows using 20 shadow maps and get 55FPS.  By using these integrated shadows, we get smoother shadows, better performance, and use less GPU memory.  See figure \ref{fig:methodCompare} for a comparison of the two techniques.  The main difference is that the majority of the 60 indirect shadows are using adjusted and possibly inaccurate visibility.  Naturally, tables \ref{table:secondAppResults2} and \ref{table:secondAppResults3} show improved performance using reduced resolution and less VPL's.  This integrated shadows technique shows better scalability so far, but a true test is to see how both shadowing techniques perform when scene complexity is increased.
-
+\vspace{5 mm}
 \begin{table}[h!]\centering
 	\caption{1280x720, 6485 VPL's, Resulting FPS and number of shadows from adjusting the number of steps.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    NumSteps & FPS & Number of Shadows\\ \hline
 	    2 & 81 & 40\\ \hline
@@ -319,7 +319,7 @@ By looking at table \ref{table:secondAppResults1}, we see that by using this tec
 \begin{table}[h!]\centering
 	\caption{640x360, 6485 VPL's, Resulting FPS from reduced resolution and adjusting number of steps.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    NumSteps & FPS\\ \hline
 	    2 & 137\\ \hline
@@ -333,7 +333,7 @@ By looking at table \ref{table:secondAppResults1}, we see that by using this tec
 \begin{table}[h!]\centering
 	\caption{1280x720, 185 VPL's, 30 degree angle, Resulting FPS from reduced VPL count and adjusting number of steps.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    NumSteps & FPS\\ \hline
 	    2 & 150\\ \hline
@@ -357,7 +357,7 @@ Table \ref{table:tech2Complex} shows overall better numbers while maintaining in
 \begin{table}[h!]\centering
 	\caption{Scene Complexity Performance - Accurate Shadows.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Scene & Method & FPS\\ \hline
 	    6565/3249 & Default Method & 15\\ \hline
@@ -386,7 +386,7 @@ Table \ref{table:tech2Complex} shows overall better numbers while maintaining in
 \begin{table}[h!]\centering
 	\caption{Scene Complexity Performance - Integrated Shadows.}
 	\begin{center}
-	    \begin{tabular}{ | l | l | l | l | l | l |}
+	    \begin{tabular}{ | c | c | c | c | c | c |}
 	    \hline
 	    Scene & NumSteps & Resolution & NumVPL's & FPS\\ \hline
 	    6565/3249 & 2 & 1280x720 & 6485 & 28\\ \hline
@@ -456,7 +456,7 @@ This section will be used to show images captured from the real-time rendering p
                 \caption{Light is in the upper center of the scene.}
                 \label{fig:sample5}
         \end{subfigure}
-        \caption{Additional Rendered Images Using the Default Parameters}\label{fig:default}
+        \caption{Additional Rendered Images Using the Default Parameters.}\label{fig:default}
 \end{figure}
 
 

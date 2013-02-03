@@ -27,7 +27,7 @@
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Showing 20 randomly sampled VPL's with the primary light source at the top center of the image.\relax }}{40}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Showing 5 specifically chosen VPL's with the primary light source at the top center of the image.\relax }}{41}
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Light is at the near upper left corner of the scene. This image uses the default parameters and is used as the reference in the similarity calculations.\relax }}{75}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters\relax }}{76}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Additional Rendered Images Using the Default Parameters.\relax }}{76}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Scene rendered with only direct lighting.\relax }}{77}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Images showing the contributions from the VPL's to indirect lighting (direct lighting is ignored).\relax }}{78}
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Varying Indirect Lighting Adjustments.\relax }}{79}

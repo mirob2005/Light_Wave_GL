@@ -138,14 +138,14 @@
 \contentsline {subsection}{\numberline {5.2.3}Results}{70}
 \contentsline {paragraph}{}{70}
 \contentsline {paragraph}{}{70}
-\contentsline {section}{\numberline {5.3}Scene Complexity}{71}
-\contentsline {paragraph}{}{71}
+\contentsline {section}{\numberline {5.3}Scene Complexity}{70}
+\contentsline {paragraph}{}{70}
 \contentsline {paragraph}{}{71}
 \contentsline {paragraph}{}{72}
 \contentsline {section}{\numberline {5.4}Conclusion}{72}
 \contentsline {paragraph}{}{72}
-\contentsline {section}{\numberline {5.5}Images}{73}
-\contentsline {paragraph}{}{73}
+\contentsline {section}{\numberline {5.5}Images}{74}
+\contentsline {paragraph}{}{74}
 \contentsline {chapter}{\numberline {6}CONCLUSION}{88}
 \contentsline {section}{\numberline {6.1}General Observations}{88}
 \contentsline {paragraph}{}{88}
@@ -159,4 +159,4 @@
 \contentsline {paragraph}{}{91}
 \contentsline {section}{\numberline {6.4}Improvements}{91}
 \contentsline {paragraph}{}{91}
-\contentsline {chapter}{BIBLIOGRAPHY}{93}
+\contentsline {chapter}{\normalfont BIBLIOGRAPHY}{93}
