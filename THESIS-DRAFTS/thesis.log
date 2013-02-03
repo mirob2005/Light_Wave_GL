@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  1 FEB 2013 16:27
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  2 FEB 2013 17:24
 entering extended mode
 **D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
 (D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
@@ -731,22 +731,22 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [58] [59] [60] [61] [62]
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 143--152
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 143--152
  [] 
  []
 
 
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 158--168
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 158--168
  [] 
  []
 
 
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 174--184
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 174--184
  [] 
  []
 
 
-Overfull \hbox (5.97621pt too wide) in paragraph at lines 190--200
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 190--200
  [] 
  []
 
@@ -763,26 +763,36 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [63] [64] [65] [66]
-Overfull \hbox (6.91771pt too wide) in paragraph at lines 256--269
+Overfull \hbox (6.91763pt too wide) in paragraph at lines 256--269
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[67] [68] [69] [70] [71]
+[67] [68] [69]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[72] <sample1.jpg, id=295, 1284.8pt x 722.7pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[70] [71]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[72] [73] <sample1.jpg, id=298, 1284.8pt x 722.7pt>
 File: sample1.jpg Graphic file (type jpg)
  <use sample1.jpg>
 Package pdftex.def Info: sample1.jpg used on input line 427.
 (pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
- [73]
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1019,12 +1029,7 @@ CHAPTER 6.
 
 
 
-] [89] [90]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¡ in font cmr12!
-Missing character: There is no Å in font cmr12!
-Missing character: There is no ¡ in font cmr12!
-) [91] [92]
+] [89] [90]) [91] [92]
 (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [93
 
 
@@ -1056,7 +1061,7 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
 nts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (106 pages, 2183704 bytes).
+Output written on thesis.pdf (106 pages, 2182447 bytes).
 PDF statistics:
  441 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

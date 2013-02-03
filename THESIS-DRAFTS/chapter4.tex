@@ -224,7 +224,7 @@ Next, we finish our direct lighting calculations by calculating the diffuse and 
 
 Lastly, we set the color of the fragment using equation \ref{eqn:fragColor}:
 \begin{equation}
-gl\_FragColor = (direct\_color*shadow) + (indirect\_color*INDshadow); \label{eqn:fragColor}
+gl\_FragColor = (direct\_color*shadow) + (indirect\_color*INDshadow) \label{eqn:fragColor}
 \end{equation}
 
 where shadow and INDshadow are the float values we calculated above from our shadow maps, direct color is our direct lighting we have just calculated and indirect color is the VPL contributions we calculated in our vertex shader.  After performing equation \ref{eqn:fragColor}, we have our scene rendered with approximated global illumination by using our VPL's.
