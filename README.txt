@@ -3,7 +3,8 @@ mirob2005@gmail.com, miro2005@csu.fullerton.edu
 SID: 892-32-2629
 Thesis Implementation using OpenGL and GLSL
 Start Date: 5/31/12
-Updated: 12/11/12
+Committee Approval: 12/7/12
+University Approval and Bookstore Submission: 2/6/13
 
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
@@ -26,11 +27,12 @@ TODO:
 5) (DONE) Add Indirect Shadows
 6) (DONE) Code changes
 7) (DONE) Thesis Writing
+Thesis DONE
 
 Integrated Shadows method is in Light_Wave_GL\
 Accurate Shadows method is in old_Light_Wave_GL\
 
-COMMAND LINE (currently):
+COMMAND LINE:
 
 LIGHT_WAVE_GL.exe
 
