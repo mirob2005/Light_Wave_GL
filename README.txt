@@ -29,9 +29,6 @@ TODO:
 7) (DONE) Thesis Writing
 Thesis DONE
 
-Integrated Shadows method is in Light_Wave_GL\
-Accurate Shadows method is in old_Light_Wave_GL\
-
 COMMAND LINE:
 
 LIGHT_WAVE_GL.exe
