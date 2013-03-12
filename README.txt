@@ -6,18 +6,22 @@ Start Date: 5/31/12
 Committee Approval: 12/7/12
 University Approval and Bookstore Submission: 2/6/13
 
+See Defense/Presentation.pdf and Thesis/THESIS_V3.3_formal_review_revisions.pdf for detailed information on the implementation.
 
 Assignment was completed using Visual Studio 2008 Pro on Windows 7 64-bit.
-Included is all .cpp, .h, and .txt to independently run using any compiler.
-
-All files must be in the same directory to be found.
+Included is all files needed to run independently using any compiler.
 
 * The project extends my Light_Wave implementation using OpenGL and GLSL rather than a raytracer.
 
-* This test implementation will attempt to model the global illumination in the scene more like a wave rather than a point light source
+* This test implementation will attempt to model the global illumination in the scene more like a wave rather than a point light source in order to approximate indirect illumination.
 
 * FPS is shown in the title bar
 
+Accurate_Shadows/ contains the VS project folder for the Accurate Shadows approach. (See thesis or defense presentation for more information)
+Integrated_Shadows/ contains the VS project folder for the Integrated Shadows approach. (See thesis or defense presentation for more information)
+Thesis/ contains all versions of the thesis along with the included images, jabref database, and latex files.
+Thesis/THESIS_V3.3_formal_review_revisions.pdf is the final version submitted to the bookstore.
+Defense/ contains my presentation and notes given for my Thesis Defense
 
 TODO:
 1) (DONE) Add Shadows to the scene using shadow maps
@@ -44,6 +48,7 @@ DOWN ARROW - move light back
 LEFT ARROW - move light to the left
 RIGHT ARROW - move light to the right
 
+* These controls are limited on the Integrated Shadows approach depending on the current scene (some scenes do not have objects to move)
 0,1,2 - select object: camera, sphere 1, sphere2, respectively (Default: camera)
 W - move object forward
 S - move object back
@@ -55,7 +60,7 @@ shift+S - move object down
 R - reset camera
 T - reset spheres
 G - Alternate between shaders on and shaders off with VPLs visible
-P - change scenes between Cornell box and teapot
+P - change between available scenes
 
 I - Take SnapShot
 M - Take continuous snapshots
