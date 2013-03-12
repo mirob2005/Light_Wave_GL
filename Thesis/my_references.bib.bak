@@ -1,0 +1,1860 @@
+% This file was created with JabRef 2.7.2.
+% Encoding: Cp1252
+
+@ARTICLE{Kalos2005,
+  author = {Laszlo Szirmay-kalos and Barnabas Aszodi and Istvan Lazanyi and Matyas
+	Premecz},
+  title = {Approximate Ray-tracing on the GPU with Distance Impostors. Computer
+	Graphics Forum},
+  journal = {Eurographics},
+  year = {2005},
+  volume = {24},
+  pages = {1-10},
+  number = {3},
+  abstract = {This paper presents a fast approximation method to obtain the point
+	hit by a reflection or refraction ray. The calculation is based on
+	the distance values stored in environment map texels. This approximation
+	is used to localize environment mapped reflections and refractions,
+	that is, to make them depend on where they occur. On the other hand,
+	placing the eye into the light source, the method is also good to
+	generate real-time caustics. Computing a map for each refractor surface,
+	we can even evaluate multiple refractions without tracing rays. The
+	method is fast and accurate if the scene consists of larger planar
+	faces, when the results are similar to that of ray-tracing. On the
+	other hand, the method suits very well to the GPU architecture, and
+	can render ray-tracing and global illumination effects with few hundred
+	frames per second. The primary application area of the proposed method
+	is the introduction of these effects in games. 1.},
+  doi = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.162.1876},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\Szirmay-Kalos.pdf:PDF}
+}
+
+@ARTICLE{Cohen1985,
+  author = {Cohen, Michael F. and Greenberg, Donald P.},
+  title = {The hemi-cube: a radiosity solution for complex environments},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1985},
+  volume = {19},
+  pages = {31--40},
+  number = {3},
+  month = jul,
+  abstract = {This paper presents a comprehensive method to calculate object to
+	object diffuse reflections within complex environments containing
+	hidden surfaces and shadows. In essence, each object in the environment
+	is treated as a secondary light source. The method provides an accurate
+	representation of the "diffuse" and "ambient" terms found in typical
+	image synthesis algorithms. The phenomena of "color bleeding" from
+	one surface to another, shading within shadow envelopes, and penumbras
+	along shadow boundaries are accurately reproduced. Additional advantages
+	result because computations are indepedent of viewer position. This
+	allows the efficient rendering of multiple views of the same scene
+	for dynamic sequences. Light sources can be modulated and object
+	reflectivities can be changed, with minimal extra computation. The
+	procedures extend the radiosity method beyond the bounds previously
+	imposed.},
+  acmid = {325171},
+  address = {New York, NY, USA},
+  doi = {10.1145/325165.325171},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p31-cohen.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {Jul. 1985},
+  keywords = {depth buffer, diffuse reflections, form-factors, hidden surface, radiosity},
+  numpages = {10},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/325165.325171}
+}
+
+@BOOK{Cohen1993,
+  title = {Radiosity and realistic image synthesis},
+  publisher = {Academic Press Professional, Inc.},
+  year = {1993},
+  author = {Cohen, Michael F. and Wallace, John and Hanrahan, Pat},
+  address = {San Diego, CA, USA},
+  isbn = {0-12-178270-0}
+}
+
+@ARTICLE{Cook1986,
+  author = {Cook, Robert L.},
+  title = {Stochastic sampling in computer graphics},
+  journal = {ACM Trans. Graph.},
+  year = {1986},
+  volume = {5},
+  pages = {51--72},
+  number = {1},
+  month = jan,
+  abstract = {Ray tracing, ray casting, and other forms of point sampling are important
+	techniques in computer graphics, but their usefulness has been undermined
+	by aliasing artifacts. In this paper it is shown that these artifacts
+	are not an inherent part of point sampling, but a consequence of
+	using regularly spaced samples. If the samples occur at appropriate
+	nonuniformly spaced locations, frequencies above the Nyquist limit
+	do not alias, but instead appear as noise of the correct average
+	intensity. This noise is much less objectionable to our visual system
+	than aliasing. In ray tracing, the rays can be stochastically distributed
+	to perform a Monte Carlo evaluation of integrals in the rendering
+	equation. This is called distributed ray tracing and can be used
+	to simulate motion blur, depth of field, penumbrae, gloss, and translucency.},
+  acmid = {8927},
+  address = {New York, NY, USA},
+  doi = {10.1145/7529.8927},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p51-cook.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {Jan. 1986},
+  numpages = {22},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/7529.8927}
+}
+
+@ARTICLE{Cook1984,
+  author = {Cook, Robert L. and Porter, Thomas and Carpenter, Loren},
+  title = {Distributed ray tracing},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1984},
+  volume = {18},
+  pages = {137--145},
+  number = {3},
+  month = jan,
+  abstract = {Ray tracing is one of the most elegant techniques in computer graphics.
+	Many phenomena that are difficult or impossible with other techniques
+	are simple with ray tracing, including shadows, reflections, and
+	refracted light. Ray directions, however, have been determined precisely,
+	and this has limited the capabilities of ray tracing. By distributing
+	the directions of the rays according to the analytic function they
+	sample, ray tracing can incorporate fuzzy phenomena. This provides
+	correct and easy solutions to some previously unsolved or partially
+	solved problems, including motion blur, depth of field, penumbras,
+	translucency, and fuzzy reflections. Motion blur and depth of field
+	calculations can be integrated with the visible surface calculations,
+	avoiding the problems found in previous methods.},
+  acmid = {808590},
+  address = {New York, NY, USA},
+  doi = {10.1145/964965.808590},
+  file = {:p137-cook.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {July 1984},
+  keywords = {Camera, Constructive solid geometry, Depth of field, Focus, Gloss,
+	Motion blur, Penumbras, Ray tracing, Shadows, Translucency, Transparency},
+  numpages = {9},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/964965.808590}
+}
+
+@INPROCEEDINGS{Crow1977,
+  author = {Crow, Franklin C.},
+  title = {Shadow algorithms for computer graphics},
+  booktitle = {Proceedings of the 4th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1977},
+  series = {SIGGRAPH '77},
+  pages = {242--248},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Shadows are advocated for improved comprehension and enhanced realism
+	in computer-synthesized images. A classification of shadow algorithms
+	delineates three approaches: shadow computation during scanout; division
+	of object surfaces into shadowed and unshadowed areas prior to removal
+	of hidden surfaces; and inclusion of shadow volumes in the object
+	data. The classes are related to existing shadow algorithms and implementations
+	within each class are sketched. A brief comparison of the three approaches
+	suggests that the last approach has the most appealing characteristics.},
+  acmid = {563901},
+  doi = {10.1145/563858.563901},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p242-crow.pdf:PDF},
+  keywords = {computer graphics, hidden-surface removal, raster displays, shading,
+	shadows},
+  location = {San Jose, California},
+  numpages = {7},
+  url = {http://doi.acm.org/10.1145/563858.563901}
+}
+
+@INPROCEEDINGS{Dachsbacher2009,
+  author = {Dachsbacher, Carsten and Kautz, Jan},
+  title = {Real-time global illumination for dynamic scenes},
+  booktitle = {ACM SIGGRAPH 2009 Courses},
+  year = {2009},
+  series = {SIGGRAPH '09},
+  pages = {19:1--19:217},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Global illumination is an important factor in creating realistic scenes
+	and provides visual cues for understanding scene geometry. However,
+	global illumination is very costly and only recently has it become
+	viable to render scenes with global-illumination effects at interactive
+	frame rates by exploiting the parallelism and programmability of
+	modern GPUs.
+	
+	
+	This course provides a concise overview of recent GPU-based global-illumination
+	techniques that support fully dynamic scenes, compares them, and
+	discusses their various strengths and weaknesses. After introducing
+	the necessary foundation (rendering equation, direct vs. indirect
+	illumination, etc.), the course summarizes the three main streams
+	of real-time global illumination techniques: virtual point lights,
+	screen-space techniques, and hierarchical finite elements.},
+  acmid = {1667258},
+  articleno = {19},
+  doi = {10.1145/1667239.1667258},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a19-dachsbacher.pdf:PDF},
+  location = {New Orleans, Louisiana},
+  numpages = {217},
+  url = {http://doi.acm.org/10.1145/1667239.1667258}
+}
+
+@INPROCEEDINGS{Dachsbacher2006,
+  author = {Dachsbacher, Carsten and Stamminger, Marc},
+  title = {Splatting indirect illumination},
+  booktitle = {Proceedings of the 2006 symposium on Interactive 3D graphics and
+	games},
+  year = {2006},
+  series = {I3D '06},
+  pages = {93--100},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {In this paper we present a novel method for plausible real-time rendering
+	of indirect illumination effects for diffuse and non-diffuse surfaces.
+	The scene geometry causing indirect illumination is captured by an
+	extended shadow map, as proposed in previous work, and secondary
+	light sources are distributed on directly lit surfaces. One novelty
+	is the rendering of these secondary lights' contribution by splatting
+	in a deferred shading process, which decouples rendering time from
+	scene complexity. An importance sampling strategy, implemented entirely
+	on the GPU, allows efficient selection of secondary light sources.
+	Adapting the light's splat shape to surface glossiness also allows
+	efficient rendering of caustics. Unlike previous approaches the approximated
+	indirect lighting does barely exhibit coarse artifacts - even under
+	unfavorable viewing and lighting conditions. We describe an implementation
+	on contemporary graphics hardware, show a comparison to previous
+	approaches, and present adaptation to and results in game-typical
+	applications.},
+  acmid = {1111428},
+  doi = {10.1145/1111411.1111428},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p93-dachsbacher.pdf:PDF},
+  isbn = {1-59593-295-X},
+  keywords = {global illumination, hardware-assisted rendering, real-time rendering,
+	shadow maps},
+  location = {Redwood City, California},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1111411.1111428}
+}
+
+@INPROCEEDINGS{Dachsbacher2005,
+  author = {Dachsbacher, Carsten and Stamminger, Marc},
+  title = {Reflective shadow maps},
+  booktitle = {Proceedings of the 2005 symposium on Interactive 3D graphics and
+	games},
+  year = {2005},
+  series = {I3D '05},
+  pages = {203--231},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {In this paper we present "reflective shadow maps", an algorithm for
+	interactive rendering of plausible indirect illumination. A reflective
+	shadow map is an extension to a standard shadow map, where every
+	pixel is considered as an indirect light source. The illumination
+	due to these indirect lights is evaluated on-the-fly using adaptive
+	sampling in a fragment shader. By using screen-space interpolation
+	of the indirect lighting, we achieve interactive rates, even for
+	complex scenes. Since we mainly work in screen space, the additional
+	effort is largely independent of scene complexity. The resulting
+	indirect light is approximate, but leads to plausible results and
+	is suited for dynamic scenes. We describe an implementation on current
+	graphics hardware and show results achieved with our approach.},
+  acmid = {1053460},
+  doi = {10.1145/1053427.1053460},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p203-dachsbacher.pdf:PDF},
+  isbn = {1-59593-013-2},
+  keywords = {hardware-assisted rendering, indirect illumination},
+  location = {Washington, District of Columbia},
+  numpages = {29},
+  url = {http://doi.acm.org/10.1145/1053427.1053460}
+}
+
+@INPROCEEDINGS{Dachsbacher2003,
+  author = {Dachsbacher, Carsten and Stamminger, Marc},
+  title = {Translucent shadow maps},
+  booktitle = {Proceedings of the 14th Eurographics workshop on Rendering},
+  year = {2003},
+  series = {EGRW '03},
+  pages = {197--201},
+  address = {Aire-la-Ville, Switzerland, Switzerland},
+  publisher = {Eurographics Association},
+  abstract = {Shadow maps are a very efficient means to add shadows to arbitrary
+	scenes. In this paper, we introduce Translucent Shadow Maps, an extension
+	to shadow maps which allows very efficient rendering of sub-surface
+	scattering. Translucent Shadow Maps contain depth and incident light
+	information. Sub-surface scattering is computed on-the-fly during
+	rendering by filtering the shadow map neighborhood. This filtering
+	is done efficiently using a hierarchical approach. We describe optimizations
+	for an implementation of Translucent Shadow Maps on contemporary
+	graphics hardware, that can render complex translucent objects with
+	varying light and material properties in real-time.},
+  acmid = {882433},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p197-dachsbacher.pdf:PDF},
+  isbn = {3-905673-03-7},
+  location = {Leuven, Belgium},
+  numpages = {5},
+  url = {http://dl.acm.org/citation.cfm?id=882404.882433}
+}
+
+@ARTICLE{Dachsbacher2007,
+  author = {Dachsbacher, Carsten and Stamminger, Marc and Drettakis, George and
+	Durand, Fr{\'e}do},
+  title = {Implicit visibility and antiradiance for interactive global illumination},
+  journal = {ACM Trans. Graph.},
+  year = {2007},
+  volume = {26},
+  number = {3},
+  month = jul,
+  abstract = {We reformulate the rendering equation to alleviate the need for explicit
+	visibility computation, thus enabling interactive global illumination
+	on graphics hardware. This is achieved by treating visibility implicitly
+	and propagating an additional quantity, called antiradiance, to compensate
+	for light transmitted extraneously. Our new algorithm shifts visibility
+	computation to simple local iterations by maintaining additional
+	directional antiradiance information with samples in the scene. It
+	is easy to parallelize on a GPU. By correctly treating discretization
+	and filtering, we can compute indirect illumination in scenes with
+	dynamic objects much faster than traditional methods. Our results
+	show interactive update of indirect illumination with moving characters
+	and lights.},
+  acmid = {1276453},
+  address = {New York, NY, USA},
+  articleno = {61},
+  doi = {10.1145/1276377.1276453},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a61-dachsbacher.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2007},
+  keywords = {GPU, global illumination, visibility},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1276377.1276453}
+}
+
+@INPROCEEDINGS{Engelhardt2010,
+  author = {Engelhardt, Thomas and Dachsbacher, Carsten},
+  title = {Epipolar sampling for shadows and crepuscular rays in participating
+	media with single scattering},
+  booktitle = {Proceedings of the 2010 ACM SIGGRAPH symposium on Interactive 3D
+	Graphics and Games},
+  year = {2010},
+  series = {I3D '10},
+  pages = {119--125},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Scattering in participating media, such as fog or haze, generates
+	volumetric lighting effects known as crepuscular or god rays. Rendering
+	such effects greatly enhances the realism in virtual scenes, but
+	is inherently costly as scattering events occur at every point in
+	space and thus it requires costly integration of the light scattered
+	towards the observer. This is typically done using ray marching which
+	is too expensive for every pixel on the screen for interactive applications.
+	We propose a rendering technique for textured light sources in single-scattering
+	media, that draws from the concept of epipolar geometry to place
+	samples in image space: the inscattered light varies orthogonally
+	to crepuscular rays, but mostly smoothly along these rays. These
+	are epipolar lines of a plane of light rays that projects onto one
+	line on the image plane. Our method samples sparsely along epipolar
+	lines and interpolates between samples where adequate, but preserves
+	high frequency details that are caused by shadowing of light rays.
+	We show that our method is very simple to implement on the GPU, yields
+	high quality images, and achieves high frame rates.},
+  acmid = {1730823},
+  doi = {10.1145/1730804.1730823},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p119-engelhardt.pdf:PDF},
+  isbn = {978-1-60558-939-8},
+  keywords = {GPU, global illumination, participating media},
+  location = {Washington, D.C.},
+  numpages = {7},
+  url = {http://doi.acm.org/10.1145/1730804.1730823}
+}
+
+@INPROCEEDINGS{Goral1984,
+  author = {Goral, Cindy M. and Torrance, Kenneth E. and Greenberg, Donald P.
+	and Battaile, Bennett},
+  title = {Modeling the interaction of light between diffuse surfaces},
+  booktitle = {Proceedings of the 11th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1984},
+  series = {SIGGRAPH '84},
+  pages = {213--222},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {A method is described which models the interaction of light between
+	diffusely reflecting surfaces. Current light reflection models used
+	in computer graphics do not account for the object-to-object reflection
+	between diffuse surfaces, and thus incorrectly compute the global
+	illumination effects. The new procedure, based on methods used in
+	thermal engineering, includes the effects of diffuse light sources
+	of finite area, as well as the “color-bleeding” effects which are
+	caused by the diffuse reflections. A simple environment is used to
+	illustrate these simulated effects and is presented with photographs
+	of a physical model. The procedure is applicable to environments
+	composed of ideal diffuse reflectors and can account for direct illumination
+	from a variety of light sources. The resultant surface intensities
+	are independent of observer position, and thus environments can be
+	preprocessed for dynamic sequences.},
+  acmid = {808601},
+  doi = {10.1145/800031.808601},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p213-goral.pdf:PDF},
+  isbn = {0-89791-138-5},
+  keywords = {Diffuse reflections, Form factors, Light reflection models, Radiosity,
+	Shading},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/800031.808601}
+}
+
+@INPROCEEDINGS{Gumbau2011,
+  author = {Gumbau, Jes\'{u}s and Sbert, Mateu and Szirmay-Kalos, L\'{a}szl\'{o}
+	and Chover, Miguel and Gonz\'{a}lez, Carlos},
+  title = {Shadow map filtering with Gaussian shadow maps},
+  booktitle = {Proceedings of the 10th International Conference on Virtual Reality
+	Continuum and Its Applications in Industry},
+  year = {2011},
+  series = {VRCAI '11},
+  pages = {75--82},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Shadow mapping is a technique, widely used in computer graphics, for
+	efficiently calculating shadows in real-time applications. However,
+	shadows created with this technique can not be filtered as regular
+	textures, causing severe aliasing. To solve this problem, several
+	techniques based on statistical analysis, including variance shadow
+	maps and exponential shadow maps, have been introduced by other authors
+	in the past. However these techniques introduce different kinds of
+	"light leaking" artifacts, which are clearly visible in moderately
+	complex scenes. In this paper we propose a new statistical filtering
+	method which approximates the cumulative distribution function (CDF)
+	of depths by a Gaussian CDF instead of bounding it with Chebyshev
+	Inequality. This approximation significantly reduces "light bleeding"
+	artifacts, keeping the same performance and spatial cost as the original
+	variance shadow maps.},
+  acmid = {2087766},
+  doi = {10.1145/2087756.2087766},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\p75-gumbau.pdf:PDF},
+  isbn = {978-1-4503-1060-4},
+  keywords = {Gaussian, anti-aliasing, filtering, real-time, shadows},
+  location = {Hong Kong, China},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/2087756.2087766}
+}
+
+@ARTICLE{Havsan2007,
+  author = {Ha\v{s}an, Milo\v{s} and Pellacini, Fabio and Bala, Kavita},
+  title = {Matrix row-column sampling for the many-light problem},
+  journal = {ACM Trans. Graph.},
+  year = {2007},
+  volume = {26},
+  pages = {26:1--26:10},
+  number = {3},
+  month = jul,
+  acmid = {1276410},
+  address = {New York, NY, USA},
+  articleno = {26},
+  doi = {10.1145/1276377.1276410},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a26-hasan.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2007},
+  keywords = {GPU, global illumination, many lights, sampling},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1276377.1276410}
+}
+
+@ARTICLE{Halton1964,
+  author = {Halton, J. H.},
+  title = {Algorithm 247: Radical-inverse quasi-random point sequence},
+  journal = {Commun. ACM},
+  year = {1964},
+  volume = {7},
+  pages = {701--702},
+  number = {12},
+  month = dec,
+  abstract = {This procedure computes a sequence of N quasirandom
+	
+	points lying in the K-dimensional unit hypercube
+	
+	given by0 <xi < 1, i = 1,2, ... ,K. The ith component of
+	
+	the ruth point is stored in Q[m,i]. The sequence is initiated by a
+	
+	"zero-th point" stored in P, and each component sequence is
+	
+	iteratively generated with parameter R[i]. E is a positive errorparameter.
+	
+	K, N, E, and the P[i] and R[i] for i = 1, 2, ... , K,
+	
+	are to be given.},
+  acmid = {365104},
+  address = {New York, NY, USA},
+  doi = {10.1145/355588.365104},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p701-forsythe.pdf:PDF},
+  issn = {0001-0782},
+  issue_date = {Dec. 1964},
+  numpages = {2},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/355588.365104}
+}
+
+@ARTICLE{Immel1986,
+  author = {Immel, David S. and Cohen, Michael F. and Greenberg, Donald P.},
+  title = {A radiosity method for non-diffuse environments},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1986},
+  volume = {20},
+  pages = {133--142},
+  number = {4},
+  month = aug,
+  abstract = {A general radiosity method accounting for all interreflections of
+	light between diffuse and nondiffuse surfaces in complex environments
+	is introduced. As contrasted with previous radiosity methods, surfaces
+	are no longer required to be perfectly diffuse reflectors and emitters.
+	A complete, viewer independent description of the light leaving each
+	surface in each direction is computed, allowing dynamic sequences
+	of images to be rendered with little additional computation per image.
+	Phenomena such as "reflection tracking", reflections following a
+	moving observer across a specular surface are produced. Secondary
+	light sources, such as the light from a spotlight reflecting off
+	a mirror onto a wall are also accounted for.},
+  acmid = {15901},
+  address = {New York, NY, USA},
+  doi = {10.1145/15886.15901},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p133-immel.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {Aug. 1986},
+  numpages = {10},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/15886.15901}
+}
+
+@ARTICLE{Jakob2012,
+  author = {Jakob, Wenzel and Marschner, Steve},
+  title = {Manifold exploration: a Markov Chain Monte Carlo technique for rendering
+	scenes with difficult specular transport},
+  journal = {ACM Trans. Graph.},
+  year = {2012},
+  volume = {31},
+  pages = {58:1--58:13},
+  number = {4},
+  month = jul,
+  acmid = {2185554},
+  address = {New York, NY, USA},
+  articleno = {58},
+  doi = {10.1145/2185520.2185554},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a58-jakob.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2012},
+  keywords = {MCMC, rendering, specular manifold},
+  numpages = {13},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2185520.2185554}
+}
+
+@INPROCEEDINGS{Jarosz2008,
+  author = {Jarosz, Wojciech and Jensen, Henrik Wann and Donner, Craig},
+  title = {Advanced global illumination using photon mapping},
+  booktitle = {ACM SIGGRAPH 2008 classes},
+  year = {2008},
+  series = {SIGGRAPH '08},
+  pages = {2:1--2:112},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Photon mapping provides a practical way of efficiently simulating
+	global illumination including interreflections, caustics, color bleeding,
+	participating media and subsurface scattering in scenes with complicated
+	geometry and advanced material models. This class will provide the
+	insight necessary to efficiently implement and use photon mapping
+	to simulate global illumination in complex scenes. The presentation
+	will briefly cover the fundamentals of photon mapping including efficient
+	techniques and datastructures for managing large numbers of rays
+	and photons. In addition, we will describe how to integrate the information
+	from the photon maps in shading algorithms to render global illumination.
+	A large portion of the class will be dedicated to advanced techniques
+	for photon mapping. In addition to a fast recap of introductory material,
+	we will describe more recent developments including efficient methods
+	for using photon mapping in scene with participating media and subsurface
+	scattering.},
+  acmid = {1401136},
+  articleno = {2},
+  doi = {10.1145/1401132.1401136},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a2-jarosz.pdf:PDF},
+  location = {Los Angeles, California},
+  numpages = {112},
+  url = {http://doi.acm.org/10.1145/1401132.1401136}
+}
+
+@INPROCEEDINGS{Jensen1996,
+  author = {Jensen, Henrik Wann},
+  title = {Global illumination using photon maps},
+  booktitle = {Proceedings of the eurographics workshop on Rendering techniques
+	'96},
+  year = {1996},
+  pages = {21--30},
+  address = {London, UK, UK},
+  publisher = {Springer-Verlag},
+  acmid = {275461},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\photon_mapping.pdf:PDF},
+  isbn = {3-211-82883-4},
+  keywords = {Monte Carlo, global illumination, photon maps, ray tracing},
+  location = {Porto, Portugal},
+  numpages = {10},
+  url = {http://dl.acm.org/citation.cfm?id=275458.275461}
+}
+
+@INPROCEEDINGS{Kajiya1986,
+  author = {Kajiya, James T.},
+  title = {The rendering equation},
+  booktitle = {Proceedings of the 13th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1986},
+  series = {SIGGRAPH '86},
+  pages = {143--150},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {We present an integral equation which generalizes a variety of known
+	rendering algorithms. In the course of discussing a monte carlo solution
+	we also present a new form of variance reduction, called Hierarchical
+	sampling and give a number of elaborations shows that it may be an
+	efficient new technique for a wide variety of monte carlo procedures.
+	The resulting rendering algorithm extends the range of optical phenomena
+	which can be effectively simulated.},
+  acmid = {15902},
+  doi = {10.1145/15922.15902},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p143-kajiya.pdf:PDF},
+  isbn = {0-89791-196-2},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/15922.15902}
+}
+
+@INPROCEEDINGS{Kaplanyan2010,
+  author = {Kaplanyan, Anton and Dachsbacher, Carsten},
+  title = {Cascaded light propagation volumes for real-time indirect illumination},
+  booktitle = {Proceedings of the 2010 ACM SIGGRAPH symposium on Interactive 3D
+	Graphics and Games},
+  year = {2010},
+  series = {I3D '10},
+  pages = {99--107},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {This paper introduces a new scalable technique for approximating indirect
+	illumination in fully dynamic scenes for real-time applications,
+	such as video games. We use lattices and spherical harmonics to represent
+	the spatial and angular distribution of light in the scene. Our technique
+	does not require any precomputation and handles large scenes with
+	nested lattices. It is primarily targeted at rendering single-bounce
+	indirect illumination with occlusion, but can be extended to handle
+	multiple bounces and participating media. We demonstrate that our
+	method produces plausible results even when running on current game
+	console hardware with a budget of only a few milliseconds for performing
+	all computation steps for indirect lighting. We evaluate our technique
+	and show it in combination with a variety of popular real-time rendering
+	techniques.},
+  acmid = {1730821},
+  doi = {10.1145/1730804.1730821},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p99-kaplanyan.pdf:PDF},
+  isbn = {978-1-60558-939-8},
+  keywords = {global illumination, real-time rendering},
+  location = {Washington, D.C.},
+  numpages = {9},
+  url = {http://doi.acm.org/10.1145/1730804.1730821}
+}
+
+@INPROCEEDINGS{Keller1997,
+  author = {Keller, Alexander},
+  title = {Instant radiosity},
+  booktitle = {Proceedings of the 24th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1997},
+  series = {SIGGRAPH '97},
+  pages = {49--56},
+  address = {New York, NY, USA},
+  publisher = {ACM Press/Addison-Wesley Publishing Co.},
+  abstract = {We present a fundamental procedure for instant rendering from the
+	radiance equation. Operating directly on the textured scene description,
+	the very ef?cient and simple algorithm produces photorealistic images
+	without any ?nite element kernel or solution discretization of the
+	underlying integral equation. Rendering rates of a few seconds are
+	obtained by exploiting graphics hardware, the deterministic technique
+	of the quasi-random walk for the solution of the global illumination
+	problem, and the new method of jittered low discrepancy sampling.},
+  acmid = {258769},
+  doi = {10.1145/258734.258769},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p49-keller.pdf:PDF},
+  isbn = {0-89791-896-7},
+  keywords = {Monte Carlo integration, accumulation buffer, hardware, jittered low
+	discrepany sampling, photorealism, quasi-Monte Carlo integration,
+	quasi-random walk, radiance equation, radiosity, realtime rendering
+	algorithms, shading},
+  numpages = {8},
+  url = {http://dx.doi.org/10.1145/258734.258769}
+}
+
+@MISC{Keller1996,
+  author = {Alexander Keller},
+  title = {Quasi-Monte Carlo Radiosity},
+  year = {1996},
+  abstract = {The problem of global illumination in computer graphics is described
+	by a second kind Fredholm integral equation. Due to the complexity
+	of this equation, Monte Carlo methods provide an interesting tool
+	for approximating solutions to this transport equation. For the case
+	of the radiosity equation, we present the deterministic method of
+	quasi-random walks. This method very efficiently uses low discrepancy
+	sequences for integrating the Neumann series and consistently outperforms
+	stochastic techniques. The method of quasi-random walks also is applicable
+	to transport problems in settings other than computer graphics.},
+  doi = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.54},
+  file = {:C\:\\Users\\Mike\\Downloads\\temp\\10.1.1.38.54.pdf:PDF},
+  url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.54}
+}
+
+@ARTICLE{Keller1996a,
+  author = {Alexander Keller},
+  title = {quasi-monte carlo methods in computer graphics: The Global Illumination
+	Problem},
+  journal = {Lectures in App. Math},
+  year = {1996},
+  volume = {32},
+  pages = {455-469},
+  doi = {citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.3087},
+  file = {:C\:\\Users\\Mike\\Downloads\\temp\\10.1.1.53.3087.pdf:PDF},
+  owner = {Mike},
+  timestamp = {2012.04.07},
+  url = {citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.3087.pdf}
+}
+
+@INPROCEEDINGS{Keller1995,
+  author = {Alexander Keller and Fachbereich Informatik and Ag Numerische Algorithmen
+	and Universität Kaiserslautern},
+  title = {A Quasi-Monte Carlo Algorithm for the Global Illumination Problem
+	in the Radiosity Setting},
+  booktitle = {Monte-Carlo and Quasi-Monte Carlo Methods in Scientific Computing},
+  year = {1995},
+  pages = {239--251},
+  publisher = {Springer},
+  abstract = {One of the main problems in computer graphics is to solve the global
+	illumination problem, which is given by a Fredholm integral equation
+	of the second kind, called the radiance equation (REQ). In order
+	to achieve realistic images, a very complex kernel of the integral
+	equation, modelling all physical effects of light, must be considered.
+	Due to this complexity Monte Carlo methods seem to be an appropriate
+	approach to solve the REQ approximately. We show that replacing Monte
+	Carlo by quasi-Monte Carlo in some steps of the algorithm results
+	in a faster convergence.},
+  doi = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.6925},
+  file = {:C\:\\Users\\Mike\\Downloads\\temp\\10.1.1.14.6925.pdf:PDF},
+  url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.14.6925}
+}
+
+@INPROCEEDINGS{Krivanek2012,
+  author = {Krivanek, Jaroslav and Hasan, Milos and Arbree, Adam and Dachsbacher,
+	Carsten and Keller, Alexander and Walter, Bruce},
+  title = {Optimizing realistic rendering with many-light methods},
+  booktitle = {ACM SIGGRAPH 2012 Courses},
+  year = {2012},
+  series = {SIGGRAPH '12},
+  pages = {7:1--7:217},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {2343490},
+  articleno = {7},
+  doi = {10.1145/2343483.2343490},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a7-krivanek.pdf:PDF},
+  isbn = {978-1-4503-1678-1},
+  location = {Los Angeles, California},
+  numpages = {217},
+  url = {http://doi.acm.org/10.1145/2343483.2343490}
+}
+
+@CONFERENCE{Landis2002,
+  author = {Landis, H.},
+  title = {Production-Ready Global Illumination},
+  year = {2002},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\p87-landis.pdf:PDF},
+  journal = {SIGGRAPH Comput. Graph.},
+  owner = {Mike},
+  timestamp = {2012.04.28}
+}
+
+@INPROCEEDINGS{Lasseter1987,
+  author = {Lasseter, John},
+  title = {Principles of traditional animation applied to 3D computer animation},
+  booktitle = {Proceedings of the 14th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1987},
+  series = {SIGGRAPH '87},
+  pages = {35--44},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {This paper describes the basic principles of traditional 2D hand drawn
+	animation and their application to 3D computer animation. After describing
+	how these principles evolved, the individual principles are detailed,
+	addressing their meanings in 2D hand drawn animation and their application
+	to 3D computer animation. This should demonstrate the importance
+	of these principles to quality 3D computer animation.},
+  acmid = {37407},
+  doi = {10.1145/37401.37407},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p35-lasseter.pdf:PDF},
+  isbn = {0-89791-227-6},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/37401.37407}
+}
+
+@ARTICLE{Lehtinen2012,
+  author = {Lehtinen, Jaakko and Aila, Timo and Laine, Samuli and Durand, Fr{\'e}do},
+  title = {Reconstructing the indirect light field for global illumination},
+  journal = {ACM Trans. Graph.},
+  year = {2012},
+  volume = {31},
+  pages = {51:1--51:10},
+  number = {4},
+  month = jul,
+  acmid = {2185547},
+  address = {New York, NY, USA},
+  articleno = {51},
+  doi = {10.1145/2185520.2185547},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a51-lehtinen.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2012},
+  keywords = {ambient occlusion, defocus, indirect illumination, light field, motion
+	blur, reconstruction},
+  numpages = {10},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2185520.2185547}
+}
+
+@INPROCEEDINGS{Liktor2011,
+  author = {Liktor, G\'{a}bor and Dachsbacher, Carsten},
+  title = {Real-time volume caustics with adaptive beam tracing},
+  booktitle = {Symposium on Interactive 3D Graphics and Games},
+  year = {2011},
+  series = {I3D '11},
+  pages = {47--54},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Caustics are detailed patterns of light reflected or refracted on
+	specular surfaces into participating media or onto surfaces. In this
+	paper we present a novel adaptive and scalable algorithm for rendering
+	surface and volume caustics in single-scattering participating media
+	at real-time frame rates. Motivated by both caustic mapping and triangle-based
+	volumetric methods, our technique captures the specular surfaces
+	in light-space, but traces beams of light instead of single photons.
+	The beams are adaptively generated from a grid projected from the
+	light source onto the scene's surfaces, which is iteratively refined
+	according to discontinuities in the geometry and photon distribution.
+	This allows us to reconstruct sharp volume caustic patterns while
+	reducing sampling resolution and fill-rate at defocused regions.
+	We demonstrate our technique combined with approximate ray tracing
+	techniques to render surfaces with two-sided refractions as well
+	as multiple caustic light bounces.},
+  acmid = {1944753},
+  doi = {10.1145/1944745.1944753},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p47-liktor.pdf:PDF},
+  isbn = {978-1-4503-0565-5},
+  keywords = {beam tracing, level-of-detail, specular effects, volume caustics},
+  location = {San Francisco, California},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1944745.1944753}
+}
+
+@INPROCEEDINGS{McGuire2009,
+  author = {McGuire, Morgan and Luebke, David},
+  title = {Hardware-accelerated global illumination by image space photon mapping},
+  booktitle = {Proceedings of the Conference on High Performance Graphics 2009},
+  year = {2009},
+  series = {HPG '09},
+  pages = {77--89},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1572783},
+  doi = {10.1145/1572769.1572783},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p77-mcguire.pdf:PDF},
+  isbn = {978-1-60558-603-8},
+  keywords = {global illumination, photon mapping, photon volumes},
+  location = {New Orleans, Louisiana},
+  numpages = {13},
+  url = {http://doi.acm.org/10.1145/1572769.1572783}
+}
+
+@INPROCEEDINGS{Nichols2010,
+  author = {Nichols, Greg and Penmatsa, Rajeev and Wyman, Chris},
+  title = {Direct illumination from dynamic area lights with visibility},
+  booktitle = {Proceedings of the ACM SIGGRAPH Symposium on Interactive 3D Graphics
+	and Games: Posters},
+  year = {2010},
+  series = {I3D '10},
+  pages = {21:1--21:1},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1730993},
+  articleno = {21},
+  doi = {http://doi.acm.org/10.1145/1730971.1730993},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a21-nichols.pdf:PDF},
+  isbn = {978-1-60558-938-1},
+  location = {Washington, D.C.},
+  numpages = {1},
+  url = {http://doi.acm.org/10.1145/1730971.1730993}
+}
+
+@ARTICLE{Nichols2009,
+  author = {Nichols, Greg and Shopf, Jeremy and Wyman, Chris},
+  title = {Hierarchical Image-Space Radiosity for Interactive Global Illumination},
+  journal = {Computer Graphics Forum},
+  year = {2009},
+  volume = {28},
+  pages = {1141--1149},
+  number = {4},
+  doi = {10.1111/j.1467-8659.2009.01491.x},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\egsr09_imgSpRadiosity.small.pdf:PDF},
+  issn = {1467-8659},
+  keywords = {I.3.7 [Computer Graphics]: Three-Dimensional Graphics and Realism},
+  publisher = {Blackwell Publishing Ltd},
+  url = {http://dx.doi.org/10.1111/j.1467-8659.2009.01491.x}
+}
+
+@INPROCEEDINGS{Nichols2009a,
+  author = {Nichols, Greg and Wyman, Chris},
+  title = {Multiresolution splatting for indirect illumination},
+  booktitle = {Proceedings of the 2009 symposium on Interactive 3D graphics and
+	games},
+  year = {2009},
+  series = {I3D '09},
+  pages = {83--90},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1507162},
+  doi = {10.1145/1507149.1507162},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p83-nichols.pdf:PDF},
+  isbn = {978-1-60558-429-4},
+  keywords = {global illumination, hardware-assisted rendering, interactive rendering},
+  location = {Boston, Massachusetts},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1507149.1507162}
+}
+
+@ARTICLE{Nijasure2005,
+  author = {Nijasure, Mangesh and Pattanaik, Sumanta and Goel, Vineet},
+  title = {Real-Time Global Illumination on GPUs},
+  journal = {Journal of Graphics, GPU, and Game Tools},
+  year = {2005},
+  volume = {10},
+  pages = {55-71},
+  number = {2},
+  abstract = {We have developed a system for computing a plausible global illumination
+	solution for dynamic environments in real time on programmable graphics
+	processors (GPUs). The entire algorithm runs on DirectX 9.0 compatible
+	graphics hardware using vertex and fragment shaders, and computes
+	a global illumination solution for reasonably complex scenes with
+	moving objects and moving lights at frame rates of 10-40 fps. We
+	present the salient steps of the algorithm that made this real time
+	global illumination evaluation possible.},
+  doi = {10.1080/2151237X.2005.10129194},
+  eprint = {http://www.tandfonline.com/doi/pdf/10.1080/2151237X.2005.10129194},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a55-nijasure.pdf:PDF},
+  url = {http://www.tandfonline.com/doi/abs/10.1080/2151237X.2005.10129194}
+}
+
+@INPROCEEDINGS{Nishita1985,
+  author = {Nishita, Tomoyuki and Nakamae, Eihachiro},
+  title = {Continuous tone representation of three-dimensional objects taking
+	account of shadows and interreflection},
+  booktitle = {Proceedings of the 12th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1985},
+  series = {SIGGRAPH '85},
+  pages = {23--30},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {The effect of shadows and interreflection created by room obstructions
+	is an important factor in the continuous tone representation of interiors.
+	For indirect illumination, in most cases a uniform ambient light
+	has been considered, even though the interreflection gives very complex
+	effects with the shaded images.The proposed method for indirect lighting
+	with shadows results in the following advanced points:1) The indirect
+	illuminance caused by the surfaces of objects such as ceilings, floors,
+	walls, desks, bookcases etc. gives added realism to images.2) The
+	proposed method is suitable for every type of light source such as
+	point sources, linear sources, and area sources.},
+  acmid = {325169},
+  doi = {10.1145/325334.325169},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p23-nishita.pdf:PDF},
+  isbn = {0-89791-166-0},
+  keywords = {area light source, diffuse reflections, interreflection of light,
+	penumbrae, shading, shadows},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/325334.325169}
+}
+
+@INPROCEEDINGS{Novak2011,
+  author = {Nov\'{a}k, Jan and Engelhardt, Thomas and Dachsbacher, Carsten},
+  title = {Screen-space bias compensation for interactive high-quality global
+	illumination with virtual point lights},
+  booktitle = {Symposium on Interactive 3D Graphics and Games},
+  year = {2011},
+  series = {I3D '11},
+  pages = {119--124},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {In this paper we present a method that targets high-quality global
+	illumination at interactive frame rates. As many techniques in this
+	context, our method is based on instant radiosity, which represents
+	the indirect illumination in a scene with a set of virtual point
+	lights, and therefore enables efficient GPU rendering. Instant radiosity
+	captures light transport over larger distances well, but it requires
+	clamping of the point lights' contribution to avoid bright splotches
+	on nearby surfaces. By bounding the short distance light transport,
+	the algorithm removes some energy and thus introduces bias, that
+	is visible as incorrect darkening near edges and corners. Our method
+	improves the quality and correctness of the rendered images by removing
+	bias using a hierarchical screen space approach. We show that the
+	bias compensation can be formulated as a post-processing step and
+	demonstrate renderings comparable to results from offline algorithms
+	at interactive speed.},
+  acmid = {1944765},
+  doi = {10.1145/1944745.1944765},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p119-novak.pdf:PDF},
+  isbn = {978-1-4503-0565-5},
+  keywords = {bias compensation, global illumination, instant radiosity, screen
+	space},
+  location = {San Francisco, California},
+  numpages = {6},
+  url = {http://doi.acm.org/10.1145/1944745.1944765}
+}
+
+@ARTICLE{Novak2012,
+  author = {Nov\'{a}k, Jan and Nowrouzezahrai, Derek and Dachsbacher, Carsten
+	and Jarosz, Wojciech},
+  title = {Virtual ray lights for rendering scenes with participating media},
+  journal = {ACM Trans. Graph.},
+  year = {2012},
+  volume = {31},
+  pages = {60:1--60:11},
+  number = {4},
+  month = jul,
+  acmid = {2185556},
+  address = {New York, NY, USA},
+  articleno = {60},
+  doi = {10.1145/2185520.2185556},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a60-novak.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2012},
+  keywords = {global illumination, participating media, virtual lights},
+  numpages = {11},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2185520.2185556}
+}
+
+@ARTICLE{Nowrouzezahrai2011,
+  author = {Nowrouzezahrai, Derek and Johnson, Jared and Selle, Andrew and Lacewell,
+	Dylan and Kaschalk, Michael and Jarosz, Wojciech},
+  title = {A programmable system for artistic volumetric lighting},
+  journal = {ACM Trans. Graph.},
+  year = {2011},
+  volume = {30},
+  pages = {29:1--29:8},
+  number = {4},
+  month = aug,
+  abstract = {We present a method for generating art-directable volumetric effects,
+	ranging from physically-accurate to non-physical results. Our system
+	mimics the way experienced artists think about volumetric effects
+	by using an intuitive lighting primitive, and decoupling the modeling
+	and shading of this primitive. To accomplish this, we generalize
+	the physically-based photon beams method to allow arbitrarily programmable
+	simulation and shading phases. This provides an intuitive design
+	space for artists to rapidly explore a wide range of physically-based
+	as well as plausible, but exaggerated, volumetric effects. We integrate
+	our approach into a real-world production pipeline and couple our
+	volumetric effects to surface shading.},
+  acmid = {1964924},
+  address = {New York, NY, USA},
+  articleno = {29},
+  doi = {10.1145/2010324.1964924},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a29-nowrouzezahrai.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2011},
+  keywords = {artist control, lighting design, participating media},
+  numpages = {8},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2010324.1964924}
+}
+
+@ARTICLE{Ou2011,
+  author = {Ou, Jiawei and Pellacini, Fabio},
+  title = {LightSlice: matrix slice sampling for the many-lights problem},
+  journal = {ACM Trans. Graph.},
+  year = {2011},
+  volume = {30},
+  pages = {179:1--179:8},
+  number = {6},
+  month = dec,
+  acmid = {2024213},
+  address = {New York, NY, USA},
+  articleno = {179},
+  doi = {10.1145/2070781.2024213},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a179-ou.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {December 2011},
+  keywords = {global illumination, many light, matrix sampling},
+  numpages = {8},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2070781.2024213}
+}
+
+@INPROCEEDINGS{Papaioannou2011,
+  author = {Papaioannou, Georgios},
+  title = {Real-time diffuse global illumination using radiance hints},
+  booktitle = {Proceedings of the ACM SIGGRAPH Symposium on High Performance Graphics},
+  year = {2011},
+  series = {HPG '11},
+  pages = {15--24},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {GPU-based interactive global illumination techniques are receiving
+	an increasing interest from both the research and the industrial
+	community as real-time graphics applications strive for visually
+	rich and realistic dynamic three-dimensional environments. This paper
+	presents a fast new diffuse global illumination method that generates
+	a sparse set of low-cost radiance field evaluation points (radiance
+	hints) and computes an arbitrary number of diffuse inter-reflections
+	within a given volume. The proposed approximate technique combines
+	ideas from exiting grid-based radiance caching techniques with reflective
+	shadow maps as well as a stochastic scheme for visibility calculations,
+	in order to achieve high frame rates for multiple light bounces.},
+  acmid = {2018326},
+  doi = {10.1145/2018323.2018326},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p15-papaioannou.pdf:PDF},
+  isbn = {978-1-4503-0896-0},
+  keywords = {global illumination, programmable graphics hardware, real time rendering},
+  location = {Vancouver, British Columbia, Canada},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/2018323.2018326}
+}
+
+@ARTICLE{Reeves1987,
+  author = {Reeves, William T. and Salesin, David H. and Cook, Robert L.},
+  title = {Rendering antialiased shadows with depth maps},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1987},
+  volume = {21},
+  pages = {283--291},
+  number = {4},
+  month = aug,
+  abstract = {We present a solution to the aliasing problem for shadow algorithms
+	that use depth maps. The solution is based on a new filtering technique
+	called percentage closer filtering. In addition to antialiasing,
+	the improved algorithm provides soft shadow boundaries that resemble
+	penumbrae. We describe the new algorithm in detail, demonstrate the
+	effects of its parameters, and analyze its performance.},
+  acmid = {37435},
+  address = {New York, NY, USA},
+  doi = {10.1145/37402.37435},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p283-reeves.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {July 1987},
+  numpages = {9},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/37402.37435}
+}
+
+@ARTICLE{Ritschel2008,
+  author = {Ritschel, T. and Grosch, T. and Kim, M. H. and Seidel, H.-P. and
+	Dachsbacher, C. and Kautz, J.},
+  title = {Imperfect shadow maps for efficient computation of indirect illumination},
+  journal = {ACM Trans. Graph.},
+  year = {2008},
+  volume = {27},
+  pages = {129:1--129:8},
+  number = {5},
+  month = dec,
+  abstract = {We present a method for interactive computation of indirect illumination
+	in large and fully dynamic scenes based on approximate visibility
+	queries. While the high-frequency nature of direct lighting requires
+	accurate visibility, indirect illumination mostly consists of smooth
+	gradations, which tend to mask errors due to incorrect visibility.
+	We exploit this by approximating visibility for indirect illumination
+	with imperfect shadow maps---low-resolution shadow maps rendered
+	from a crude point-based representation of the scene. These are used
+	in conjunction with a global illumination algorithm based on virtual
+	point lights enabling indirect illumination of dynamic scenes at
+	real-time frame rates. We demonstrate that imperfect shadow maps
+	are a valid approximation to visibility, which makes the simulation
+	of global illumination an order of magnitude faster than using accurate
+	visibility.},
+  acmid = {1409082},
+  address = {New York, NY, USA},
+  articleno = {129},
+  doi = {10.1145/1409060.1409082},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a129-ritschel.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {December 2008},
+  keywords = {global illumination, real-time rendering, visibility},
+  numpages = {8},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1409060.1409082}
+}
+
+@INPROCEEDINGS{Ritschel2009,
+  author = {Ritschel, Tobias and Grosch, Thorsten and Seidel, Hans-Peter},
+  title = {Approximating dynamic global illumination in image space},
+  booktitle = {Proceedings of the 2009 symposium on Interactive 3D graphics and
+	games},
+  year = {2009},
+  series = {I3D '09},
+  pages = {75--82},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Physically plausible illumination at real-time framerates is often
+	achieved using approximations. One popular example is ambient occlusion
+	(AO), for which very simple and efficient implementations are used
+	extensively in production. Recent methods approximate AO between
+	nearby geometry in screen space (SSAO). The key observation described
+	in this paper is, that screen-space occlusion methods can be used
+	to compute many more types of effects than just occlusion, such as
+	directional shadows and indirect color bleeding. The proposed generalization
+	has only a small overhead compared to classic SSAO, approximates
+	direct and one-bounce light transport in screen space, can be combined
+	with other methods that simulate transport for macro structures and
+	is visually equivalent to SSAO in the worst case without introducing
+	new artifacts. Since our method works in screen space, it does not
+	depend on the geometric complexity. Plausible directional occlusion
+	and indirect lighting effects can be displayed for large and fully
+	dynamic scenes at real-time frame rates.},
+  acmid = {1507161},
+  doi = {10.1145/1507149.1507161},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\p75-ritschel.pdf:PDF},
+  isbn = {978-1-60558-429-4},
+  keywords = {constant time, global illumination, radiosity},
+  location = {Boston, Massachusetts},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1507149.1507161}
+}
+
+@BOOK{Serway2004,
+  title = {Physics for Scientists and Engineers},
+  publisher = {Brooks Cole},
+  year = {2004},
+  editor = {Michelle Julet},
+  author = {Serway, Raymond A. and Jewett, John W.},
+  volume = {2},
+  address = {Salt Lake City, UT 84109-3250},
+  owner = {Mike},
+  timestamp = {2012.09.07}
+}
+
+@INPROCEEDINGS{Sillion1991,
+  author = {Sillion, Fran\c{c}is X. and Arvo, James R. and Westin, Stephen H.
+	and Greenberg, Donald P.},
+  title = {A global illumination solution for general reflectance distributions},
+  booktitle = {Proceedings of the 18th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1991},
+  series = {SIGGRAPH '91},
+  pages = {187--196},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {A general light transfer simulation algorithm for environments composed
+	of materials with arbitrary reflectance functions is presented. This
+	algorithm removes the previous practical restriction to ideal specular
+	and/or ideal diffuse environments, and supports complex physically
+	based reflectance distributions, This is accomplished by extending
+	previous two-pass ray-casting radiosity approaches to handle non-uniform
+	intensity distributions, and resolving all possible energy transfers
+	between sample points. An implementation is described based on a
+	spherical harmonic decomposition for encoding both bidirectional
+	reflectance distribution functions for materials, and directional
+	intensity distributions for illuminated surfaces. The method compares
+	favorably with experimental measurements.},
+  acmid = {122739},
+  doi = {10.1145/122718.122739},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\p187-sillion.pdf:PDF},
+  isbn = {0-89791-436-8},
+  keywords = {BRDF, directional-diffuse, global illumination, progressive radiosity,
+	specular reflection, spherical harmonics},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/122718.122739}
+}
+
+@INPROCEEDINGS{Sloan2007,
+  author = {Sloan, Peter-Pike and Govindaraju, Naga K. and Nowrouzezahrai, Derek
+	and Snyder, John},
+  title = {Image-Based Proxy Accumulation for Real-Time Soft Global Illumination},
+  booktitle = {Proceedings of the 15th Pacific Conference on Computer Graphics and
+	Applications},
+  year = {2007},
+  series = {PG '07},
+  pages = {97--105},
+  address = {Washington, DC, USA},
+  publisher = {IEEE Computer Society},
+  acmid = {1338558},
+  doi = {10.1109/PG.2007.35},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\ProxyPG.pdf:PDF},
+  isbn = {0-7695-3009-5},
+  numpages = {9},
+  url = {http://dx.doi.org/10.1109/PG.2007.35}
+}
+
+@INPROCEEDINGS{Stokes2004,
+  author = {Stokes, William A. and Ferwerda, James A. and Walter, Bruce and Greenberg,
+	Donald P.},
+  title = {Perceptual illumination components: a new approach to efficient,
+	high quality global illumination rendering},
+  booktitle = {ACM SIGGRAPH 2004 Papers},
+  year = {2004},
+  series = {SIGGRAPH '04},
+  pages = {742--749},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1015795},
+  doi = {10.1145/1186562.1015795},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p742-stokes.pdf:PDF},
+  keywords = {global illumination, perception, reflection components},
+  location = {Los Angeles, California},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1186562.1015795}
+}
+
+@INPROCEEDINGS{Tabellion2004,
+  author = {Tabellion, Eric and Lamorlette, Arnauld},
+  title = {An approximate global illumination system for computer generated
+	films},
+  booktitle = {ACM SIGGRAPH 2004 Papers},
+  year = {2004},
+  series = {SIGGRAPH '04},
+  pages = {469--476},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Lighting models used in the production of computer generated feature
+	animation have to be flexible, easy to control, and efficient to
+	compute. Global illumination techniques do not lend themselves easily
+	to flexibility, ease of use, or speed, and have remained out of reach
+	thus far for the vast majority of images generated in this context.
+	This paper describes the implementation and integration of indirect
+	illumination within a feature animation production renderer. For
+	efficiency reasons, we choose to partially solve the rendering equation.
+	We explain how this compromise allows us to speed-up final gathering
+	calculations and reduce noise. We describe an efficient ray tracing
+	strategy and its integration with a micro-polygon based scan line
+	renderer supporting displacement mapping and programmable shaders.
+	We combine a modified irradiance gradient caching technique with
+	an approximate lighting model that enhances caching coherence and
+	provides good scalability to render complex scenes into high-resolution
+	images suitable for film. We describe the tools that are made available
+	to the artists to control indirect lighting in final renders. We
+	show that our approach provides an efficient solution, easy to art
+	direct, that allows animators to enhance considerably the quality
+	of images generated for a large category of production work.},
+  acmid = {1015748},
+  doi = {10.1145/1186562.1015748},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p469-tabellion.pdf:PDF},
+  keywords = {distributed ray tracing, global illumination, irradiance caching,
+	micro-polygon, rendering},
+  location = {Los Angeles, California},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1186562.1015748}
+}
+
+@INPROCEEDINGS{Wald2003,
+  author = {Wald, Ingo and Benthin, Carsten and Slusallek, Philipp},
+  title = {Distributed Interactive Ray Tracing of Dynamic Scenes},
+  booktitle = {Proceedings of the 2003 IEEE Symposium on Parallel and Large-Data
+	Visualization and Graphics},
+  year = {2003},
+  series = {PVG '03},
+  pages = {11--},
+  address = {Washington, DC, USA},
+  publisher = {IEEE Computer Society},
+  abstract = {Recently developed interactive ray tracing systems combine the high
+	performance of todays CPUs with new algorithms and implementations
+	to achieve a flexible and high-performance rendering system offering
+	high-quality, but nonetheless interactive 3D graphics. However, due
+	to its history in off-line rendering, interactive ray tracing is
+	usually limited to static scenes and simple walkthroughs. In order
+	to become truly interactive ray tracing must efficiently support
+	dynamic scenes. In this paper, we present a simple and practical
+	method that allows to interactively ray trace dynamic scenes in a
+	distributed PC cluster environment. Our method separates the scene
+	into independent objects with common properties concerning dynamic
+	updates - similar to OpenGL display lists and scene graph libraries.
+	Three classes of objects are distinguished: Static objects are treated
+	as before, objects undergoing affine transformations are handled
+	by transforming rays, and objects with unstructured motion are rebuilt
+	whenever necessary. We present performance and scalablity results
+	of our system using a variety of test scenes stressing a wide range
+	of dynamic behaviour.},
+  acmid = {1081418},
+  doi = {10.1109/PVGS.2003.1249045},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p77-wald.pdf:PDF},
+  isbn = {0-7695-2091-X},
+  keywords = {Interactive Ray Tracing, Distributed Rendering, Dynamic Scenes, Scalability
+	and Performance},
+  url = {http://dx.doi.org/10.1109/PVGS.2003.1249045}
+}
+
+@INPROCEEDINGS{Wald2003a,
+  author = {Wald, Ingo and Benthin, Carsten and Slusallek, Philipp},
+  title = {Interactive global illumination in complex and highly occluded environments},
+  booktitle = {Proceedings of the 14th Eurographics workshop on Rendering},
+  year = {2003},
+  series = {EGRW '03},
+  pages = {74--81},
+  address = {Aire-la-Ville, Switzerland, Switzerland},
+  publisher = {Eurographics Association},
+  abstract = {Global illumination algorithms have traditionally been very time consuming
+	and were only suitable for off-line computations. Recent research
+	in realtime ray tracing has improved global illumination performance
+	to allow for illumination updates at interactive rates. However,
+	both the traditional off-line and the new interactive systems show
+	significant limitations when dealing with realistically complex scenes
+	containing millions of surfaces, thousands of light sources, and
+	a high degree of occlusion.In this paper, we present an importance
+	sampling technique that has specifically been designed for such environments.
+	Our method maintains a rough estimate of the importance of each light
+	source with respect to the current view using a crude path tracing
+	step. This estimate is then used to focus computations to the most
+	important light sources. In addition to speeding up the computation
+	our approach minimizes the working set of the ray tracer by only
+	touching geometry that is relevant to the current view. This allows
+	us to directly and efficiently render scenes such as entire buildings
+	with many thousand of light sources at interactive rates with full
+	global illumination.},
+  acmid = {882415},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p74-wald.pdf:PDF},
+  isbn = {3-905673-03-7},
+  location = {Leuven, Belgium},
+  numpages = {8},
+  url = {http://dl.acm.org/citation.cfm?id=882404.882415}
+}
+
+@INPROCEEDINGS{Wald2002,
+  author = {Wald, Ingo and Kollig, Thomas and Benthin, Carsten and Keller, Alexander
+	and Slusallek, Philipp},
+  title = {Interactive global illumination using fast ray tracing},
+  booktitle = {Proceedings of the 13th Eurographics workshop on Rendering},
+  year = {2002},
+  series = {EGRW '02},
+  pages = {15--24},
+  address = {Aire-la-Ville, Switzerland, Switzerland},
+  publisher = {Eurographics Association},
+  abstract = {Rasterization hardware provides interactive frame rates for rendering
+	dynamic scenes, but lacks the ability of ray tracing required for
+	efficient global illumination simulation. Existing ray tracing based
+	methods yield high quality renderings but are far too slow for interactive
+	use. We present a new parallel global illumination algorithm that
+	perfectly scales, has minimal preprocessing and communication overhead,
+	applies highly efficient sampling techniques based on randomized
+	quasi-Monte Carlo integration, and benefits from a fast parallel
+	ray tracing implementation by shooting coherent groups of rays. Thus
+	a performance is achieved that allows for applying arbitrary changes
+	to the scene, while simulating global illumination including shadows
+	from area light sources, indirect illumination, specular effects,
+	and caustics at interactive frame rates. Ceasing interaction rapidly
+	provides high quality renderings.},
+  acmid = {581899},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p15-wald.pdf:PDF},
+  isbn = {1-58113-534-3},
+  location = {Pisa, Italy},
+  numpages = {10},
+  url = {http://dl.acm.org/citation.cfm?id=581896.581899}
+}
+
+@INPROCEEDINGS{Wald2001,
+  author = {Wald, Ingo and Slusallek, Philipp and Benthin, Carsten and Wagner,
+	Markus},
+  title = {Interactive Distributed Ray Tracing of Highly Complex Models},
+  booktitle = {Proceedings of the 12th Eurographics Workshop on Rendering Techniques},
+  year = {2001},
+  pages = {277--288},
+  address = {London, UK, UK},
+  publisher = {Springer-Verlag},
+  acmid = {732298},
+  isbn = {3-211-83709-4},
+  numpages = {12},
+  url = {http://dl.acm.org/citation.cfm?id=647653.732298}
+}
+
+@INPROCEEDINGS{Wallace1987,
+  author = {Wallace, John R. and Cohen, Michael F. and Greenberg, Donald P.},
+  title = {A two-pass solution to the rendering equation: A synthesis of ray
+	tracing and radiosity methods},
+  booktitle = {Proceedings of the 14th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1987},
+  series = {SIGGRAPH '87},
+  pages = {311--320},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {View-independent and view-dependent image synthesis techniques, represented
+	by radiosity and ray tracing, respectively, are discussed. View-dependent
+	techniques are found to have advantages for calculating the specular
+	component of illumination and view-independent techniques for the
+	diffuse component. Based on these observations a methodology is presented
+	for simulating global illumination within complex environments using
+	a two-pass approach. The first pass is view-independent and is based
+	on the hemi-cube radiosity algorithm, with extensions to include
+	the effects of diffuse transmission, and specular to diffuse reflection
+	and transmission. The second pass is view-dependent and is based
+	on an alternative to distributed ray tracing in which a z-buffer
+	algorithm is used to sample the intensities contributing to the specularly
+	reflected or transmitted intensity.},
+  acmid = {37438},
+  doi = {10.1145/37401.37438},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p311-wallace.pdf:PDF},
+  isbn = {0-89791-227-6},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/37401.37438}
+}
+
+@INPROCEEDINGS{Walter2006,
+  author = {Walter, Bruce and Arbree, Adam and Bala, Kavita and Greenberg, Donald
+	P.},
+  title = {Multidimensional lightcuts},
+  booktitle = {ACM SIGGRAPH 2006 Papers},
+  year = {2006},
+  series = {SIGGRAPH '06},
+  pages = {1081--1088},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1141997},
+  doi = {10.1145/1179352.1141997},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p1081-walter.pdf:PDF},
+  isbn = {1-59593-364-6},
+  keywords = {depth of field, motion blur, volume rendering},
+  location = {Boston, Massachusetts},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1179352.1141997}
+}
+
+@INPROCEEDINGS{Walter2005,
+  author = {Walter, Bruce and Fernandez, Sebastian and Arbree, Adam and Bala,
+	Kavita and Donikian, Michael and Greenberg, Donald P.},
+  title = {Implementing lightcuts},
+  booktitle = {ACM SIGGRAPH 2005 Sketches},
+  year = {2005},
+  series = {SIGGRAPH '05},
+  pages = {1},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1187177},
+  articleno = {55},
+  doi = {10.1145/1187112.1187177},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p55-walter.pdf:PDF},
+  location = {Los Angeles, California},
+  url = {http://doi.acm.org/10.1145/1187112.1187177}
+}
+
+@ARTICLE{Walter2005a,
+  author = {Walter, Bruce and Fernandez, Sebastian and Arbree, Adam and Bala,
+	Kavita and Donikian, Michael and Greenberg, Donald P.},
+  title = {Lightcuts: a scalable approach to illumination},
+  journal = {ACM Trans. Graph.},
+  year = {2005},
+  volume = {24},
+  pages = {1098--1107},
+  number = {3},
+  month = jul,
+  acmid = {1073318},
+  address = {New York, NY, USA},
+  doi = {10.1145/1073204.1073318},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p1098-walter.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2005},
+  keywords = {many lights, raytracing, shadowing},
+  numpages = {10},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1073204.1073318}
+}
+
+@ARTICLE{Walter2012,
+  author = {Walter, Bruce and Khungurn, Pramook and Bala, Kavita},
+  title = {Bidirectional lightcuts},
+  journal = {ACM Trans. Graph.},
+  year = {2012},
+  volume = {31},
+  pages = {59:1--59:11},
+  number = {4},
+  month = jul,
+  acmid = {2185555},
+  address = {New York, NY, USA},
+  articleno = {59},
+  doi = {10.1145/2185520.2185555},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a59-walter.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {July 2012},
+  keywords = {bidirectional ray tracing, global illumination},
+  numpages = {11},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2185520.2185555}
+}
+
+@INPROCEEDINGS{Walter2009,
+  author = {Walter, Bruce and Zhao, Shuang and Holzschuch, Nicolas and Bala,
+	Kavita},
+  title = {Single scattering in refractive media with triangle mesh boundaries},
+  booktitle = {ACM SIGGRAPH 2009 papers},
+  year = {2009},
+  series = {SIGGRAPH '09},
+  pages = {92:1--92:8},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Light scattering in refractive media is an important optical phenomenon
+	for computer graphics. While recent research has focused on multiple
+	scattering, there has been less work on accurate solutions for single
+	or low-order scattering. Refraction through a complex boundary allows
+	a single external source to be visible in multiple directions internally
+	with different strengths; these are hard to find with existing techniques.
+	This paper presents techniques to quickly find paths that connect
+	points inside and outside a medium while obeying the laws of refraction.
+	We introduce: a half-vector based formulation to support the most
+	common geometric representation, triangles with interpolated normals;
+	hierarchical pruning to scale to triangular meshes; and, both a solver
+	with strong accuracy guarantees, and a faster method that is empirically
+	accurate. A GPU version achieves interactive frame rates in several
+	examples.},
+  acmid = {1531398},
+  articleno = {92},
+  doi = {10.1145/1576246.1531398},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a92-walter.pdf:PDF},
+  isbn = {978-1-60558-726-4},
+  keywords = {refraction, single scatter, subsurface},
+  location = {New Orleans, Louisiana},
+  numpages = {8},
+  url = {http://doi.acm.org/10.1145/1576246.1531398}
+}
+
+@ARTICLE{Wang2009,
+  author = {Wang, Rui and Wang, Rui and Zhou, Kun and Pan, Minghao and Bao, Hujun},
+  title = {An efficient GPU-based approach for interactive global illumination},
+  journal = {ACM Trans. Graph.},
+  year = {2009},
+  volume = {28},
+  pages = {91:1--91:8},
+  number = {3},
+  month = jul,
+  abstract = {This paper presents a GPU-based method for interactive global illumination
+	that integrates complex effects such as multi-bounce indirect lighting,
+	glossy reflections, caustics, and arbitrary specular paths. Our method
+	builds upon scattered data sampling and interpolation on the GPU.
+	We start with raytraced shading points and partition them into coherent
+	shading clusters using adaptive seeding followed by k-means. At each
+	cluster center we apply final gather to evaluate its incident irradiance
+	using GPU-based photon mapping. We approximate the entire photon
+	tree as a compact illumination cut, thus reducing the final gather
+	cost for each ray. The sampled irradiance values are then interpolated
+	at all shading points to produce rendering. Our method exploits the
+	spatial coherence of illumination to reduce sampling cost. We sample
+	sparsely and the distribution of sample points conforms with the
+	underlying illumination changes. Therefore our method is both fast
+	and preserves high rendering quality. Although the same property
+	has been exploited by previous caching and adaptive sampling methods,
+	these methods typically require sequential computation of sample
+	points, making them ill-suited for the GPU. In contrast, we select
+	sample points adaptively in a single pass, enabling parallel computation.
+	As a result, our algorithm runs entirely on the GPU, achieving interactive
+	rates for scenes with complex illumination effects.},
+  acmid = {1531397},
+  address = {New York, NY, USA},
+  articleno = {91},
+  doi = {10.1145/1531326.1531397},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a91-wang.pdf:PDF},
+  issn = {0730-0301},
+  issue_date = {August 2009},
+  keywords = {GPU, final gather, global illumination, illumination cut, k-means,
+	photon mapping},
+  numpages = {8},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1531326.1531397}
+}
+
+@ARTICLE{Ward1988,
+  author = {Ward, Gregory J. and Rubinstein, Francis M. and Clear, Robert D.},
+  title = {A ray tracing solution for diffuse interreflection},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1988},
+  volume = {22},
+  pages = {85--92},
+  number = {4},
+  month = jun,
+  abstract = {An efficient ray tracing method is presented for calculating interreflections
+	between surfaces with both diffuse and specular components. A Monte
+	Carlo technique computes the indirect contributions to illuminance
+	at locations chosen by the rendering process. The indirect illuminance
+	values are averaged over surfaces and used in place of a constant
+	"ambient" term. Illuminance calculations are made only for those
+	areas participating in the selected view, and the results are stored
+	so that subsequent views can reuse common values. The density of
+	the calculation is adjusted to maintain a constant accuracy, permitting
+	less populated portions of the scene to be computed quickly. Successive
+	reflections use proportionally fewer samples, which speeds the process
+	and provides a natural limit to recursion. The technique can also
+	model diffuse transmission and illumination from large area sources,
+	such as the sky.},
+  acmid = {378490},
+  address = {New York, NY, USA},
+  doi = {10.1145/378456.378490},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p85-ward.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {Aug. 1988},
+  keywords = {Monte Carlo technique, caching, diffuse, illuminance, interreflection,
+	luminance, radiosity, ray tracing, rendering, specular},
+  numpages = {8},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/378456.378490}
+}
+
+@ARTICLE{Whitted1980,
+  author = {Whitted, Turner},
+  title = {An improved illumination model for shaded display},
+  journal = {Commun. ACM},
+  year = {1980},
+  volume = {23},
+  pages = {343--349},
+  number = {6},
+  month = jun,
+  acmid = {358882},
+  address = {New York, NY, USA},
+  doi = {10.1145/358876.358882},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p343-whitted.pdf:PDF},
+  issn = {0001-0782},
+  issue_date = {June 1980},
+  keywords = {computer animation, computer graphics, raster displays, shading, visible
+	surface algorithms},
+  numpages = {7},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/358876.358882}
+}
+
+@ARTICLE{Williams1983,
+  author = {Williams, Lance},
+  title = {Pyramidal parametrics},
+  journal = {SIGGRAPH Comput. Graph.},
+  year = {1983},
+  volume = {17},
+  pages = {1--11},
+  number = {3},
+  month = jul,
+  abstract = {The mapping of images onto surfaces may substantially increase the
+	realism and information content of computer-generated imagery. The
+	projection of a flat source image onto a curved surface may involve
+	sampling difficulties, however, which are compounded as the view
+	of the surface changes. As the projected scale of the surface increases,
+	interpolation between the original samples of the source image is
+	necessary; as the scale is reduced, approximation of multiple samples
+	in the source is required. Thus a constantly changing sampling window
+	of view-dependent shape must traverse the source image. To reduce
+	the computation implied by these requirements, a set of prefiltered
+	source images may be created. This approach can be applied to particular
+	advantage in animation, where a large number of frames using the
+	same source image must be generated. This paper advances a “pyramidal
+	parametric” prefiltering and sampling geometry which minimizes aliasing
+	effects and assures continuity within and between target images.
+	Although the mapping of texture onto surfaces is an excellent example
+	of the process and provided the original motivation for its development,
+	pyramidal parametric data structures admit of wider application.
+	The aliasing of not only surface texture, but also highlights and
+	even the surface representations themselves, may be minimized by
+	pyramidal parametric means.},
+  acmid = {801126},
+  address = {New York, NY, USA},
+  doi = {10.1145/964967.801126},
+  file = {:D\:\\Dropbox\\RESEARCH_DB\\p1-williams.pdf:PDF},
+  issn = {0097-8930},
+  issue_date = {July 1983},
+  keywords = {Antialiasing, Illumination models, Modeling, Pyramidal data structures,
+	Reflectance mapping, Texture mapping, Visible surface algorithms},
+  numpages = {11},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/964967.801126}
+}
+
+@INPROCEEDINGS{Williams1978,
+  author = {Williams, Lance},
+  title = {Casting curved shadows on curved surfaces},
+  booktitle = {Proceedings of the 5th annual conference on Computer graphics and
+	interactive techniques},
+  year = {1978},
+  series = {SIGGRAPH '78},
+  pages = {270--274},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  abstract = {Shadowing has historically been used to increase the intelligibility
+	of scenes in electron microscopy and aerial survey. Various methods
+	have been published for the determination of shadows in computer
+	synthesized scenes. The display of shadows may make the shape and
+	relative position of objects in such scenes more comprehensible;
+	it is a technique lending vividness and realism to computer animation.
+	To date, algorithms for the determination of shadows have been restricted
+	to scenes constructed of planar polygons. A simple algorithm is described
+	which utilizes Z-buffer visible surface computation to display shadows
+	cast by objects modelled of smooth surface patches. The method can
+	be applied to all environments, in fact, for which visible surfaces
+	can be computed. The cost of determining the shadows associated with
+	each light source is roughly twice the cost of rendering the scene
+	without shadows, plus a fixed transformation overhead which depends
+	on the image resolution. No extra entities are added to the scene
+	description in the shadowing process. This comprehensive algorithm,
+	which permits curved shadows to be cast on curved surfaces, is contrasted
+	with a less costly method for casting the shadows of the environment
+	on a single ground plane. In order to attain good results, the discrete
+	nature of the visible-surface computations must be treated with care.
+	The effects of dither, interpolation, and geometric quantization
+	at different stages of the shadowing algorithm are examined. The
+	special problems posed by self-shadowing surfaces are described.},
+  acmid = {807402},
+  doi = {10.1145/800248.807402},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\p270-williams.pdf:PDF},
+  keywords = {Computer animation, Computer graphics, Hidden surface algorithms,
+	Shadows},
+  numpages = {5},
+  url = {http://doi.acm.org/10.1145/800248.807402}
+}
+
+@ARTICLE{Yu2009,
+  author = {Yu, Insu and Cox, Andrew and Kim, Min H. and Ritschel, Tobias and
+	Grosch, Thorsten and Dachsbacher, Carsten and Kautz, Jan},
+  title = {Perceptual influence of approximate visibility in indirect illumination},
+  journal = {ACM Trans. Appl. Percept.},
+  year = {2009},
+  volume = {6},
+  pages = {24:1--24:14},
+  number = {4},
+  month = oct,
+  abstract = {In this article we evaluate the use of approximate visibility for
+	efficient global illumination. Traditionally, accurate visibility
+	is used in light transport. However, the indirect illumination we
+	perceive on a daily basis is rarely of high-frequency nature, as
+	the most significant aspect of light transport in real-world scenes
+	is diffuse, and thus displays a smooth gradation. This raises the
+	question of whether accurate visibility is perceptually necessary
+	in this case. To answer this question, we conduct a psychophysical
+	study on the perceptual influence of approximate visibility on indirect
+	illumination. This study reveals that accurate visibility is not
+	required and that certain approximations may be introduced.},
+  acmid = {1609971},
+  address = {New York, NY, USA},
+  articleno = {24},
+  doi = {10.1145/1609967.1609971},
+  file = {:D\:\\My Stuff\\SCHOOL\\RESEARCH_DB\\a24-yu.pdf:PDF},
+  issn = {1544-3558},
+  issue_date = {September 2009},
+  keywords = {Global illumination, perception, visibility},
+  numpages = {14},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/1609967.1609971}
+}
+
+@INPROCEEDINGS{Zhukov1998,
+  author = {Sergey Zhukov and Andrei Iones and Grigorij Kronin},
+  title = {An Ambient Light Illumination Model},
+  booktitle = {Proceedings of the Eurographics Workshop on Rendering},
+  year = {1998},
+  pages = {45-56}
+}
+
+@comment{jabref-meta: selector_review:}
+
+@comment{jabref-meta: selector_publisher:}
+
+@comment{jabref-meta: selector_Abstract:}
+
+@comment{jabref-meta: selector_author:}
+
+@comment{jabref-meta: selector_journal:}
+
+@comment{jabref-meta: selector_keywords:}
+

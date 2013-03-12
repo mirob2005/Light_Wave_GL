@@ -1,0 +1,686 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                                   %%
+%%  This is a LaTeX style file created by Dr. Shawn X. Wang for CSUF Theses.         %%
+%%  Several existing style files were referenced during the process, in particular,  %%
+%%  University of California, Princeton University, Harvard University, Standford    %%
+%%  University and New Jersey Institute of Technology.                               %%
+%%                                                                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+% DECLARATIONS %
+%%%%%%%%%%%%%%%%
+\newif\ifcsufcopyright          % copyright page switch
+\newif\ifcsufappend             % appendixswitch
+
+\csufcopyrightfalse
+\csufappendfalse
+
+\def\@chapapp{CHAPTER}          %caps for chapter
+
+\gdef\csufthisdegree{Master of Science}
+\def\thisdegree#1{\gdef\csufthisdegree{#1}}
+
+\gdef\csufthesistype{Thesis}
+\def\thesistype#1{\gdef\csufthesistype{#1}}
+
+\gdef\csufthesismonth{\ifcase\month\or
+   January\or May\or May\or May\or May\or May\or
+   October\or October\or October\or October\or January\or Janurary\fi}
+\def\thesismonth#1{\gdef\csufthesismonth{#1}}
+
+\gdef\csufthesisyear{\number\year}
+\def\thesisyear#1{\gdef\csufthesisyear{#1}}
+
+\gdef\csufmajor{(*MAJOR GOES HERE*)}
+\def\major#1{\gdef\csufmajor{#1}}
+
+\gdef\csufadvisor{(*RESEARCH ADVISOR'S NAME*)}
+\def\advisor#1{\gdef\csufadvisor{#1}}
+\gdef\csufadvisordept{(*Advisor's department*)}
+\def\advisordept#1{\gdef\csufadvisordept{#1}}
+
+\gdef\csuffirstcomm{(*first committee member's name*)}
+\def\firstcomm#1{\gdef\csuffirstcomm{#1}}
+\gdef\csuffirstcommdept{(*first committee member's department*)}
+\def\firstcommdept#1{\gdef\csuffirstcommdept{#1}}
+
+\gdef\csufsecondcomm{(*second committee member's name*)}
+\def\secondcomm#1{\gdef\csufsecondcomm{#1}}
+\gdef\csufsecondcommdept{(*second committee member's department*)}
+\def\secondcommdept#1{\gdef\csufsecondcommdept{#1}}
+
+\gdef\csufblank{blank}
+
+% If you want copyright, do the following
+\def\yescopyright {
+          \csufcopyrighttrue
+          }
+
+\def\nocopyright {
+          \csufcopyrightfalse
+     }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MARGINS AND PAGE LAYOUT %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Pages are numbered at the upper right,
+% except that the first page of each chapter
+% is numbered at the bottom.
+
+\pagestyle{plain}
+
+% This counter is used to select which sections should be displayed in TOC.
+\newcounter{csufsec}
+\setcounter{csufsec}{2}
+
+\newcounter{csufcommittee}
+\setcounter{csufcommittee}{3}
+
+\newcounter{csufnum}
+
+% We need 1 1/2" margin
+% Theses are single-sided, so we don't care about \evensidemargin
+
+\evensidemargin=0in
+%%\footheight=0.2in
+\footskip=0.5in    % default is 0.5 in and page numbers come out too low
+\headsep=0.25in          % Distance between page nums and text
+\itemindent=0.8in
+%\marginparsep=10pt
+%\marginparwidth=40pt
+\oddsidemargin=0.5in          % was 0.495 
+\parindent=0.4in
+\textheight=8.22in          %changed to make 1" at the bottom
+\textwidth=5.95in
+\topmargin=-0.175in             % Put the pagenumber in the correct place
+
+% Disallow page breaks at hyphens, except where the only alternative
+% is a widow or orphan (club)
+\brokenpenalty=9900
+
+% Disallow all widows and orphans (clubs)
+\widowpenalty=10000
+\clubpenalty=10000
+
+% Use 1.65 times the normal baseline-to-baseline skip
+% for the appearance of double spacing
+\renewcommand{\baselinestretch}{1.65}
+
+% Print footnotes in small (not tiny) type
+\let\footnotesize\small
+
+% Single space tabular environment - cdp
+\def\tabular{\ssp \def\@halignto{}\@tabular}
+
+% Redefine the macro used for floats (including figures and tables)
+% so that single spacing is used.
+% (Note \def\figure{\@float{figure}set single spacing} doesn't work
+%  because figure has an optional argument)
+\def\@xfloat#1[#2]{\ifhmode \@bsphack\@floatpenalty -\@Mii\else
+   \@floatpenalty-\@Miii\fi\def\@captype{#1}\ifinner
+      \@parmoderr\@floatpenalty\z@
+    \else\@next\@currbox\@freelist{\@tempcnta\csname ftype@#1\endcsname
+       \multiply\@tempcnta\@xxxii\advance\@tempcnta\sixt@@n
+       \@tfor \@tempa :=#2\do
+                        {\if\@tempa h\advance\@tempcnta \@ne\fi
+                         \if\@tempa t\advance\@tempcnta \tw@\fi
+                         \if\@tempa b\advance\@tempcnta 4\relax\fi
+                         \if\@tempa p\advance\@tempcnta 8\relax\fi
+         }\global\count\@currbox\@tempcnta}\@fltovf\fi
+    \global\setbox\@currbox\vbox\bgroup
+    \def\baselinestretch{1}\@normalsize
+    \boxmaxdepth\z@
+    \hsize\columnwidth \@parboxrestore}
+
+% Redefine the macro used for footnotes to use single spacing
+\long\def\@footnotetext#1{\insert\footins{\def\baselinestretch{1}\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut \\ }}}
+
+% Define environment 'singlespace', which can be used within other
+% environments such as 'quote' (but not 'verbatim') to force single
+% spacing.  From doublespace.sty; originally credited to MIT.
+
+\def\singlespace{%
+\vskip\parskip%
+\vskip\baselineskip%
+\def\baselinestretch{1}%
+\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
+%\tiny\normalsize%
+\vskip-\parskip%
+\vskip-\baselineskip%
+}
+
+\def\endsinglespace{\par}
+
+% Redefine 'verbatim' so that it always single-spaces.
+% If you want 'verbatim' to double-space, simply make your own
+% copy of csuf-thesis.sty in which this code is commented out.
+
+\def\@verbatim{%
+\trivlist%
+\vskip\topskip%
+%\vskip\parskip%
+%\setlength{\partopsep}{0pt}%
+\def\baselinestretch{1}%
+\ifx\@currsize\normalsize\@normalsize\else\@currsize\fi%
+%\tiny\normalsize%
+\vskip-\topskip%
+%\vskip-\parskip%
+\item[]\if@minipage\else\vskip\parskip\fi
+\leftskip\@totalleftmargin\rightskip\z@
+\parindent\z@\parfillskip\@flushglue\parskip\z@
+\@tempswafalse \def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}
+\obeylines \tt \catcode``=13 \@noligs \let\do\@makeother \dospecials}
+
+\def\verbatim{\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\let\endverbatim=\endtrivlist
+
+%%%%%%%%%%%%%%%%%%%%
+% CHAPTER HEADINGS %
+%%%%%%%%%%%%%%%%%%%%
+
+% Centered at top of page, in imitation of Turabian et al.
+% This code is from rep12.sty, somewhat modified.
+
+% \@makechapterhead {TEXT} : Makes the heading for the \chapter command.
+%
+
+\def\@makechapterhead#1{             % Heading for \chapter command
+  \vspace*{.38in}                    % Space at top of text page.
+  { \parindent 0pt \raggedright
+    \ifnum \c@secnumdepth >\m@ne     % IF secnumdepth > -1 THEN
+      \ssp
+      \centerline{\@chapapp{} \thechapter} % Print 'CHAPTER' and number.
+      \par
+      \vskip 10pt
+    \fi                              % Space between number and title.
+    \ssp
+     \center                      % Title.
+    #1 \par
+    \nobreak                         % TeX penalty to prevent page break.
+    \vskip 27pt                      % Space between title and text.
+  } }
+
+% \@makeschapterhead {TEXT} : Makes the heading for the \chapter* command.
+%
+
+\def\@makeschapterhead#1{            % Heading for \chapter* command
+  %\vspace*{50pt}                    % Space at top of page.
+  { \parindent 0pt \raggedright
+    \ssp
+    \bf \center              % Title
+    #1 \par
+    \nobreak                         % TeX penalty to prevent page break.
+    \vskip 15pt                      % Space between title and text.
+  } }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This was done to place the appendix chapter title on the TOC. %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
+\@afterindentfalse \secdef\@chapter\@schapter}
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+ \refstepcounter{chapter}
+ \typeout{\@chapapp\space\thechapter.}
+ \ifcsufappend{\addcontentsline{toc}{chapter}{\protect
+ \numberline{APPENDIX \thechapter}\hspace*{0.95in}#1}}
+ \else{\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1} }\fi \else
+ \addcontentsline{toc}{chapter}{#1}\fi
+ \chaptermark{#1}
+% \addtocontents{lof}{\protect\addvspace{10pt}}  - do not add space on toc
+%\addtocontents{lot}{\protect\addvspace{10pt}} \if@twocolumn
+\if@twocolumn
+\@topnewpage[\@makechapterhead{#2}]
+ \else \@makechapterhead{#2}
+ \@afterheading \fi}
+\def\@schapter#1{\if@twocolumn \@topnewpage[\@makeschapterhead{#1}]
+ \else \@makeschapterhead{#1}
+ \@afterheading\fi}
+
+%
+% Do the right thing for an appendix
+%
+\def\appendix{
+ \par
+ \setcounter{chapter}{0}
+ \setcounter{equation}{0}
+% \def\@chapapp{}
+% \def\thechapter{APPENDIX \Alph{chapter}}
+\def\@chapapp{APPENDIX}
+ \def\thechapter{\Alph{chapter}}
+ \def\thesection{\Alph{chapter}.\arabic{section}}
+ \renewcommand{\theequation}{\Alph{chapter}.\arabic{equation}}
+ \csufappendtrue
+ \setcounter{csufsec}{0}  % do not print appendix sections
+% The following lines would do what I want, but they are set BEFORE the
+% begin{document} :-(
+% \setcounter{tocdepth}{1}      % List appendix and sections on toc
+% \def\l@chapter{\@dottedtocline{1}{0.000001mm}{10em}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION AND SUBSECTION HEADINGS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% from rep12.sty - with local mods
+\def\section{\@startsection {section}{1}{\z@}
+            {-7ex}{0.01ex plus 0.01ex}
+            {\ssp\center}}
+\def\subsection{\@startsection{subsection}{2}{\z@}
+            {-5ex}{0.01ex plus 0.01ex}
+            {\ssp}}
+\def\subsubsection{\@startsection{subsubsection}{3}{\z@}
+            {-4ex}{-0.01ex}
+            {\ssp\underline}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS %
+%%%%%%%%%%%%%%%%%%%%%
+
+\newsavebox{\toctopbox}
+\savebox{\toctopbox}[\textwidth]{Chapter \hfill Page}
+%
+\def\tableofcontents{\pagestyle{plain}
+\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn \fi
+% 
+ \global\@colht\textheight\onecolumn
+\chapter*{\centerline{\normalfont TABLE OF CONTENTS}\@mkboth {TABLE OF CONTENTS}{TABLE OF CONTENTS}}
+%  Figure \hfill Page \par %\vspace{1em}
+% The next line puts the heading in the **FIRST** toc page.  Here it
+%  goes in with the text.
+\usebox{\toctopbox} \par\vspace{1ex}
+% No we define @texttop so it will redefine itself when this, the
+% **FIRST** page is output.
+\gdef\@texttop{\toc1}
+% process the actual entries
+%%\vskip 1.8ex
+{\ssp \@starttoc{toc}}
+%the  next 2 lines make sure we are at a page break and reset
+% the textheight
+\newpage
+%\advance\textheight 2ex\global\@colht\textheight\onecolumn
+\global\@colht\textheight\onecolumn
+%and finally redefine @texttop to do nothing at all
+\gdef\@texttop{}
+\if@restonecol
+    \twocolumn\fi
+    \newpage
+    \pagestyle{myheadings}\markboth{}{}}
+
+\def\toc1{%
+\vspace{.6in}       %% add top margin to 2in
+\gdef\@texttop{
+\parindent 0pt \raggedleft \par \usebox{\toctopbox} \par\vspace{2ex}}}
+
+% The following section is for chapter and section titles in the body
+% It will not split words
+\def\l@part#1#2{\addpenalty{-\@highpenalty}
+\addvspace{2.25em plus 11pt}            % space above part line
+\begingroup
+\@tempdima 3em                  % width of box holding part number,
+\parindent \z@ \rightskip \@pnumwidth   % used by \numberline
+\parfillskip -\@pnumwidth
+{\bf
+\leavevmode                             % TeX command to enter horizontal mode
+#1\hfil \hbox to\@pnumwidth{\hss #2}}\par
+\nobreak                                % Never break after part entry
+\endgroup}
+
+\def\thedots{\cleaders\hbox{$\m@th \mkern4.5mu . \mkern4.5mu$}\hfill}
+% a sinlge line space is added in front of each chapter title in the TOC
+\def\l@chapter{\vspace{12pt} \@dottedtocline{1}{0.000001mm}{1.4em}}
+%\def\l@section{\@dottedtocline{1}{2em}{2em}}
+\def\l@section{\@dottedtocline{1}{1.4em}{2.3em}}
+%\def\l@subsection{\@dottedtocline{2}{4em}{3em}}
+\def\l@subsection{\@dottedtocline{2}{3.7em}{3em}}
+\def\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
+\def\l@paragraph{\@dottedtocline{4}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
+
+%%%%%%%%%%%%%%%%%%%
+% List of Figures %
+%%%%%%%%%%%%%%%%%%%
+
+\newsavebox{\loftopbox}
+\savebox{\loftopbox}[\textwidth]{Figure \hfill Page}
+%
+\def\listoffigures{\pagestyle{plain}
+\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn \fi
+ \global\@colht\textheight\onecolumn
+\chapter*{\centerline{\normalfont LIST OF FIGURES}\@mkboth {LIST OF FIGURES}{LIST OF FIGURES}}
+\usebox{\loftopbox} \par\vspace{1ex}
+% No we define @texttop so it will redefine itself when this, the
+% **FIRST** page is output.
+\gdef\@texttop{\lof1}
+% process the actual entries
+\vskip 1.8ex
+{\ssp \@starttoc{lof}}
+%the  next 2 lines make sure we are at a page break and reset
+% the textheight
+\newpage
+%\advance\textheight 2ex\global\@colht\textheight\onecolumn
+\global\@colht\textheight\onecolumn
+%and finally redefine @texttop to do nothing at all
+\gdef\@texttop{}
+% and put the lof in the table of contents
+%\addcontentsline{toc}{pchapter}{{\sc \listfigurename}}
+\if@restonecol
+    \twocolumn\fi \newpage
+    \pagestyle{myheadings}\markboth{}{}}
+
+\def\lof1{%
+\vspace{.6in}          %% add top margin to 2in
+\gdef\@texttop{
+\parindent 0pt \raggedleft \par \usebox{\loftopbox} \par\vspace{2ex}}}
+
+\def\l@figure{\@dottedtocline{1}{0.001em}{2.5em}}
+
+%%%%%%%%%%%%%%%%%%
+% List of Tables %
+%%%%%%%%%%%%%%%%%%
+
+\newsavebox{\lottopbox}
+\savebox{\lottopbox}[\textwidth]{Table \hfill Page}
+%
+\def\listoftables{\pagestyle{plain}
+\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn \fi
+% 
+ \global\@colht\textheight\onecolumn
+\chapter*{\centerline{\normalfont LIST OF TABLES}\@mkboth {LIST OF TABLES}{LIST OF TABLES}}
+%  Figure \hfill Page \par %\vspace{1em}
+% The next line puts the heading in the **FIRST** toc page.  Here it
+%  goes in with the text.
+\usebox{\lottopbox} \par\vspace{1ex}
+% No we define @texttop so it will redefine itself when this, the
+% **FIRST** page is output.
+\gdef\@texttop{\lot1}
+% process the actual entries
+\vskip 1.8ex
+{\ssp \@starttoc{lot}}
+%the  next 2 lines make sure we are at a page break and reset
+% the textheight
+\newpage
+%\advance\textheight 2ex\global\@colht\textheight\onecolumn
+\global\@colht\textheight\onecolumn
+%and finally redefine @texttop to do nothing at all
+\gdef\@texttop{}
+\if@restonecol
+    \twocolumn\fi \newpage
+    \pagestyle{myheadings}\markboth{}{}}
+
+\def\lot1{%
+\vspace{.6in}      %% add top margin to 2in
+\gdef\@texttop{
+\parindent 0pt \raggedleft \par \usebox{\lottopbox} \par\vspace{2ex}}}
+
+\let\l@table\l@figure
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE, COPYRIGHT, AND SIGNATURE PAGES %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Code taken from titlepage.sty and modified extensively.
+% \maketitle generates title page, copyright page, and signature page.
+
+\def\maketitle{
+ %
+ % Title page
+ %
+ \newpage
+ \setcounter{page}{1}
+ \thispagestyle{empty}
+ \pagenumbering{roman}
+\hspace{.7in}
+\begin{minipage}[t]{3in}
+ {\ssp
+ \begin{center}
+    \@title
+ \end{center}
+ }
+\vspace{-.3in}
+\begin{tabular}[t]{p{3in}}
+\ \\
+\hline
+\end{tabular}
+
+\vspace{-9pt}
+\begin{center}
+ A Thesis   \\
+\vspace{-3pt}
+Presented to the \\
+\vspace{-3pt}
+Faculty of \\
+\vspace{-3pt}
+California State University, Fullerton \\
+\end{center}
+
+\vspace{-.35in}
+\begin{tabular}[t]{p{3in}}
+\ \\
+\hline
+\end{tabular}
+
+\vspace{-9pt}
+\begin{center}
+in Partial Fulfillment \\
+\vspace{-3pt}
+of the Requirements for the Degree \\
+\vspace{-3pt}
+\csufthisdegree \\
+\vspace{-3pt}
+in \\
+\vspace{-3pt}
+\csufmajor
+\end{center}
+
+\vspace{-.35in}
+\begin{tabular}[t]{p{3in}}
+\ \\
+\hline
+\end{tabular}
+
+\vspace{-9pt}
+\begin{center}
+By \\
+\vspace{-3pt}
+\@author \\
+\vspace{-3pt}
+Approved by:
+\end{center}
+
+\end{minipage}
+
+\ \\
+
+ {\ssp
+\hspace*{-.47in}
+\begin{tabular}{p{3.5in}p{.2in}p{1in}}
+\hspace*{.1in} \\
+\\ \cline{1-1} \cline{3-3}
+\csufadvisor, Committee Chair & & \hspace{.7cm} Date \\
+\csufadvisordept  & & \\
+\\
+\\
+\\ \cline{1-1} \cline{3-3}
+\csuffirstcomm, Committee Member & & \hspace{.7cm} Date \\
+\csuffirstcommdept  & & \\
+\\
+\\
+\\ \cline{1-1} \cline{3-3}
+\csufsecondcomm, Committee Member & & \hspace{.7cm} Date \\
+\csufsecondcommdept & & \\
+\end{tabular}
+  }
+%
+% Copyright page, included in ordinary numbering sequence
+%
+\ifcsufcopyright
+  {
+  \typeout{* }
+  \typeout{* Generating copyright page.  Use \noexpand\nocopyright if you don't want it.}
+  \typeout{* }
+  \newpage
+  \thispagestyle{empty}
+    \vspace*{3.5in}
+    \begin{center}
+      Copyright \copyright ~ \csufthesisyear ~ by
+      \@author \par
+      ALL RIGHTS RESERVED\par
+    \end{center}
+  }
+\else {
+\typeout{* }
+\typeout{* No copyright page created (page number has been incremented.)}
+\typeout{* Remember to insert a blank page in your thesis in this location.}
+\typeout{* MS students use \noexpand\yescopyright if you want one (you will need to file}
+\typeout{* paperwork with the United States Copyright Office to make it official).}
+\typeout{* }
+  \stepcounter{page}
+  }
+\fi
+%
+%
+%
+\setcounter{footnote}{0}       % Footnotes start at zero again.
+\gdef\@thanks{}
+%\gdef\@author{}
+\gdef\@title{}
+\let\maketitle\relax}
+
+%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT PAGE(S) %
+%%%%%%%%%%%%%%%%%%%%
+
+% Delimited by \begin{abstract} and \end{abstract}, which
+% should enclose only the text of the abstract.
+
+% The abstract should be no more than one page
+
+\def\abstract{
+   \pagestyle{empty}
+   {\begin{center}
+       \vspace*{0.25in}
+        ABSTRACT
+       \vskip 0.25in
+     \end{center}
+   }
+   \large \normalsize                  % force return to normal line spacing
+\par
+}
+
+\def\endabstract{
+    \thispagestyle{plain}
+    \vskip 12pt
+    \par \noindent
+  \par
+  \vfil\null
+}
+
+\def\dedication{
+    \newpage
+    \ssp
+    \thispagestyle{plain}
+    \vspace*{\fill}
+    \begin{center}
+    }
+
+\def\enddedication{
+    \end{center}
+    \vspace*{\fill}
+    \dsp
+    }
+
+\def\acknowledgement{
+   \large \normalsize                  % force return to normal line spacing
+   \par
+   \dsp
+   \newpage
+   \thispagestyle{plain}
+\vspace*{.27in}
+    {\par \normalsize \centerline {ACKNOWLEDGMENT}}
+    \vskip 1em
+    }
+
+\def\endacknowlegdement{
+    \newpage
+    }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\cleardoublepage
+%\renewcommand{\bibname}{BIBLIOGRAPHY}
+\def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
+       {\string\bibcite{#1}{\the\value{\@listctr}}}\fi\ignorespaces
+       \hskip -0.25in}
+\def\@lbibitem[#1]#2{\item[\@biblabel{#1}\hfill]\if@filesw
+      {\def\protect##1{\string ##1\space}\immediate
+       \write\@auxout{\string\bibcite{#2}{#1}}}\fi\ignorespaces
+       \hskip -0.25in}
+\def\thebibliography#1{\chapter*{\vspace*{.43in} \centerline{\normalfont BIBLIOGRAPHY}
+%\addcontentsline{toc}{chapter}{\protect \numberline{REFERENCES}}
+\addcontentsline{toc}{chapter}{BIBLIOGRAPHY}
+\@mkboth{BIBLIOGRAPHY}{BIBLIOGRAPHY}}\list
+% {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ {\arabic{enumi}.}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \advance\leftmargin 0.5in
+ \advance\labelsep 0.5in
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus .07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax \ssp}
+\let\endthebibliography=\endlist
+
+\long\def\@makecaption#1#2{
+ \vskip 10pt
+ \setbox\@tempboxa\hbox{{\bf #1} #2}
+% \ifdim \wd\@tempboxa >\hsize #1: #2\par \else \hbox
+%to\hsize{\hfil\box\@tempboxa\hfil}
+% \fi}
+ \ifdim \wd\@tempboxa >\hsize #1 #2\par \else \hbox
+to\hsize{\hfil\box\@tempboxa\hfil}
+ \fi}
+
+% Wanted () instead of []
+%\def\@cite#1#2{({#1\if@tempswa , #2\fi})}
+%\def\@biblabel#1{(#1)\hfill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This allows single spacing easily in the figure mode - from ucthesis.sty %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ssp{\def\baselinestretch{1.0}\large\normalsize}
+\def\msp{\def\baselinestretch{1.2}\large\normalsize}
+\def\dsp{\def\baselinestretch{1.65}\large\normalsize}
+
+\def\startbody{
+   \pagestyle{myheadings}
+   \markboth{}{}
+   \newpage
+   \pagenumbering{arabic}
+   \setcounter{chapter}{0}
+   }
+
+
+%%%%%%%%%%%%%%
+% All done ! %
+%%%%%%%%%%%%%%
+
+\typeout{* }
+\typeout{* CSUF style sheet loaded.}
+\typeout{* --------------------------------------------------------------------------}
+

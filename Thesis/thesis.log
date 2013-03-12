@@ -1,0 +1,1069 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.8.29)  2 FEB 2013 17:24
+entering extended mode
+**D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
+(D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/thesis.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\csuf-thesis.sty
+\c@csufsec=\count88
+\c@csufcommittee=\count89
+\c@csufnum=\count90
+\toctopbox=\box26
+\loftopbox=\box27
+\lottopbox=\box28
+
+* 
+* CSUF style sheet loaded.
+* --------------------------------------------------------------------------
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\chicago\chicago.sty"
+Using Chicago Manual of Style bibliography: 31 August 1992
+\bibhang=\skip43
+\bibindent=\dimen103
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen104
+))
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen105
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count91
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count92
+\leftroot@=\count93
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count94
+\DOTSCASE@=\count95
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box29
+\strutbox@=\box30
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count96
+\c@MaxMatrixCols=\count97
+\dotsspace@=\muskip10
+\c@parentequation=\count98
+\dspbrk@lvl=\count99
+\tag@help=\toks15
+\row@=\count100
+\column@=\count101
+\maxfields@=\count102
+\andhelp@=\toks16
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks17
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count103
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2010/01/09 v3.1m Customizing captions (AR)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
+\captionmargin=\dimen115
+\captionmargin@=\dimen116
+\captionwidth=\dimen117
+\caption@indent=\dimen118
+\caption@parindent=\dimen119
+\caption@hangindent=\dimen120
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1084.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {{\bf #1} #2} \ifdim \wd \@tempboxa >\hsize #1 #2\par \else \hbo
+x to\hsize {\hfil \box \@tempboxa \hfil } \fi .
+\c@ContinuedFloat=\count104
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2008/08/31 v1.0b Adding subcaptions (AR)
+\c@subfigure=\count105
+\c@subtable=\count106
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
+\c@AlgoLine=\count107
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
+********************************************************
+\skiptotal=\skip47
+\skiplinenumber=\skip48
+\skiprule=\skip49
+\skiphlne=\skip50
+\skiptext=\skip51
+\skiplength=\skip52
+\algomargin=\skip53
+\skipalgocfslide=\skip54
+\algowidth=\dimen121
+\inoutsize=\dimen122
+\inoutline=\dimen123
+\interspacetitleruled=\dimen124
+\interspacealgoruled=\dimen125
+\interspacetitleboxruled=\dimen126
+\algocf@inoutbox=\box31
+\algocf@inputbox=\box32
+\AlCapSkip=\skip55
+\AlCapHSkip=\skip56
+\algocf@nlbox=\box33
+\algocf@hangingbox=\box34
+\algocf@capbox=\box35
+\algoheightruledefault=\skip57
+\algoheightrule=\skip58
+\algotitleheightruledefault=\skip59
+\algotitleheightrule=\skip60
+\c@algocfline=\count108
+\c@algocfproc=\count109
+\c@algocf=\count110
+\algocf@algoframe=\box36
+\algocf@algobox=\box37
+) ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\apacite\apacite.sty"
+Package: apacite 2009/03/01 v4.05 APA citation
+\c@BibCnt=\count111
+\bibleftmargin=\skip61
+\bibindent=\skip62
+\bibparsep=\skip63
+\bibitemsep=\skip64
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count112
+\lst@gtempboxa=\box38
+\lst@token=\toks20
+\lst@length=\count113
+\lst@currlwidth=\dimen127
+\lst@column=\count114
+\lst@pos=\count115
+\lst@lostspace=\dimen128
+\lst@width=\dimen129
+\lst@newlines=\count116
+\lst@lineno=\count117
+\lst@maxwidth=\dimen130
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count118
+\lst@skipnumbers=\count119
+\lst@framebox=\box39
+)
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\generic\epsf\epsf.tex"
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read1
+\epsfframemargin=\dimen131
+\epsfframethickness=\dimen132
+\epsfrsize=\dimen133
+\epsftmp=\dimen134
+\epsftsize=\dimen135
+\epsfxsize=\dimen136
+\epsfysize=\dimen137
+\pspoints=\dimen138
+) (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count120
+\scratchdimen=\dimen139
+\scratchbox=\box40
+\nofMPsegments=\count121
+\nofMParguments=\count122
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen140
+\MPnumerator=\count124
+\everyMPtoPDFconversion=\toks22
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ ("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\apacite\english.apc"
+File: english.apc 2009/03/01 v4.05 apacite language file
+LaTeX Info: Redefining \BPBI on input line 119.
+LaTeX Info: Redefining \BHBI on input line 120.
+
+NOT AUSTRALIAN!!!
+)
+\c@lstlisting=\count125
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
+[][] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
+[][] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 85--85
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--85
+
+ []
+
+* 
+* Generating copyright page. Use \nocopyright if you don't want it.
+* 
+[1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
+
+("D:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
+ [2]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.tex) [3
+
+]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.toc
+Overfull \vbox (29.39453pt too high) has occurred while \output is active []
+
+
+[4
+
+
+
+])
+\tf@toc=\write3
+ [5]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 \listoftables
+                  
+? 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lot)
+\tf@lot=\write4
+ [6
+
+
+
+]
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 \listoffigures
+                    
+? 
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.lof
+Overfull \vbox (22.19455pt too high) has occurred while \output is active []
+
+
+[7
+
+
+
+])
+\tf@lof=\write5
+ [8] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.tex
+CHAPTER 1.
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \chapter{BACKGROUND}
+                        
+? 
+) [1
+
+
+
+] [2] [3] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.tex
+CHAPTER 2.
+[4
+
+
+
+] [5] [6] <raytraceSample.jpg, id=54, 253.94875pt x 189.70876pt>
+File: raytraceSample.jpg Graphic file (type jpg)
+
+<use raytraceSample.jpg>
+Package pdftex.def Info: raytraceSample.jpg used on input line 53.
+(pdftex.def)             Requested size: 215.00313pt x 160.61925pt.
+ <raytraceCalc.jpg, id=55, 507.8975pt x 264.99pt>
+File: raytraceCalc.jpg Graphic file (type jpg)
+
+<use raytraceCalc.jpg>
+Package pdftex.def Info: raytraceCalc.jpg used on input line 63.
+(pdftex.def)             Requested size: 430.00627pt x 224.35706pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/raytraceSample.jpg>]
+<sampling.jpg, id=59, 475.7775pt x 196.735pt>
+File: sampling.jpg Graphic file (type jpg)
+ <use sampling.jpg>
+Package pdftex.def Info: sampling.jpg used on input line 73.
+(pdftex.def)             Requested size: 215.00313pt x 88.90515pt.
+
+<jaggies.jpg, id=60, 697.60625pt x 261.97874pt>
+File: jaggies.jpg Graphic file (type jpg)
+ <use jaggies.jpg>
+Package pdftex.def Info: jaggies.jpg used on input line 80.
+(pdftex.def)             Requested size: 215.00313pt x 80.74086pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/raytraceCalc.jpg> <D:/_Programm
+ing/Light_Wave_GL/THESIS-DRAFTS/sampling.jpg>] [9 <D:/_Programming/Light_Wave_G
+L/THESIS-DRAFTS/jaggies.jpg>]
+<radiositySample.jpg, id=67, 448.67625pt x 357.335pt>
+File: radiositySample.jpg Graphic file (type jpg)
+
+<use radiositySample.jpg>
+Package pdftex.def Info: radiositySample.jpg used on input line 100.
+(pdftex.def)             Requested size: 215.00313pt x 171.22986pt.
+ [10 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/radiositySample.jpg>] <radios
+ityCalc1.jpg, id=71, 713.66624pt x 446.66875pt>
+File: radiosityCalc1.jpg Graphic file (type jpg)
+
+<use radiosityCalc1.jpg>
+Package pdftex.def Info: radiosityCalc1.jpg used on input line 118.
+(pdftex.def)             Requested size: 322.5047pt x 201.85103pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<radiosityCalc2.jpg, id=72, 767.86874pt x 400.49625pt>
+File: radiosityCalc2.jpg Graphic file (type jpg)
+
+<use radiosityCalc2.jpg>
+Package pdftex.def Info: radiosityCalc2.jpg used on input line 125.
+(pdftex.def)             Requested size: 322.5047pt x 168.21338pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11] <photonSample.jpg, id=77, 411.5375pt x 308.15125pt>
+File: photonSample.jpg Graphic file (type jpg)
+
+<use photonSample.jpg>
+Package pdftex.def Info: photonSample.jpg used on input line 142.
+(pdftex.def)             Requested size: 215.00313pt x 160.99188pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[12 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/radiosityCalc1.jpg>]
+<photonCalc.jpg, id=81, 719.68875pt x 316.18124pt>
+File: photonCalc.jpg Graphic file (type jpg)
+ <use photonCalc.jpg>
+Package pdftex.def Info: photonCalc.jpg used on input line 152.
+(pdftex.def)             Requested size: 430.00627pt x 188.91898pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<photonCaustics.jpg, id=82, 378.41376pt x 250.9375pt>
+File: photonCaustics.jpg Graphic file (type jpg)
+ <use photonCaustics.jpg>
+Package pdftex.def Info: photonCaustics.jpg used on input line 159.
+(pdftex.def)             Requested size: 215.00313pt x 142.57637pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/radiosityCalc2.jpg> <D:/_Progr
+amming/Light_Wave_GL/THESIS-DRAFTS/photonSample.jpg>] [14 <D:/_Programming/Ligh
+t_Wave_GL/THESIS-DRAFTS/photonCalc.jpg> <D:/_Programming/Light_Wave_GL/THESIS-D
+RAFTS/photonCaustics.jpg>]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [15]
+<lightTree.jpg, id=92, 723.70375pt x 211.79124pt>
+File: lightTree.jpg Graphic file (type jpg)
+ <use lightTree.jpg>
+Package pdftex.def Info: lightTree.jpg used on input line 189.
+(pdftex.def)             Requested size: 430.00627pt x 125.84122pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16] [17 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/lightTree.jpg>]
+<matrixSampling.jpg, id=100, 1580.90625pt x 454.69875pt>
+File: matrixSampling.jpg Graphic file (type jpg)
+
+<use matrixSampling.jpg>
+Package pdftex.def Info: matrixSampling.jpg used on input line 199.
+(pdftex.def)             Requested size: 430.00627pt x 123.67918pt.
+ <shadowMap1.jpg, id=101, 297.11pt x 294.09875pt>
+File: shadowMap1.jpg Graphic file (type jpg)
+
+<use shadowMap1.jpg>
+Package pdftex.def Info: shadowMap1.jpg used on input line 208.
+(pdftex.def)             Requested size: 215.00313pt x 212.83243pt.
+ <shadowMap2.jpg, id=102, 284.06125pt x 295.1025pt>
+File: shadowMap2.jpg Graphic file (type jpg)
+
+<use shadowMap2.jpg>
+Package pdftex.def Info: shadowMap2.jpg used on input line 214.
+(pdftex.def)             Requested size: 215.00313pt x 223.37062pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/matrixSampling.jpg>] [19 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/shadowMap1.jpg>]
+<singularity.jpg, id=109, 663.47874pt x 661.47125pt>
+File: singularity.jpg Graphic file (type jpg)
+ <use singularity.jpg>
+Package pdftex.def Info: singularity.jpg used on input line 224.
+(pdftex.def)             Requested size: 215.00313pt x 214.34982pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<vrl.jpg, id=110, 785.93625pt x 492.84125pt>
+File: vrl.jpg Graphic file (type jpg)
+ <use vrl.jpg>
+Package pdftex.def Info: vrl.jpg used on input line 231.
+(pdftex.def)             Requested size: 430.00627pt x 269.64972pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[20 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/shadowMap2.jpg>] [21 <D:/_Prog
+ramming/Light_Wave_GL/THESIS-DRAFTS/singularity.jpg>] [22 <D:/_Programming/Ligh
+t_Wave_GL/THESIS-DRAFTS/vrl.jpg>] [23]
+File: shadowMap1.jpg Graphic file (type jpg)
+ <use shadowMap1.jpg>
+Package pdftex.def Info: shadowMap1.jpg used on input line 264.
+(pdftex.def)             Requested size: 171.99988pt x 170.26326pt.
+
+<RSM1.jpg, id=124, 293.095pt x 288.07625pt>
+File: RSM1.jpg Graphic file (type jpg)
+ <use RSM1.jpg>
+Package pdftex.def Info: RSM1.jpg used on input line 270.
+(pdftex.def)             Requested size: 171.99988pt x 169.05359pt.
+
+<RSM2.jpg, id=125, 289.08pt x 292.09125pt>
+File: RSM2.jpg Graphic file (type jpg)
+ <use RSM2.jpg>
+Package pdftex.def Info: RSM2.jpg used on input line 276.
+(pdftex.def)             Requested size: 171.99988pt x 173.78975pt.
+
+<RSM3.jpg, id=126, 291.0875pt x 293.095pt>
+File: RSM3.jpg Graphic file (type jpg)
+ <use RSM3.jpg>
+Package pdftex.def Info: RSM3.jpg used on input line 282.
+(pdftex.def)             Requested size: 171.99988pt x 173.1884pt.
+ [24 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/RSM1.jpg> <D:/_Programming/Li
+ght_Wave_GL/THESIS-DRAFTS/RSM2.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFT
+S/RSM3.jpg>]
+<RSMcalc.jpg, id=131, 757.83125pt x 320.19624pt>
+File: RSMcalc.jpg Graphic file (type jpg)
+ <use RSMcalc.jpg>
+Package pdftex.def Info: RSMcalc.jpg used on input line 293.
+(pdftex.def)             Requested size: 430.00627pt x 181.68805pt.
+ [25 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/RSMcalc.jpg>] [26]
+<ISMcompare.jpg, id=138, 744.7825pt x 319.1925pt>
+File: ISMcompare.jpg Graphic file (type jpg)
+ <use ISMcompare.jpg>
+Package pdftex.def Info: ISMcompare.jpg used on input line 309.
+(pdftex.def)             Requested size: 430.00627pt x 184.29405pt.
+ [27 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/ISMcompare.jpg>]) [28] [29]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.tex
+CHAPTER 3.
+[30
+
+
+
+] [31] [32] [33] <Figure31.jpg, id=161, 460.34167pt x 416.00798pt>
+File: Figure31.jpg Graphic file (type jpg)
+
+<use Figure31.jpg>
+Package pdftex.def Info: Figure31.jpg used on input line 29.
+(pdftex.def)             Requested size: 215.00313pt x 194.29865pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure32.jpg, id=162, 276.32648pt x 277.54109pt>
+File: Figure32.jpg Graphic file (type jpg)
+ <use Figure32.jpg>
+Package pdftex.def Info: Figure32.jpg used on input line 40.
+(pdftex.def)             Requested size: 215.00313pt x 215.95604pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure33.jpg, id=163, 320.05286pt x 296.36774pt>
+File: Figure33.jpg Graphic file (type jpg)
+ <use Figure33.jpg>
+Package pdftex.def Info: Figure33.jpg used on input line 49.
+(pdftex.def)             Requested size: 215.00313pt x 199.09444pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure34.jpg, id=164, 367.42311pt x 268.43143pt>
+File: Figure34.jpg Graphic file (type jpg)
+ <use Figure34.jpg>
+Package pdftex.def Info: Figure34.jpg used on input line 60.
+(pdftex.def)             Requested size: 215.00313pt x 157.07475pt.
+ [34]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Figure35.jpg, id=168, 250.2121pt x 60.7311pt>
+File: Figure35.jpg Graphic file (type jpg)
+ <use Figure35.jpg>
+Package pdftex.def Info: Figure35.jpg used on input line 71.
+(pdftex.def)             Requested size: 215.00313pt x 52.18692pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[35 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure31.jpg>] [36 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure32.jpg>]
+<Figure36.jpg, id=176, 268.43143pt x 185.22983pt>
+File: Figure36.jpg Graphic file (type jpg)
+ <use Figure36.jpg>
+Package pdftex.def Info: Figure36.jpg used on input line 85.
+(pdftex.def)             Requested size: 215.00313pt x 148.36493pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<vplNormals.jpg, id=177, 360.34625pt x 296.10625pt>
+File: vplNormals.jpg Graphic file (type jpg)
+ <use vplNormals.jpg>
+Package pdftex.def Info: vplNormals.jpg used on input line 96.
+(pdftex.def)             Requested size: 215.00313pt x 176.6711pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[37 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure33.jpg>] [38 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/Figure34.jpg> <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/Figure35.jpg>]
+<20randomVPLs.jpg, id=184, 546.04pt x 344.28625pt>
+File: 20randomVPLs.jpg Graphic file (type jpg)
+ <use 20randomVPLs.jpg>
+Package pdftex.def Info: 20randomVPLs.jpg used on input line 106.
+(pdftex.def)             Requested size: 215.00313pt x 135.56342pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<5specificVPLs.jpg, id=185, 250.9375pt x 370.38374pt>
+File: 5specificVPLs.jpg Graphic file (type jpg)
+ <use 5specificVPLs.jpg>
+Package pdftex.def Info: 5specificVPLs.jpg used on input line 113.
+(pdftex.def)             Requested size: 215.00313pt x 317.35957pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[39 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/Figure36.jpg>] [40 <D:/_Progra
+mming/Light_Wave_GL/THESIS-DRAFTS/vplNormals.jpg> <D:/_Programming/Light_Wave_G
+L/THESIS-DRAFTS/20randomVPLs.jpg>] [41 <D:/_Programming/Light_Wave_GL/THESIS-DR
+AFTS/5specificVPLs.jpg>] [42]) [43]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.tex
+CHAPTER 4.
+[44
+
+
+
+]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
+ [45] [46] [47] [48] [49] [50] [51] [52] [53] [54]) [55]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.tex
+CHAPTER 5.
+[56
+
+
+
+] [57]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[58] [59] [60] [61] [62]
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 143--152
+ [] 
+ []
+
+
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 158--168
+ [] 
+ []
+
+
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 174--184
+ [] 
+ []
+
+
+Overfull \hbox (5.97612pt too wide) in paragraph at lines 190--200
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[63] [64] [65] [66]
+Overfull \hbox (6.91763pt too wide) in paragraph at lines 256--269
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[67] [68] [69]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[70] [71]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[72] [73] <sample1.jpg, id=298, 1284.8pt x 722.7pt>
+File: sample1.jpg Graphic file (type jpg)
+ <use sample1.jpg>
+Package pdftex.def Info: sample1.jpg used on input line 427.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<sample2.jpg, id=299, 1284.8pt x 722.7pt>
+File: sample2.jpg Graphic file (type jpg)
+ <use sample2.jpg>
+Package pdftex.def Info: sample2.jpg used on input line 436.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample3.jpg, id=300, 1284.8pt x 722.7pt>
+File: sample3.jpg Graphic file (type jpg)
+ <use sample3.jpg>
+Package pdftex.def Info: sample3.jpg used on input line 442.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample4.jpg, id=301, 1284.8pt x 722.7pt>
+File: sample4.jpg Graphic file (type jpg)
+ <use sample4.jpg>
+Package pdftex.def Info: sample4.jpg used on input line 448.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<sample5.jpg, id=302, 1284.8pt x 722.7pt>
+File: sample5.jpg Graphic file (type jpg)
+ <use sample5.jpg>
+Package pdftex.def Info: sample5.jpg used on input line 454.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 460.
+
+<direct_only.jpg, id=303, 1284.8pt x 722.7pt>
+File: direct_only.jpg Graphic file (type jpg)
+ <use direct_only.jpg>
+Package pdftex.def Info: direct_only.jpg used on input line 465.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<indirect_only.jpg, id=304, 1284.8pt x 722.7pt>
+File: indirect_only.jpg Graphic file (type jpg)
+ <use indirect_only.jpg>
+Package pdftex.def Info: indirect_only.jpg used on input line 475.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<indirect_only_shadows.jpg, id=305, 1284.8pt x 722.7pt>
+File: indirect_only_shadows.jpg Graphic file (type jpg)
+
+<use indirect_only_shadows.jpg>
+Package pdftex.def Info: indirect_only_shadows.jpg used on input line 481.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+ <23.jpg, id=306, 1284.8pt x 722.7pt>
+File: 23.jpg Graphic file (type jpg)
+
+<use 23.jpg>
+Package pdftex.def Info: 23.jpg used on input line 493.
+(pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
+ <19.jpg, id=307, 1284.8pt x 722.7pt>
+File: 19.jpg Graphic file (type jpg)
+ <use 19.jpg>
+Package pdftex.def Info: 19.jpg used on input line 499.
+(pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
+
+<20.jpg, id=308, 1284.8pt x 722.7pt>
+File: 20.jpg Graphic file (type jpg)
+ <use 20.jpg>
+Package pdftex.def Info: 20.jpg used on input line 505.
+(pdftex.def)             Requested size: 322.5047pt x 181.40236pt.
+
+
+LaTeX Warning: Float too large for page by 62.64757pt on input line 511.
+
+<direct_only_fake_1_3.jpg, id=309, 1284.8pt x 722.7pt>
+File: direct_only_fake_1_3.jpg Graphic file (type jpg)
+
+<use direct_only_fake_1_3.jpg>
+Package pdftex.def Info: direct_only_fake_1_3.jpg used on input line 516.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<3.jpg, id=310, 1284.8pt x 722.7pt>
+File: 3.jpg Graphic file (type jpg)
+ <use 3.jpg>
+Package pdftex.def Info: 3.jpg used on input line 526.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<7.jpg, id=311, 1284.8pt x 722.7pt>
+File: 7.jpg Graphic file (type jpg)
+ <use 7.jpg>
+Package pdftex.def Info: 7.jpg used on input line 532.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/05SM.jpg, id=312, 1284.8pt x 722.7pt>
+File: AltResults/05SM.jpg Graphic file (type jpg)
+ <use AltResults/05SM.jpg>
+Package pdftex.def Info: AltResults/05SM.jpg used on input line 544.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/1SM.jpg, id=313, 1284.8pt x 722.7pt>
+File: AltResults/1SM.jpg Graphic file (type jpg)
+ <use AltResults/1SM.jpg>
+Package pdftex.def Info: AltResults/1SM.jpg used on input line 549.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/2SM.jpg, id=314, 1284.8pt x 722.7pt>
+File: AltResults/2SM.jpg Graphic file (type jpg)
+ <use AltResults/2SM.jpg>
+Package pdftex.def Info: AltResults/2SM.jpg used on input line 554.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/3SM.jpg, id=315, 1284.8pt x 722.7pt>
+File: AltResults/3SM.jpg Graphic file (type jpg)
+ <use AltResults/3SM.jpg>
+Package pdftex.def Info: AltResults/3SM.jpg used on input line 559.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 563.
+
+<AltResults/noIntegration.jpg, id=316, 1284.8pt x 722.7pt>
+File: AltResults/noIntegration.jpg Graphic file (type jpg)
+
+<use AltResults/noIntegration.jpg>
+Package pdftex.def Info: AltResults/noIntegration.jpg used on input line 568.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/integration.jpg, id=317, 1284.8pt x 722.7pt>
+File: AltResults/integration.jpg Graphic file (type jpg)
+
+<use AltResults/integration.jpg>
+Package pdftex.def Info: AltResults/integration.jpg used on input line 573.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/oldmethod.jpg, id=318, 1284.8pt x 722.7pt>
+File: AltResults/oldmethod.jpg Graphic file (type jpg)
+
+<use AltResults/oldmethod.jpg>
+Package pdftex.def Info: AltResults/oldmethod.jpg used on input line 582.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/10numSteps30Angle.jpg, id=319, 1284.8pt x 722.7pt>
+File: AltResults/10numSteps30Angle.jpg Graphic file (type jpg)
+
+<use AltResults/10numSteps30Angle.jpg>
+Package pdftex.def Info: AltResults/10numSteps30Angle.jpg used on input line 58
+7.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/1teapotOLD.jpg, id=320, 1284.8pt x 722.7pt>
+File: AltResults/1teapotOLD.jpg Graphic file (type jpg)
+
+<use AltResults/1teapotOLD.jpg>
+Package pdftex.def Info: AltResults/1teapotOLD.jpg used on input line 596.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/1Teapot.jpg, id=321, 1284.8pt x 722.7pt>
+File: AltResults/1Teapot.jpg Graphic file (type jpg)
+
+<use AltResults/1Teapot.jpg>
+Package pdftex.def Info: AltResults/1Teapot.jpg used on input line 601.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+<AltResults/teapotFL.jpg, id=322, 1284.8pt x 722.7pt>
+File: AltResults/teapotFL.jpg Graphic file (type jpg)
+
+<use AltResults/teapotFL.jpg>
+Package pdftex.def Info: AltResults/teapotFL.jpg used on input line 610.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotFR.jpg, id=323, 1284.8pt x 722.7pt>
+File: AltResults/teapotFR.jpg Graphic file (type jpg)
+
+<use AltResults/teapotFR.jpg>
+Package pdftex.def Info: AltResults/teapotFR.jpg used on input line 614.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotNR.jpg, id=324, 1284.8pt x 722.7pt>
+File: AltResults/teapotNR.jpg Graphic file (type jpg)
+
+<use AltResults/teapotNR.jpg>
+Package pdftex.def Info: AltResults/teapotNR.jpg used on input line 618.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+<AltResults/teapotC.jpg, id=325, 1284.8pt x 722.7pt>
+File: AltResults/teapotC.jpg Graphic file (type jpg)
+
+<use AltResults/teapotC.jpg>
+Package pdftex.def Info: AltResults/teapotC.jpg used on input line 622.
+(pdftex.def)             Requested size: 215.00313pt x 120.93858pt.
+
+
+LaTeX Warning: Float too large for page by 36.39482pt on input line 626.
+
+<AltResults/10teapots.jpg, id=326, 1284.8pt x 722.7pt>
+File: AltResults/10teapots.jpg Graphic file (type jpg)
+
+<use AltResults/10teapots.jpg>
+Package pdftex.def Info: AltResults/10teapots.jpg used on input line 631.
+(pdftex.def)             Requested size: 430.00627pt x 241.87717pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [74] [75 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample1.jpg>] [76 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/sample2.jpg> <D:/_Programming/Light_Wav
+e_GL/THESIS-DRAFTS/sample3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sa
+mple4.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/sample5.jpg>] [77 <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/direct_only.jpg>] [78 <D:/_Programming/
+Light_Wave_GL/THESIS-DRAFTS/indirect_only.jpg> <D:/_Programming/Light_Wave_GL/T
+HESIS-DRAFTS/indirect_only_shadows.jpg>] [79 <D:/_Programming/Light_Wave_GL/THE
+SIS-DRAFTS/23.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/19.jpg> <D:/_Pr
+ogramming/Light_Wave_GL/THESIS-DRAFTS/20.jpg>] [80 <D:/_Programming/Light_Wave_
+GL/THESIS-DRAFTS/direct_only_fake_1_3.jpg>] [81 <D:/_Programming/Light_Wave_GL/
+THESIS-DRAFTS/3.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/7.jpg>]
+[82 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/05SM.jpg> <D:/_Prog
+ramming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1SM.jpg> <D:/_Programming/Light_
+Wave_GL/THESIS-DRAFTS/AltResults/2SM.jpg> <D:/_Programming/Light_Wave_GL/THESIS
+-DRAFTS/AltResults/3SM.jpg>] [83 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/A
+ltResults/noIntegration.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltRe
+sults/integration.jpg>] [84 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltRes
+ults/oldmethod.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/10n
+umSteps30Angle.jpg>] [85 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResult
+s/1teapotOLD.jpg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/1Teap
+ot.jpg>] [86 <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotFL.j
+pg> <D:/_Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotFR.jpg> <D:/_
+Programming/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotNR.jpg> <D:/_Programmi
+ng/Light_Wave_GL/THESIS-DRAFTS/AltResults/teapotC.jpg>] [87 <D:/_Programming/Li
+ght_Wave_GL/THESIS-DRAFTS/AltResults/10teapots.jpg>]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.tex
+CHAPTER 6.
+[88
+
+
+
+] [89] [90]) [91] [92]
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.bbl [93
+
+
+] [94] [95] [96]
+[97]) [98] (D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\thesis.aux
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\abstract.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter1.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter2.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter3.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter4.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter5.aux)
+(D:\_Programming\Light_Wave_GL\THESIS-DRAFTS\chapter6.aux)) ) 
+Here is how much of TeX's memory you used:
+ 6154 strings out of 494049
+ 90532 string characters out of 3146068
+ 187856 words of memory out of 3000000
+ 9289 multiletter control sequences out of 15000+200000
+ 9494 words of font info for 34 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 36i,17n,38p,2281b,1430s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmsy8.pfb><D:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmti12.pfb>
+Output written on thesis.pdf (106 pages, 2182447 bytes).
+PDF statistics:
+ 441 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+
